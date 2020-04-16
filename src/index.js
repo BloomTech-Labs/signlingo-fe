@@ -4,22 +4,27 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
+import logger from "redux-logger";
 import { reducer as loginReducer } from "./reducers/LoginReducer";
+import { reducer as signUpReducer } from "./reducers/SignupReducer";
 
 import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-const rootReducer = combineReducers({ user: loginReducer });
+const rootReducer = combineReducers({
+  user: loginReducer,
+  newUser: signUpReducer,
+});
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
