@@ -11,20 +11,19 @@ let SignupSchema = yup.object().shape({
     .string()
     .min(6, "Password is too short.")
     .max(20, "Password is too long.")
-    .required("This field is required.")
+    .required("This field is required."),
+  confirm: yup
+    .string()
+    .required()
+    .oneOf([yup.ref("password"), null], "Passwords must match")
 });
 
 const Signup = props => {
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
   function submitHandler(values, { resetForm }) {
-    console.log("submitted", values);
-    //action creator
-    //reset the form?
-    values = {
-      email: "",
-      password: ""
-    };
-    console.log("reset values", values);
+    resetForm();
+    //pass in values to action creator
+    console.log(values);
   }
 
   return (
@@ -33,7 +32,8 @@ const Signup = props => {
       <Formik
         initialValues={{
           email: "",
-          password: ""
+          password: "",
+          confirm: ""
         }}
         validationSchema={SignupSchema}
         onSubmit={submitHandler}
@@ -56,6 +56,16 @@ const Signup = props => {
             />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
+            ) : null}
+
+            <Field
+              name="confirm"
+              type="password"
+              onChange={handleChange}
+              placeholder="confirm password"
+            />
+            {errors.confirm && touched.confirm ? (
+              <div>{errors.confirm}</div>
             ) : null}
 
             <button type="submit">Submit</button>
