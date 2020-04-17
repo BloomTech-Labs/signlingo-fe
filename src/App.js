@@ -11,10 +11,10 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/signup" component={Signup} />
-        <Route exact path='/dashboard'>
+        <Route exact path="/dashboard">
           <Dashboard />
         </Route>
-        <Route exact path="/">
+        <Route exact path="/login">
           <Login />
         </Route>
       </Switch>
