@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { reducer as loginReducer } from "./reducers/LoginReducer";
-import { reducer as signUpReducer } from "./reducers/SignupReducer";
+import { signupReducer } from "./reducers/SignupReducer";
 
 import "./index.scss";
 import App from "./App";
@@ -14,7 +14,7 @@ import * as serviceWorker from "./serviceWorker";
 
 const rootReducer = combineReducers({
   user: loginReducer,
-  newUser: signUpReducer,
+  newUser: signupReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
