@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { reducer as loginReducer } from "./reducers/LoginReducer";
+import { loginReducer } from "./reducers/LoginReducer";
 import { signupReducer } from "./reducers/SignupReducer";
 
 import "./index.scss";
