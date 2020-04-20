@@ -1,5 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import { signup } from "../actions/Signup";
+import { connect } from "react-redux";
 import * as yup from "yup";
 
 let SignupSchema = yup.object().shape({
@@ -21,9 +23,13 @@ let SignupSchema = yup.object().shape({
 const Signup = props => {
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
   function submitHandler(values, { resetForm }) {
+    // sanitizing the data so backend doesn't receive confirmation field
+    const newValues = {
+      email: values.email,
+      password: values.password
+    };
+    props.signup(newValues);
     resetForm();
-    //pass in values to action creator
-    console.log(values);
   }
 
   return (
@@ -76,4 +82,4 @@ const Signup = props => {
   );
 };
 
-export default Signup;
+export default connect(null, { signup })(Signup);
