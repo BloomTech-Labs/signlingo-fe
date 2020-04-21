@@ -1,39 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 .App {
   text-align: center;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   width: 375px;
 }
 
 .landingContent {
   // background-color: green;
+  padding: 2%;
 
-  button {
-    background-color:#F6BF00;
+  #landingBtn {
+    background-color: #f6bf00;
     border-radius: 4px;
-    position: absolute;
-    width: 343px;
-    height: 44px;
-    left: 16px;
-    top: 286px;
+    width: 95%;
+    padding: 10px 0px;
+    margin: 3% auto;
+    font-weight: 550;
+    font-size: 16px;
+    line-height: 19px;
+    color: #333333;
+    cursor: pointer;
+  }
 
-    p {
-      position: absolute;
-      left: 41.11%;
-      right: 41.4%;
-      top: 29.55%;
-      bottom: 27.27%;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 19px;
+  .landingBoxes {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+
+    section {
+      padding: 1.5%;
+      width: 43%;
+      margin: 1.5%;
+      font-size: 12px;
       display: flex;
-      align-items: center;
-      color: #333333
+      flex-direction: column;
     }
   }
-};
-
-
-
+}
