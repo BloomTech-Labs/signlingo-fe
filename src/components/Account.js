@@ -23,15 +23,11 @@ function TabPanel(props) {
       aria-labelledby={`nav-tab-${index}`}
       {...other}
     >
-      {value === index && <Box p={2}>{children}</Box>}
+      {value === index && <Box p={0}>{children}</Box>}
     </Typography>
   );
 }
-const styles = theme => ({
-  indicator: {
-    backgroundColor: 'white',
-  },
-})
+
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
@@ -62,8 +58,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     // backgroundColor: theme.palette.background.paper,
     color: '#333333',
-    
+
   },
+  
 }));
 
 const Account = () => {
@@ -92,28 +89,15 @@ const Account = () => {
           
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
+      <TabPanel className={classes.tabPanel} style={{padding: "0"}} value={value} index={0}>
         <Signup />
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel  className={classes.tabPanel} style={{padding: 0}} value={value} index={1}>
         <Login />
       </TabPanel>
     </div>
   );
-  // return (
-  //   <div>
-  //     <nav>
-  //       <Link to={`${url}/login`}>Login</Link>
-  //       <Link to={`${url}/signup`}>Sign Up</Link>
-  //     </nav>
-  //     <Route path={`/login`}>
-  //       <Login />
-  //     </Route>
-  //     <Route path={`${path}/signup`}>
-  //       <Signup />
-  //     </Route>
-  //   </div>
-  // );
+
 };
 
 export default Account;
