@@ -10,14 +10,14 @@ function App() {
   return (
     <div className="App">
       <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
         <Route exact path="/dashboard">
           <Dashboard />
         </Route>
         <Route exact path="/account">
           <Account />
-        </Route>
-        <Route exact path="/">
-          <LandingPage />
         </Route>
       </Switch>
     </div>
