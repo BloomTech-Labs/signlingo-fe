@@ -14,33 +14,37 @@ const LandingPage = () => {
             <img src={heroSm} alt="hand"/>
             {/* landingContent groups everything on landing page EXCEPT for the hero image for padding reasons */}
             <div className="landingContent">
-                <button id="signupBttn"> Sign up</button>
-                <div id="landingCopy">
-                    <div>
-                        <img src={medalSm} alt="medal icon"/>
-                        <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
-                    </div>
-                    <div>
-                        <img src={personSm} alt="person icon"/>
-                        <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
-                    </div>
-                    <div>
-                        <img src={abcSm} alt="abc icon"/>
-                        <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
-                    </div>
-                    <div>
-                        <img src={recSm} alt="rec icon"/>
-                        <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
-                    </div>
-                    <div>
-                        <img src={examSm} alt="exam icon"/>
-                        <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
-                    </div>
-                    <div>
-                        <img src={trophySm} alt="trophy icon"/>
-                        <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
-                    </div>
-                </div>
+                <button><p>Sign up</p></button>
+                <section>
+                    <img src={medalSm} alt="medal icon"/>
+                    <b>Incididunt </b>
+                    <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+                </section>
+                <section>
+                    <img src={personSm} alt="person icon"/>
+                    <b>Incididunt </b>
+                    <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+                </section>
+                <section>
+                    <img src={abcSm} alt="abc icon"/>
+                    <b>Incididunt </b>
+                    <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+                </section>
+                <section>
+                    <img src={recSm} alt="rec icon"/>
+                    <b>Incididunt </b>
+                    <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+                </section>
+                <section>
+                    <img src={examSm} alt="exam icon"/>
+                    <b>Incididunt </b>
+                    <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+                </section>
+                <section>
+                    <img src={trophySm} alt="trophy icon"/>
+                    <b>Incididunt </b>
+                    <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+                </section>
             </div>
         </div>
     )
