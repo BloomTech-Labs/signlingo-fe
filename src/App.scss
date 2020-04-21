@@ -1,41 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 .App {
   text-align: center;
-  width: 375px;
   font-family: 'Inter', sans-serif;
+  font-style: normal;
+  width: 375px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.landingContent {
+  // background-color: green;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  button {
+    background-color:#F6BF00;
+    border-radius: 4px;
+    position: absolute;
+    width: 343px;
+    height: 44px;
+    left: 16px;
+    top: 286px;
+
+    p {
+      position: absolute;
+      left: 41.11%;
+      right: 41.4%;
+      top: 29.55%;
+      bottom: 27.27%;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      display: flex;
+      align-items: center;
+      color: #333333
+    }
   }
-}
+};
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
