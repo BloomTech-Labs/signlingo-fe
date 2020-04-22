@@ -17,8 +17,7 @@ const LandingPage = () => {
         <img src={heroSm} alt="hand" />
         <div id="logo"> <b>Sign</b><span>Lingo</span></div>
         <div id="slogan">Learn to sign.<br/>One day at a time.</div>
-        {/* need to find a way to link directly to the login tab, rather than the account page  */}
-        <p id="login" onClick={() => history.push("/account")}>Log in</p>
+        <p id="login" onClick={() => history.push("/account/login")}>Log in</p>
       </div>
 
       {/* landingContent groups everything on landing page EXCEPT for the hero image for padding reasons */}
