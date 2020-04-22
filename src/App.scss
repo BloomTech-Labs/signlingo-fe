@@ -1,10 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  
+}
+html {
+  font-size: 62.5%;
+}
+h1 {
+  font-size: 1.8rem;
+}
+
 .App {
   text-align: center;
   font-family: "Inter", sans-serif;
   font-style: normal;
   width: 375px;
+  border: 1px solid black;
 }
 
 .landingContent {
@@ -40,3 +55,29 @@
     }
   }
 }
+
+.inputText {
+  background-color: green;
+  padding: 2% 0;
+}
+
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.separator::before, .separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 0.5px solid #E0E0E0;
+  margin: 5% 0;
+}
+.separator::before {
+  margin-right: .25em;
+}
+.separator::after {
+  margin-left: .25em;
+}
+
+

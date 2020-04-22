@@ -3,6 +3,8 @@ import { Formik, Form, Field } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
+import Log_In_Active from "../images/icons/Log_In_Active.png";
+
 
 import {
   fade,
@@ -10,123 +12,133 @@ import {
   withStyles,
   makeStyles,
   createMuiTheme,
-} from '@material-ui/core/styles';
+} from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-
-
-
-
-
-
+import InputBase from "@material-ui/core/InputBase";
+import InputLabel from "@material-ui/core/InputLabel";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import clsx from "clsx";
+import { green, orange } from "@material-ui/core/colors";
+import { palette } from "@material-ui/system";
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
 
 
 
 let SignupSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .required("This field is required."),
+  email: yup.string().email().required("This field is required."),
   password: yup
     .string()
     .min(6, "Password is too short.")
     .max(20, "Password is too long.")
-    .required("This field is required.")
+    .required("This field is required."),
 });
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign:'left',
-    margin: 0,
-    padding: 0
+const AccountTextFields = withStyles({
+  root: {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#828282",
+        borderWidth: "1px",
+        borderRadius: "4px",
 
+
+      },
+      // '&:hover fieldset': {
+      //   borderColor: 'yellow',
+      // },
+      "&.Mui-focused fieldset": {
+        borderColor: "#E0E0E0",
+        borderWidth: "1px",
+        borderRadius: "4px",
+
+
+      },
+      "&.Mui-error fieldset": {
+        borderColor: "#EB5757",
+        borderWidth: "1px",
+        borderRadius: "4px",
+      },
+    },
+    // "& input:valid + fieldset": {
+    //   borderColor: "#E0E0E0",
+    //   borderWidth: 2,
+    // },
+    // "& input:invalid:focus + fieldset": {
+    //   borderColor: green[500],
+    //   borderWidth: "5px",
+    //   borderRadius: "4px",
+    // },
+
+    "& input:valid:focus + fieldset": {
+      borderColor: "#828282",
+      backgroundColor: "",
+    },
+    "& input:focus + fieldset": {
+      borderColor: "#FFFFFF",
+    },
+    "& error": {
+      borderColor: green[500],
+      borderWidth: "8px",
+      borderRadius: "4px",
+    },
   },
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  //   // width: 100
-  // },
-  // dense: {
-  //   marginTop: theme.spacing(2),
-  // },
-  // menu: {
-  //   // width: 100,
-  // },
-}));
+})(TextField);
 
-
-// const useStyles = makeStyles(theme => ({
-//   "@global": {
-//     body: {
-//       backgroundColor: theme.palette.common.white
-//     }
-//   },
-//   paper: {
-//     marginTop: theme.spacing(8),
-//     display: "flex",
-//     flexDirection: "column",
-//     // alignItems: "center"
-//   },
-//   avatar: {
-//     margin: theme.spacing(1),
-//     backgroundColor: theme.palette.secondary.main
-//   },
-//   form: {
-//     width: "100%",
-//     marginTop: theme.spacing(3)
-//   },
-//   submit: {
-//     margin: theme.spacing(3, 0, 2)
-//   }
-// }));
-
-// const BootstrapInput = withStyles(theme => ({
-//   root: {
-//     'label + &': {
-//       marginTop: theme.spacing(3),
+// const theme = createMuiTheme({
+//   pallete: {
+//     error: {
+//       main: green[500],
 //     },
 //   },
-//   input: {
-//     borderRadius: 4,
-//     position: 'relative',
-//     backgroundColor: "#FFFFFF",
-//     border: '1px solid #E0E0E0',
-//     boxSizing: 'border-box',
-//     fontSize: 16,
-//     width: 'auto',
-//     padding: '10px 12px',
-//     // transition: theme.transitions.create(['border-color', 'box-shadow']),
-//     // Use the system font instead of the default Roboto font.
-//     // fontFamily: [
-//     //   '-apple-system',
-//     //   'BlinkMacSystemFont',
-//     //   '"Segoe UI"',
-//     //   'Roboto',
-//     //   '"Helvetica Neue"',
-//     //   'Arial',
-//     //   'sans-serif',
-//     //   '"Apple Color Emoji"',
-//     //   '"Segoe UI Emoji"',
-//     //   '"Segoe UI Symbol"',
-//     // ].join(','),
-//     // '&:focus': {
-//     //   boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-//     //   borderColor: theme.palette.primary.main,
-//     // },
+//   overrides: {
+//     MuiOutlinedInput: {
+//       //     root: {
+//       //       // '& $notchedOutline': {
+//       //       //   border: '5px solid #4A90E2'
+//       //       // },
+//       //       '&$error': {
+//       //           border: '5px solid #4A90E2'
+//       //       }
+//       // }
+//     },
+//     MuiTextField: {
+//       root: {
+//         "& $notchedOutline": {
+//           border: "5px solid #4A90E2",
+//         },
+//         "&$error": {
+//           border: "5px solid #4A90E2",
+//         },
+//       },
+//     },
 //   },
-// }))(InputBase);
+// });
 
-const Login = props => {
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "left",
+    margin: 0,
+    padding: 0,
+  },
+  inputText: {
+    margin: "1% 0 3% 0",
+  },
+  inputErrorText: {
+    // border: "#EB5757 1px solid",
+    borderRadius: "4px",
+  },
+}));
+
+const Login = (props) => {
   const classes = useStyles();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
@@ -140,51 +152,92 @@ const Login = props => {
       <Formik
         initialValues={{
           email: "",
-          password: ""
+          password: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={submitHandler}
       >
-        {({ errors, handleChange, touched }) => (
-          <Form className={classes.container} noValidate autoComplete="off">
-            <InputLabel style={{color: "#4F4F4F"}} htmlFor="email">
-          Email
-        </InputLabel>
-            <TextField
-              style={{width: "100%"}}
-              // error={errors.email && touched.email}
+        {({ errors, handleChange, touched, values }) => (
+          <Form className={classes.container} noValidate autoComplete="off" style={{marginTop: "10%"}}>
+            <InputLabel style={{ color: "#4F4F4F", fontSize: "1.2rem", fontWeight:"600"}} htmlFor="email">
+              Email
+            </InputLabel>
+            <AccountTextFields
+              className={classes.inputText}
               variant="outlined"
               name="email"
               type="email"
               onChange={handleChange}
               id="email"
               fullWidth
-              InputLabelProps={{shrink: false}}
-              
-
+              InputLabelProps={{ shrink: false }}
+              InputProps={{style: {fontSize: "1.2rem"}}}
               name="email"
               autoComplete="off"
               // helperText={
               //   errors.email && touched.email ? errors.email : null
               // }
               placeholder="Yourname@email.com"
+              error={errors.email && touched.email}
             />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
-            <Field
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+            <InputLabel style={{ color: "#4F4F4F", fontSize: "1.2rem", fontWeight:"600" }} htmlFor="password">
+              Password
+            </InputLabel>
+            <AccountTextFields
+              className={classes.inputText}
+              variant="outlined"
               name="password"
               type="password"
               onChange={handleChange}
+              id="password"
+              fullWidth
+              InputLabelProps={{ shrink: false }}
               placeholder="password"
+              autoComplete="off"
+              error={errors.password && touched.password}
             />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}
-
-            <button type="submit">Login</button>
+            {values.email && values.password ? (
+              <Button variant="contained" type="submit" style={{backgroundColor:"#f6bf00", boxShadow: "none", marginTop: "10%"}}>
+                <img src={Log_In_Active} alt="person icon" />
+              </Button>
+            ) : (
+              <Button variant="contained" type="submit" disabled>
+                Login
+              </Button>
+            )}
           </Form>
         )}
       </Formik>
+
+      <div className="separator" style={{color: "#4F4F4F"}}>or</div>
+      <p style={{color: "#4F4F4F", fontSize: "1.4rem", lineHeight:"1.7rem"}}>Log in using social media</p>
+
+      <section>
+      <Icon className="fa fa-google">Google</Icon>
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        className={classes.button}
+      >
+        <img src={Log_In_Active} alt="person icon" />
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+      >
+        Facebook
+      </Button>
+
+      </section>
     </div>
   );
 };
