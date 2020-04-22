@@ -3,6 +3,8 @@ import { Formik, Form, Field } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
+import Log_In_Active from "../images/icons/Log_In_Active.png";
+
 
 import {
   fade,
@@ -24,6 +26,10 @@ import FormControl from "@material-ui/core/FormControl";
 import clsx from "clsx";
 import { green, orange } from "@material-ui/core/colors";
 import { palette } from "@material-ui/system";
+import Icon from '@material-ui/core/Icon';
+import SaveIcon from '@material-ui/icons/Save';
+
+
 
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required."),
@@ -197,7 +203,7 @@ const Login = (props) => {
             ) : null}
             {values.email && values.password ? (
               <Button variant="contained" type="submit" style={{backgroundColor:"#f6bf00", boxShadow: "none", marginTop: "10%"}}>
-                Login
+                <img src={Log_In_Active} alt="person icon" />
               </Button>
             ) : (
               <Button variant="contained" type="submit" disabled>
@@ -210,6 +216,28 @@ const Login = (props) => {
 
       <div className="separator" style={{color: "#4F4F4F"}}>or</div>
       <p style={{color: "#4F4F4F", fontSize: "1.4rem", lineHeight:"1.7rem"}}>Log in using social media</p>
+
+      <section>
+      <Icon className="fa fa-google">Google</Icon>
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        className={classes.button}
+      >
+        <img src={Log_In_Active} alt="person icon" />
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+      >
+        Facebook
+      </Button>
+
+      </section>
     </div>
   );
 };
