@@ -55,10 +55,10 @@ function LinkTab(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
     // backgroundColor: theme.palette.background.paper,
     color: '#333333',
-    padding: "3%",
+    padding: "2% 3%",
 
   },
   
@@ -82,11 +82,11 @@ const Account = () => {
           value={value}
           onChange={handleChange}
           aria-label="nav tabs example"
-          TabIndicatorProps={{style: {background:'#F6BF00'}}}
+          TabIndicatorProps={{style: {background:'#F6BF00', height: "3px"}}}
           
         >
-          <LinkTab label="Sign up" href="/signup" style= {{textTransform: 'none'}} {...a11yProps(1)} />
-          <LinkTab label="Log in" href="/login" style= {{textTransform: 'none'}} {...a11yProps(0)} />
+          <LinkTab label="Sign up" href="/signup" style= {{textTransform: 'none', fontSize: "1.2rem"}} {...a11yProps(0)} />
+          <LinkTab label="Log in" href="/login" style= {{textTransform: 'none', fontSize: "1.2rem"}} {...a11yProps(1)} />
           
         </Tabs>
       </AppBar>
