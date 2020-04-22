@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     // backgroundColor: theme.palette.background.paper,
     color: '#333333',
+    padding: "3%",
 
   },
   
@@ -85,7 +86,7 @@ const Account = () => {
           
         >
           <LinkTab label="Sign up" href="/signup" style= {{textTransform: 'none'}} {...a11yProps(1)} />
-          <LinkTab label="Login" href="/login" style= {{textTransform: 'none'}} {...a11yProps(0)} />
+          <LinkTab label="Log in" href="/login" style= {{textTransform: 'none'}} {...a11yProps(0)} />
           
         </Tabs>
       </AppBar>

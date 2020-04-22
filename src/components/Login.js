@@ -10,123 +10,75 @@ import {
   withStyles,
   makeStyles,
   createMuiTheme,
-} from '@material-ui/core/styles';
+} from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-
-
-
-
-
-
-
+import InputBase from "@material-ui/core/InputBase";
+import InputLabel from "@material-ui/core/InputLabel";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import clsx from 'clsx';
 
 
 let SignupSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .required("This field is required."),
+  email: yup.string().email().required("This field is required."),
   password: yup
     .string()
     .min(6, "Password is too short.")
     .max(20, "Password is too long.")
-    .required("This field is required.")
+    .required("This field is required."),
 });
+const AccountTextFields = withStyles({
+  root: {
+    '& input:valid + fieldset': {
+      borderColor: '#E0E0E0',
+      borderWidth: 2,
+    },
+    '& input:invalid + fieldset': {
+      borderColor: '#EB5757',
+      borderWidth: "1px",
+      borderRadius:"4px"
+    },
 
-const useStyles = makeStyles(theme => ({
+    '& input:valid:focus + fieldset': {
+      borderColor: '#828282',
+
+    },
+    '&$error': {
+      borderColor: '#EB5757',
+      borderWidth: "1px",
+      borderRadius:"4px"
+    },
+  },
+})(TextField);
+
+const useStyles = makeStyles((theme) => ({
   container: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign:'left',
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "left",
     margin: 0,
-    padding: 0
+    padding: 0,
+  },
+  inputText: {
+    margin: "2% 0",
+
+
 
   },
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  //   // width: 100
-  // },
-  // dense: {
-  //   marginTop: theme.spacing(2),
-  // },
-  // menu: {
-  //   // width: 100,
-  // },
+  inputErrorText: {
+    border: '#EB5757 1px solid',
+    borderRadius: '4px'  },
+
 }));
 
 
-// const useStyles = makeStyles(theme => ({
-//   "@global": {
-//     body: {
-//       backgroundColor: theme.palette.common.white
-//     }
-//   },
-//   paper: {
-//     marginTop: theme.spacing(8),
-//     display: "flex",
-//     flexDirection: "column",
-//     // alignItems: "center"
-//   },
-//   avatar: {
-//     margin: theme.spacing(1),
-//     backgroundColor: theme.palette.secondary.main
-//   },
-//   form: {
-//     width: "100%",
-//     marginTop: theme.spacing(3)
-//   },
-//   submit: {
-//     margin: theme.spacing(3, 0, 2)
-//   }
-// }));
 
-// const BootstrapInput = withStyles(theme => ({
-//   root: {
-//     'label + &': {
-//       marginTop: theme.spacing(3),
-//     },
-//   },
-//   input: {
-//     borderRadius: 4,
-//     position: 'relative',
-//     backgroundColor: "#FFFFFF",
-//     border: '1px solid #E0E0E0',
-//     boxSizing: 'border-box',
-//     fontSize: 16,
-//     width: 'auto',
-//     padding: '10px 12px',
-//     // transition: theme.transitions.create(['border-color', 'box-shadow']),
-//     // Use the system font instead of the default Roboto font.
-//     // fontFamily: [
-//     //   '-apple-system',
-//     //   'BlinkMacSystemFont',
-//     //   '"Segoe UI"',
-//     //   'Roboto',
-//     //   '"Helvetica Neue"',
-//     //   'Arial',
-//     //   'sans-serif',
-//     //   '"Apple Color Emoji"',
-//     //   '"Segoe UI Emoji"',
-//     //   '"Segoe UI Symbol"',
-//     // ].join(','),
-//     // '&:focus': {
-//     //   boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-//     //   borderColor: theme.palette.primary.main,
-//     // },
-//   },
-// }))(InputBase);
-
-const Login = props => {
+const Login = (props) => {
   const classes = useStyles();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
@@ -140,18 +92,18 @@ const Login = props => {
       <Formik
         initialValues={{
           email: "",
-          password: ""
+          password: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={submitHandler}
       >
-        {({ errors, handleChange, touched }) => (
+        {({ errors, handleChange, touched, values }) => (
           <Form className={classes.container} noValidate autoComplete="off">
-            <InputLabel style={{color: "#4F4F4F"}} htmlFor="email">
-          Email
-        </InputLabel>
-            <TextField
-              style={{width: "100%"}}
+            <InputLabel style={{ color: "#4F4F4F" }} htmlFor="email">
+              Email
+            </InputLabel>
+            <AccountTextFields
+              className={clsx(classes.inputText, {[classes.inputErrorText]: errors.email && touched.email  })}
               // error={errors.email && touched.email}
               variant="outlined"
               name="email"
@@ -159,9 +111,7 @@ const Login = props => {
               onChange={handleChange}
               id="email"
               fullWidth
-              InputLabelProps={{shrink: false}}
-              
-
+              InputLabelProps={{ shrink: false }}
               name="email"
               autoComplete="off"
               // helperText={
@@ -170,18 +120,29 @@ const Login = props => {
               placeholder="Yourname@email.com"
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-
-            <Field
+            <InputLabel style={{ color: "#4F4F4F" }} htmlFor="password">
+              Password
+            </InputLabel>
+            <AccountTextFields
+              
+              className={clsx(classes.inputText, {[classes.inputErrorText]: errors.password && touched.password  })}
+              variant="outlined"
               name="password"
               type="password"
               onChange={handleChange}
+              id="password"
+              fullWidth
+              InputLabelProps={{ shrink: false }}
               placeholder="password"
+              autoComplete="off"
+              color="#828282"
             />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}
-
-            <button type="submit">Login</button>
+            {values.email && values.password ? (
+              <Button variant="contained" type="submit">Login</Button>
+            ) : <Button variant="contained" type="submit" disabled>Login</Button>}
           </Form>
         )}
       </Formik>
