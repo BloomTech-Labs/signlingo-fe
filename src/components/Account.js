@@ -1,5 +1,5 @@
-import React from "react";
-import { useParams, Route, Link, useRouteMatch } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, Route, Link, useRouteMatch, useLocation } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     // backgroundColor: theme.palette.background.paper,
     color: '#333333',
-
+    padding: "2% 3%",
   },
   
 }));
@@ -66,11 +66,23 @@ const useStyles = makeStyles((theme) => ({
 const Account = () => {
   const { path, url } = useRouteMatch();
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const location = useLocation();
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  //sets value for which tab is click on from landing page
+  useEffect(() => {
+    console.log("location", location)
+    if(location.state) {
+      setValue(location.state.value)
+    }
+    setValue(0)
+    console.log("value from landing page", location.state)
+},[location.state]);
+
 
   return (
     <div className={classes.root}>
