@@ -4,6 +4,11 @@ import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
 
+import Log_In_Active from "../images/icons/Log_In_Active.png";
+import facebookF from "../images/icons/facebook_icon.png";
+import googleG from "../images/icons/google_icon.png";
+
+
 import {
   fade,
   ThemeProvider,
@@ -17,17 +22,16 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import InputBase from '@material-ui/core/InputBase';
-import InputLabel from '@material-ui/core/InputLabel';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
 
-
-
-
-
-
-
+import InputBase from "@material-ui/core/InputBase";
+import InputLabel from "@material-ui/core/InputLabel";
+import TextField from "@material-ui/core/TextField";
+import FormControl from "@material-ui/core/FormControl";
+import clsx from "clsx";
+import { green, orange } from "@material-ui/core/colors";
+import { palette } from "@material-ui/system";
+import Icon from "@material-ui/core/Icon";
+import SaveIcon from "@material-ui/icons/Save";
 
 
 let SignupSchema = yup.object().shape({
@@ -42,6 +46,50 @@ let SignupSchema = yup.object().shape({
     .required("This field is required.")
 });
 
+const AccountTextFields = withStyles({
+  root: {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#828282",
+        borderWidth: "1px",
+        borderRadius: "4px",
+      },
+      // '&:hover fieldset': {
+      //   borderColor: 'yellow',
+      // },
+      "&.Mui-focused fieldset": {
+        borderColor: "#E0E0E0",
+        borderWidth: "1px",
+        borderRadius: "4px",
+      },
+      "&.Mui-error fieldset": {
+        borderColor: "#EB5757",
+        borderWidth: "1px",
+        borderRadius: "4px",
+      },
+    },
+    // "& input:valid + fieldset": {
+    //   borderColor: "#E0E0E0",
+    //   borderWidth: 2,
+    // },
+    // "& input:invalid:focus + fieldset": {
+    //   borderColor: green[500],
+    //   borderWidth: "5px",
+    //   borderRadius: "4px",
+    // },
+
+    "& input:valid:focus + fieldset": {
+      borderColor: "#828282",
+      backgroundColor: "",
+    },
+    "& input:focus + fieldset": {
+      borderColor: "#FFFFFF",
+    },
+    "& error": {
+      borderColor: green[500],
+      borderWidth: "8px",
+      borderRadius: "4px",
+    },
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
@@ -49,7 +97,6 @@ const useStyles = makeStyles(theme => ({
     textAlign:'left',
     margin: 0,
     padding: 0
-
   },
   // textField: {
   //   marginLeft: theme.spacing(1),
@@ -145,22 +192,35 @@ const Login = props => {
         validationSchema={SignupSchema}
         onSubmit={submitHandler}
       >
-        {({ errors, handleChange, touched }) => (
-          <Form className={classes.container} noValidate autoComplete="off">
-            <InputLabel style={{color: "#4F4F4F"}} htmlFor="email">
-          Email
-        </InputLabel>
-            <TextField
-              style={{width: "100%"}}
-              // error={errors.email && touched.email}
+        {({ errors, handleChange, touched, values }) => (
+          <Form
+            className={classes.container}
+            noValidate
+            autoComplete="off"
+            style={{ marginTop: "10%" }}
+          >
+            <InputLabel
+              style={{
+                color: "#4F4F4F",
+                fontSize: "1.2rem",
+                fontWeight: "600",
+              }}
+              htmlFor="email"
+            >
+              Email
+            </InputLabel>
+            <AccountTextFields
+              className={classes.inputText}
+
               variant="outlined"
               name="email"
               type="email"
               onChange={handleChange}
               id="email"
               fullWidth
-              InputLabelProps={{shrink: false}}
-              
+
+              InputLabelProps={{ shrink: false }}
+              InputProps={{ style: { fontSize: "1.2rem" } }}
 
               name="email"
               autoComplete="off"
@@ -171,7 +231,20 @@ const Login = props => {
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
-            <Field
+            <InputLabel
+              style={{
+                color: "#4F4F4F",
+                fontSize: "1.2rem",
+                fontWeight: "600",
+              }}
+              htmlFor="password"
+            >
+              Password
+            </InputLabel>
+            <AccountTextFields
+              className={classes.inputText}
+              variant="outlined"
+
               name="password"
               type="password"
               onChange={handleChange}
@@ -181,10 +254,43 @@ const Login = props => {
               <div>{errors.password}</div>
             ) : null}
 
-            <button type="submit">Login</button>
+            {values.email && values.password ? (
+              <Button
+                variant="contained"
+                type="submit"
+                style={{
+                  backgroundColor: "#f6bf00",
+                  boxShadow: "none",
+                  marginTop: "10%",
+                }}
+              >
+                <img src={Log_In_Active} alt="person icon" />
+              </Button>
+            ) : (
+              <Button variant="contained" type="submit" disabled>
+                Login
+              </Button>
+            )}
           </Form>
         )}
       </Formik>
+
+      <div className="separator" style={{ color: "#4F4F4F" }}>
+        or
+      </div>
+      <p style={{ color: "#4F4F4F", fontSize: "1.4rem", lineHeight: "1.7rem" }}>
+        Log in using social media
+      </p>
+
+      <section className="socialBtns">
+        <a href="www.facebook.com" target="_blank" className="facebookBtn">
+          <img src={facebookF} alt="facebook letter f" id="fImage" /> Facebook
+        </a>
+        <a href="www.google.com" target="_blank" className="googleBtn">
+          <img src={googleG} alt="google letter g" id="gImage" /> Google
+        </a>
+      </section>
+
     </div>
   );
 };
