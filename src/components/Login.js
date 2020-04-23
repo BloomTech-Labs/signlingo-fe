@@ -9,28 +9,17 @@ import googleG from "../images/icons/google_icon.png";
 
 
 import {
-  fade,
-  ThemeProvider,
   withStyles,
   makeStyles,
-  createMuiTheme,
 } from '@material-ui/core/styles';
 
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
-import InputBase from "@material-ui/core/InputBase";
+import Button from "@material-ui/core/Button";
+
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
-import clsx from "clsx";
 import { green, orange } from "@material-ui/core/colors";
-import { palette } from "@material-ui/system";
-import Icon from "@material-ui/core/Icon";
-import SaveIcon from "@material-ui/icons/Save";
+
 
 
 let SignupSchema = yup.object().shape({
@@ -166,6 +155,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     margin: 0,
     padding: 0,
+    fontWeight: "600",
+    fontFamily: "Inter, sans-serif",
   },
   inputText: {
     margin: "1% 0 3% 0",
@@ -207,6 +198,7 @@ const Login = props => {
                 color: "#4F4F4F",
                 fontSize: "1.2rem",
                 fontWeight: "600",
+                fontFamily: "Inter, sans-serif",
               }}
               htmlFor="email"
             >
@@ -227,10 +219,10 @@ const Login = props => {
 
               name="email"
               autoComplete="off"
-              // helperText={
-              //   errors.email && touched.email ? errors.email : null
-              // }
               placeholder="Yourname@email.com"
+              error={errors.email && touched.email}
+
+              
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
@@ -239,6 +231,7 @@ const Login = props => {
                 color: "#4F4F4F",
                 fontSize: "1.2rem",
                 fontWeight: "600",
+                fontFamily: "Inter, sans-serif",
               }}
               htmlFor="password"
             >
@@ -252,6 +245,8 @@ const Login = props => {
               type="password"
               onChange={handleChange}
               placeholder="password"
+              error={errors.password && touched.password}
+
             />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
@@ -265,12 +260,13 @@ const Login = props => {
                   backgroundColor: "#f6bf00",
                   boxShadow: "none",
                   marginTop: "10%",
+                  fontFamily: "Inter, sans-serif",
                 }}
-              >Login
+              >Log in
               </Button>
             ) : (
               <Button variant="contained" type="submit" disabled>
-                Login
+                Log in
               </Button>
             )}
           </Form>
