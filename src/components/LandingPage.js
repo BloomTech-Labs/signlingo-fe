@@ -20,7 +20,6 @@ const LandingPage = () => {
         <p id="login" onClick={() => history.push("/account/login")}>Log in</p>
       </div>
 
-      {/* landingContent groups everything on landing page EXCEPT for the hero image for padding reasons */}
       <div className="landingContent">
         <div id="landingBtn" onClick={() => history.push("/account")}>Sign up</div>
 
