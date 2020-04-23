@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
 import Log_In_Active from "../images/icons/Log_In_Active.png";
-
+import facebookF from "../images/icons/facebook_icon.png";
+import googleG from "../images/icons/google_icon.png";
 
 import {
   fade,
@@ -26,10 +27,8 @@ import FormControl from "@material-ui/core/FormControl";
 import clsx from "clsx";
 import { green, orange } from "@material-ui/core/colors";
 import { palette } from "@material-ui/system";
-import Icon from '@material-ui/core/Icon';
-import SaveIcon from '@material-ui/icons/Save';
-
-
+import Icon from "@material-ui/core/Icon";
+import SaveIcon from "@material-ui/icons/Save";
 
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required."),
@@ -47,8 +46,6 @@ const AccountTextFields = withStyles({
         borderColor: "#828282",
         borderWidth: "1px",
         borderRadius: "4px",
-
-
       },
       // '&:hover fieldset': {
       //   borderColor: 'yellow',
@@ -57,8 +54,6 @@ const AccountTextFields = withStyles({
         borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
-
-
       },
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
@@ -158,8 +153,20 @@ const Login = (props) => {
         onSubmit={submitHandler}
       >
         {({ errors, handleChange, touched, values }) => (
-          <Form className={classes.container} noValidate autoComplete="off" style={{marginTop: "10%"}}>
-            <InputLabel style={{ color: "#4F4F4F", fontSize: "1.2rem", fontWeight:"600"}} htmlFor="email">
+          <Form
+            className={classes.container}
+            noValidate
+            autoComplete="off"
+            style={{ marginTop: "10%" }}
+          >
+            <InputLabel
+              style={{
+                color: "#4F4F4F",
+                fontSize: "1.2rem",
+                fontWeight: "600",
+              }}
+              htmlFor="email"
+            >
               Email
             </InputLabel>
             <AccountTextFields
@@ -171,7 +178,7 @@ const Login = (props) => {
               id="email"
               fullWidth
               InputLabelProps={{ shrink: false }}
-              InputProps={{style: {fontSize: "1.2rem"}}}
+              InputProps={{ style: { fontSize: "1.2rem" } }}
               name="email"
               autoComplete="off"
               // helperText={
@@ -182,7 +189,14 @@ const Login = (props) => {
             />
 
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-            <InputLabel style={{ color: "#4F4F4F", fontSize: "1.2rem", fontWeight:"600" }} htmlFor="password">
+            <InputLabel
+              style={{
+                color: "#4F4F4F",
+                fontSize: "1.2rem",
+                fontWeight: "600",
+              }}
+              htmlFor="password"
+            >
               Password
             </InputLabel>
             <AccountTextFields
@@ -202,7 +216,15 @@ const Login = (props) => {
               <div>{errors.password}</div>
             ) : null}
             {values.email && values.password ? (
-              <Button variant="contained" type="submit" style={{backgroundColor:"#f6bf00", boxShadow: "none", marginTop: "10%"}}>
+              <Button
+                variant="contained"
+                type="submit"
+                style={{
+                  backgroundColor: "#f6bf00",
+                  boxShadow: "none",
+                  marginTop: "10%",
+                }}
+              >
                 <img src={Log_In_Active} alt="person icon" />
               </Button>
             ) : (
@@ -214,29 +236,20 @@ const Login = (props) => {
         )}
       </Formik>
 
-      <div className="separator" style={{color: "#4F4F4F"}}>or</div>
-      <p style={{color: "#4F4F4F", fontSize: "1.4rem", lineHeight:"1.7rem"}}>Log in using social media</p>
+      <div className="separator" style={{ color: "#4F4F4F" }}>
+        or
+      </div>
+      <p style={{ color: "#4F4F4F", fontSize: "1.4rem", lineHeight: "1.7rem" }}>
+        Log in using social media
+      </p>
 
-      <section>
-      <Icon className="fa fa-google">Google</Icon>
-      <Button
-        variant="contained"
-        color="primary"
-        size="small"
-        className={classes.button}
-      >
-        <img src={Log_In_Active} alt="person icon" />
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        size="small"
-        className={classes.button}
-        startIcon={<SaveIcon />}
-      >
-        Facebook
-      </Button>
-
+      <section className="socialBtns">
+        <a href="www.facebook.com" target="_blank" className="facebookBtn">
+          <img src={facebookF} alt="facebook letter f" id="fImage" /> Facebook
+        </a>
+        <a href="www.google.com" target="_blank" className="googleBtn">
+          <img src={googleG} alt="google letter g" id="gImage" /> Google
+        </a>
       </section>
     </div>
   );
