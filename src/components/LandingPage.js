@@ -24,60 +24,30 @@ const LandingPage = () => {
         <div id="landingBtn" onClick={() => history.push({pathname:"/account", state: {value: 0}})}>
           Sign up
         </div>
+
         <div className="landingBoxes">
           <section>
-            <div>
-              <img src={medalSm} alt="medal icon" />
-            </div>
-            <b>Fun gamified lessons </b>
-            <p>
-              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
-            </p>
+            <div><img src={medalSm} alt="medal icon" /></div>
+            <b>Fun gamified lessons</b>
+            <p>Get a hot streak going, track your progress, earn points and lose hearts.</p>
           </section>
+
           <section>
-            <div>
-              <img src={personSm} alt="person icon" />
-            </div>
-            <b>Easy online learning </b>
-            <p>
-              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
-            </p>
+            <div><img src={personSm} alt="person icon" /></div>
+            <b>Easy online learning</b>
+            <p>SignLingo is available on mobile and desktop for your convenience!</p>
           </section>
+
           <section>
-            <div>
-              <img src={abcSm} alt="abc icon" />
-            </div>
-            <b>Something curriculum </b>
-            <p>
-              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
-            </p>
-          </section>
-          <section>
-            <div>
-              <img src={recSm} alt="rec icon" />
-            </div>
-            <b>Video recognition</b>
-            <p>
-              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
-            </p>
-          </section>
-          <section>
-            <div>
-              <img src={examSm} alt="exam icon" />
-            </div>
+            <div><img src={examSm} alt="exam icon" /></div>
             <b>End of unit quizzes </b>
-            <p>
-              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
-            </p>
-          </section>
+            <p>Quizzes at the end of each unit will help track your growth.</p>
+            </section>
+
           <section>
-            <div>
-              <img src={trophySm} alt="trophy icon" />
-            </div>
-            <b>Something something</b>
-            <p>
-              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
-            </p>
+            <div><img src={recSm} alt="rec icon"/></div>
+            <b>Video recognition</b>
+            <p>Our recognition software will tell you if you are signing correctly.</p>
           </section>
         </div>
       </div>

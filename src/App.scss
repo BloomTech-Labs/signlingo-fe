@@ -22,8 +22,43 @@ h1 {
   width: 375px;
 }
 
+.heroDiv{
+  position: relative;
+
+  #logo {
+    position: absolute;
+    font-size: 2.3rem;
+    line-height: 44px;
+    font-weight: 400;
+    color: #212121;
+    left: 15px;
+    top: 16px;
+  }
+
+  #login {
+    position: absolute;
+    font-weight: 500;
+    font-size: .85rem;
+    line-height: 17px;
+    left: 318px;
+    top: 7px;
+    color: #000000;
+  }
+
+  #slogan {
+    position: absolute;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 22px;
+    color: #212121;
+    text-align: left;
+    left: 16px;
+    top: 68px;
+  }
+}
+
 .landingContent {
-  // background-color: green;
+
   padding: 2%;
 
   #landingBtn {
@@ -124,3 +159,4 @@ h1 {
     }
   }
 }
+
