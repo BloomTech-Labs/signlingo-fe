@@ -19,49 +19,69 @@ const LandingPage = () => {
         <div id="slogan">Learn to sign.<br/>One day at a time.</div>
         <p id="login" onClick={() => history.push("/account/login")}>Log in</p>
       </div>
-
+  
       <div className="landingContent">
-        <div id="landingBtn" onClick={() => history.push("/account")}>Sign up</div>
-
+        <div id="landingBtn" onClick={() => history.push("/account")}>
+          Sign up
+        </div>
         <div className="landingBoxes">
           <section>
-            <div><img src={medalSm} alt="medal icon" /></div>
+            <div>
+              <img src={medalSm} alt="medal icon" />
+            </div>
             <b>Fun gamified lessons </b>
-            <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+            <p>
+              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
+            </p>
           </section>
-
           <section>
-            <div><img src={personSm} alt="person icon" /></div>
+            <div>
+              <img src={personSm} alt="person icon" />
+            </div>
             <b>Easy online learning </b>
-            <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+            <p>
+              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
+            </p>
           </section>
-
           <section>
-            <div><img src={abcSm} alt="abc icon" /></div>
+            <div>
+              <img src={abcSm} alt="abc icon" />
+            </div>
             <b>Something curriculum </b>
-            <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+            <p>
+              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
+            </p>
           </section>
-
           <section>
-            <div><img src={recSm} alt="rec icon" /></div>
+            <div>
+              <img src={recSm} alt="rec icon" />
+            </div>
             <b>Video recognition</b>
-            <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+            <p>
+              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
+            </p>
           </section>
-
           <section>
-            <div><img src={examSm} alt="exam icon" /></div>
+            <div>
+              <img src={examSm} alt="exam icon" />
+            </div>
             <b>End of unit quizzes </b>
-            <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+            <p>
+              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
+            </p>
           </section>
-
           <section>
-            <div><img src={trophySm} alt="trophy icon" /></div>
+            <div>
+              <img src={trophySm} alt="trophy icon" />
+            </div>
             <b>Something something</b>
-            <p>Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.</p>
+            <p>
+              Incididunt ex ut ad laboris enim dolore reprehenderit ad in ipsum.
+            </p>
           </section>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
