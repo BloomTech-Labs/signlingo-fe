@@ -87,7 +87,7 @@ const Account = () => {
   return (
     <div className={classes.root}>
       <h1>Account</h1>
-      <AppBar position="static" style= {{background: 'white', color: 'black', boxShadow: 'none'}}>
+      <AppBar position="static" style= {{background: 'white', color: 'black', boxShadow: 'none', fontFamily: "Inter, sans-serif",}}>
         <Tabs
           variant="fullWidth"
           value={value}
@@ -96,8 +96,8 @@ const Account = () => {
           TabIndicatorProps={{style: {background:'#F6BF00'}}}
           
         >
-          <LinkTab label="Sign up" href="/signup" style= {{textTransform: 'none'}} {...a11yProps(1)} />
-          <LinkTab label="Login" href="/login" style= {{textTransform: 'none'}} {...a11yProps(0)} />
+          <LinkTab label="Sign up" href="/signup" style= {{textTransform: 'none', fontFamily: "Inter, sans-serif",}} {...a11yProps(1)} />
+          <LinkTab label="Login" href="/login" style= {{textTransform: 'none', fontFamily: "Inter, sans-serif",}} {...a11yProps(0)} />
           
         </Tabs>
       </AppBar>
