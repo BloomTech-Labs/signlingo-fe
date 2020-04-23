@@ -67,7 +67,7 @@ const Account = () => {
   const { path, url } = useRouteMatch();
   const classes = useStyles();
   const location = useLocation();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -75,9 +75,13 @@ const Account = () => {
 
   //sets value for which tab is click on from landing page
   useEffect(() => {
-    setValue(location.state.value)
-    console.log("value from landing page", location.state.value)
-},[location.state.value]);
+    console.log("location", location)
+    if(location.state) {
+      setValue(location.state.value)
+    }
+    setValue(0)
+    console.log("value from landing page", location.state)
+},[location.state]);
 
 
   return (
