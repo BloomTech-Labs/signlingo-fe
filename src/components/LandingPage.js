@@ -17,11 +17,11 @@ const LandingPage = () => {
         <img src={heroSm} alt="hand" />
         <div id="logo"> <b>Sign</b><span>Lingo</span></div>
         <div id="slogan">Learn to sign.<br/>One day at a time.</div>
-        <p id="login" onClick={() => history.push("/account/login")}>Log in</p>
+        <p id="login" onClick={() => history.push({pathname:"/account", state: {value: 1}})}>Log in</p>
       </div>
   
       <div className="landingContent">
-        <div id="landingBtn" onClick={() => history.push("/account")}>
+        <div id="landingBtn" onClick={() => history.push({pathname:"/account", state: {value: 0}})}>
           Sign up
         </div>
         <div className="landingBoxes">
@@ -81,7 +81,8 @@ const LandingPage = () => {
           </section>
         </div>
       </div>
-    </div>
+    </>
+
   );
 };
 

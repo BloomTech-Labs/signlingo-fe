@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
 
-import Log_In_Active from "../images/icons/Log_In_Active.png";
 import facebookF from "../images/icons/facebook_icon.png";
 import googleG from "../images/icons/google_icon.png";
 
@@ -53,6 +52,8 @@ const AccountTextFields = withStyles({
         borderColor: "#828282",
         borderWidth: "1px",
         borderRadius: "4px",
+
+
       },
       // '&:hover fieldset': {
       //   borderColor: 'yellow',
@@ -61,6 +62,8 @@ const AccountTextFields = withStyles({
         borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
+
+
       },
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
@@ -90,26 +93,8 @@ const AccountTextFields = withStyles({
       borderWidth: "8px",
       borderRadius: "4px",
     },
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign:'left',
-    margin: 0,
-    padding: 0
   },
-  // textField: {
-  //   marginLeft: theme.spacing(1),
-  //   marginRight: theme.spacing(1),
-  //   // width: 100
-  // },
-  // dense: {
-  //   marginTop: theme.spacing(2),
-  // },
-  // menu: {
-  //   // width: 100,
-  // },
-}));
+})(TextField);
 
 
 // const useStyles = makeStyles(theme => ({
@@ -172,6 +157,24 @@ const useStyles = makeStyles(theme => ({
 //     // },
 //   },
 // }))(InputBase);
+
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "left",
+    margin: 0,
+    padding: 0,
+  },
+  inputText: {
+    margin: "1% 0 3% 0",
+  },
+  inputErrorText: {
+    // border: "#EB5757 1px solid",
+    borderRadius: "4px",
+  },
+}));
 
 const Login = props => {
   const classes = useStyles();
@@ -263,8 +266,7 @@ const Login = props => {
                   boxShadow: "none",
                   marginTop: "10%",
                 }}
-              >
-                <img src={Log_In_Active} alt="person icon" />
+              >Login
               </Button>
             ) : (
               <Button variant="contained" type="submit" disabled>
