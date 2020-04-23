@@ -76,10 +76,12 @@ const Account = () => {
   //sets value for which tab is click on from landing page
   useEffect(() => {
     console.log("location", location)
-    if(location.state) {
-      setValue(location.state.value)
-    }
-    setValue(0)
+    if(!location.state) {
+      setValue(0)
+      
+    } 
+    setValue(location.state.value)
+    
     console.log("value from landing page", location.state)
 },[location.state]);
 
