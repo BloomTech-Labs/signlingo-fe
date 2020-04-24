@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     // backgroundColor: theme.palette.background.paper,
     color: "#333333",
-    padding: "2% 3%",
+    padding: "5% 3%",
   },
 }));
 
@@ -93,8 +93,10 @@ const Account = () => {
 
   return (
     <div className={classes.root}>
-      <div>
-        <img src={BackArrow} alt="Arrow pointing left" />
+      <div className="accountBar">
+        <Link to="/">
+          <img src={BackArrow} alt="Arrow pointing left" />
+        </Link>
         <h1>Account</h1>
       </div>
       <AppBar
