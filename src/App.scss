@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
-
 * {
   padding: 0;
   margin: 0;
@@ -14,51 +13,59 @@ h1 {
   font-size: 1.8rem;
 }
 
-
 .App {
   text-align: center;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  width: 375px;
+  // width: 375px;
 }
 
-.heroDiv{
+.heroDiv {
   position: relative;
+  display: inline-block;
 
-  #logo {
-    position: absolute;
-    font-size: 2.3rem;
-    line-height: 44px;
-    font-weight: 400;
-    color: #212121;
-    left: 15px;
-    top: 16px;
+  img {
+    width: 100%;
   }
 
-  #login {
+  .heroText {
     position: absolute;
-    font-weight: 500;
-    font-size: .85rem;
-    line-height: 17px;
-    left: 318px;
-    top: 7px;
-    color: #000000;
-  }
+    width: 200px;
+    top: 10px;
+    left: 18px;
 
-  #slogan {
+    #logo {
+      font-size: 3.6rem;
+      line-height: 44px;
+      font-weight: 400;
+      color: #212121;
+      display: flex;
+    }
+
+    #slogan {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 22px;
+      color: #212121;
+      text-align: left;
+      margin-top: 5%;
+    }
+  }
+  .heroLogin {
     position: absolute;
-    font-weight: 500;
-    font-size: 1.2rem;
-    line-height: 22px;
-    color: #212121;
-    text-align: left;
-    left: 16px;
-    top: 68px;
+    top: 10px;
+    right: 10px;
+
+    #login {
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 17px;
+      color: #000000;
+    }
   }
 }
 
 .landingContent {
-
   padding: 2%;
 
   #landingBtn {
@@ -67,21 +74,23 @@ h1 {
     width: 95%;
     padding: 10px 0px;
     margin: 3% auto;
-    font-weight: 550;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 1.6rem;
     line-height: 19px;
     color: #333333;
     cursor: pointer;
   }
 
   .landingBoxes {
+    // border: 1px solid red;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-flow: row wrap;
 
     section {
-      padding: 1.5%;
+      // border: 1px solid green;
+      padding: 4% 1.5%;
       width: 43%;
       margin: 1.5%;
       font-size: 12px;
@@ -159,4 +168,3 @@ h1 {
     }
   }
 }
-
