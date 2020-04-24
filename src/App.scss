@@ -17,41 +17,51 @@ h1 {
   text-align: center;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  width: 375px;
+  // width: 375px;
 }
 
 .heroDiv {
   position: relative;
+  display: inline-block;
 
-  #logo {
-    position: absolute;
-    font-size: 3.6rem;
-    line-height: 44px;
-    font-weight: 400;
-    color: #212121;
-    left: 15px;
-    top: 16px;
+  img {
+    width: 100%;
   }
 
-  #login {
+  .heroText {
     position: absolute;
-    font-weight: 500;
-    font-size: 1.4rem;
-    line-height: 17px;
-    left: 318px;
-    top: 7px;
-    color: #000000;
-  }
+    width: 200px;
+    top: 10px;
+    left: 18px;
 
-  #slogan {
+    #logo {
+      font-size: 3.6rem;
+      line-height: 44px;
+      font-weight: 400;
+      color: #212121;
+      display: flex;
+    }
+
+    #slogan {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 22px;
+      color: #212121;
+      text-align: left;
+      margin-top: 5%;
+    }
+  }
+  .heroLogin {
     position: absolute;
-    font-weight: 500;
-    font-size: 1.8rem;
-    line-height: 22px;
-    color: #212121;
-    text-align: left;
-    left: 16px;
-    top: 68px;
+    top: 10px;
+    right: 10px;
+
+    #login {
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 17px;
+      color: #000000;
+    }
   }
 }
 

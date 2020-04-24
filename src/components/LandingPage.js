@@ -1,12 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import heroSm from "../images/heroImg_sm.png";
+import heroLg from "../images/heroImg_lg.png";
 import examSm from "../images/icons/Exam Icon_sm.png";
 import medalSm from "../images/icons/Medal icon_sm.png";
 import personSm from "../images/icons/Person icon_sm.png";
 import recSm from "../images/icons/Rec icon_sm.png";
-import trophySm from "../images/icons/Trophy Icon_sm.png";
-import abcSm from "../images/icons/ABC Icon_sm.png";
 
 const LandingPage = () => {
   const history = useHistory();
@@ -14,25 +12,29 @@ const LandingPage = () => {
   return (
     <>
       <div className="heroDiv">
-        <img src={heroSm} alt="hand" />
-        <div id="logo">
-          {" "}
-          <b>Sign</b>
-          <span>Lingo</span>
+        <img src={heroLg} alt="hand" />
+        <div className="heroText">
+          <div id="logo">
+            {" "}
+            <b>Sign</b>
+            <span>Lingo</span>
+          </div>
+          <div id="slogan">
+            Learn to sign.
+            <br />
+            One day at a time.
+          </div>
         </div>
-        <div id="slogan">
-          Learn to sign.
-          <br />
-          One day at a time.
+        <div className="heroLogin">
+          <p
+            id="login"
+            onClick={() =>
+              history.push({ pathname: "/account", state: { value: 1 } })
+            }
+          >
+            Log in
+          </p>
         </div>
-        <p
-          id="login"
-          onClick={() =>
-            history.push({ pathname: "/account", state: { value: 1 } })
-          }
-        >
-          Log in
-        </p>
       </div>
 
       <div className="landingContent">

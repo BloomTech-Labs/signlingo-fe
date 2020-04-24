@@ -222,6 +222,7 @@ const Signup = (props) => {
                   boxShadow: "none",
                   marginTop: "10%",
                   fontFamily: "Inter, sans-serif",
+                  fontSize: "1.2rem",
                 }}
               >
                 Sign up
