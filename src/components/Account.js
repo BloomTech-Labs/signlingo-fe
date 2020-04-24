@@ -9,6 +9,8 @@ import {
 import Signup from "./Signup";
 import Login from "./Login";
 
+import BackArrow from "../images/icons/back_icon_sm.png";
+
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -91,7 +93,10 @@ const Account = () => {
 
   return (
     <div className={classes.root}>
-      <h1>Account</h1>
+      <div>
+        <img src={BackArrow} alt="Arrow pointing left" />
+        <h1>Account</h1>
+      </div>
       <AppBar
         position="static"
         style={{
