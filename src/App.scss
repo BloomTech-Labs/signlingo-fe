@@ -109,6 +109,11 @@ h1 {
   display: flex;
   align-items: center;
   text-align: center;
+  color: "#4F4F4F";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 17px;
 }
 .separator::before,
 .separator::after {
@@ -175,4 +180,12 @@ h1 {
   h1 {
     margin-left: 37%;
   }
+}
+
+.MuiButton-label {
+  color: #333333;
+  font-weight: 900;
+  box-shadow: none;
+
+  font-size: 1.2rem;
 }
