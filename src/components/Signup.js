@@ -198,7 +198,7 @@ const Signup = (props) => {
               }}
               htmlFor="confirm"
             >
-              Confirm
+              Confirm password
             </InputLabel>
             <AccountTextFields
               className={classes.inputText}
@@ -216,14 +216,8 @@ const Signup = (props) => {
             {values.email && values.password && values.confirm ? (
               <Button
                 variant="contained"
+                style={{ backgroundColor: "#f6bf00" }}
                 type="submit"
-                style={{
-                  backgroundColor: "#f6bf00",
-                  boxShadow: "none",
-                  marginTop: "10%",
-                  fontFamily: "Inter, sans-serif",
-                  fontSize: "1.2rem",
-                }}
               >
                 Sign up
               </Button>
@@ -236,9 +230,8 @@ const Signup = (props) => {
         )}
       </Formik>
 
-      <div className="separator" style={{ color: "#4F4F4F" }}>
-        or
-      </div>
+      <div className="separator">or</div>
+
       <p style={{ color: "#4F4F4F", fontSize: "1.4rem", lineHeight: "1.7rem" }}>
         Join using social media
       </p>

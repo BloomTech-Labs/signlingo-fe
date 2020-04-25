@@ -7,12 +7,7 @@ import * as yup from "yup";
 import facebookF from "../images/icons/facebook_icon.png";
 import googleG from "../images/icons/google_icon.png";
 
-
-import {
-  withStyles,
-  makeStyles,
-} from '@material-ui/core/styles';
-
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 
 import Button from "@material-ui/core/Button";
 
@@ -20,18 +15,13 @@ import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 import { green, orange } from "@material-ui/core/colors";
 
-
-
 let SignupSchema = yup.object().shape({
-  email: yup
-    .string()
-    .email()
-    .required("This field is required."),
+  email: yup.string().email().required("This field is required."),
   password: yup
     .string()
     .min(6, "Password is too short.")
     .max(20, "Password is too long.")
-    .required("This field is required.")
+    .required("This field is required."),
 });
 
 const AccountTextFields = withStyles({
@@ -41,8 +31,6 @@ const AccountTextFields = withStyles({
         borderColor: "#828282",
         borderWidth: "1px",
         borderRadius: "4px",
-
-
       },
       // '&:hover fieldset': {
       //   borderColor: 'yellow',
@@ -51,8 +39,6 @@ const AccountTextFields = withStyles({
         borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
-
-
       },
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
@@ -84,7 +70,6 @@ const AccountTextFields = withStyles({
     },
   },
 })(TextField);
-
 
 // const useStyles = makeStyles(theme => ({
 //   "@global": {
@@ -147,7 +132,6 @@ const AccountTextFields = withStyles({
 //   },
 // }))(InputBase);
 
-
 const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
@@ -167,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = props => {
+const Login = (props) => {
   const classes = useStyles();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
@@ -181,7 +165,7 @@ const Login = props => {
       <Formik
         initialValues={{
           email: "",
-          password: ""
+          password: "",
         }}
         validationSchema={SignupSchema}
         onSubmit={submitHandler}
@@ -206,23 +190,18 @@ const Login = props => {
             </InputLabel>
             <AccountTextFields
               className={classes.inputText}
-
               variant="outlined"
               name="email"
               type="email"
               onChange={handleChange}
               id="email"
               fullWidth
-
               InputLabelProps={{ shrink: false }}
               InputProps={{ style: { fontSize: "1.2rem" } }}
-
               name="email"
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
-
-              
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
@@ -240,13 +219,11 @@ const Login = props => {
             <AccountTextFields
               className={classes.inputText}
               variant="outlined"
-
               name="password"
               type="password"
               onChange={handleChange}
               placeholder="password"
               error={errors.password && touched.password}
-
             />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
@@ -262,7 +239,8 @@ const Login = props => {
                   marginTop: "10%",
                   fontFamily: "Inter, sans-serif",
                 }}
-              >Log in
+              >
+                Log in
               </Button>
             ) : (
               <Button variant="contained" type="submit" disabled>
@@ -273,9 +251,8 @@ const Login = props => {
         )}
       </Formik>
 
-      <div className="separator" style={{ color: "#4F4F4F" }}>
-        or
-      </div>
+      <div className="separator">or</div>
+
       <p style={{ color: "#4F4F4F", fontSize: "1.4rem", lineHeight: "1.7rem" }}>
         Log in using social media
       </p>
@@ -288,7 +265,6 @@ const Login = props => {
           <img src={googleG} alt="google letter g" id="gImage" /> Google
         </a>
       </section>
-
     </div>
   );
 };

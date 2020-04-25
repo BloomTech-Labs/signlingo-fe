@@ -9,6 +9,8 @@ import {
 import Signup from "./Signup";
 import Login from "./Login";
 
+import BackArrow from "../images/icons/back_icon_sm.png";
+
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -64,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     // backgroundColor: theme.palette.background.paper,
     color: "#333333",
-    padding: "2% 3%",
+    padding: "5% 3%",
   },
 }));
 
@@ -91,7 +93,12 @@ const Account = () => {
 
   return (
     <div className={classes.root}>
-      <h1>Account</h1>
+      <div className="accountBar">
+        <Link to="/">
+          <img src={BackArrow} alt="Arrow pointing left" />
+        </Link>
+        <h1>Account</h1>
+      </div>
       <AppBar
         position="static"
         style={{
