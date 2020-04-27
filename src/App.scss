@@ -17,7 +17,8 @@ h1 {
   text-align: center;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  // width: 375px;
+ // max-width: 1000px;
+ // margin: 0 auto;
 }
 
 .heroDiv {
@@ -100,12 +101,7 @@ h1 {
   }
 }
 
-// .inputLabel {
-//   color: #4F4F4F;
-//   font-size: 1.2rem;
-//   font-weight: 600;
-//   font-family: "Inter", sans-serif;
-// }
+
 
 .separator {
   display: flex;
@@ -129,6 +125,13 @@ h1 {
 }
 .separator::after {
   margin-left: 0.25em;
+}
+
+.socialText {
+  color: #4F4F4F;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  font-family: "Inter", sans-serif;
 }
 
 .socialBtns {

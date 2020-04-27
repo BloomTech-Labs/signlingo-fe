@@ -34,6 +34,7 @@ const AccountTextFields = withStyles({
         borderColor: "#828282",
         borderWidth: "1px",
         borderRadius: "4px",
+        fontFamily: "Inter, sans-serif",
       },
       "&.Mui-focused fieldset": {
         borderColor: "#E0E0E0",
@@ -67,14 +68,34 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Inter, sans-serif",
     marginTop: "10%",
   },
+  //Styling for the input text ie:textfield
+
   inputText: {
     margin: "1% 0 3% 0",
-    fontFamily: "Inter, sans-serif",
   },
+  //Styling for the input label ie: Email, Password
   inputLabel: {
     color: "#4F4F4F",
     fontSize: "1.2rem",
     fontWeight: "600",
+    fontFamily: "Inter, sans-serif",
+  },
+  //Styling for the active button after fields have inputs
+  activeSubmitButton: {
+    backgroundColor: "#f6bf00",
+    boxShadow: "none",
+    marginTop: "10%",
+    fontFamily: "Inter, sans-serif",
+    "&:hover": {
+      background: "transparent",
+      boxShadow: "none",
+      backgroundColor: "#f6bf00",
+    }
+  },
+      //Styling for the active button after fields have inputs
+  disabledSubmitButton: {
+    boxShadow: "none",
+    marginTop: "10%",
     fontFamily: "Inter, sans-serif",
   },
 }));
@@ -104,22 +125,8 @@ const Signup = (props) => {
         onSubmit={submitHandler}
       >
         {({ errors, handleChange, touched, values }) => (
-          <Form
-            className={classes.container}
-            noValidate
-            autoComplete="off"
-            // style={{ marginTop: "10%" }}
-          >
-            <InputLabel
-              className={classes.inputLabel}
-              // style={{
-              //   color: "#4F4F4F",
-              //   fontSize: "1.2rem",
-              //   fontWeight: "600",
-              //   fontFamily: "Inter, sans-serif",
-              // }}
-              htmlFor="email"
-            >
+          <Form className={classes.container} noValidate autoComplete="off">
+            <InputLabel className={classes.inputLabel} htmlFor="email">
               Email
             </InputLabel>
             <AccountTextFields
@@ -134,9 +141,6 @@ const Signup = (props) => {
               InputProps={{ style: { fontSize: "1.2rem" } }}
               name="email"
               autoComplete="off"
-              // helperText={
-              //   errors.email && touched.email ? errors.email : null
-              // }
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
             />
@@ -176,14 +180,14 @@ const Signup = (props) => {
 
             {values.email && values.password && values.confirm ? (
               <Button
+                className={classes.activeSubmitButton}
                 variant="contained"
-                style={{ backgroundColor: "#f6bf00" }}
                 type="submit"
               >
                 Sign up
               </Button>
             ) : (
-              <Button variant="contained" type="submit" disabled>
+              <Button className={classes.disabledSubmitButton} variant="contained" type="submit" disabled>
                 Sign up
               </Button>
             )}
@@ -193,9 +197,7 @@ const Signup = (props) => {
 
       <div className="separator">or</div>
 
-      <p style={{ color: "#4F4F4F", fontSize: "1.4rem", lineHeight: "1.7rem" }}>
-        Join using social media
-      </p>
+      <p className="socialText">Join using social media</p>
 
       <section className="socialBtns">
         <a href="www.facebook.com" target="_blank" className="facebookBtn">
