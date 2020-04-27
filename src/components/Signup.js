@@ -14,8 +14,6 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 
-import { green } from "@material-ui/core/colors";
-
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required."),
   password: yup
@@ -37,9 +35,6 @@ const AccountTextFields = withStyles({
         borderWidth: "1px",
         borderRadius: "4px",
       },
-      // '&:hover fieldset': {
-      //   borderColor: 'yellow',
-      // },
       "&.Mui-focused fieldset": {
         borderColor: "#E0E0E0",
         borderWidth: "1px",
@@ -58,28 +53,6 @@ const AccountTextFields = withStyles({
         fontFamily: "Inter, sans-serif",
       },
     },
-    // "& input:valid + fieldset": {
-    //   borderColor: "#E0E0E0",
-    //   borderWidth: 2,
-    // },
-    // "& input:invalid:focus + fieldset": {
-    //   borderColor: green[500],
-    //   borderWidth: "5px",
-    //   borderRadius: "4px",
-    // },
-
-    "& input:valid:focus + fieldset": {
-      borderColor: "#828282",
-      backgroundColor: "",
-    },
-    "& input:focus + fieldset": {
-      borderColor: "#FFFFFF",
-    },
-    "& error": {
-      borderColor: green[500],
-      borderWidth: "8px",
-      borderRadius: "4px",
-    },
   },
 })(TextField);
 
@@ -92,14 +65,17 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     fontWeight: "600",
     fontFamily: "Inter, sans-serif",
+    marginTop: "10%",
   },
   inputText: {
     margin: "1% 0 3% 0",
     fontFamily: "Inter, sans-serif",
   },
-  inputErrorText: {
-    // border: "#EB5757 1px solid",
-    borderRadius: "4px",
+  inputLabel: {
+    color: "#4F4F4F",
+    fontSize: "1.2rem",
+    fontWeight: "600",
+    fontFamily: "Inter, sans-serif",
   },
 }));
 
@@ -132,15 +108,16 @@ const Signup = (props) => {
             className={classes.container}
             noValidate
             autoComplete="off"
-            style={{ marginTop: "10%" }}
+            // style={{ marginTop: "10%" }}
           >
             <InputLabel
-              style={{
-                color: "#4F4F4F",
-                fontSize: "1.2rem",
-                fontWeight: "600",
-                fontFamily: "Inter, sans-serif",
-              }}
+              className={classes.inputLabel}
+              // style={{
+              //   color: "#4F4F4F",
+              //   fontSize: "1.2rem",
+              //   fontWeight: "600",
+              //   fontFamily: "Inter, sans-serif",
+              // }}
               htmlFor="email"
             >
               Email
@@ -165,15 +142,7 @@ const Signup = (props) => {
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
-            <InputLabel
-              style={{
-                color: "#4F4F4F",
-                fontSize: "1.2rem",
-                fontWeight: "600",
-                fontFamily: "Inter, sans-serif",
-              }}
-              htmlFor="password"
-            >
+            <InputLabel className={classes.inputLabel} htmlFor="password">
               Password
             </InputLabel>
             <AccountTextFields
@@ -189,15 +158,7 @@ const Signup = (props) => {
               <div>{errors.password}</div>
             ) : null}
 
-            <InputLabel
-              style={{
-                color: "#4F4F4F",
-                fontSize: "1.2rem",
-                fontWeight: "600",
-                fontFamily: "Inter, sans-serif",
-              }}
-              htmlFor="confirm"
-            >
+            <InputLabel className={classes.inputLabel} htmlFor="confirm">
               Confirm password
             </InputLabel>
             <AccountTextFields
