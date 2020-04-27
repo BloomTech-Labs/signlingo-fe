@@ -84,16 +84,15 @@ const useStyles = makeStyles((theme) => ({
   },
   linkTab: {
     textTransform: "none", 
-    fontFamily: "Inter, sans-serif"
+    fontFamily: "Inter, sans-serif",
+    fontSize: "1.4rem"
   },
   appBar: {
     background: "white",
     color: "black",
     boxShadow: "none",
     fontFamily: "Inter, sans-serif",
-
   },
-
 }));
 
 const Account = () => {

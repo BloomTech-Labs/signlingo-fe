@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
@@ -26,18 +26,16 @@ const AccountTextFields = withStyles({
     //styles the outline of the text field
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "#828282",
-        borderWidth: "1px",
-        borderRadius: "4px",
-      },
-
-      "&.Mui-focused fieldset": {
         borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
       },
+      "&.Mui-focused fieldset": {
+        borderColor: "#828282",
+        borderWidth: "1px",
+        borderRadius: "4px",
+      },
       //styles the outline of the text field with proper error color and border size
-
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
         borderWidth: "1px",
@@ -66,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10%",
   },
   //Styling for the input text ie:textfield
-
   inputText: {
     margin: "1% 0 3% 0",
   },
@@ -130,7 +127,6 @@ const Login = (props) => {
               fullWidth
               InputLabelProps={{ shrink: false }}
               InputProps={{ style: { fontSize: "1.2rem" } }}
-              name="email"
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
@@ -142,11 +138,13 @@ const Login = (props) => {
             </InputLabel>
             <AccountTextFields
               className={classes.inputText}
+              InputLabelProps={{ shrink: false }}
+              InputProps={{ style: { fontSize: "1.2rem" } }}
               variant="outlined"
               name="password"
               type="password"
               onChange={handleChange}
-              placeholder="password"
+              placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
             />
             {errors.password && touched.password ? (

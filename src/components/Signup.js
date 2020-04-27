@@ -29,32 +29,29 @@ let SignupSchema = yup.object().shape({
 const AccountTextFields = withStyles({
   root: {
     //styles the outline of the text field
-
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "#828282",
+        borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
         fontFamily: "Inter, sans-serif",
       },
       "&.Mui-focused fieldset": {
-        borderColor: "#E0E0E0",
+        borderColor: "#828282",
         borderWidth: "1px",
         borderRadius: "4px",
       },
       //styles the outline of the text field with proper error color and border size
-
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
         borderWidth: "1px",
         borderRadius: "4px",
       },
     },
-
-    "& .MuiTypography-root": {
-      "& fieldset": {
-        fontWeight: "600",
-        fontFamily: "Inter, sans-serif",
+      "& .MuiTypography-root": {
+        "& fieldset": {
+          fontWeight: "600",
+          fontFamily: "Inter, sans-serif",
       },
     },
   },
@@ -73,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10%",
   },
   //Styling for the input text ie:textfield
-
   inputText: {
     margin: "1% 0 3% 0",
   },
@@ -143,7 +139,6 @@ const Signup = (props) => {
               fullWidth
               InputLabelProps={{ shrink: false }}
               InputProps={{ style: { fontSize: "1.2rem" } }}
-              name="email"
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
@@ -159,8 +154,10 @@ const Signup = (props) => {
               name="password"
               type="password"
               onChange={handleChange}
-              placeholder="password"
+              placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
+              InputLabelProps={{ shrink: false }}
+              InputProps={{ style: { fontSize: "1.2rem" } }}
             />
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
@@ -175,8 +172,10 @@ const Signup = (props) => {
               name="confirm"
               type="password"
               onChange={handleChange}
-              placeholder="confirm password"
+              placeholder="Passwords must match"
               error={errors.confirm && touched.confirm}
+              InputLabelProps={{ shrink: false }}
+              InputProps={{ style: { fontSize: "1.2rem" } }}
             />
             {errors.confirm && touched.confirm ? (
               <div>{errors.confirm}</div>
