@@ -44,10 +44,17 @@ const AccountTextFields = withStyles({
         borderRadius: "4px",
       },
     },
+    "& .MuiTypography-root": {
+      "& fieldset": {
+        fontWeight: "600",
+        fontFamily: "Inter, sans-serif",
+      },
+    },
   },
 })(TextField);
 
 const useStyles = makeStyles((theme) => ({
+  //style for the Form container that holds the input fields
   container: {
     display: "flex",
     flexDirection: "column",

@@ -183,9 +183,11 @@ h1 {
 
 .accountBar {
   display: flex;
+  max-width: 100%;
 
   h1 {
-    margin-left: 37%;
+    //places the h1 in accountBar in the center
+    flex: 1 0 auto;
   }
 }
 

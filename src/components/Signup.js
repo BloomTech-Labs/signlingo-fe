@@ -6,9 +6,6 @@ import * as yup from "yup";
 
 import SocialButtons from "./SocialButtons";
 
-import facebookF from "../images/icons/facebook_icon.png";
-import googleG from "../images/icons/google_icon.png";
-
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 
 import Button from "@material-ui/core/Button";
@@ -31,6 +28,8 @@ let SignupSchema = yup.object().shape({
 
 const AccountTextFields = withStyles({
   root: {
+    //styles the outline of the text field
+
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "#828282",
@@ -43,6 +42,8 @@ const AccountTextFields = withStyles({
         borderWidth: "1px",
         borderRadius: "4px",
       },
+      //styles the outline of the text field with proper error color and border size
+
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
         borderWidth: "1px",
@@ -60,6 +61,7 @@ const AccountTextFields = withStyles({
 })(TextField);
 
 const useStyles = makeStyles((theme) => ({
+  //style for the Form container that holds the input fields
   container: {
     display: "flex",
     flexDirection: "column",
