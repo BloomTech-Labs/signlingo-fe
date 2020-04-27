@@ -1,8 +1,10 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { signup } from "../actions/Signup";
 import * as yup from "yup";
+
+import SocialButtons from "./SocialButtons";
 
 import facebookF from "../images/icons/facebook_icon.png";
 import googleG from "../images/icons/google_icon.png";
@@ -90,9 +92,9 @@ const useStyles = makeStyles((theme) => ({
       background: "transparent",
       boxShadow: "none",
       backgroundColor: "#f6bf00",
-    }
+    },
   },
-      //Styling for the active button after fields have inputs
+  //Styling for the active button after fields have inputs
   disabledSubmitButton: {
     boxShadow: "none",
     marginTop: "10%",
@@ -187,7 +189,12 @@ const Signup = (props) => {
                 Sign up
               </Button>
             ) : (
-              <Button className={classes.disabledSubmitButton} variant="contained" type="submit" disabled>
+              <Button
+                className={classes.disabledSubmitButton}
+                variant="contained"
+                type="submit"
+                disabled
+              >
                 Sign up
               </Button>
             )}
@@ -198,15 +205,7 @@ const Signup = (props) => {
       <div className="separator">or</div>
 
       <p className="socialText">Join using social media</p>
-
-      <section className="socialBtns">
-        <a href="www.facebook.com" target="_blank" className="facebookBtn">
-          <img src={facebookF} alt="facebook letter f" id="fImage" /> Facebook
-        </a>
-        <a href="www.google.com" target="_blank" className="googleBtn">
-          <img src={googleG} alt="google letter g" id="gImage" /> Google
-        </a>
-      </section>
+      <SocialButtons />
     </div>
   );
 };

@@ -3,9 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
-
-import facebookF from "../images/icons/facebook_icon.png";
-import googleG from "../images/icons/google_icon.png";
+import SocialButtons from "./SocialButtons";
 
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 
@@ -13,7 +11,6 @@ import Button from "@material-ui/core/Button";
 
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-import { green, orange } from "@material-ui/core/colors";
 
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required."),
@@ -33,13 +30,13 @@ const AccountTextFields = withStyles({
         borderWidth: "1px",
         borderRadius: "4px",
       },
- 
+
       "&.Mui-focused fieldset": {
         borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
       },
-          //styles the outline of the text field with proper error color and border size
+      //styles the outline of the text field with proper error color and border size
 
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
@@ -47,12 +44,8 @@ const AccountTextFields = withStyles({
         borderRadius: "4px",
       },
     },
-
-
-
   },
 })(TextField);
-
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -83,11 +76,11 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
-    "&:hover" : {
+    "&:hover": {
       background: "transparent",
       boxShadow: "none",
       backgroundColor: "#f6bf00",
-    }
+    },
   },
   disabledSubmitButton: {
     boxShadow: "none",
@@ -116,15 +109,8 @@ const Login = (props) => {
         onSubmit={submitHandler}
       >
         {({ errors, handleChange, touched, values }) => (
-          <Form
-            className={classes.container}
-            noValidate
-            autoComplete="off"
-          >
-            <InputLabel
-              className={classes.inputLabel}
-              htmlFor="email"
-            >
+          <Form className={classes.container} noValidate autoComplete="off">
+            <InputLabel className={classes.inputLabel} htmlFor="email">
               Email
             </InputLabel>
             <AccountTextFields
@@ -144,10 +130,7 @@ const Login = (props) => {
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
-            <InputLabel
-              className={classes.inputLabel}
-              htmlFor="password"
-            >
+            <InputLabel className={classes.inputLabel} htmlFor="password">
               Password
             </InputLabel>
             <AccountTextFields
@@ -172,7 +155,12 @@ const Login = (props) => {
                 Log in
               </Button>
             ) : (
-              <Button className={classes.disabledSubmitButton} variant="contained" type="submit" disabled>
+              <Button
+                className={classes.disabledSubmitButton}
+                variant="contained"
+                type="submit"
+                disabled
+              >
                 Log in
               </Button>
             )}
@@ -182,18 +170,9 @@ const Login = (props) => {
 
       <div className="separator">or</div>
 
-      <p className="socialText">
-        Log in using social media
-      </p>
+      <p className="socialText">Log in using social media</p>
 
-      <section className="socialBtns">
-        <a href="www.facebook.com" target="_blank" className="facebookBtn">
-          <img src={facebookF} alt="facebook letter f" id="fImage" /> Facebook
-        </a>
-        <a href="www.google.com" target="_blank" className="googleBtn">
-          <img src={googleG} alt="google letter g" id="gImage" /> Google
-        </a>
-      </section>
+      <SocialButtons />
     </div>
   );
 };
