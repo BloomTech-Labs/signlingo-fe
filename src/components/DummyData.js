@@ -1,7 +1,10 @@
 const dummyData = [
   {
     id: 1,
-    level: 1,
+    level: {
+      number: 1,
+      active: true,
+    },
     lesson: {
       completed: false,
       text: "A-E",
@@ -13,8 +16,8 @@ const dummyData = [
     quiz: {
       completed: false,
       text: "Quiz",
-    },
-  },
+    }
+  }
 ];
 
 export default dummyData;
