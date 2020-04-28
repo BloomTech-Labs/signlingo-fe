@@ -91,6 +91,22 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
   },
+  formControlRoot: {
+    border: "2px solid lightgreen",
+    padding: 2,
+    marginTop: 10
+  },
+  inputRoot: {
+    border: "2px solid blue"
+  },
+  inputLabelRoot: {
+    border: "2px solid pink"
+  },
+  formHelperTextRoot: {
+    border: "2px solid red",
+    padding: 0,
+    margin: 0
+  }
 }));
 
 const Login = (props) => {
@@ -130,8 +146,10 @@ const Login = (props) => {
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
+              helperText={errors.email && touched.email ? errors.email : null}
+              FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
+
             />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
             <InputLabel className={classes.inputLabel} htmlFor="password">
               Password
@@ -146,10 +164,15 @@ const Login = (props) => {
               onChange={handleChange}
               placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
+              helperTe
+              helperText={errors.password && touched.password ? (
+                errors.password
+              ) : null}
+              FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
+
+
             />
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
+            
 
             {values.email && values.password ? (
               <Button

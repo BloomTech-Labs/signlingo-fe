@@ -48,10 +48,10 @@ const AccountTextFields = withStyles({
         borderRadius: "4px",
       },
     },
-      "& .MuiTypography-root": {
-        "& fieldset": {
-          fontWeight: "600",
-          fontFamily: "Inter, sans-serif",
+    "& .MuiTypography-root": {
+      "& fieldset": {
+        fontWeight: "600",
+        fontFamily: "Inter, sans-serif",
       },
     },
   },
@@ -98,6 +98,22 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
   },
+  formControlRoot: {
+    border: "2px solid lightgreen",
+    padding: 2,
+    marginTop: 10
+  },
+  inputRoot: {
+    border: "2px solid blue"
+  },
+  inputLabelRoot: {
+    border: "2px solid pink"
+  },
+  formHelperTextRoot: {
+    border: "2px solid red",
+    padding: 0,
+    margin: 0
+  },
 }));
 
 const Signup = (props) => {
@@ -142,9 +158,13 @@ const Signup = (props) => {
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
+              helperText={
+                errors.email && touched.email ? errors.email : null
+              }
+              FormHelperTextProps={{
+                classes: { root: classes.formHelperTextRoot },
+              }}
             />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
-
             <InputLabel className={classes.inputLabel} htmlFor="password">
               Password
             </InputLabel>
@@ -158,10 +178,15 @@ const Signup = (props) => {
               error={errors.password && touched.password}
               InputLabelProps={{ shrink: false }}
               InputProps={{ style: { fontSize: "1.2rem" } }}
+              helperText={
+                errors.password && touched.password ? (
+                  errors.password
+                ) : null
+              }
+              FormHelperTextProps={{
+                classes: { root: classes.formHelperTextRoot },
+              }}
             />
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
 
             <InputLabel className={classes.inputLabel} htmlFor="confirm">
               Confirm password
@@ -176,10 +201,15 @@ const Signup = (props) => {
               error={errors.confirm && touched.confirm}
               InputLabelProps={{ shrink: false }}
               InputProps={{ style: { fontSize: "1.2rem" } }}
+              helperText={
+                errors.confirm && touched.confirm ? (
+                  errors.confirm
+                ) : null
+              }
+              FormHelperTextProps={{
+                classes: { root: classes.formHelperTextRoot },
+              }}
             />
-            {errors.confirm && touched.confirm ? (
-              <div>{errors.confirm}</div>
-            ) : null}
 
             {values.email && values.password && values.confirm ? (
               <Button
