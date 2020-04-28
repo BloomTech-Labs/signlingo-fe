@@ -107,7 +107,7 @@ const Account = () => {
 
   //sets value for which tab is click on from landing page
   useEffect(() => {
-    console.log("location", location);
+    // console.log("location", location);
     if (location.state) {
       setValue(location.state.value);
     } else {

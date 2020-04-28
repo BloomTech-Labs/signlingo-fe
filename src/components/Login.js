@@ -4,22 +4,19 @@ import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
 import SocialButtons from "./SocialButtons";
-
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-
 import Button from "@material-ui/core/Button";
-
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-import { red } from "@material-ui/core/colors";
+
 
 let SignupSchema = yup.object().shape({
-  email: yup.string().email().required("This field is required."),
+  email: yup.string().email().required("This field is required"),
   password: yup
     .string()
-    .min(6, "Password is too short.")
-    .max(20, "Password is too long.")
-    .required("This field is required."),
+    .min(6, "Password is too short")
+    .max(20, "Password is too long")
+    .required("This field is required"),
 });
 
 const AccountTextFields = withStyles({
@@ -81,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
+    fontSize: "2.5rem",
     "&:hover": {
       background: "transparent",
       boxShadow: "none",
@@ -88,20 +86,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   disabledSubmitButton: {
+    fontSize: "2.5rem",
     boxShadow: "none",
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
   },
   //styling for error message
   formHelperTextRoot: {
-    fontSize: "1.4rem",
+    fontSize: "1.2rem",
     color: "#EB5757",
     padding: 0,
     margin: 0
   },
   //styling for placeholder
   inputPropsStyling: {
-    fontSize: "1.2rem"
+    fontSize: "1.4rem"
   }
 }));
 
@@ -144,7 +143,9 @@ const Login = (props) => {
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
-              helperText={errors.email}
+              helperText={errors.email && touched.email ? (
+                errors.email
+              ) : null}
               FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
 
             />
@@ -165,7 +166,9 @@ const Login = (props) => {
               placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
               helperTe
-              helperText={errors.password}
+              helperText={errors.password && touched.password ? (
+                errors.password
+              ) : null}
               FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
             />
             
