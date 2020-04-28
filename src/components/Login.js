@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
+import { red } from "@material-ui/core/colors";
 
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required."),
@@ -91,21 +92,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
   },
-  formControlRoot: {
-    border: "2px solid lightgreen",
-    padding: 2,
-    marginTop: 10
-  },
-  inputRoot: {
-    border: "2px solid blue"
-  },
-  inputLabelRoot: {
-    border: "2px solid pink"
-  },
+  //styling for error message
   formHelperTextRoot: {
-    border: "2px solid red",
+    fontSize: "1.4rem",
+    color: "#EB5757",
     padding: 0,
     margin: 0
+  },
+  //styling for placeholder
+  inputPropsStyling: {
+    fontSize: "1.2rem"
   }
 }));
 
@@ -142,11 +138,13 @@ const Login = (props) => {
               id="email"
               fullWidth
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
-              helperText={errors.email && touched.email ? errors.email : null}
+              helperText={errors.email}
               FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
 
             />
@@ -157,7 +155,9 @@ const Login = (props) => {
             <AccountTextFields
               className={classes.inputText}
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               variant="outlined"
               name="password"
               type="password"
@@ -165,12 +165,8 @@ const Login = (props) => {
               placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
               helperTe
-              helperText={errors.password && touched.password ? (
-                errors.password
-              ) : null}
+              helperText={errors.password}
               FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
-
-
             />
             
 
