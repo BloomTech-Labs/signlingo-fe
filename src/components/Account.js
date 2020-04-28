@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Link,
-  useLocation,
-} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Signup from "./Signup";
 import Login from "./Login";
 
@@ -64,10 +61,10 @@ function LinkTab(props) {
 //     background: "#F6BF00",
 //   }
 // }))(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
-const StyledTabs = withStyles(theme => ({
+const StyledTabs = withStyles((theme) => ({
   indicator: {
     background: "#F6BF00",
-  }
+  },
 }))(Tabs);
 //styling for tab panel linktab and appbar
 const useStyles = makeStyles((theme) => ({
@@ -80,9 +77,9 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
   },
   linkTab: {
-    textTransform: "none", 
+    textTransform: "none",
     fontFamily: "Inter, sans-serif",
-    fontSize: "1.4rem"
+    fontSize: "1.4rem",
   },
   appBar: {
     background: "white",
@@ -115,15 +112,16 @@ const Account = () => {
   return (
     <div className={classes.root}>
       <div className="accountBar">
-        <Link to="/" >
-          <img src={BackArrow} alt="Arrow pointing left" />
+        <Link to="/">
+          <img
+            data-testid="backLandingPage"
+            src={BackArrow}
+            alt="Arrow pointing left"
+          />
         </Link>
         <h1>Account</h1>
       </div>
-      <AppBar
-        position="static"
-        className={classes.appBar}
-      >
+      <AppBar position="static" className={classes.appBar}>
         <StyledTabs
           variant="fullWidth"
           value={value}
@@ -144,18 +142,10 @@ const Account = () => {
           />
         </StyledTabs>
       </AppBar>
-      <TabPanel
-        className={classes.tabPanel}
-        value={value}
-        index={0}
-      >
+      <TabPanel className={classes.tabPanel} value={value} index={0}>
         <Signup />
       </TabPanel>
-      <TabPanel
-        className={classes.tabPanel}
-        value={value}
-        index={1}
-      >
+      <TabPanel className={classes.tabPanel} value={value} index={1}>
         <Login />
       </TabPanel>
     </div>

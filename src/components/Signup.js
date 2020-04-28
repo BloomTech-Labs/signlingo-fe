@@ -101,12 +101,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.2rem",
     color: "#EB5757",
     padding: 0,
-    margin: 0
+    margin: 0,
   },
   //styling for placeholder
   inputPropsStyling: {
-    fontSize: "1.4rem"
-  }
+    fontSize: "1.4rem",
+  },
 }));
 
 const Signup = (props) => {
@@ -153,9 +153,7 @@ const Signup = (props) => {
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
-              helperText={
-                errors.email && touched.email ? errors.email : null
-              }
+              helperText={errors.email && touched.email ? errors.email : null}
               FormHelperTextProps={{
                 classes: { root: classes.formHelperTextRoot },
               }}
@@ -175,15 +173,19 @@ const Signup = (props) => {
               InputProps={{
                 classes: { root: classes.inputPropsStyling },
               }}
-              helperText={errors.password && touched.password ? (
-                errors.password
-              ) : null}
+              helperText={
+                errors.password && touched.password ? errors.password : null
+              }
               FormHelperTextProps={{
                 classes: { root: classes.formHelperTextRoot },
               }}
             />
 
-            <InputLabel className={classes.inputLabel} htmlFor="confirm">
+            <InputLabel
+              data-testid="confirmSignUp"
+              className={classes.inputLabel}
+              htmlFor="confirm"
+            >
               Confirm password
             </InputLabel>
             <AccountTextFields
@@ -199,9 +201,7 @@ const Signup = (props) => {
                 classes: { root: classes.inputPropsStyling },
               }}
               helperText={
-                errors.confirm && touched.confirm ? (
-                  errors.confirm
-                ) : null
+                errors.confirm && touched.confirm ? errors.confirm : null
               }
               FormHelperTextProps={{
                 classes: { root: classes.formHelperTextRoot },
