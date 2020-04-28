@@ -7,7 +7,7 @@ import { render, fireEvent, screen } from '../utils/login-test-utils'
 import '@testing-library/jest-dom/extend-expect'
 // import { createMount } from '@material-ui/core/test-utils'
 
-import Login from "../components/Login";
+import Signup from "../components/Signup";
 
 // describe('defines user form fields', () => {
 //   it('renders user name field', () => {
@@ -21,7 +21,7 @@ import Login from "../components/Login";
 // })
 
 it('submits correct values', () => {
-  const { container } = render(<Login />)
+  const { container } = render(<Signup />)
 
   const email = container.querySelector('AccountTextFields[name="email"]')
 //   const password = container.querySelector('AccountTextFields[name="password"]')
@@ -57,16 +57,16 @@ it('submits correct values', () => {
 })
 
 
-test('Log in using text renders on Login Tab', () =>{
+test('Join text renders on Signup component tab', () =>{
   // const mockEpisodes = jest.fn();
   // const { } = render(
   //   <Episodes episodes={episodes}/>
   // );
   const { getByText } = render(
-    <Login />  
+    <Signup />  
   )
 
-  getByText(/Log in using/i);
+  getByText(/Join /i);
 
 
 

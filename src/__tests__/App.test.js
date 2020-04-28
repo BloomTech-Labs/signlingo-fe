@@ -14,3 +14,4 @@ test("renders SignLingo on home page loading", () => {
   const linkElement = getByText(/Signlingo/i);
   expect(linkElement).toBeInTheDocument();
 });
+
