@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  useParams,
-  Route,
   Link,
-  useRouteMatch,
   useLocation,
 } from "react-router-dom";
 import Signup from "./Signup";
@@ -12,7 +9,7 @@ import Login from "./Login";
 import BackArrow from "../images/icons/back_icon_sm.png";
 
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -60,18 +57,42 @@ function LinkTab(props) {
     />
   );
 }
-
+//removed inline styling for tabs and created a material ui style theme;
+//what was copied and then i modified it below
+// const StyledTabs = withStyles(theme => ({
+//   indicator: {
+//     background: "#F6BF00",
+//   }
+// }))(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
+const StyledTabs = withStyles(theme => ({
+  indicator: {
+    background: "#F6BF00",
+  }
+}))(Tabs);
+//styling for tab panel linktab and appbar
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    // backgroundColor: theme.palette.background.paper,
     color: "#333333",
     padding: "5% 3%",
+  },
+  tabPanel: {
+    padding: 0,
+  },
+  linkTab: {
+    textTransform: "none", 
+    fontFamily: "Inter, sans-serif",
+    fontSize: "1.4rem"
+  },
+  appBar: {
+    background: "white",
+    color: "black",
+    boxShadow: "none",
+    fontFamily: "Inter, sans-serif",
   },
 }));
 
 const Account = () => {
-  const { path, url } = useRouteMatch();
   const classes = useStyles();
   const location = useLocation();
   const [value, setValue] = useState(0);
@@ -82,7 +103,7 @@ const Account = () => {
 
   //sets value for which tab is click on from landing page
   useEffect(() => {
-    console.log("location", location);
+    // console.log("location", location);
     if (location.state) {
       setValue(location.state.value);
     } else {
@@ -94,44 +115,37 @@ const Account = () => {
   return (
     <div className={classes.root}>
       <div className="accountBar">
-        <Link to="/">
+        <Link to="/" >
           <img src={BackArrow} alt="Arrow pointing left" />
         </Link>
         <h1>Account</h1>
       </div>
       <AppBar
         position="static"
-        style={{
-          background: "white",
-          color: "black",
-          boxShadow: "none",
-          fontFamily: "Inter, sans-serif",
-        }}
+        className={classes.appBar}
       >
-        <Tabs
+        <StyledTabs
           variant="fullWidth"
           value={value}
           onChange={handleChange}
           aria-label="nav tabs example"
-          TabIndicatorProps={{ style: { background: "#F6BF00" } }}
         >
           <LinkTab
             label="Sign up"
             href="/signup"
-            style={{ textTransform: "none", fontFamily: "Inter, sans-serif" }}
+            className={classes.linkTab}
             {...a11yProps(1)}
           />
           <LinkTab
             label="Login"
             href="/login"
-            style={{ textTransform: "none", fontFamily: "Inter, sans-serif" }}
+            className={classes.linkTab}
             {...a11yProps(0)}
           />
-        </Tabs>
+        </StyledTabs>
       </AppBar>
       <TabPanel
         className={classes.tabPanel}
-        style={{ padding: "0" }}
         value={value}
         index={0}
       >
@@ -139,7 +153,6 @@ const Account = () => {
       </TabPanel>
       <TabPanel
         className={classes.tabPanel}
-        style={{ padding: 0 }}
         value={value}
         index={1}
       >

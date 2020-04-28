@@ -1,138 +1,56 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
-
-import facebookF from "../images/icons/facebook_icon.png";
-import googleG from "../images/icons/google_icon.png";
-
+import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-
 import Button from "@material-ui/core/Button";
-
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-import { green, orange } from "@material-ui/core/colors";
+
 
 let SignupSchema = yup.object().shape({
-  email: yup.string().email().required("This field is required."),
+  email: yup.string().email().required("This field is required"),
   password: yup
     .string()
-    .min(6, "Password is too short.")
-    .max(20, "Password is too long.")
-    .required("This field is required."),
+    .min(6, "Password is too short")
+    .max(20, "Password is too long")
+    .required("This field is required"),
 });
 
 const AccountTextFields = withStyles({
   root: {
+    //styles the outline of the text field
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
-        borderColor: "#828282",
-        borderWidth: "1px",
-        borderRadius: "4px",
-      },
-      // '&:hover fieldset': {
-      //   borderColor: 'yellow',
-      // },
-      "&.Mui-focused fieldset": {
         borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
       },
+      "&.Mui-focused fieldset": {
+        borderColor: "#828282",
+        borderWidth: "1px",
+        borderRadius: "4px",
+      },
+      //styles the outline of the text field with proper error color and border size
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
         borderWidth: "1px",
         borderRadius: "4px",
       },
     },
-    // "& input:valid + fieldset": {
-    //   borderColor: "#E0E0E0",
-    //   borderWidth: 2,
-    // },
-    // "& input:invalid:focus + fieldset": {
-    //   borderColor: green[500],
-    //   borderWidth: "5px",
-    //   borderRadius: "4px",
-    // },
-
-    "& input:valid:focus + fieldset": {
-      borderColor: "#828282",
-      backgroundColor: "",
-    },
-    "& input:focus + fieldset": {
-      borderColor: "#FFFFFF",
-    },
-    "& error": {
-      borderColor: green[500],
-      borderWidth: "8px",
-      borderRadius: "4px",
+    "& .MuiTypography-root": {
+      "& fieldset": {
+        fontWeight: "600",
+        fontFamily: "Inter, sans-serif",
+      },
     },
   },
 })(TextField);
 
-// const useStyles = makeStyles(theme => ({
-//   "@global": {
-//     body: {
-//       backgroundColor: theme.palette.common.white
-//     }
-//   },
-//   paper: {
-//     marginTop: theme.spacing(8),
-//     display: "flex",
-//     flexDirection: "column",
-//     // alignItems: "center"
-//   },
-//   avatar: {
-//     margin: theme.spacing(1),
-//     backgroundColor: theme.palette.secondary.main
-//   },
-//   form: {
-//     width: "100%",
-//     marginTop: theme.spacing(3)
-//   },
-//   submit: {
-//     margin: theme.spacing(3, 0, 2)
-//   }
-// }));
-
-// const BootstrapInput = withStyles(theme => ({
-//   root: {
-//     'label + &': {
-//       marginTop: theme.spacing(3),
-//     },
-//   },
-//   input: {
-//     borderRadius: 4,
-//     position: 'relative',
-//     backgroundColor: "#FFFFFF",
-//     border: '1px solid #E0E0E0',
-//     boxSizing: 'border-box',
-//     fontSize: 16,
-//     width: 'auto',
-//     padding: '10px 12px',
-//     // transition: theme.transitions.create(['border-color', 'box-shadow']),
-//     // Use the system font instead of the default Roboto font.
-//     // fontFamily: [
-//     //   '-apple-system',
-//     //   'BlinkMacSystemFont',
-//     //   '"Segoe UI"',
-//     //   'Roboto',
-//     //   '"Helvetica Neue"',
-//     //   'Arial',
-//     //   'sans-serif',
-//     //   '"Apple Color Emoji"',
-//     //   '"Segoe UI Emoji"',
-//     //   '"Segoe UI Symbol"',
-//     // ].join(','),
-//     // '&:focus': {
-//     //   boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
-//     //   borderColor: theme.palette.primary.main,
-//     // },
-//   },
-// }))(InputBase);
-
 const useStyles = makeStyles((theme) => ({
+  //style for the Form container that holds the input fields
   container: {
     display: "flex",
     flexDirection: "column",
@@ -141,14 +59,49 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     fontWeight: "600",
     fontFamily: "Inter, sans-serif",
+    marginTop: "10%",
   },
+  //Styling for the input text ie:textfield
   inputText: {
     margin: "1% 0 3% 0",
   },
-  inputErrorText: {
-    // border: "#EB5757 1px solid",
-    borderRadius: "4px",
+  //Styling for the input label ie: Email, Password
+  inputLabel: {
+    color: "#4F4F4F",
+    fontSize: "1.2rem",
+    fontWeight: "600",
+    fontFamily: "Inter, sans-serif",
   },
+  //Styling for the active button after fields have inputs
+  activeSubmitButton: {
+    backgroundColor: "#f6bf00",
+    boxShadow: "none",
+    marginTop: "10%",
+    fontFamily: "Inter, sans-serif",
+    fontSize: "2.5rem",
+    "&:hover": {
+      background: "transparent",
+      boxShadow: "none",
+      backgroundColor: "#f6bf00",
+    },
+  },
+  disabledSubmitButton: {
+    fontSize: "2.5rem",
+    boxShadow: "none",
+    marginTop: "10%",
+    fontFamily: "Inter, sans-serif",
+  },
+  //styling for error message
+  formHelperTextRoot: {
+    fontSize: "1.2rem",
+    color: "#EB5757",
+    padding: 0,
+    margin: 0
+  },
+  //styling for placeholder
+  inputPropsStyling: {
+    fontSize: "1.4rem"
+  }
 }));
 
 const Login = (props) => {
@@ -171,21 +124,8 @@ const Login = (props) => {
         onSubmit={submitHandler}
       >
         {({ errors, handleChange, touched, values }) => (
-          <Form
-            className={classes.container}
-            noValidate
-            autoComplete="off"
-            style={{ marginTop: "10%" }}
-          >
-            <InputLabel
-              style={{
-                color: "#4F4F4F",
-                fontSize: "1.2rem",
-                fontWeight: "600",
-                fontFamily: "Inter, sans-serif",
-              }}
-              htmlFor="email"
-            >
+          <Form className={classes.container} noValidate autoComplete="off">
+            <InputLabel className={classes.inputLabel} htmlFor="email">
               Email
             </InputLabel>
             <AccountTextFields
@@ -197,53 +137,57 @@ const Login = (props) => {
               id="email"
               fullWidth
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
-              name="email"
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
-            />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+              helperText={errors.email && touched.email ? (
+                errors.email
+              ) : null}
+              FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
 
-            <InputLabel
-              style={{
-                color: "#4F4F4F",
-                fontSize: "1.2rem",
-                fontWeight: "600",
-                fontFamily: "Inter, sans-serif",
-              }}
-              htmlFor="password"
-            >
+            />
+
+            <InputLabel className={classes.inputLabel} htmlFor="password">
               Password
             </InputLabel>
             <AccountTextFields
               className={classes.inputText}
+              InputLabelProps={{ shrink: false }}
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               variant="outlined"
               name="password"
               type="password"
               onChange={handleChange}
-              placeholder="password"
+              placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
+              helperTe
+              helperText={errors.password && touched.password ? (
+                errors.password
+              ) : null}
+              FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
             />
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
+            
 
             {values.email && values.password ? (
               <Button
                 variant="contained"
                 type="submit"
-                style={{
-                  backgroundColor: "#f6bf00",
-                  boxShadow: "none",
-                  marginTop: "10%",
-                  fontFamily: "Inter, sans-serif",
-                }}
+                className={classes.activeSubmitButton}
               >
                 Log in
               </Button>
             ) : (
-              <Button variant="contained" type="submit" disabled>
+              <Button
+                className={classes.disabledSubmitButton}
+                variant="contained"
+                type="submit"
+                disabled
+              >
                 Log in
               </Button>
             )}
@@ -253,18 +197,9 @@ const Login = (props) => {
 
       <div className="separator">or</div>
 
-      <p style={{ color: "#4F4F4F", fontSize: "1.4rem", lineHeight: "1.7rem" }}>
-        Log in using social media
-      </p>
+      <p className="socialText">Log in using social media</p>
 
-      <section className="socialBtns">
-        <a href="www.facebook.com" target="_blank" className="facebookBtn">
-          <img src={facebookF} alt="facebook letter f" id="fImage" /> Facebook
-        </a>
-        <a href="www.google.com" target="_blank" className="googleBtn">
-          <img src={googleG} alt="google letter g" id="gImage" /> Google
-        </a>
-      </section>
+      <SocialButtons />
     </div>
   );
 };

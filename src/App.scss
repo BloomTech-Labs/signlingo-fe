@@ -17,7 +17,8 @@ h1 {
   text-align: center;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  // width: 375px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .heroDiv {
@@ -100,10 +101,7 @@ h1 {
   }
 }
 
-.inputText {
-  background-color: green;
-  padding: 2% 0;
-}
+
 
 .separator {
   display: flex;
@@ -114,6 +112,8 @@ h1 {
   font-weight: normal;
   font-size: 1.4rem;
   line-height: 17px;
+  font-family: "Inter", sans-serif;
+
 }
 .separator::before,
 .separator::after {
@@ -129,8 +129,15 @@ h1 {
   margin-left: 0.25em;
 }
 
+.socialText {
+  color: #4F4F4F;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  font-family: "Inter", sans-serif;
+}
+
 .socialBtns {
-  margin: 2% 0 0 0;
+  margin: 4% 0 0 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -176,9 +183,11 @@ h1 {
 
 .accountBar {
   display: flex;
+  max-width: 100%;
 
   h1 {
-    margin-left: 37%;
+    //places the h1 in accountBar in the center
+    flex: 1 0 auto;
   }
 }
 
@@ -186,6 +195,6 @@ h1 {
   color: #333333;
   font-weight: 900;
   box-shadow: none;
-
+  text-transform: none;
   font-size: 1.2rem;
 }
