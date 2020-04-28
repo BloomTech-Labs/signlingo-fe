@@ -165,7 +165,6 @@ const Login = (props) => {
               onChange={handleChange}
               placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
-              helperTe
               helperText={errors.password && touched.password ? (
                 errors.password
               ) : null}

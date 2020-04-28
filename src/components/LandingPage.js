@@ -27,6 +27,7 @@ const LandingPage = () => {
         </div>
         <div className="heroLogin">
           <p
+            data-testid="login"
             id="login"
             onClick={() =>
               history.push({ pathname: "/account", state: { value: 1 } })
@@ -39,6 +40,7 @@ const LandingPage = () => {
 
       <div className="landingContent">
         <div
+          data-testid="signup"
           id="landingBtn"
           onClick={() =>
             history.push({ pathname: "/account", state: { value: 0 } })
