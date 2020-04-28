@@ -18,8 +18,9 @@ const Dashboard = (props) => {
 
   return (
     <div>
-      <p>Hello User</p>
-      <button onClick={logout}>Logout</button>
+      <div className="logoutDiv">
+        <p onClick={logout}>Log out</p>
+      </div>
 
       {data.map((each) => (
         <DashboardCard key={each.id} data={each} />
