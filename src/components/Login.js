@@ -4,21 +4,19 @@ import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
 import SocialButtons from "./SocialButtons";
-
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-
 import Button from "@material-ui/core/Button";
-
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 
+
 let SignupSchema = yup.object().shape({
-  email: yup.string().email().required("This field is required."),
+  email: yup.string().email().required("This field is required"),
   password: yup
     .string()
-    .min(6, "Password is too short.")
-    .max(20, "Password is too long.")
-    .required("This field is required."),
+    .min(6, "Password is too short")
+    .max(20, "Password is too long")
+    .required("This field is required"),
 });
 
 const AccountTextFields = withStyles({
@@ -80,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
+    fontSize: "2.5rem",
     "&:hover": {
       background: "transparent",
       boxShadow: "none",
@@ -87,25 +86,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   disabledSubmitButton: {
+    fontSize: "2.5rem",
     boxShadow: "none",
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
   },
-  formControlRoot: {
-    border: "2px solid lightgreen",
-    padding: 2,
-    marginTop: 10
-  },
-  inputRoot: {
-    border: "2px solid blue"
-  },
-  inputLabelRoot: {
-    border: "2px solid pink"
-  },
+  //styling for error message
   formHelperTextRoot: {
-    border: "2px solid red",
+    fontSize: "1.2rem",
+    color: "#EB5757",
     padding: 0,
     margin: 0
+  },
+  //styling for placeholder
+  inputPropsStyling: {
+    fontSize: "1.4rem"
   }
 }));
 
@@ -142,11 +137,15 @@ const Login = (props) => {
               id="email"
               fullWidth
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
-              helperText={errors.email && touched.email ? errors.email : null}
+              helperText={errors.email && touched.email ? (
+                errors.email
+              ) : null}
               FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
 
             />
@@ -157,7 +156,9 @@ const Login = (props) => {
             <AccountTextFields
               className={classes.inputText}
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               variant="outlined"
               name="password"
               type="password"
@@ -169,8 +170,6 @@ const Login = (props) => {
                 errors.password
               ) : null}
               FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
-
-
             />
             
 

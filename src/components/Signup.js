@@ -3,23 +3,19 @@ import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { signup } from "../actions/Signup";
 import * as yup from "yup";
-
 import SocialButtons from "./SocialButtons";
-
 import { withStyles, makeStyles } from "@material-ui/core/styles";
-
 import Button from "@material-ui/core/Button";
-
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 
 let SignupSchema = yup.object().shape({
-  email: yup.string().email().required("This field is required."),
+  email: yup.string().email().required("This field is required"),
   password: yup
     .string()
-    .min(6, "Password is too short.")
-    .max(20, "Password is too long.")
-    .required("This field is required."),
+    .min(6, "Password is too short")
+    .max(20, "Password is too long")
+    .required("This field is required"),
   confirm: yup
     .string()
     .required()
@@ -86,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
+    fontSize: "2.5rem",
     "&:hover": {
       background: "transparent",
       boxShadow: "none",
@@ -94,26 +91,22 @@ const useStyles = makeStyles((theme) => ({
   },
   //Styling for the active button after fields have inputs
   disabledSubmitButton: {
+    fontSize: "2.5rem",
     boxShadow: "none",
     marginTop: "10%",
     fontFamily: "Inter, sans-serif",
   },
-  formControlRoot: {
-    border: "2px solid lightgreen",
-    padding: 2,
-    marginTop: 10
-  },
-  inputRoot: {
-    border: "2px solid blue"
-  },
-  inputLabelRoot: {
-    border: "2px solid pink"
-  },
+  //styling for error message
   formHelperTextRoot: {
-    border: "2px solid red",
+    fontSize: "1.2rem",
+    color: "#EB5757",
     padding: 0,
     margin: 0
   },
+  //styling for placeholder
+  inputPropsStyling: {
+    fontSize: "1.4rem"
+  }
 }));
 
 const Signup = (props) => {
@@ -154,7 +147,9 @@ const Signup = (props) => {
               id="email"
               fullWidth
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
@@ -177,12 +172,12 @@ const Signup = (props) => {
               placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
-              helperText={
-                errors.password && touched.password ? (
-                  errors.password
-                ) : null
-              }
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
+              helperText={errors.password && touched.password ? (
+                errors.password
+              ) : null}
               FormHelperTextProps={{
                 classes: { root: classes.formHelperTextRoot },
               }}
@@ -200,7 +195,9 @@ const Signup = (props) => {
               placeholder="Passwords must match"
               error={errors.confirm && touched.confirm}
               InputLabelProps={{ shrink: false }}
-              InputProps={{ style: { fontSize: "1.2rem" } }}
+              InputProps={{
+                classes: { root: classes.inputPropsStyling },
+              }}
               helperText={
                 errors.confirm && touched.confirm ? (
                   errors.confirm
