@@ -21,7 +21,7 @@ const DashboardCard = (props) => {
 
   return (
     <div className="dashboard">
-      <h1>Alphabet - Level {props.data.level}</h1>
+      <h1>Alphabet - Level {props.data.level.number}</h1>
       <div className="progressBar">
         <img src={progressSm} alt="progress bar" />
         <img src={crownSm} alt="A completion crown" />
