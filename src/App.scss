@@ -206,6 +206,7 @@ h1 {
   }
 }
 
+//unlocked level on dashboard
 .dashboard {
   padding: 5%;
 
@@ -229,6 +230,53 @@ h1 {
       font-weight: 600;
       margin-top: 2.5%;
       color: #4f4f4f;
+    }
+
+    .dashboardBttm {
+      display: flex;
+      justify-content: center;
+
+      .locked {
+        opacity: 0.3;
+      }
+
+      #practiceBox {
+        margin-right: 6%;
+      }
+
+      #quizBox {
+        margin-left: 6%;
+      }
+    }
+  }
+}
+
+//Black and White state
+.dashboardBw {
+  padding: 5%;
+  background: rgba(245, 245, 245, 0.68);
+
+  h1 {
+    text-align: left;
+    color: #bdbdbd;
+  }
+
+  .progressBar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+  }
+
+  .dashboardContent {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 0 10% 0;
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-top: 2.5%;
+      color: #bdbdbd;
     }
 
     .dashboardBttm {
