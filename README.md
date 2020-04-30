@@ -1,11 +1,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/dd0d2897554fd6b2defa/maintainability)](https://codeclimate.com/github/Lambda-School-Labs/signlingo-fe/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dd0d2897554fd6b2defa/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/signlingo-fe/test_coverage)
 
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline, feel free to add your own flare to it.
 
 🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
 
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
 # SignLingo
 
@@ -49,11 +47,10 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 ### 4️⃣ Key Features
 
-- feature one
-- feature two
-- feature three
-- feature four
-- feature five
+- Going through flashcards to learn alphabet signs
+- Taking multiple choice quizzes to practice alphabet signs
+- Uploading a picture of your alphabet signs to test your knowledge
+
 
 ## Tech Stack
 
