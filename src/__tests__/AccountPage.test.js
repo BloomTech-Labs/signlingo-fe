@@ -23,7 +23,7 @@ import { act } from "react-dom/test-utils";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import { Router } from "react-router";
 import { signup } from "../actions/Signup";
-afterEach(cleanup);
+// afterEach(cleanup);
 
 describe("App", () => {
   it("renders Account Component", () => {
@@ -75,14 +75,12 @@ describe("App", () => {
 
     expect(document.body.textContent).toContain("Log in using social media");
   });
-});
 
-describe("App", () => {
   it("renders the signup component when signup tab on the account route is clicked", async () => {
     const history = createMemoryHistory();
     const { getByTestId } = render(
       <Router history={history}>
-        <Account />
+        <App />
       </Router>
     );
 
@@ -93,7 +91,7 @@ describe("App", () => {
       // Click it
       goSignUp.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     });
-   
+
     expect(document.body.textContent).toContain("Join using social media");
   });
 

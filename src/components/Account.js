@@ -105,7 +105,6 @@ const Account = () => {
       setValue(location.state.value);
     } else {
       setValue(0);
-      console.log("value from landing page", location.state);
     }
   }, [location.state]);
 
