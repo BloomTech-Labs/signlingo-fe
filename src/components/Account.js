@@ -105,7 +105,6 @@ const Account = () => {
       setValue(location.state.value);
     } else {
       setValue(0);
-      console.log("value from landing page", location.state);
     }
   }, [location.state]);
 
@@ -129,12 +128,14 @@ const Account = () => {
           aria-label="nav tabs example"
         >
           <LinkTab
+            data-testid="accountSignupTab"
             label="Sign up"
             href="/signup"
             className={classes.linkTab}
             {...a11yProps(1)}
           />
           <LinkTab
+            data-testid="accountLoginTab"
             label="Login"
             href="/login"
             className={classes.linkTab}
