@@ -7,23 +7,25 @@
 
 🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
 
-# 1️⃣ SignLingo
+# SignLingo
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+You can find the deployed project at [AWS](https://master.d2965nx2i7rdu0.amplifyapp.com/).
 
-## 4️⃣ Contributors
+## Contributors
 
-🚫Add contributor info below, make sure add images and edit the social links for each member. Add to or delete these place-holders as needed
+| [Joseph Nevarez](https://github.com/zeravenyoej)                                        |      [Erik Rodriguez](https://github.com/ErikRodriguez-webdev)                                            |          [Cedric Winbush](https://github.com/caw442000)                                      |
+| :----------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
+|   [<img src="src/images/githubPics/joey.png" width = "200" />](https://github.com/zeravenyoej)   |       [<img src="src/images/githubPics/erik.JPG" width = "200" />](https://github.com/ErikRodriguez-webdev)       |            [<img src="src/images/githubPics/cedric.png" width = "200" />](https://github.com/caw442000)            |
+|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/zeravenyoej)                    |                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ErikRodriguez-webdev)                        |                  [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/caw442000)                   |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/joseph-nevarez) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/erik-rodriguez-617aa419a/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/cedric-winbush-8b2aa23a/) |
 
-|                                        [Joseph Nevarez](https://github.com/zeravenyoej)                                         |                                         [Erik Rodriguez](https://github.com/ErikRodriguez-webdev)                                         |                                              [Cedric Winbush](https://github.com/caw442000)                                              |                                               [Seth Cox](https://github.com/SethC16)                                               |                                            [David Isakson](https://github.com/ikeman32)                                             |
-| :-----------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: |
-|                  [<img src="src/images/githubPics/joey.png" width = "200" />](https://github.com/zeravenyoej)                   |                   [<img src="src/images/githubPics/erik.JPG" width = "200" />](https://github.com/ErikRodriguez-webdev)                   |                       [<img src="src/images/githubPics/cedric.png" width = "200" />](https://github.com/caw442000)                       |                      [<img src="src/images/githubPics/seth.JPG" width = "200" />](https://github.com/SethC16)                      |                     [<img src="src/images/githubPics/david.JPG" width = "200" />](https://github.com/ikeman32)                      |
-|                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                          |                          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/honda0306)                           |                         [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/Mister-Corn)                         |                     [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)                     |                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)                        |
-| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/joseph-nevarez/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/erik-rodriguez-617aa419a/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/cedric-winbush-8b2aa23a/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/seth-cox-73441772/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/david-h-isakson-ii/) |
-
+|                                       [Seth Cox](https://github.com/SethC16)                                       |                                      [David Isakson](https://github.com/ikeman32)                                       |                                                           [Kendra McKernan](https://github.com/)                                                           |
+| :------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="src/images/githubPics/seth.JPG" width = "200" />](https://github.com/SethC16) | [<img src="src/images/githubPics/david.JPG" width = "200" />](https://github.com/ikeman32) | [<img src="src/images/githubPics/kendra.JPG" width = "200" />](https://github.com) |
+|                   [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/SethC16)                   |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/ikeman32)                  |                                       [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/)                                       |
+| [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/seth-cox-73441772/) |       [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/david-h-isakson-ii/)        |                   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/kendra-mckernan/)                    |
 <br>
 <br>
-
 🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
@@ -36,17 +38,14 @@
 
 ## Project Overview
 
-1️⃣ [Trello Board](https://trello.com/b/gvQfXfd4/labs23-signlingo)
+[Trello Board](https://trello.com/b/gvQfXfd4/labs23-signlingo)
 
-1️⃣ [Product Canvas](https://www.notion.so/SignLingo-402ff25b879c4edd98872826fb0af691)
+[Product Canvas](https://www.notion.so/SignLingo-402ff25b879c4edd98872826fb0af691)
 
-1️⃣ [UX Design files](https://www.figma.com/file/06Jiu1l0kkp1kYNeYiXZiM/Sign-Lingo%2C-Kendra?node-id=179%3A0)
+[UX Design files](https://www.figma.com/file/06Jiu1l0kkp1kYNeYiXZiM/Sign-Lingo%2C-Kendra?node-id=179%3A0)
 
-🚫 Replace lorem ipsum with a description of your project
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+SignLingo is a sign language learning app/website for beginners. Current ASL digital learning platforms fail to leverage gamification. So SignLingo picks up where other platforms leave off. It uses gamification so that users have fun while learning!
 
 ### 4️⃣ Key Features
 
@@ -56,7 +55,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 - feature four
 - feature five
 
-## 1️⃣ Tech Stack
+## Tech Stack
 
 ### Front end built using:
 
@@ -94,7 +93,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 
 🚫List the rest of the front end features and libraries in the same format as the framework above.
 
-#### Front end deployed to `🚫insert service here`
+#### Front end deployed to `Amazon Web Services`
 
 # 3️⃣ Environment Variables
 
@@ -122,22 +121,21 @@ In order for the app to function correctly, the user must set up their own envir
 | doodles.png    | Nicole Bennett   | [Creative Commons](https://www.toptal.com/designers/subtlepatterns/doodles/) |
 | rings.svg      | Sam Herbert      | [MIT](https://github.com/SamHerbert/SVG-Loaders)                             |
 
-# 4️⃣ Testing
+# Testing
 
-🚫Document what you used for testing and why
+Jest was used to test the app because of its simplicity and its integration capabilities with Code Climate.
 
-# 4️⃣ Installation Instructions
+# Installation Instructions
 
-🚫explain how to install the required dependencies to get this project up and running with yarn and NPM
+Clone this repo to your local machine. Run npm i.
 
 ## Other Scripts
 
-🚫replace these examples with your own
-
-    * typecheck - runs the TypeScript compiler
     * build - creates a build of the application
     * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
+    * test - runs tests in **tests** directory 
+    * eject - copies the configuration files and dependencies into the project so you have full control over them
+    * coverage - creates a coverage report of test
 
 # Contributing
 
@@ -178,4 +176,4 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Backend Documentation](🚫*link to your backend readme here*) for details on the backend of our project.
+See [Backend Documentation](https://github.com/Lambda-School-Labs/signlingo-be) for details on the backend of our project.
