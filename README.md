@@ -24,12 +24,9 @@ You can find the deployed project at [AWS](https://master.d2965nx2i7rdu0.amplify
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/seth-cox-73441772/) |       [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/david-h-isakson-ii/)        |                   [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/kendra-mckernan/)                    |
 <br>
 <br>
-🚫 4️⃣ Optional examples of using images with links for your tech stack, make sure to change these to fit your project
 
 ![MIT](https://img.shields.io/packagist/l/doctrine/orm.svg)
 ![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
-![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b5c4db1c-b10d-42c3-b157-3746edd9e81d/deploy-status)](netlify link goes in these parenthesis)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 🚫 more info on using badges [here](https://github.com/badges/shields)
@@ -45,7 +42,7 @@ You can find the deployed project at [AWS](https://master.d2965nx2i7rdu0.amplify
 
 SignLingo is a sign language learning app/website for beginners. Current ASL digital learning platforms fail to leverage gamification. So SignLingo picks up where other platforms leave off. It uses gamification so that users have fun while learning!
 
-### 4️⃣ Key Features
+### Key Features
 
 - Going through flashcards to learn alphabet signs
 - Taking multiple choice quizzes to practice alphabet signs
@@ -88,8 +85,6 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 - Google analytics
 
-🚫List the rest of the front end features and libraries in the same format as the framework above.
-
 #### Front end deployed to `Amazon Web Services`
 
 # 3️⃣ Environment Variables
@@ -130,7 +125,7 @@ Clone this repo to your local machine. Run npm i.
 
     * build - creates a build of the application
     * start - starts the production server after a build is created
-    * test - runs tests in **tests** directory 
+    * test - runs tests in **__tests__** directory 
     * eject - copies the configuration files and dependencies into the project so you have full control over them
     * coverage - creates a coverage report of test
 
