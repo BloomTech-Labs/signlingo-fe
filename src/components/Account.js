@@ -129,12 +129,14 @@ const Account = () => {
           aria-label="nav tabs example"
         >
           <LinkTab
+            data-testid="accountSignupTab"
             label="Sign up"
             href="/signup"
             className={classes.linkTab}
             {...a11yProps(1)}
           />
           <LinkTab
+            data-testid="accountLoginTab"
             label="Login"
             href="/login"
             className={classes.linkTab}
