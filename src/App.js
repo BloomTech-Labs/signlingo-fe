@@ -6,6 +6,7 @@ import "./App.scss";
 import Dashboard from "./components/Dashboard";
 import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
+import Lesson from "./components/Lesson";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route exact path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route exact path="/lesson">
+            <Lesson />
           </Route>
           <Route exact path="/account">
             <Account />

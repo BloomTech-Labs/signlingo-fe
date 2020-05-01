@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import DashboardCard from "./DashboardCard";
-import dummyData from "./DummyData";
+import { dummyDataDash } from "./DummyData";
 
 const Dashboard = (props) => {
   const [data, setData] = useState([]);
@@ -13,7 +13,7 @@ const Dashboard = (props) => {
   }
 
   useEffect(() => {
-    setData(dummyData);
+    setData(dummyDataDash);
   }, []);
 
   return (
