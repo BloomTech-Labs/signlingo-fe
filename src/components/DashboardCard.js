@@ -1,5 +1,5 @@
 import React from "react";
-// import { Redirect } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import crownSm from "../images/icons/progress crown icon.png";
 import practiceSm from "../images/icons/practiceSm.png";
 import lessonSm from "../images/icons/lessonSm.png";
@@ -17,9 +17,11 @@ import lessonSmCh from "../images/icons/lessonSm CH.png";
 import quizSmCh from "../images/icons/quizSm CH.png";
 
 const DashboardCard = (props) => {
+  const history = useHistory();
+
   function lessonHandler() {
     if (props.data.level.active) {
-      //return redirect to route
+      return history.push("/lesson");
     }
   }
 

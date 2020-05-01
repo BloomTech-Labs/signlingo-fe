@@ -1,4 +1,4 @@
-const dummyData = [
+export const dummyDataDash = [
   {
     id: 1,
     level: {
@@ -39,4 +39,17 @@ const dummyData = [
   },
 ];
 
-export default dummyData;
+export const dummyDataLess = [
+  {
+    img: "asfh",
+    letter: "A",
+  },
+  {
+    img: "zhkyh",
+    letter: "B",
+  },
+  {
+    img: "hjtrah",
+    letter: "C",
+  },
+];
