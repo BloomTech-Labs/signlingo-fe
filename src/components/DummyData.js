@@ -41,15 +41,18 @@ export const dummyDataDash = [
 
 export const dummyDataLess = [
   {
-    img: "asfh",
+    id: 1,
+    img: "IMG of A",
     letter: "A",
   },
   {
-    img: "zhkyh",
+    id: 2,
+    img: "IMG of B",
     letter: "B",
   },
   {
-    img: "hjtrah",
+    id: 3,
+    img: "IMG of C",
     letter: "C",
   },
 ];

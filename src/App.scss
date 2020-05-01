@@ -294,3 +294,23 @@ h1 {
     }
   }
 }
+
+//Lesson.js
+.lessonBar {
+  border: 1px solid blue;
+  display: flex;
+  max-width: 100%;
+
+  h3 {
+    flex: 1 0 auto;
+  }
+}
+
+.flash {
+  .flashImage {
+    border: 1px solid blue;
+  }
+  .flashLetter {
+    border: 1px solid red;
+  }
+}
