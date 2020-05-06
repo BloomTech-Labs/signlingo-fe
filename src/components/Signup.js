@@ -119,6 +119,7 @@ const Signup = (props) => {
       email: values.email,
       password: values.password,
     };
+    console.log("newValues in component", newValues);
     props.signup(newValues);
     resetForm();
   }
