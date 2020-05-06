@@ -12,12 +12,18 @@ const Lesson = (props) => {
     return history.push("/dashboard");
   }
 
+  function finishedHandler() {
+    //redirect to dashboard
+    history.push("/dashboard");
+    //add action creator to toggle lesson.completed to true
+  }
+
   useEffect(() => {
     setData(dummyDataLess);
   }, []);
 
   return (
-    <div>
+    <div className="lesson">
       <div className="lessonBar">
         <img src={x} alt="letter x" onClick={backToDash} />
         {/* In order to get the text in the h3, we need to hook up Lesson.js to the redux store to get 
@@ -29,6 +35,12 @@ const Lesson = (props) => {
       {data.map((each) => (
         <LessonCard key={each.id} data={each} />
       ))}
+
+      {/*add ternary logic so that when user touches all of the flashcards, the div takes on an 
+        additional finishedBttnActive class. Styling is already written in Sass file*/}
+      <div className="finishedBttn" onClick={finishedHandler}>
+        Finished
+      </div>
     </div>
   );
 };
