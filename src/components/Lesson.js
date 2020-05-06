@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { dummyDataLess } from "./DummyData";
-
+import x from "../images/icons/x.png";
 import LessonCard from "./LessonCard";
 
 const Lesson = (props) => {
@@ -19,8 +19,11 @@ const Lesson = (props) => {
   return (
     <div>
       <div className="lessonBar">
-        <p onClick={backToDash}>X</p>
-        <h3>Title</h3>
+        <img src={x} alt="letter x" onClick={backToDash} />
+        {/* In order to get the text in the h3, we need to hook up Lesson.js to the redux store to get 
+        the DummyDataDash array. OR find a way to pass that info as a prop from DashboardCard,
+        however it's not really a parent to this component */}
+        <h3> PROPS DATA HERE flashcards</h3>
       </div>
 
       {data.map((each) => (
