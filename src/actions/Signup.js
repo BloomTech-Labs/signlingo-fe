@@ -10,7 +10,7 @@ export const signup = (obj) => (dispatch) => {
   console.log("from action creator", obj);
   axios
     .post(
-      "http://signlingo.us-east-1.elasticbeanstalk.com/api/auth/register",
+      "https://signlingobe-stag.herokuapp.com/api/auth/register",
       obj
     )
     .then((res) => {
@@ -18,6 +18,7 @@ export const signup = (obj) => (dispatch) => {
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
     })
     .catch((err) => {
+      console.log("error came from posting to register", err);
       dispatch({ type: SIGNUP_ERROR, payload: err.error });
     });
 };

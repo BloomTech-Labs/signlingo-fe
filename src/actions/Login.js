@@ -6,10 +6,13 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const login = obj => dispatch => {
   dispatch({ type: LOGIN_START });
+  console.log("login info being sent", obj);
 
   axios
-    .post("/api/auth/login", obj)
+    .post("https://signlingobe-stag.herokuapp.com/api/auth/login", obj)
     .then(res => {
+      console.log("res", res);
+
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch(err => {
