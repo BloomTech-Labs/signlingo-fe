@@ -8,7 +8,7 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-
+import { useHistory } from "react-router-dom";
 
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required"),
@@ -96,21 +96,22 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.2rem",
     color: "#EB5757",
     padding: 0,
-    margin: 0
+    margin: 0,
   },
   //styling for placeholder
   inputPropsStyling: {
-    fontSize: "1.4rem"
-  }
+    fontSize: "1.4rem",
+  },
 }));
 
 const Login = (props) => {
   const classes = useStyles();
+  const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  function submitHandler(values, { resetForm }) {
+  function submitHandler(values) {
     props.login(values);
-    resetForm();
+    history.push("/dashboard");
   }
 
   return (
@@ -143,11 +144,10 @@ const Login = (props) => {
               autoComplete="off"
               placeholder="Yourname@email.com"
               error={errors.email && touched.email}
-              helperText={errors.email && touched.email ? (
-                errors.email
-              ) : null}
-              FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
-
+              helperText={errors.email && touched.email ? errors.email : null}
+              FormHelperTextProps={{
+                classes: { root: classes.formHelperTextRoot },
+              }}
             />
 
             <InputLabel className={classes.inputLabel} htmlFor="password">
@@ -165,12 +165,13 @@ const Login = (props) => {
               onChange={handleChange}
               placeholder="Password must be 8 characters"
               error={errors.password && touched.password}
-              helperText={errors.password && touched.password ? (
-                errors.password
-              ) : null}
-              FormHelperTextProps={{ classes: { root: classes.formHelperTextRoot } }}
+              helperText={
+                errors.password && touched.password ? errors.password : null
+              }
+              FormHelperTextProps={{
+                classes: { root: classes.formHelperTextRoot },
+              }}
             />
-            
 
             {values.email && values.password ? (
               <Button
