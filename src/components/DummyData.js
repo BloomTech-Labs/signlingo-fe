@@ -6,7 +6,7 @@ export const dummyDataDash = [
       active: true,
     },
     lesson: {
-      completed: false,
+      completed: true,
       text: "A-E",
     },
     practice: {
@@ -22,7 +22,7 @@ export const dummyDataDash = [
     id: 2,
     level: {
       number: 2,
-      active: false,
+      active: true,
     },
     lesson: {
       completed: false,
