@@ -27,6 +27,14 @@ const Lesson = (props) => {
     
   },[]);
 
+  useEffect(() => {
+    if(flipped.length === data.length) {
+      console.log('flipped length', flipped.length)
+      console.log('data length', data.length)
+    }
+
+  },[flipped])
+
 
 
 

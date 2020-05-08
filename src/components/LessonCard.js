@@ -12,7 +12,11 @@ const LessonCard = (props) => {
     setImageOn(!imageOn);
 
     if(addLetter){
-      props.setFlipped([...props.flipped, addLetter]);
+      if(props.flipped.includes(addLetter)){
+      props.setFlipped([...props.flipped]);
+      } else {
+        props.setFlipped([...props.flipped, addLetter]);
+      }
     }
   }
 
