@@ -7,20 +7,32 @@ import LessonCard from "./LessonCard";
 const Lesson = (props) => {
   const history = useHistory();
   const [data, setData] = useState([]);
+  const [letterCheck, setLetterCheck] = useState([]);
+  const [flipped, setFlipped] = useState([]);
 
   function backToDash() {
     return history.push("/dashboard");
   }
 
   function finishedHandler() {
-    //redirect to dashboard
-    history.push("/dashboard");
+    // add logic so button only works once all cards have been flipped
     //add action creator to toggle lesson.completed to true
+    history.push("/dashboard");
   }
 
   useEffect(() => {
     setData(dummyDataLess);
   }, []);
+
+  useEffect(() => {
+    if (flipped.length === data.length) {
+      console.log("flipped length", flipped.length);
+      console.log("data length", data.length);
+    }
+  }, [flipped]);
+
+  console.log("letterCheck", letterCheck);
+  console.log("data", data);
 
   return (
     <div className="lesson">
@@ -33,14 +45,30 @@ const Lesson = (props) => {
       </div>
 
       {data.map((each) => (
-        <LessonCard key={each.id} data={each} />
+        <LessonCard
+          key={each.id}
+          data={each}
+          check={data}
+          setFlipped={setFlipped}
+          flipped={flipped}
+          letterCheck={letterCheck}
+          setLetterCheck={setLetterCheck}
+        />
       ))}
-
+      {flipped.length === data.length ? (
+        <div
+          className="finishedBttn finishedBttnActive"
+          onClick={finishedHandler}
+        >
+          Finished
+        </div>
+      ) : (
+        <div className="finishedBttn">
+          Finished
+        </div>
+      )}
       {/*add ternary logic so that when user touches all of the flashcards, the div takes on an 
         additional finishedBttnActive class. Styling is already written in Sass file*/}
-      <div className="finishedBttn" onClick={finishedHandler}>
-        Finished
-      </div>
     </div>
   );
 };
