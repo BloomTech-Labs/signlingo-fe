@@ -7,20 +7,33 @@ import LessonCard from "./LessonCard";
 const Lesson = (props) => {
   const history = useHistory();
   const [data, setData] = useState([]);
+  const [letterCheck, setLetterCheck] = useState([]);
+  const [flipped, setFlipped] = useState([]);
+
+
 
   function backToDash() {
     return history.push("/dashboard");
   }
 
   function finishedHandler() {
-    //redirect to dashboard
-    history.push("/dashboard");
+    // add logic so button only works once all cards have been flipped
     //add action creator to toggle lesson.completed to true
+    history.push("/dashboard");
   }
 
   useEffect(() => {
     setData(dummyDataLess);
-  }, []);
+    
+  },[]);
+
+
+
+
+  
+  console.log("letterCheck", letterCheck)
+    console.log("data", data)
+
 
   return (
     <div className="lesson">
@@ -33,7 +46,7 @@ const Lesson = (props) => {
       </div>
 
       {data.map((each) => (
-        <LessonCard key={each.id} data={each} />
+        <LessonCard key={each.id} data={each} check={data} setFlipped={setFlipped} flipped={flipped} letterCheck={letterCheck} setLetterCheck={setLetterCheck} />
       ))}
 
       {/*add ternary logic so that when user touches all of the flashcards, the div takes on an 
