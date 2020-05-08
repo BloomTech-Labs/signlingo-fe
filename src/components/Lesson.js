@@ -63,7 +63,7 @@ const Lesson = (props) => {
           Finished
         </div>
       ) : (
-        <div className="finishedBttn" onClick={finishedHandler}>
+        <div className="finishedBttn">
           Finished
         </div>
       )}
