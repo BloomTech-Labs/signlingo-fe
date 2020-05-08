@@ -8,14 +8,13 @@ const LessonCard = (props) => {
 
 
   function flipCard(letter) {
-    const addLetter=letter;
     setImageOn(!imageOn);
 
-    if(addLetter){
-      if(props.flipped.includes(addLetter)){
+    if(letter){
+      if(props.flipped.includes(letter)){
       props.setFlipped([...props.flipped]);
       } else {
-        props.setFlipped([...props.flipped, addLetter]);
+        props.setFlipped([...props.flipped, letter]);
       }
     }
   }

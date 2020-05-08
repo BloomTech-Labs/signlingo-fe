@@ -10,8 +10,6 @@ const Lesson = (props) => {
   const [letterCheck, setLetterCheck] = useState([]);
   const [flipped, setFlipped] = useState([]);
 
-
-
   function backToDash() {
     return history.push("/dashboard");
   }
@@ -24,24 +22,17 @@ const Lesson = (props) => {
 
   useEffect(() => {
     setData(dummyDataLess);
-    
-  },[]);
+  }, []);
 
   useEffect(() => {
-    if(flipped.length === data.length) {
-      console.log('flipped length', flipped.length)
-      console.log('data length', data.length)
+    if (flipped.length === data.length) {
+      console.log("flipped length", flipped.length);
+      console.log("data length", data.length);
     }
+  }, [flipped]);
 
-  },[flipped])
-
-
-
-
-  
-  console.log("letterCheck", letterCheck)
-    console.log("data", data)
-
+  console.log("letterCheck", letterCheck);
+  console.log("data", data);
 
   return (
     <div className="lesson">
@@ -54,14 +45,30 @@ const Lesson = (props) => {
       </div>
 
       {data.map((each) => (
-        <LessonCard key={each.id} data={each} check={data} setFlipped={setFlipped} flipped={flipped} letterCheck={letterCheck} setLetterCheck={setLetterCheck} />
+        <LessonCard
+          key={each.id}
+          data={each}
+          check={data}
+          setFlipped={setFlipped}
+          flipped={flipped}
+          letterCheck={letterCheck}
+          setLetterCheck={setLetterCheck}
+        />
       ))}
-
+      {flipped.length === data.length ? (
+        <div
+          className="finishedBttn finishedBttnActive"
+          onClick={finishedHandler}
+        >
+          Finished
+        </div>
+      ) : (
+        <div className="finishedBttn" onClick={finishedHandler}>
+          Finished
+        </div>
+      )}
       {/*add ternary logic so that when user touches all of the flashcards, the div takes on an 
         additional finishedBttnActive class. Styling is already written in Sass file*/}
-      <div className="finishedBttn" onClick={finishedHandler}>
-        Finished
-      </div>
     </div>
   );
 };
