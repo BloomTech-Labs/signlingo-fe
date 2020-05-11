@@ -52,6 +52,7 @@ const DashboardCard = (props) => {
 
           <section className="dashboardContent">
             <div onClick={lessonHandler}>
+              {/* ternary in src renders either icon with check or without*/}
               <img
                 src={props.data.lesson.completed ? lessonSmCh : lessonSm}
                 alt="A lessons icon"

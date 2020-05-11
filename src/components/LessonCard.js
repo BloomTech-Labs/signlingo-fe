@@ -20,7 +20,7 @@ const LessonCard = (props) => {
 
   return (
     <div className="lessonCards">
-      {/* uses ReactCardFlip package to flip card -- first div is the front second div is the back */}
+      {/* uses ReactCardFlip npm package to flip card -- first div is the front second div is the back */}
       <ReactCardFlip isFlipped={imageOn}>
         {/* onClick uses function FlipCard which flips card and accepts the letter */}
         <div onClick={() => flipCard(props.data.letter)} className="frame">
