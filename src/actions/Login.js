@@ -6,13 +6,10 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const login = (obj) => (dispatch) => {
   dispatch({ type: LOGIN_START });
-  console.log("login info being sent", obj);
 
   axiosWithAuth()
     .post("/api/auth/login", obj)
     .then((res) => {
-      console.log("res", res);
-
       window.localStorage.setItem("token", res.data.token);
 
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
