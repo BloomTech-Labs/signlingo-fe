@@ -4,7 +4,7 @@ export const initialState = {
   email: "",
   token: "",
   isLoading: false,
-  error: null
+  error: null,
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -13,20 +13,20 @@ export const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        error: null
+        error: null,
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         email: action.payload.email,
         token: action.payload.token,
-        isLoading: false
+        isLoading: false,
       };
     case LOGIN_ERROR:
       return {
         ...state,
         isLoading: false,
-        error: action.payload
+        error: action.payload,
       };
     default:
       return state;

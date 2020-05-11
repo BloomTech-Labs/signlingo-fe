@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 
+// validation scheme
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required"),
   password: yup
@@ -24,7 +25,7 @@ let SignupSchema = yup.object().shape({
 
 const AccountTextFields = withStyles({
   root: {
-    //styles the outline of the text field
+    // styles the outline of the text field
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "#E0E0E0",
@@ -32,6 +33,7 @@ const AccountTextFields = withStyles({
         borderRadius: "4px",
         fontFamily: "Inter, sans-serif",
       },
+      // styles textfield box when it is in focus (clicked on)
       "&.Mui-focused fieldset": {
         borderColor: "#828282",
         borderWidth: "1px",
@@ -44,6 +46,7 @@ const AccountTextFields = withStyles({
         borderRadius: "4px",
       },
     },
+    // styles insure the on typography
     "& .MuiTypography-root": {
       "& fieldset": {
         fontWeight: "600",
@@ -89,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#f6bf00",
     },
   },
-  //Styling for the active button after fields have inputs
+  // Styling for the disabled button
   disabledSubmitButton: {
     fontSize: "2.5rem",
     boxShadow: "none",
@@ -113,15 +116,13 @@ const Signup = (props) => {
   const classes = useStyles();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  function submitHandler(values, { resetForm }) {
+  function submitHandler(values) {
     // sanitizing the data so backend doesn't receive confirmation field
     const newValues = {
       email: values.email,
       password: values.password,
     };
-    console.log("newValues in component", newValues);
     props.signup(newValues);
-    resetForm();
   }
 
   return (

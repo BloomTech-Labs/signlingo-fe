@@ -19,6 +19,7 @@ import quizSmCh from "../images/icons/quizSm CH.png";
 const DashboardCard = (props) => {
   const history = useHistory();
 
+  // handlers check if user has access to that feature, then redirects to the relevant component
   function lessonHandler() {
     if (props.data.level.active) {
       return history.push("/lesson");
@@ -39,6 +40,8 @@ const DashboardCard = (props) => {
 
   return (
     <>
+      {/*Ternary looks at whether or not the level object is active. If yes, the user can interact with lesson/practice/quiz divs. 
+    If no, the content is black and white and inaccessible */}
       {props.data.level.active ? (
         <div className="dashboard">
           <h1>Alphabet - Level {props.data.level.number}</h1>
@@ -55,7 +58,6 @@ const DashboardCard = (props) => {
               />
               <p>{props.data.lesson.text}</p>
             </div>
-
             <div className="dashboardBttm">
               <div
                 id="practiceBox"
