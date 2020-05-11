@@ -114,7 +114,7 @@ const Login = (props) => {
   const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  async function submitHandler(values) {
+  function submitHandler(values) {
     props.login(values);
     setTimeout(() => {
       history.push("/dashboard");
