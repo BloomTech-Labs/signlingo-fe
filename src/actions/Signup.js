@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 export const SIGNUP_START = "SIGNUP_START";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
@@ -8,11 +8,8 @@ export const signup = (obj) => (dispatch) => {
   dispatch({ type: SIGNUP_START });
 
   console.log("from action creator", obj);
-  axios
-    .post(
-      "https://signlingobe-stag.herokuapp.com/api/auth/register",
-      obj
-    )
+  axiosWithAuth()
+    .post("/api/auth/register", obj)
     .then((res) => {
       console.log("res", res);
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
