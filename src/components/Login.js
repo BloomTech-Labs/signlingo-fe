@@ -10,6 +10,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
 
+// validation scheme
 let SignupSchema = yup.object().shape({
   email: yup.string().email().required("This field is required"),
   password: yup
@@ -19,27 +20,30 @@ let SignupSchema = yup.object().shape({
     .required("This field is required"),
 });
 
+// Material UI Textfield modification
 const AccountTextFields = withStyles({
   root: {
-    //styles the outline of the text field
+    // styles the outline of the text field
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "#E0E0E0",
         borderWidth: "1px",
         borderRadius: "4px",
       },
+      // styles textfield box when it is in focus (clicked on)
       "&.Mui-focused fieldset": {
         borderColor: "#828282",
         borderWidth: "1px",
         borderRadius: "4px",
       },
-      //styles the outline of the text field with proper error color and border size
+      // styles the outline of the text field with proper error color and border size
       "&.Mui-error fieldset": {
         borderColor: "#EB5757",
         borderWidth: "1px",
         borderRadius: "4px",
       },
     },
+    // styles insure the font on typography
     "& .MuiTypography-root": {
       "& fieldset": {
         fontWeight: "600",
@@ -85,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#f6bf00",
     },
   },
+  // Styling for the disabled button
   disabledSubmitButton: {
     fontSize: "2.5rem",
     boxShadow: "none",

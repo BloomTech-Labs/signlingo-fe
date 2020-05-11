@@ -54,19 +54,13 @@ function LinkTab(props) {
     />
   );
 }
-//removed inline styling for tabs and created a material ui style theme;
-//what was copied and then i modified it below
-// const StyledTabs = withStyles(theme => ({
-//   indicator: {
-//     background: "#F6BF00",
-//   }
-// }))(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
+//styling for the underline bar for tab
 const StyledTabs = withStyles((theme) => ({
   indicator: {
     background: "#F6BF00",
   },
 }))(Tabs);
-//styling for tab panel linktab and appbar
+//styling for tab panel link tab and app bar
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -100,7 +94,6 @@ const Account = () => {
 
   //sets value for which tab is click on from landing page
   useEffect(() => {
-    // console.log("location", location);
     if (location.state) {
       setValue(location.state.value);
     } else {

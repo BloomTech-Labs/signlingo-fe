@@ -25,7 +25,7 @@ const LandingPage = () => {
             One day at a time.
           </div>
         </div>
-        <div  className="heroLogin">
+        <div className="heroLogin">
           <p
             data-testid="loginLP"
             id="login"
