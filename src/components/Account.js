@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, } from "react-router-dom";
+
 import Signup from "./Signup";
 import Login from "./Login";
 
@@ -47,9 +48,9 @@ function LinkTab(props) {
   return (
     <Tab
       component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
+      // onClick={(event) => {
+      //   event.preventDefault();
+      // }}
       {...props}
     />
   );
@@ -89,10 +90,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Account = () => {
+const Account = (props) => {
   const classes = useStyles();
   const location = useLocation();
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(0 || props.value);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -130,17 +131,20 @@ const Account = () => {
           <LinkTab
             data-testid="accountSignupTab"
             label="Sign up"
-            href="/signup"
+            href="/account/signup"
+            to="/account/signup"
             className={classes.linkTab}
-            {...a11yProps(1)}
+            {...a11yProps(0)}
           />
           <LinkTab
             data-testid="accountLoginTab"
             label="Login"
-            href="/login"
+            href="/account/login"
+            to="/account/login"
             className={classes.linkTab}
-            {...a11yProps(0)}
+            {...a11yProps(1)}
           />
+
         </StyledTabs>
       </AppBar>
       <TabPanel className={classes.tabPanel} value={value} index={0}>
@@ -149,6 +153,12 @@ const Account = () => {
       <TabPanel className={classes.tabPanel} value={value} index={1}>
         <Login />
       </TabPanel>
+
+      {/* <Switch>        
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+
+      </Switch> */}
     </div>
   );
 };

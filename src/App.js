@@ -22,8 +22,11 @@ function App() {
           <Route exact path="/lesson">
             <Lesson />
           </Route>
-          <Route exact path="/account">
-            <Account />
+          <Route path="/account/signup">
+            <Account value={0} />
+          </Route>
+          <Route path="/account/login">
+            <Account value={1} />
           </Route>
         </Switch>
       </Router>

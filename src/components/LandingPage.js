@@ -30,7 +30,7 @@ const LandingPage = () => {
             data-testid="loginLP"
             id="login"
             onClick={() =>
-              history.push({ pathname: "/account", state: { value: 1 } })
+              history.push({ pathname: "/account/login", state: { value: 1 } })
             }
           >
             Log in
@@ -43,7 +43,7 @@ const LandingPage = () => {
           data-testid="signupLP"
           id="landingBtn"
           onClick={() =>
-            history.push({ pathname: "/account", state: { value: 0 } })
+            history.push({ pathname: "/account/signup", state: { value: 0 } })
           }
         >
           Sign up
