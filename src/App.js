@@ -13,16 +13,24 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/lesson">
-          <Lesson />
-        </Route>
-        <Route exact path="/account">
-          <Account />
-        </Route>
+          <Route exact path="/">
+            <LandingPage />
+          </Route>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/lesson">
+            <Lesson />
+          </Route>
+          <Route exact path="/account/signup">
+            {/* passing a value so the proper tab is displayed 
+            without this it causes a memory leak */}
+            <Account value={0} />
+          </Route>
+          <Route exact path="/account/login">
+            {/* passing a value so the proper tab is displayed 
+            without this it causes a memory leak */}
+            <Account value={1} />
+          </Route>
+
       </Router>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
+
 import Signup from "./Signup";
 import Login from "./Login";
 
@@ -54,6 +55,7 @@ function LinkTab(props) {
     />
   );
 }
+
 //styling for the underline bar for tab
 const StyledTabs = withStyles((theme) => ({
   indicator: {
@@ -83,23 +85,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Account = () => {
+const Account = (props) => {
   const classes = useStyles();
   const location = useLocation();
-  const [value, setValue] = useState(0);
+  const history = useHistory();
+  const [value, setValue] = useState(props.value);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, value) => {
+    // checks value and pushes url to tab without rerendering
+    if (value === 0) {
+      history.push("/account/signup");
+    } else if (value === 1) {
+      history.push("/account/login");
+    }
   };
 
-  //sets value for which tab is click on from landing page
+  //sets value for which tab is click based on pathname
   useEffect(() => {
-    if (location.state) {
-      setValue(location.state.value);
-    } else {
+    if (location.pathname === "/account/signup") {
       setValue(0);
+    } else {
+      setValue(1);
     }
-  }, [location.state]);
+  }, [location.pathname]);//dependency array makes useEffect run when pathname is changed
 
   return (
     <div className={classes.root}>
@@ -123,16 +131,16 @@ const Account = () => {
           <LinkTab
             data-testid="accountSignupTab"
             label="Sign up"
-            href="/signup"
+            to="/account/signup"
             className={classes.linkTab}
-            {...a11yProps(1)}
+            {...a11yProps(0)}
           />
           <LinkTab
             data-testid="accountLoginTab"
             label="Login"
-            href="/login"
+            to="/account/login"
             className={classes.linkTab}
-            {...a11yProps(0)}
+            {...a11yProps(1)}
           />
         </StyledTabs>
       </AppBar>
