@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, } from "react-router-dom";
+import { Link, useLocation, useHistory, } from "react-router-dom";
 
 import Signup from "./Signup";
 import Login from "./Login";
@@ -93,21 +93,31 @@ const useStyles = makeStyles((theme) => ({
 const Account = (props) => {
   const classes = useStyles();
   const location = useLocation();
-  const [value, setValue] = useState(0 || props.value);
+  const history = useHistory();
+  const [value, setValue] = useState(props.value || 0 );
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, value) => {
+    //
+    //setValue(newValue);
+    if (value === 0) {history.push('/account/signup')}
+    if(value === 1) {history.push('/account/login')}
   };
 
   //sets value for which tab is click on from landing page
   useEffect(() => {
     // console.log("location", location);
-    if (location.state) {
-      setValue(location.state.value);
+
+    if(location.pathname == '/account/signup') {
+      setValue(0)
     } else {
-      setValue(0);
+      setValue(1)
     }
-  }, [location.state]);
+    // if (location.state) {
+    //   setValue(location.state.value);
+    // } else {
+    //   setValue(0);
+    // }
+  }, [location.pathname]);
 
   return (
     <div className={classes.root}>
@@ -131,7 +141,7 @@ const Account = (props) => {
           <LinkTab
             data-testid="accountSignupTab"
             label="Sign up"
-            href="/account/signup"
+            // href="/account/signup"
             to="/account/signup"
             className={classes.linkTab}
             {...a11yProps(0)}
@@ -139,7 +149,7 @@ const Account = (props) => {
           <LinkTab
             data-testid="accountLoginTab"
             label="Login"
-            href="/account/login"
+            // href="/account/login"
             to="/account/login"
             className={classes.linkTab}
             {...a11yProps(1)}
