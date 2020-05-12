@@ -1,12 +1,13 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import PrivateRoute from "./components/PrivateRoute";
 
 import "./App.scss";
 import Dashboard from "./components/Dashboard";
 import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
 import Lesson from "./components/Lesson";
+import DashboardCard from "./components/DashboardCard";
 
 function App() {
   return (
@@ -16,9 +17,7 @@ function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route exact path="/dashboard">
-            <Dashboard />
-          </Route>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route exact path="/lesson">
             <Lesson />
           </Route>
@@ -33,6 +32,7 @@ function App() {
             <Account value={1} />
           </Route>
         </Switch>
+
       </Router>
     </div>
   );

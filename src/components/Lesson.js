@@ -22,8 +22,6 @@ const Lesson = (props) => {
     setData(dummyDataLess);
   }, []);
 
-
-
   return (
     <div className="lesson">
       <div className="lessonBar">
@@ -40,9 +38,9 @@ const Lesson = (props) => {
           data={each}
           setFlipped={setFlipped}
           flipped={flipped}
-
         />
       ))}
+      {/*ternary conditionally renders finished button with color and functionality */}
       {flipped.length === data.length ? (
         <div
           className="finishedBttn finishedBttnActive"
@@ -51,11 +49,8 @@ const Lesson = (props) => {
           Finished
         </div>
       ) : (
-        <div className="finishedBttn">
-          Finished
-        </div>
+        <div className="finishedBttn">Finished</div>
       )}
-      
     </div>
   );
 };

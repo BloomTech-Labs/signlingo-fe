@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import DashboardCard from "./DashboardCard";
 import { dummyDataDash } from "./DummyData";
 
 const Dashboard = (props) => {
   const [data, setData] = useState([]);
+  const history = useHistory();
 
   function logout() {
     window.localStorage.removeItem("token");
-    //redirect to whatever becomes the landing page
-    return <Redirect to="/" />;
+    return history.push("/");
   }
 
   useEffect(() => {

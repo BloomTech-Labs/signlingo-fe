@@ -56,12 +56,13 @@ function LinkTab(props) {
   );
 }
 
+//styling for the underline bar for tab
 const StyledTabs = withStyles((theme) => ({
   indicator: {
     background: "#F6BF00",
   },
 }))(Tabs);
-//styling for tab panel linktab and appbar
+//styling for tab panel link tab and app bar
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,

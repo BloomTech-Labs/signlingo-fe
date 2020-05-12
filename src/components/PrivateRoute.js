@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, useHistory } from "react-router-dom";
 
-const PrivateRoute =  ({ component: Component, ...rest }) => {
-
-  const token = window.localStorage.getItem('token');
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const history = useHistory();
+  const token = window.localStorage.getItem("token");
   return (
     <Route
       {...rest}
-      render={props => {
-        if(token){
-          return <Component {...props} />
+      render={(props) => {
+        if (token) {
+          return <Component {...props} />;
         } else {
-          return <Redirect to='/' />
-        };
+          return history.push("/");
+        }
       }}
-      />
+    />
   );
-
 };
 export default PrivateRoute;

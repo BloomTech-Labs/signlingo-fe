@@ -25,7 +25,8 @@ const LandingPage = () => {
             One day at a time.
           </div>
         </div>
-        <div  className="heroLogin">
+        <div className="heroLogin">
+          {/*Values 0 and 1 both help account.js decide which tab to show */}
           <p
             data-testid="loginLP"
             id="login"
@@ -37,7 +38,6 @@ const LandingPage = () => {
           </p>
         </div>
       </div>
-
       <div className="landingContent">
         <div
           data-testid="signupLP"
