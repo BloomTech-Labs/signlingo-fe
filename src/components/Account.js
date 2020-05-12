@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useHistory, useParams } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 import Signup from "./Signup";
 import Login from "./Login";
@@ -48,20 +48,14 @@ function LinkTab(props) {
   return (
     <Tab
       component="a"
-      // onClick={(event) => {
-      //   event.preventDefault();
-      // }}
+      onClick={(event) => {
+        event.preventDefault();
+      }}
       {...props}
     />
   );
 }
-//removed inline styling for tabs and created a material ui style theme;
-//what was copied and then i modified it below
-// const StyledTabs = withStyles(theme => ({
-//   indicator: {
-//     background: "#F6BF00",
-//   }
-// }))(props => <Tabs {...props} TabIndicatorProps={{ children: <div /> }} />);
+
 const StyledTabs = withStyles((theme) => ({
   indicator: {
     background: "#F6BF00",
