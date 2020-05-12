@@ -95,8 +95,7 @@ const Account = (props) => {
     // checks value and pushes url to tab without rerendering
     if (value === 0) {
       history.push("/account/signup");
-    }
-    if (value === 1) {
+    } else if (value === 1) {
       history.push("/account/login");
     }
   };
