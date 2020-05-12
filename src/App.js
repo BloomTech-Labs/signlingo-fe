@@ -13,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Switch>
           <Route exact path="/">
             <LandingPage />
           </Route>
@@ -31,7 +30,6 @@ function App() {
             without this it causes a memory leak */}
             <Account value={1} />
           </Route>
-        </Switch>
 
       </Router>
     </div>
