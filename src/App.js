@@ -23,9 +23,13 @@ function App() {
             <Lesson />
           </Route>
           <Route exact path="/account/signup">
+            {/* passing a value so the proper tab is displayed 
+            without this it causes a memory leak */}
             <Account value={0} />
           </Route>
           <Route exact path="/account/login">
+            {/* passing a value so the proper tab is displayed 
+            without this it causes a memory leak */}
             <Account value={1} />
           </Route>
         </Switch>

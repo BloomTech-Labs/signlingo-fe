@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useHistory, } from "react-router-dom";
+import { Link, useLocation, useHistory, useParams } from "react-router-dom";
 
 import Signup from "./Signup";
 import Login from "./Login";
@@ -94,30 +94,26 @@ const Account = (props) => {
   const classes = useStyles();
   const location = useLocation();
   const history = useHistory();
-  const [value, setValue] = useState(props.value || 0 );
+  const [value, setValue] = useState(props.value);
 
   const handleChange = (event, value) => {
-    //
-    //setValue(newValue);
-    if (value === 0) {history.push('/account/signup')}
-    if(value === 1) {history.push('/account/login')}
+    // checks value and pushes url to tab without rerendering
+    if (value === 0) {
+      history.push("/account/signup");
+    }
+    if (value === 1) {
+      history.push("/account/login");
+    }
   };
 
-  //sets value for which tab is click on from landing page
+  //sets value for which tab is click based on pathname
   useEffect(() => {
-    // console.log("location", location);
-
-    if(location.pathname == '/account/signup') {
-      setValue(0)
+    if (location.pathname === "/account/signup") {
+      setValue(0);
     } else {
-      setValue(1)
+      setValue(1);
     }
-    // if (location.state) {
-    //   setValue(location.state.value);
-    // } else {
-    //   setValue(0);
-    // }
-  }, [location.pathname]);
+  }, [location.pathname]);//dependency array makes useEffect run when pathname is changed
 
   return (
     <div className={classes.root}>
@@ -141,7 +137,6 @@ const Account = (props) => {
           <LinkTab
             data-testid="accountSignupTab"
             label="Sign up"
-            // href="/account/signup"
             to="/account/signup"
             className={classes.linkTab}
             {...a11yProps(0)}
@@ -149,12 +144,10 @@ const Account = (props) => {
           <LinkTab
             data-testid="accountLoginTab"
             label="Login"
-            // href="/account/login"
             to="/account/login"
             className={classes.linkTab}
             {...a11yProps(1)}
           />
-
         </StyledTabs>
       </AppBar>
       <TabPanel className={classes.tabPanel} value={value} index={0}>
@@ -163,12 +156,6 @@ const Account = (props) => {
       <TabPanel className={classes.tabPanel} value={value} index={1}>
         <Login />
       </TabPanel>
-
-      {/* <Switch>        
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-
-      </Switch> */}
     </div>
   );
 };
