@@ -8,6 +8,7 @@ import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
 import Lesson from "./components/Lesson";
 import DashboardCard from "./components/DashboardCard";
+import VideoAssessment from "./components/Quiz/VideoAssessment.js";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
       <Router>
           <Route exact path="/">
             <LandingPage />
+          </Route>
+          <Route path="/video">
+            <VideoAssessment />
           </Route>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route exact path="/lesson">
