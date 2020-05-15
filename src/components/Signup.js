@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { signup } from "../actions/Signup";
@@ -114,6 +115,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Signup = (props) => {
   const classes = useStyles();
+  const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
   function submitHandler(values) {
@@ -123,6 +125,9 @@ const Signup = (props) => {
       password: values.password,
     };
     props.signup(newValues);
+    setTimeout(() => {
+      history.push("/dashboard");
+    }, 1000);
   }
 
   return (

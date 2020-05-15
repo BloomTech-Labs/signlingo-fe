@@ -10,6 +10,7 @@ export const signup = (obj) => (dispatch) => {
   axiosWithAuth()
     .post("/api/auth/register", obj)
     .then((res) => {
+      window.localStorage.setItem("token", res.data.token);
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
     })
     .catch((err) => {

@@ -18,8 +18,8 @@ export const signupReducer = (state = initialState, action) => {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        email: action.payload[0].email,
-        token: action.payload[0].token,
+        email: action.payload.email,
+        token: action.payload.token,
         isLoading: false,
       };
     case SIGNUP_ERROR:
