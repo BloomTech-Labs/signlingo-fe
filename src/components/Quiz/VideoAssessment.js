@@ -81,6 +81,11 @@ navigator.mediaDevices.getUserMedia(constraintObj)
         chunks = [];
         let videoURL = window.URL.createObjectURL(blob);
         vidSave.src = videoURL;
+        // We could do the post request here and pass the recorded video to DS API
+        // Things to keep in mind:
+        // handtrack.js for hand recognition
+        // full screen posibilities like snapchat like bryan mentioned (ask kendra)
+        // component structure needs to be built inside this component
     }
 })
 .catch(function(err) { 
