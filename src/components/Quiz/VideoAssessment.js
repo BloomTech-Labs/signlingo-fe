@@ -106,7 +106,6 @@ const VideoAssessment = (props) => {
       //
       function runDetection() {
         model.detect(video).then((predictions) => {
-          console.log("isRecording inside runDetection", isRecording);
           if (predictions.length > 0 && !isRecording) {
             // May be a good idea to give users some visual feedback(blinking red) to let them know we're recording
             isRecording = true;
@@ -115,6 +114,7 @@ const VideoAssessment = (props) => {
             setTimeout(function () {
               mediaRecorder.stop();
               isRecording = false;
+              console.log("should have stopped recording")
             }, 4000);
           }
         });
@@ -142,7 +142,7 @@ const VideoAssessment = (props) => {
     <>
       {result ? <Overlay result={result} /> : null}
       {isRecording ? "Placeholder for recording icon" : null}
-      <video controls style={{ width: "1280px", height: "720px" }}></video>
+      <video style={{height: "50%", width: "100%"}}></video>
       <video id="vid2" controls></video>
     </>
   );
