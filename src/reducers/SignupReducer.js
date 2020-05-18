@@ -2,6 +2,7 @@ import { SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_ERROR } from "../actions/Signup";
 
 export const initialState = {
   email: "",
+  id: null,
   token: "",
   isLoading: false,
   error: null,
@@ -19,6 +20,7 @@ export const signupReducer = (state = initialState, action) => {
       return {
         ...state,
         email: action.payload.email,
+        id: action.payload.id,
         token: action.payload.token,
         isLoading: false,
       };

@@ -21,19 +21,19 @@ const DashboardCard = (props) => {
 
   // handlers check if user has access to that feature, then redirects to the relevant component
   function lessonHandler() {
-    if (props.data.level.active) {
+    if (props.data.Active) {
       return history.push("/lesson");
     }
   }
 
   function practiceHandler() {
-    if (props.data.level.active && props.data.lesson.completed) {
+    if (props.data.Active && props.data.Lesson) {
       // return redirect to route
     }
   }
 
   function quizHandler() {
-    if (props.data.level.active && props.data.practice.completed) {
+    if (props.data.Level && props.data.Practice) {
       // return redirect to route
     }
   }
@@ -42,9 +42,10 @@ const DashboardCard = (props) => {
     <>
       {/*Ternary looks at whether or not the level object is active. If yes, the user can interact with lesson/practice/quiz divs. 
     If no, the content is black and white and inaccessible */}
-      {props.data.level.active ? (
+      {props.data.Level ? (
         <div className="dashboard">
-          <h1>Alphabet - Level {props.data.level.number}</h1>
+          {/** level.number needs to change */}
+          {/* <h1>Alphabet - Level {props.data.signs}</h1> */}
           <div className="progressBar">
             <img src={progressBarSm} alt="A progress Bar" />
             <img src={crownSm} alt="A completion crown" />
@@ -54,43 +55,42 @@ const DashboardCard = (props) => {
             <div onClick={lessonHandler}>
               {/* ternary in src renders either icon with check or without*/}
               <img
-                src={props.data.lesson.completed ? lessonSmCh : lessonSm}
+                src={props.data.Lesson ? lessonSmCh : lessonSm}
                 alt="A lessons icon"
               />
-              <p>{props.data.lesson.text}</p>
+              <p>{props.data.signs}</p>
             </div>
             <div className="dashboardBttm">
               <div
                 id="practiceBox"
                 onClick={practiceHandler}
-                className={props.data.lesson.completed ? null : "locked"}
+                className={props.data.Lesson ? null : "locked"}
               >
                 <img
-                  src={
-                    props.data.practice.completed ? practiceSmCh : practiceSm
-                  }
+                  src={props.data.Practice ? practiceSmCh : practiceSm}
                   alt="A practice icon"
                 />
-                <p>{props.data.practice.text}</p>
+                <p>{props.data.signs}</p>
               </div>
 
               <div
                 id="quizBox"
                 onClick={quizHandler}
-                className={props.data.practice.completed ? null : "locked"}
+                className={props.data.Practice ? null : "locked"}
               >
                 <img
-                  src={props.data.quiz.completed ? quizSmCh : quizSm}
+                  src={props.data.Quiz ? quizSmCh : quizSm}
                   alt="A quiz icon"
                 />
-                <p>{props.data.quiz.text}</p>
+                <p>{props.data.signs}</p>
               </div>
             </div>
           </section>
         </div>
       ) : (
         <div className="dashboardBw">
-          <h1>Alphabet - Level {props.data.level.number}</h1>
+          {/** level.number needs to change */}
+          {/* <h1>Alphabet - Level {props.data.level.number}</h1> */}
           <div className="progressBar">
             <img src={progressBarSmBw} alt="progress bar black and white" />
             <img src={crownSmBw} alt="A completion crown" />
@@ -99,17 +99,17 @@ const DashboardCard = (props) => {
           <section className="dashboardContent">
             <div onClick={lessonHandler}>
               <img src={lessonSmBw} alt="A lessons icon" />
-              <p>{props.data.lesson.text}</p>
+              <p>{props.data.signs}</p>
             </div>
 
             <div className="dashboardBttm">
               <div id="practiceBox" onClick={practiceHandler}>
                 <img src={practiceSmBw} alt="A practice icon" />
-                <p>{props.data.practice.text}</p>
+                <p>{props.data.signs}</p>
               </div>
               <div id="quizBox" onClick={quizHandler}>
                 <img src={quizSmBw} alt="A quiz icon" />
-                <p>{props.data.quiz.text}</p>
+                <p>{props.data.signs}</p>
               </div>
             </div>
           </section>
