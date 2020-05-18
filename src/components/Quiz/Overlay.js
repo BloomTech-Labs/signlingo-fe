@@ -1,12 +1,11 @@
 import React from 'react';
-// need to import images for fail/pass
 
 const Overlay = (props) => {
 
    return (
       <>
       <p>This is a placeholder for the overlay component</p>
-      {props.result ? "<img src='passImg'/>" : "<img src='failImg'/>"}
+      {props.result ? <img src='./images/checkMarkOverlay.png' alt='green checkmark = correct answer'/> : <img src='./images/redXOverlay.png' alt='red x = wrong answer'/>}
       </>
    );
 

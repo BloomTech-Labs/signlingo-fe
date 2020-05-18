@@ -12,12 +12,12 @@ const Quiz = (props) => {
     const [result, setResult] = useState();
 
     return (
-        <div>
-            <img src="./images/progressBar.png"/>
-            <img src="./images/heart.png"/>
-            <h1>{`Sign "${props.currentTestValue}"`}</h1>
+        <div className="quiz">
+            <img src="./images/progressBar.png" alt='progress bar image'/>
+            <img src="./images/heart.png" alt='heart image'/>
+            <h1>{`Sign "props.currentTestValue"`}</h1>
             {result ? <Overlay result = {result}/> : null}
-            {videoOn ? <VideoAssessment testValue = {currentTestValue}/> : 'Placeholder for tap to open'}
+            {videoOn ? <VideoAssessment testValue = "currentTestValue"/> : 'Placeholder for tap to open'}
             <button>Next</button>
         </div>
     );
