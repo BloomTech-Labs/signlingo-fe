@@ -6,6 +6,7 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { loginReducer } from "./reducers/LoginReducer";
 import { signupReducer } from "./reducers/SignupReducer";
+import { DashLevelReducer } from "./reducers/DashLevelReducer";
 
 import "./index.scss";
 import App from "./App";
@@ -13,6 +14,7 @@ import App from "./App";
 const rootReducer = combineReducers({
   user: loginReducer,
   newUser: signupReducer,
+  dashLevel: DashLevelReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));

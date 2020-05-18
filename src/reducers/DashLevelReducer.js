@@ -1,30 +1,30 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_ERROR } from "../actions/Login";
+import {
+  DASHLEVEL_START,
+  DASHLEVEL_SUCCESS,
+  DASHLEVEL_ERROR,
+} from "../actions/DashboardLevel";
 
 export const initialState = {
-  email: "",
-  id: null,
-  token: "",
+  levels: [],
   isLoading: false,
   error: null,
 };
 
-export const loginReducer = (state = initialState, action) => {
+export const DashLevelReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN_START:
+    case DASHLEVEL_START:
       return {
         ...state,
         isLoading: true,
         error: null,
       };
-    case LOGIN_SUCCESS:
+    case DASHLEVEL_SUCCESS:
       return {
         ...state,
-        email: action.payload.email,
-        id: action.payload.id,
-        token: action.payload.token,
+        levels: [...state.levels, action.payload],
         isLoading: false,
       };
-    case LOGIN_ERROR:
+    case DASHLEVEL_ERROR:
       return {
         ...state,
         isLoading: false,

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import cuid from "cuid";
+import { dashLevel } from "../actions/DashboardLevel";
 import DashboardCard from "./DashboardCard";
-import { dummyDataDash } from "./DummyData";
 
 const Dashboard = (props) => {
-  const [data, setData] = useState([]);
   const history = useHistory();
 
   function logout() {
@@ -12,8 +13,14 @@ const Dashboard = (props) => {
     return history.push("/");
   }
 
+  const testing = () => {
+    for (let i = 1; i <= 5; i++) {
+      props.dashLevel(props.userId || props.newUserId, i);
+    }
+  };
+
   useEffect(() => {
-    setData(dummyDataDash);
+    testing();
   }, []);
 
   return (
@@ -22,11 +29,20 @@ const Dashboard = (props) => {
         <p onClick={logout}>Log out</p>
       </div>
 
-      {data.map((each) => (
-        <DashboardCard key={each.id} data={each} />
+      {props.globalLevel.map((each) => (
+        <DashboardCard key={cuid()} data={each} />
       ))}
     </div>
   );
 };
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return {
+    userId: state.user.id,
+    globalLevel: state.dashLevel.levels,
+    isLoading: state.dashLevel.isLoading,
+    newUserId: state.newUser.id,
+  };
+}
+
+export default connect(mapStateToProps, { dashLevel })(Dashboard);
