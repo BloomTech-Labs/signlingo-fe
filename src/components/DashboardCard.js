@@ -70,7 +70,7 @@ const DashboardCard = (props) => {
                   src={props.data.Practice ? practiceSmCh : practiceSm}
                   alt="A practice icon"
                 />
-                <p>{props.data.signs}</p>
+                <p>Practice</p>
               </div>
 
               <div
@@ -82,7 +82,7 @@ const DashboardCard = (props) => {
                   src={props.data.Quiz ? quizSmCh : quizSm}
                   alt="A quiz icon"
                 />
-                <p>{props.data.signs}</p>
+                <p>Quiz</p>
               </div>
             </div>
           </section>
@@ -105,11 +105,11 @@ const DashboardCard = (props) => {
             <div className="dashboardBttm">
               <div id="practiceBox" onClick={practiceHandler}>
                 <img src={practiceSmBw} alt="A practice icon" />
-                <p>{props.data.signs}</p>
+                <p>Practice</p>
               </div>
               <div id="quizBox" onClick={quizHandler}>
                 <img src={quizSmBw} alt="A quiz icon" />
-                <p>{props.data.signs}</p>
+                <p>Quiz</p>
               </div>
             </div>
           </section>

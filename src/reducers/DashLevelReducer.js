@@ -6,19 +6,30 @@ import {
 
 export const initialState = {
   levels: [],
+  isLoading: false,
+  error: null,
 };
 
 export const DashLevelReducer = (state = initialState, action) => {
   switch (action.type) {
     case DASHLEVEL_START:
-      return { ...state };
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
     case DASHLEVEL_SUCCESS:
       return {
         ...state,
         levels: [...state.levels, action.payload],
+        isLoading: false,
       };
     case DASHLEVEL_ERROR:
-      return { ...state };
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

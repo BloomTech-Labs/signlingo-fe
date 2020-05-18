@@ -1,44 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
+import cuid from "cuid";
 import { dashLevel } from "../actions/DashboardLevel";
 import DashboardCard from "./DashboardCard";
 
 const Dashboard = (props) => {
   const history = useHistory();
-  const [levels, setLevels] = useState([]);
-  console.log("we about to solve it ", levels);
 
   function logout() {
     window.localStorage.removeItem("token");
     return history.push("/");
   }
 
-  // const testing = async () => {
-  //   await setLevels([
-  //     ...levels,
-  //     props.dashLevel(props.userId || props.newUserId, 1),
-  //   ]);
-  //   await setLevels([
-  //     ...levels,
-  //     props.dashLevel(props.userId || props.newUserId, 2),
-  //   ]);
-  //   await setLevels([
-  //     ...levels,
-  //     props.dashLevel(props.userId || props.newUserId, 3),
-  //   ]);
-  //   await setLevels([
-  //     ...levels,
-  //     props.dashLevel(props.userId || props.newUserId, 4),
-  //   ]);
-  //   await setLevels([
-  //     ...levels,
-  //     props.dashLevel(props.userId || props.newUserId, 5),
-  //   ]);
-  // };
+  const testing = () => {
+    for (let i = 1; i <= 5; i++) {
+      props.dashLevel(props.userId || props.newUserId, i);
+    }
+  };
 
   useEffect(() => {
-    // testing();
+    testing();
   }, []);
 
   return (
@@ -47,8 +29,8 @@ const Dashboard = (props) => {
         <p onClick={logout}>Log out</p>
       </div>
 
-      {levels.map((each) => (
-        <DashboardCard key={each.id} data={each} />
+      {props.globalLevel.map((each) => (
+        <DashboardCard key={cuid()} data={each} />
       ))}
     </div>
   );
@@ -57,7 +39,8 @@ const Dashboard = (props) => {
 function mapStateToProps(state) {
   return {
     userId: state.user.id,
-    dashLevel: state.dashLevel.levels,
+    globalLevel: state.dashLevel.levels,
+    isLoading: state.dashLevel.isLoading,
     newUserId: state.newUser.id,
   };
 }
