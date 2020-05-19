@@ -28,7 +28,7 @@ const Quiz = (props) => {
         <VideoAssessment testValue="currentTestValue" />
       ) : (
         <div className="cameraOverlay">
-          <img onClick={turnVideoOn} src="./images/openCamOverlay.png"></img>
+          <img onClick={turnVideoOn} src="./images/openCamOverlay.png" alt="turns camera on"></img>
         </div>
       )}
       <button className="nextButton">Next</button>
