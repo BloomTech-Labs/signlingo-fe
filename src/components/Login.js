@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
-import SocialButtons from "./SocialButtons";
+// import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -202,11 +202,11 @@ const Login = (props) => {
         )}
       </Formik>
 
-      <div className="separator">or</div>
+      {/* <div className="separator">or</div>
 
       <p className="socialText">Log in using social media</p>
 
-      <SocialButtons />
+      <SocialButtons /> */}
     </div>
   );
 };
