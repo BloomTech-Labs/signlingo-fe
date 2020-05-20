@@ -3,6 +3,8 @@ import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Quiz from "../components/Quiz/Quiz";
 
+import * as handTrack from "handtrackjs";
+
 test("renders Quiz without crashing", () => {
   render(<Quiz />);
 });

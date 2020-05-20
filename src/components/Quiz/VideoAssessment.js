@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-//import * as handTrack from "handtrackjs";
+import * as handTrack from "handtrackjs";
 import Overlay from "./Overlay.js";
 
 const VideoAssessment = (props) => {
