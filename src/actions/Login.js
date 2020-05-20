@@ -4,10 +4,10 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 
-export const login = (obj) => (dispatch) => {
+export const login = (obj) => async (dispatch) => {
   dispatch({ type: LOGIN_START });
 
-  axiosWithAuth()
+  await axiosWithAuth()
     .post("/api/auth/login", obj)
     .then((res) => {
       window.localStorage.setItem("token", res.data.token);
