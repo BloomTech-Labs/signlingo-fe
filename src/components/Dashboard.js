@@ -52,4 +52,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { dashLevel, resetArray })(Dashboard);
+export default connect(mapStateToProps, {
+  dashLevel,
+  resetArray,
+})(Dashboard);

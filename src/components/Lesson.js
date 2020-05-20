@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { connect } from "react-redux";
 import { dummyDataLess } from "./DummyData";
 import x from "../images/icons/x.png";
 import LessonCard from "./LessonCard";
+import { lessonFinish } from "../actions/FinishLevelFeature";
 
 const Lesson = (props) => {
   const history = useHistory();
+  const location = useLocation();
   const [data, setData] = useState([]);
   const [flipped, setFlipped] = useState([]);
+
+  const ahahahahaha = location.state.levelNum;
+  console.log("herherherhe", ahahahahaha);
 
   function backToDash() {
     return history.push("/dashboard");
@@ -15,6 +21,7 @@ const Lesson = (props) => {
 
   function finishedHandler() {
     //add action creator to toggle lesson.completed to true
+    props.lessonFinish();
     history.push("/dashboard");
   }
 
@@ -55,4 +62,8 @@ const Lesson = (props) => {
   );
 };
 
-export default Lesson;
+function mapStateToProps() {
+  return {};
+}
+
+export default connect(mapStateToProps, { lessonFinish })(Lesson);

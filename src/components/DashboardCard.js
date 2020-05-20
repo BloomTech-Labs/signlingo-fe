@@ -22,7 +22,10 @@ const DashboardCard = (props) => {
   // handlers check if user has access to that feature, then redirects to the relevant component
   function lessonHandler() {
     if (props.data.Active) {
-      return history.push("/lesson");
+      return history.push({
+        pathname: "/lesson",
+        state: { levelNum: props.data.Level },
+      });
     }
   }
 
