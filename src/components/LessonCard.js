@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import test from "../images/icons/SignA.png";
 import flipArrow from "../images/icons/flipArrow.png";
 
 const LessonCard = (props) => {
@@ -17,7 +16,7 @@ const LessonCard = (props) => {
       props.setFlipped([...props.flipped, letter]);
     }
   }
-
+  console.log("WHAT THIS IMAGE LOOK LIKE", props.data.image);
   return (
     <div className="lessonCards">
       {/* uses ReactCardFlip npm package to flip card -- first div is the front second div is the back */}
@@ -27,7 +26,7 @@ const LessonCard = (props) => {
           <div className="flipArrow">
             <img src={flipArrow} alt="flip arrow" />
           </div>
-          <img src={test} alt="test" />
+          <img src={props.data.image} alt="sign" />
         </div>
         {/* onClick uses function FlipCard which flips card */}
         <div onClick={() => flipCard()} className="frame">

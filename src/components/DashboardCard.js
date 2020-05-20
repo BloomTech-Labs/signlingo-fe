@@ -1,5 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
+import { grabLesson } from "../actions/GrabLesson";
 import crownSm from "../images/icons/progress crown icon.png";
 import practiceSm from "../images/icons/practiceSm.png";
 import lessonSm from "../images/icons/lessonSm.png";
@@ -22,10 +24,8 @@ const DashboardCard = (props) => {
   // handlers check if user has access to that feature, then redirects to the relevant component
   function lessonHandler() {
     if (props.data.Active) {
-      return history.push({
-        pathname: "/lesson",
-        state: { levelNum: props.data.Level },
-      });
+      props.grabLesson(props.data);
+      history.push("/lesson");
     }
   }
 
@@ -120,4 +120,4 @@ const DashboardCard = (props) => {
   );
 };
 
-export default DashboardCard;
+export default connect(null, { grabLesson })(DashboardCard);

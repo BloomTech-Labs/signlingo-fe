@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { dummyDataLess } from "./DummyData";
 import x from "../images/icons/x.png";
 import LessonCard from "./LessonCard";
 import { lessonFinish } from "../actions/FinishLevelFeature";
+import { getPics } from "../actions/getPics";
 
-const Lesson = (props) => {
+const Lesson = (
+  { selectedLesson, signImages, getPics, lessonFinish },
+  props
+) => {
   const history = useHistory();
-  const location = useLocation();
-  const [data, setData] = useState([]);
   const [flipped, setFlipped] = useState([]);
-
-  const ahahahahaha = location.state.levelNum;
-  console.log("herherherhe", ahahahahaha);
 
   function backToDash() {
     return history.push("/dashboard");
   }
 
   function finishedHandler() {
-    //add action creator to toggle lesson.completed to true
-    props.lessonFinish();
+    //action creator toggles Lesson boolean to true
+    lessonFinish();
     history.push("/dashboard");
   }
 
   useEffect(() => {
-    setData(dummyDataLess);
+    getPics(selectedLesson.signs);
   }, []);
 
   return (
@@ -36,10 +34,10 @@ const Lesson = (props) => {
         {/* In order to get the text in the h3, we need to hook up Lesson.js to the redux store to get 
         the DummyDataDash array. OR find a way to pass that info as a prop from DashboardCard,
         however it's not really a parent to this component */}
-        <h3> PROPS DATA HERE flashcards</h3>
+        <h3>{`${selectedLesson.signs} flashcards`}</h3>
       </div>
 
-      {data.map((each) => (
+      {signImages.map((each) => (
         <LessonCard
           key={each.id}
           data={each}
@@ -48,7 +46,7 @@ const Lesson = (props) => {
         />
       ))}
       {/*ternary conditionally renders finished button with color and functionality */}
-      {flipped.length === data.length ? (
+      {flipped.length === signImages.length ? (
         <div
           className="finishedBttn finishedBttnActive"
           onClick={finishedHandler}
@@ -62,8 +60,11 @@ const Lesson = (props) => {
   );
 };
 
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  return {
+    selectedLesson: state.lesson.selectedLesson,
+    signImages: state.lesson.signImages,
+  };
 }
 
-export default connect(mapStateToProps, { lessonFinish })(Lesson);
+export default connect(mapStateToProps, { getPics, lessonFinish })(Lesson);
