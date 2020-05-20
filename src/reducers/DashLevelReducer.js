@@ -3,6 +3,7 @@ import {
   DASHLEVEL_SUCCESS,
   DASHLEVEL_ERROR,
 } from "../actions/DashboardLevel";
+import { RESET_SUCCESS } from "../actions/ResetArray";
 
 export const initialState = {
   levels: [],
@@ -29,6 +30,11 @@ export const DashLevelReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         error: action.payload,
+      };
+    case RESET_SUCCESS:
+      return {
+        ...state,
+        levels: [],
       };
     default:
       return state;

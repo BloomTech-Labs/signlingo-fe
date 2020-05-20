@@ -12,8 +12,6 @@ export const login = (obj) => (dispatch) => {
     .then((res) => {
       window.localStorage.setItem("token", res.data.token);
 
-      console.log("In Login data", res);
-
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch((err) => {

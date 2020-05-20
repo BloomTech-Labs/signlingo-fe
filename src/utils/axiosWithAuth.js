@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
     headers: {
       authorization: token,
     },
-    baseURL: "https://signlingobe-stag.herokuapp.com",
+    baseURL: "https://signlingo-staging.herokuapp.com",
   });
 };

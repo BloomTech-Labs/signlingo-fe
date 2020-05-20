@@ -18,7 +18,7 @@ import quizSmCh from "../images/icons/quizSm CH.png";
 
 const DashboardCard = (props) => {
   const history = useHistory();
-
+  console.log("data in dashboard card here", props);
   // handlers check if user has access to that feature, then redirects to the relevant component
   function lessonHandler() {
     if (props.data.Active) {
@@ -33,7 +33,7 @@ const DashboardCard = (props) => {
   }
 
   function quizHandler() {
-    if (props.data.Level && props.data.Practice) {
+    if (props.data.Active && props.data.Practice) {
       // return redirect to route
     }
   }
@@ -42,10 +42,9 @@ const DashboardCard = (props) => {
     <>
       {/*Ternary looks at whether or not the level object is active. If yes, the user can interact with lesson/practice/quiz divs. 
     If no, the content is black and white and inaccessible */}
-      {props.data.Level ? (
+      {props.data.Active ? (
         <div className="dashboard">
-          {/** level.number needs to change */}
-          {/* <h1>Alphabet - Level {props.data.signs}</h1> */}
+          <h1>Alphabet - Level {props.data.Level}</h1>
           <div className="progressBar">
             <img src={progressBarSm} alt="A progress Bar" />
             <img src={crownSm} alt="A completion crown" />
@@ -89,8 +88,7 @@ const DashboardCard = (props) => {
         </div>
       ) : (
         <div className="dashboardBw">
-          {/** level.number needs to change */}
-          {/* <h1>Alphabet - Level {props.data.level.number}</h1> */}
+          <h1>Alphabet - Level {props.data.Level}</h1>
           <div className="progressBar">
             <img src={progressBarSmBw} alt="progress bar black and white" />
             <img src={crownSmBw} alt="A completion crown" />
