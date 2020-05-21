@@ -19,7 +19,7 @@ const Lesson = (
 
   function finishedHandler() {
     //action creator toggles Lesson boolean to true
-    lessonFinish();
+    lessonFinish(selectedLesson.User_ID, selectedLesson.Level);
     history.push("/dashboard");
   }
 
@@ -31,9 +31,6 @@ const Lesson = (
     <div className="lesson">
       <div className="lessonBar">
         <img src={x} alt="letter x" onClick={backToDash} />
-        {/* In order to get the text in the h3, we need to hook up Lesson.js to the redux store to get 
-        the DummyDataDash array. OR find a way to pass that info as a prop from DashboardCard,
-        however it's not really a parent to this component */}
         <h3>{`${selectedLesson.signs} flashcards`}</h3>
       </div>
 
