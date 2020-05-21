@@ -16,7 +16,7 @@ const LessonCard = (props) => {
       props.setFlipped([...props.flipped, letter]);
     }
   }
-  console.log("WHAT THIS IMAGE LOOK LIKE", props.data.image);
+
   return (
     <div className="lessonCards">
       {/* uses ReactCardFlip npm package to flip card -- first div is the front second div is the back */}

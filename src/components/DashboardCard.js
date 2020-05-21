@@ -20,7 +20,7 @@ import quizSmCh from "../images/icons/quizSm CH.png";
 
 const DashboardCard = (props) => {
   const history = useHistory();
-  console.log("data in dashboard card here", props);
+
   // handlers check if user has access to that feature, then redirects to the relevant component
   function lessonHandler() {
     if (props.data.Active) {
