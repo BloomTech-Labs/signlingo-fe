@@ -113,21 +113,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = (props) => {
+const Signup = ({signup},props) => {
   const classes = useStyles();
   const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  function submitHandler(values) {
+  const submitHandler = async (values) => {
     // sanitizing the data so backend doesn't receive confirmation field
     const newValues = {
       email: values.email,
       password: values.password,
     };
-    props.signup(newValues);
-    setTimeout(() => {
-      history.push("/dashboard");
-    }, 1000);
+    await signup(newValues);
+    
+    history.push("/dashboard");
+
   }
 
   return (

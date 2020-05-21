@@ -7,7 +7,7 @@ import { resetArray } from "../actions/ResetArray";
 import DashboardCard from "./DashboardCard";
 
 const Dashboard = (
-  { resetArray, dashLevel, userId, newUserId, globalLevel },
+  { resetArray, dashLevel, userId, globalLevel },
   props
 ) => {
   const history = useHistory();
@@ -21,11 +21,11 @@ const Dashboard = (
   //These action calls call the back end level endpoints in the order we want them back. It is not DRY. There is an async / await here and in the dashLevel action to ensure that stack waits for each promise to return before moving on to next. The DRY option would be to create an ALL LEVELS ENDPOINT ON THE BACKEND.
 
   const testing = async () => {
-    await dashLevel(userId || newUserId, 1);
-    await dashLevel(userId || newUserId, 2);
-    await dashLevel(userId || newUserId, 3);
-    await dashLevel(userId || newUserId, 4);
-    dashLevel(userId || newUserId, 5);
+    await dashLevel(userId, 1);
+    await dashLevel(userId, 2);
+    await dashLevel(userId, 3);
+    await dashLevel(userId, 4);
+    dashLevel(userId, 5);
   };
 
   useEffect(() => {
@@ -51,7 +51,6 @@ function mapStateToProps(state) {
     userId: state.user.id,
     globalLevel: state.dashLevel.levels,
     isLoading: state.dashLevel.isLoading,
-    newUserId: state.newUser.id,
   };
 }
 

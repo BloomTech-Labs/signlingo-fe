@@ -109,16 +109,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = (props) => {
+const Login = ({login}, props) => {
   const classes = useStyles();
   const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  function submitHandler(values) {
-    props.login(values);
-    setTimeout(() => {
-      history.push("/dashboard");
-    }, 1000);
+  const submitHandler = async (values) => {
+    await login(values);
+    
+    history.push("/dashboard");
+
   }
 
   return (
