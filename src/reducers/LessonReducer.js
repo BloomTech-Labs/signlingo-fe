@@ -1,4 +1,6 @@
 import { GRAB_LESSON_SUCCESS } from "../actions/GrabLesson";
+import { RESET_SUCCESS } from "../actions/ResetArray";
+
 import {
   GET_PICS_START,
   GET_PICS_SUCCESS,
@@ -37,6 +39,12 @@ export const LessonReducer = (state = initialState, action) => {
         isLoading: true,
         error: action.payload,
       };
+      case RESET_SUCCESS:
+        return {
+          ...state,
+          selectedLesson: {},
+          signImages: [],
+        };
     default:
       return state;
   }

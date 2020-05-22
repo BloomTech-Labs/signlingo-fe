@@ -17,9 +17,10 @@ const Lesson = (
     return history.push("/dashboard");
   }
 
-  function finishedHandler() {
+  const finishedHandler = async () => {
     //action creator toggles Lesson boolean to true
-    lessonFinish(selectedLesson.User_ID, selectedLesson.Level);
+    console.log('selectedLesson user_id', selectedLesson.User_ID)
+    await lessonFinish(selectedLesson.User_ID, selectedLesson.Level);
     history.push("/dashboard");
   }
 
