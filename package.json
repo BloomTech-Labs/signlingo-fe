@@ -41,6 +41,7 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(react-native|handtrackjs)/)"
     ]
+
   },
   "eslintConfig": {
     "extends": "react-app"
