@@ -1,9 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { signup } from "../actions/Signup";
 import * as yup from "yup";
-import SocialButtons from "./SocialButtons";
+// import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -112,17 +113,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = (props) => {
+const Signup = ({signup},props) => {
   const classes = useStyles();
+  const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  function submitHandler(values) {
+  const submitHandler = async (values) => {
     // sanitizing the data so backend doesn't receive confirmation field
     const newValues = {
       email: values.email,
       password: values.password,
     };
-    props.signup(newValues);
+    await signup(newValues);
+    
+    history.push("/dashboard");
+
   }
 
   return (
@@ -232,10 +237,10 @@ const Signup = (props) => {
         )}
       </Formik>
 
-      <div className="separator">or</div>
+      {/* <div className="separator">or</div>
 
       <p className="socialText">Join using social media</p>
-      <SocialButtons />
+      <SocialButtons /> */}
     </div>
   );
 };
