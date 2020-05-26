@@ -49,6 +49,7 @@ const VideoAssessment = (props) => {
   navigator.mediaDevices
     .getUserMedia(constraintObj)
     .then(function (mediaStreamObj) {
+
       let video = document.querySelector("video");
 
       const modelParams = {
@@ -71,16 +72,15 @@ const VideoAssessment = (props) => {
       };
 
       // add listeners for saving video/audio
-      // let start = document.getElementById("btnStart");
-      // let stop = document.getElementById("btnStop");
       let vidSave = document.getElementById("vid2");
       let mediaRecorder = new MediaRecorder(mediaStreamObj);
+      console.log(mediaRecorder)
       let chunks = [];
       let model;
       let tracking;
 
-      // start webcam video stream on given video element. Returns a promise that can be used
-      // to validate if user provided video permission.
+      // start webcam video stream on given video element. Returns a promise
+      // that can be used to validate if user provided video permission.
       handTrack.startVideo(video).then((status) => {
         if (status) {
           navigator.getUserMedia(
@@ -106,6 +106,8 @@ const VideoAssessment = (props) => {
       //
       function runDetection() {
         model.detect(video).then((predictions) => {
+          // check to see if desired object (hand) is visible for more then 2 seconds. 
+          // that way we would not have to worry about the handtrackjs recognizing a face for a split second.
           if (predictions.length > 0 && !isRecording) {
             // May be a good idea to give users some visual feedback(blinking red) to let them know we're recording
             isRecording = true;
@@ -129,6 +131,13 @@ const VideoAssessment = (props) => {
         chunks = [];
         let videoURL = window.URL.createObjectURL(blob);
         vidSave.src = videoURL;
+        let formData = new FormData();
+        formData.append("videoStuff", videoURL);
+        if (formData) {
+          console.log(formData)
+        } else {
+          console.log("its empty!")
+        }
         // We could do the post request here and pass the recorded video to DS API
         // full screen posibilities like snapchat like bryan mentioned (Kendra was ok with this)
         // axios.post('api', blob).then()
@@ -140,8 +149,8 @@ const VideoAssessment = (props) => {
 
   return (
     <>
-      {result ? <Overlay result={result} /> : null}
-      {isRecording ? "Placeholder for recording icon" : null}
+      {result ? <Overlay data-testid="resultOverlay" result={result} /> : null}
+      {!isRecording ? "Placeholder for recording icon" : null}
       <video style={{height: "50%", width: "100%"}}></video>
       <video id="vid2" controls></video>
     </>
