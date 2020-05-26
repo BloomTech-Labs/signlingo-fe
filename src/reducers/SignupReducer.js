@@ -2,6 +2,7 @@ import { SIGNUP_START, SIGNUP_SUCCESS, SIGNUP_ERROR } from "../actions/Signup";
 
 export const initialState = {
   email: "",
+  id: null,
   token: "",
   isLoading: false,
   error: null,
@@ -18,8 +19,9 @@ export const signupReducer = (state = initialState, action) => {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        email: action.payload[0].email,
-        token: action.payload[0].token,
+        email: action.payload.email,
+        id: action.payload.id,
+        token: action.payload.token,
         isLoading: false,
       };
     case SIGNUP_ERROR:

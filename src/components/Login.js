@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/Login";
 import * as yup from "yup";
-import SocialButtons from "./SocialButtons";
+// import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -109,16 +109,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = (props) => {
+const Login = ({login}, props) => {
   const classes = useStyles();
   const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  function submitHandler(values) {
-    props.login(values);
-    setTimeout(() => {
-      history.push("/dashboard");
-    }, 1000);
+  const submitHandler = async (values) => {
+    await login(values);
+    
+    history.push("/dashboard");
+
   }
 
   return (
@@ -202,11 +202,11 @@ const Login = (props) => {
         )}
       </Formik>
 
-      <div className="separator">or</div>
+      {/* <div className="separator">or</div>
 
       <p className="socialText">Log in using social media</p>
 
-      <SocialButtons />
+      <SocialButtons /> */}
     </div>
   );
 };
