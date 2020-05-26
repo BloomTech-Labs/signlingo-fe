@@ -202,10 +202,11 @@ const Login = ({login}, props) => {
         )}
       </Formik>
 
+      {/* Below is where SocialButtons.js was before we decided to rescrope our release canvas to not include it.
+      it remains in the code base in case another team figures out the functionality and wants to add an additional
+      means of signing up for the app */}
       {/* <div className="separator">or</div>
-
       <p className="socialText">Log in using social media</p>
-
       <SocialButtons /> */}
     </div>
   );

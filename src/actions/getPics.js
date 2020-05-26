@@ -6,7 +6,8 @@ export const GET_PICS_ERROR = "GET_PICS_ERROR";
 
 export const getPics = (signs) => (dispatch) => {
   dispatch({ type: GET_PICS_START });
-
+  
+  // signs has to remove spacing for paramater to work with backend
   const lessonParameter = signs.replace(/\s/g, "");
 
   axiosWithAuth()

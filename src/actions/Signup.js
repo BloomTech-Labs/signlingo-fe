@@ -11,9 +11,6 @@ export const signup = (obj) => async (dispatch) => {
     .post("/api/auth/register", obj)
     .then((res) => {
       window.localStorage.setItem("token", res.data.token);
-
-      console.log("In Signup data", res);
-
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
     })
     .catch((err) => {

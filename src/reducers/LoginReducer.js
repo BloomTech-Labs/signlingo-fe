@@ -9,6 +9,12 @@ export const initialState = {
   error: null,
 };
 
+// originally there was a separate signUp reducer, but the user information was being saved on
+// a different object causing issues with state/login/signup statuses, 
+// so we ultimately deleted signUp reduder and added those cases here.
+// There is probably a better way to handle this in a more DRY fashion.
+
+
 export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
