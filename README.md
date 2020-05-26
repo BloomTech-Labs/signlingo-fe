@@ -81,9 +81,30 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 - Styling purposes
 
-#### _react-ga_
+#### _Material UI_
 
-- Google analytics
+- Styling purposes
+
+#### _CUID_
+
+- Creates uniqe Id for mapping over data
+
+#### _React Card Flip_
+
+- Makes card flipping functionality more accessible 
+
+#### _Formik_
+
+- Form management 
+
+#### _Yup_
+
+- Form validation
+
+#### _Inter UI_
+
+- For fonts
+
 
 #### Front end deployed to `Amazon Web Services`
 
