@@ -18,8 +18,7 @@ const Lesson = (
   }
 
   const finishedHandler = async () => {
-    //action creator toggles Lesson boolean to true
-    console.log('selectedLesson user_id', selectedLesson.User_ID)
+    //action creator toggles Lesson boolean to true so image will have a checkmark and practice img will light up
     await lessonFinish(selectedLesson.User_ID, selectedLesson.Level);
     history.push("/dashboard");
   }

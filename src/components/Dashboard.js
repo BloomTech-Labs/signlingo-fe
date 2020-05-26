@@ -13,14 +13,18 @@ const Dashboard = (
   const history = useHistory();
 
   function logout() {
+    // state was holding the information from previous logins for levels and selectedLessons so using resetArray to empty before logout
     resetArray();
     window.localStorage.removeItem("token");
     return history.push("/");
   }
 
-  //These action calls call the back end level endpoints in the order we want them back. It is not DRY. There is an async / await here and in the dashLevel action to ensure that stack waits for each promise to return before moving on to next. The DRY option would be to create an ALL LEVELS ENDPOINT ON THE BACKEND.
+  // These action calls call the back end level endpoints in the order we want them back. It is not DRY. 
+  // There is an async / await here and in the dashLevel action to ensure that stack waits for each 
+  // promise to return before moving on to next. The DRY option would be to create an 
+  // ALL LEVELS ENDPOINT ON THE BACKEND.
 
-  const testing = async () => {
+  const fetchLevels = async () => {
     await dashLevel(userId, 1);
     await dashLevel(userId, 2);
     await dashLevel(userId, 3);
@@ -29,8 +33,11 @@ const Dashboard = (
   };
 
   useEffect(() => {
+    // reset Array is used to reset the data stored in signImages and selectedLesson and levels back to empty
+    // this allows for a fresh start everytime a user reaches the dashboard
+    // there is probably a better way to make this work.
     resetArray();
-    testing();
+    fetchLevels();
   }, []);
 
   return (
@@ -50,7 +57,6 @@ function mapStateToProps(state) {
   return {
     userId: state.user.id,
     globalLevel: state.dashLevel.levels,
-    isLoading: state.dashLevel.isLoading,
   };
 }
 

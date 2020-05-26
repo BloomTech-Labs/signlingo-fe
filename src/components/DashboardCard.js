@@ -30,14 +30,15 @@ const DashboardCard = (props) => {
   }
 
   function practiceHandler() {
+    //if statement checks if user has access to entire lesson, and if they completed lesson/practice/quiz before
     if (props.data.Active && props.data.Lesson) {
-      // return redirect to route
+      // return redirect to practice component, which doesn't exist yet
     }
   }
 
   function quizHandler() {
     if (props.data.Active && props.data.Practice) {
-      // return redirect to route
+      // return redirect to quiz component, which doesn't exist yet
     }
   }
 
@@ -62,6 +63,7 @@ const DashboardCard = (props) => {
               />
               <p>{props.data.signs}</p>
             </div>
+            {/*dashboardBttm exists for styling reasons. dashboardTop is not needed */}
             <div className="dashboardBttm">
               <div
                 id="practiceBox"
