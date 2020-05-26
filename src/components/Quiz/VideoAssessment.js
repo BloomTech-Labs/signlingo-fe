@@ -11,8 +11,8 @@ const VideoAssessment = (props) => {
     audio: false,
     video: {
       facingMode: "user",
-      width: { min: 640, ideal: 1280, max: 1920 },
-      height: { min: 480, ideal: 720, max: 1080 },
+      width: { min: 50, ideal: 50, max: 50},
+      height: { min: 50, ideal: 50, max: 50 },
     },
   };
 
@@ -67,14 +67,14 @@ const VideoAssessment = (props) => {
         video.src = window.URL.createObjectURL(mediaStreamObj);
       }
 
-      video.onloadedmetadata = function (ev) {
-        video.play();
-      };
+      // video.onloadedmetadata = function (ev) {
+      //   video.play();
+      // };
 
       // add listeners for saving video/audio
       let vidSave = document.getElementById("vid2");
       let mediaRecorder = new MediaRecorder(mediaStreamObj);
-      console.log(mediaRecorder)
+      // console.log(mediaRecorder)
       let chunks = [];
       let model;
       let tracking;
@@ -82,11 +82,12 @@ const VideoAssessment = (props) => {
       // start webcam video stream on given video element. Returns a promise
       // that can be used to validate if user provided video permission.
       handTrack.startVideo(video).then((status) => {
+        console.log("handtrack status", status)
         if (status) {
           navigator.getUserMedia(
             { video: {} },
             (stream) => {
-              video.srcObject = mediaStreamObj;
+              // video.srcObject = mediaStreamObj;
               tracking = setInterval(runDetection, 500);
             },
             (err) => console.log(err)
@@ -117,7 +118,7 @@ const VideoAssessment = (props) => {
               mediaRecorder.stop();
               isRecording = false;
               console.log("should have stopped recording")
-            }, 4000);
+            }, 200);
           }
         });
       }
@@ -138,6 +139,16 @@ const VideoAssessment = (props) => {
         } else {
           console.log("its empty!")
         }
+        // axios.post("https://signlingoapi.eba-24kd3jtp.us-east-1.elasticbeanstalk.com/test_api", {"hello": blob})
+        //   .then(res => {
+        //     console.log("DS API response", res)
+        //   })
+        //   .catch(err => {
+        //     console.log(err)
+        //   })
+        props.scoreHandler(true)
+
+        // also we now have access to props.testValue and props.scoreHandler
         // We could do the post request here and pass the recorded video to DS API
         // full screen posibilities like snapchat like bryan mentioned (Kendra was ok with this)
         // axios.post('api', blob).then()

@@ -19,8 +19,12 @@ const Quiz = (props) => {
   // videoAssessment needs to be able to turn the next button on after getting results back from DS API
   // Next button needs to be turned on after each letter
 
-  let scoreHandler = () => {
-    return score++;
+  let scoreHandler = (pass) => {
+    if (pass) {
+      ++score;
+    };
+    enableButton = true;
+    console.log(score);
   };
 
   let nextHandler = () => {
@@ -28,6 +32,7 @@ const Quiz = (props) => {
       setCurrentIndex(currentIndex + 1)
       enableButton = false;
     }
+    console.log(currentIndex)
   }
 
   const turnVideoOn = () => {
@@ -45,7 +50,7 @@ const Quiz = (props) => {
         />
         <img className="heart" src="./images/heart.png" alt="heart image" />
       </div>
-  <h1 className="signLabel">Sign {data[currentIndex]}}</h1>
+  <h1 className="signLabel">Sign {data[currentIndex]}</h1>
       {videoOn ? (
         <VideoAssessment testValue = {data[currentIndex]} scoreHandler = {scoreHandler} />
       ) : (
