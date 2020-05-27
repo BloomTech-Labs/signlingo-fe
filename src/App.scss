@@ -402,9 +402,42 @@ div.quiz {
       margin-right: 1rem;
     }
   }
+  .roundbtn {
+    margin-top: 2rem;
+    background-color: #f6bf00;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .roundbtnGrey {
+    background-color: lightgrey;
+  }
+  .roundbtnCircle {
+    margin: 0;
+
+    border: solid white 2px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   button {
     border: none;
-    background: #F2F2F2;
+    background: #f2f2f2;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  button.demoButton {
+    border: none;
+    background: #f6bf00;
     border-radius: 4px;
     height: 4rem;
     margin-top: 2rem;
@@ -413,8 +446,89 @@ div.quiz {
   }
 }
 
+// quiz landing page styling here
+div.quizDemo {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  .quizDemoHead {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    img.closing {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      margin-right: 20%;
+    }
+    p {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      width: 50%;
+    }
+  }
+  div {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    img.progressBar {
+      width: 90%;
+      height: 0.5rem;
+      height: 0.5rem;
+      height: 0.5rem;
+      margin-right: 1rem;
+    }
+  }
+  h1.demoLabel {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  img.quizDemoImage {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  p.demoMessage {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+  button {
+    border: none;
+    background: #f2f2f2;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  button.demoButton {
+    border: none;
+    background: #f6bf00;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
 
-
-
-
-
+//Video Assessment Styles
+.overlayDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  .video {
+    width: 90%;
+    z-index: -1;
+  }
+  .overlay {
+    position: absolute;
+    z-index: 1;
+  }
+}

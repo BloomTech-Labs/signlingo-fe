@@ -74,16 +74,19 @@ const VideoAssessment = (props) => {
         // vidSave.src = videoURL;
         let formData = new FormData();
         formData.append("video", blob);
-        axios.post("https://cors-anywhere.herokuapp.com/http://signlingods.us-east-1.elasticbeanstalk.com/test_api", formData)
-          .then(res => {
-            props.scoreHandler(res.data['Random Test Boolean']);
-            props.setResult(res.data['Random Test Boolean']);
-            console.log(res.data['Random Test Boolean']);
+        axios
+          .post(
+            "https://cors-anywhere.herokuapp.com/http://signlingods.us-east-1.elasticbeanstalk.com/test_api",
+            formData
+          )
+          .then((res) => {
+            props.scoreHandler(res.data["Random Test Boolean"]);
+            props.setResult(res.data["Random Test Boolean"]);
+            console.log(res.data["Random Test Boolean"]);
           })
-          .catch(err => {
-            console.log(err)
-          })
-        
+          .catch((err) => {
+            console.log(err);
+          });
       };
     })
     .catch(function (err) {
@@ -99,17 +102,41 @@ const VideoAssessment = (props) => {
         // props.setIsRecording(false);
         console.log("should have stopped recording");
       }, 100);
-    } 
+    }
     console.log(mediaRecorder.state);
   };
 
   return (
     <>
       {console.log("result", props.result)}
-      {props.result === null ? null : <Overlay data-testid="resultOverlay" result={props.result} />}
-      {props.isRecording ? null : <button onClick={start}>Start Recording</button>}
-      <video style={{ height: "50%", width: "100%" }}></video>
-      {/* <video id="vid2" controls></video> */}
+      <div className="overlayDiv">
+        {props.result === null ? null : (
+            <Overlay className = 'overlay' data-testid="resultOverlay" result={props.result} />
+        )}
+        <video></video>
+      </div>
+      {/* {props.isRecording ? null : (
+        <button onClick={start}>Start Recording</button>
+      )}
+      {props.isRecording ? null : (
+        <div className="roundbtn roundbtnGrey" id="recBtn">
+          <div className="roundbtnCircle">Record</div>
+        </div>
+      )} */}
+      {!props.videoOn && !props.result ? (
+        <div className="roundbtn roundbtnGrey" id="recBtn">
+          <div className="roundbtnCircle">Record</div>
+        </div>
+      ) : (
+        <div onClick={start} className="roundbtn" id="recBtn">
+          <div className="roundbtnCircle">Record</div>
+        </div>
+      )}
+      {/* {
+      pseudocode for chaining ternary ops
+      if videoNotOn, display greyBtn
+      else if 
+      } */}
     </>
   );
 };

@@ -7,7 +7,8 @@ import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
 import Lesson from "./components/Lesson";
 import DashboardCard from "./components/DashboardCard";
-import Quiz from './components/Quiz/Quiz.js';
+import QuizLandingPage from './components/Quiz/QuizLandingPage.js';
+import Quiz from './components/Quiz/Quiz';
 
 function App() {
   return (
@@ -16,8 +17,11 @@ function App() {
           <Route exact path="/">
             <LandingPage />
           </Route>
+          <Route path="/quizLanding">
+            <QuizLandingPage />
+          </Route>
           <Route path="/quiz">
-            <Quiz />
+            <Quiz/>
           </Route>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route exact path="/lesson">

@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import VideoAssessment from "./VideoAssessment";
 
-//  TODO
-//  import ProgressBar and Lives component when its ready (RC 2 or 3) before that put a placeholder image
-//  Need to build up overlays
-//  Idea for currentTestValue: either passed down as props, or read from the URL params
 const Quiz = (props) => {
   const data = ["A", "B", "C", "D", "E"];
   const [videoOn, setVideoOn] = useState(false);
@@ -13,14 +9,6 @@ const Quiz = (props) => {
   const [result, setResult] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [score, setScore] = useState(0);
-  // let score = 0;
-  // let enableButton = false;
-  // state ideas
-  // nextButtonTrue/False,
-  // incrementing integer to keep track of user score,
-  // passing down a function to VideoAssessment to manipulate integer
-  // videoAssessment needs to be able to turn the next button on after getting results back from DS API
-  // Next button needs to be turned on after each letter
 
   let scoreHandler = (pass) => {
     if (pass) {
@@ -47,7 +35,7 @@ const Quiz = (props) => {
   if (currentIndex !== data.length) {
     return (
       <>
-        {/* if we have NOT finished A - E display the following below */}
+        {/* if we have NOT finished A - E, display the following below */}
         <div className="quiz">
           <img
             className="closing"
@@ -71,27 +59,49 @@ const Quiz = (props) => {
               setResult={setResult}
               isRecording={isRecording}
               setIsRecording={setIsRecording}
+              videoOn={videoOn}
+              setVideoOn={setVideoOn}
             />
           ) : (
-            <div className="cameraOverlay">
-              <img
-                onClick={turnVideoOn}
-                src="./images/openCamOverlay.png"
-                alt="turns camera on"
-              ></img>
-            </div>
+            <>
+              <div className="cameraOverlay">
+                <img
+                  onClick={turnVideoOn}
+                  src="./images/openCamOverlay.png"
+                  alt="turns camera on"
+                ></img>
+              </div>
+            </>
           )}
-          <button
-            onClick={nextHandler}
-            disabled={!enableButton}
-            className={enableButton ? "nextButton" : "disableNextButton"}
-          >
-            Next
-          </button>
+          {/* {
+            !videoOn && !result ? 
+            <div className="roundbtn roundbtnGrey" id = 'recBtn'>
+                <div className="roundbtnCircle">Record</div>
+              </div> 
+              :
+              <div className="roundbtn" id = 'recBtn'>
+                <div className="roundbtnCircle">Record</div>
+              </div>
+          } */}
+          {/* {
+            pseudocode for chaining ternary ops
+            if videoNotOn, display greyBtn
+            else if 
+          } */}
+          {result === null ? null : (
+            <button
+              onClick={nextHandler}
+              disabled={!enableButton}
+              className={enableButton ? "nextButton" : "disableNextButton"}
+            >
+              Next
+            </button>
+          )}
         </div>
       </>
     );
   } else {
+    // if we have finshed A-E, display the following
     return (
       <div>
         <img
