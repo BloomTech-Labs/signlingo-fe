@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
-import * as handTrack from "handtrackjs";
 import Overlay from "./Overlay.js";
 
 const VideoAssessment = (props) => {
-  let isRecording = false;
+  const [isRecording, setIsRecording] = useState(false);
+  let mediaRecorder;
+
   const [result, setResult] = useState();
 
   let constraintObj = {
     audio: false,
     video: {
       facingMode: "user",
-      width: { min: 50, ideal: 50, max: 50},
+      width: { min: 50, ideal: 50, max: 50 },
       height: { min: 50, ideal: 50, max: 50 },
     },
   };
@@ -36,7 +37,7 @@ const VideoAssessment = (props) => {
       .enumerateDevices()
       .then((devices) => {
         devices.forEach((device) => {
-          console.log(device.kind.toUpperCase(), device.label);
+          // console.log(device.kind.toUpperCase(), device.label);
           //, device.deviceId
         });
       })
@@ -49,16 +50,7 @@ const VideoAssessment = (props) => {
   navigator.mediaDevices
     .getUserMedia(constraintObj)
     .then(function (mediaStreamObj) {
-
       let video = document.querySelector("video");
-
-      const modelParams = {
-        flipHorizontal: true, // flip e.g for video
-        imageScaleFactor: 0.7, // reduce input image size for gains in speed.
-        maxNumBoxes: 20, // maximum number of boxes to detect
-        iouThreshold: 0.5, // ioU threshold for non-max suppression
-        scoreThreshold: 0.6, // confidence threshold for predictions.
-      };
 
       if ("srcObject" in video) {
         video.srcObject = mediaStreamObj;
@@ -67,61 +59,12 @@ const VideoAssessment = (props) => {
         video.src = window.URL.createObjectURL(mediaStreamObj);
       }
 
-      // video.onloadedmetadata = function (ev) {
-      //   video.play();
-      // };
+      video.onloadedmetadata = function (ev) {
+        video.play();
+      };
 
-      // add listeners for saving video/audio
-      let vidSave = document.getElementById("vid2");
-      let mediaRecorder = new MediaRecorder(mediaStreamObj);
-      // console.log(mediaRecorder)
+      mediaRecorder = new MediaRecorder(mediaStreamObj);
       let chunks = [];
-      let model;
-      let tracking;
-
-      // start webcam video stream on given video element. Returns a promise
-      // that can be used to validate if user provided video permission.
-      handTrack.startVideo(video).then((status) => {
-        console.log("handtrack status", status)
-        if (status) {
-          navigator.getUserMedia(
-            { video: {} },
-            (stream) => {
-              // video.srcObject = mediaStreamObj;
-              tracking = setInterval(runDetection, 500);
-            },
-            (err) => console.log(err)
-          );
-        }
-      });
-
-      // load the model with optional params (found in modelParams above)
-      handTrack.load(modelParams).then((lmodel) => {
-        model = lmodel;
-        console.log("video is loaded");
-        model.detect(video).then((predictions) => {
-          console.log("Predictions: ", predictions);
-        });
-      });
-
-      //
-      function runDetection() {
-        model.detect(video).then((predictions) => {
-          // check to see if desired object (hand) is visible for more then 2 seconds. 
-          // that way we would not have to worry about the handtrackjs recognizing a face for a split second.
-          if (predictions.length > 0 && !isRecording) {
-            // May be a good idea to give users some visual feedback(blinking red) to let them know we're recording
-            isRecording = true;
-            clearInterval(tracking);
-            mediaRecorder.start();
-            setTimeout(function () {
-              mediaRecorder.stop();
-              isRecording = false;
-              console.log("should have stopped recording")
-            }, 200);
-          }
-        });
-      }
 
       mediaRecorder.ondataavailable = function (ev) {
         chunks.push(ev.data);
@@ -131,39 +74,43 @@ const VideoAssessment = (props) => {
         let blob = new Blob(chunks, { type: "video/mp4;" });
         chunks = [];
         let videoURL = window.URL.createObjectURL(blob);
-        vidSave.src = videoURL;
+        // vidSave.src = videoURL;
         let formData = new FormData();
-        formData.append("videoStuff", videoURL);
-        if (formData) {
-          console.log(formData)
-        } else {
-          console.log("its empty!")
-        }
-        // axios.post("https://signlingoapi.eba-24kd3jtp.us-east-1.elasticbeanstalk.com/test_api", {"hello": blob})
-        //   .then(res => {
-        //     console.log("DS API response", res)
-        //   })
-        //   .catch(err => {
-        //     console.log(err)
-        //   })
-        props.scoreHandler(true)
-
-        // also we now have access to props.testValue and props.scoreHandler
-        // We could do the post request here and pass the recorded video to DS API
-        // full screen posibilities like snapchat like bryan mentioned (Kendra was ok with this)
-        // axios.post('api', blob).then()
+        formData.append("video", blob);
+        console.log("formdata type",typeof(formData))
+        axios.post("https://cors-anywhere.herokuapp.com/http://signlingods.us-east-1.elasticbeanstalk.com/test_api", formData)
+          .then(res => {
+            console.log("DS API response", res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
+        props.scoreHandler(false);
       };
     })
     .catch(function (err) {
       console.log(err.name, err.message);
     });
 
+  const start = (ev) => {
+    if (!isRecording) {
+      mediaRecorder.start();
+      setIsRecording(true);
+      setTimeout(function () {
+        mediaRecorder.stop();
+        setIsRecording(false);
+        console.log("should have stopped recording");
+      }, 100);
+    } 
+    console.log(mediaRecorder.state);
+  };
+
   return (
     <>
       {result ? <Overlay data-testid="resultOverlay" result={result} /> : null}
-      {!isRecording ? "Placeholder for recording icon" : null}
-      <video style={{height: "50%", width: "100%"}}></video>
-      <video id="vid2" controls></video>
+      {isRecording ? "Recording Your Video" : <button onClick={start}>Start Recording</button>}
+      <video style={{ height: "50%", width: "100%" }}></video>
+      {/* <video id="vid2" controls></video> */}
     </>
   );
 };
