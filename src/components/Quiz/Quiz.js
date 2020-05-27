@@ -6,62 +6,123 @@ import VideoAssessment from "./VideoAssessment";
 //  Need to build up overlays
 //  Idea for currentTestValue: either passed down as props, or read from the URL params
 const Quiz = (props) => {
-
-  const data = ['a', 'b', 'c', 'd', 'e'];
+  const data = ["A", "B", "C", "D", "E"];
   const [videoOn, setVideoOn] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  let score = 0;
-  let enableButton = false;
+  const [enableButton, setEnableButton] = useState(false);
+  const [result, setResult] = useState(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const [score, setScore] = useState(0);
+  // let score = 0;
+  // let enableButton = false;
   // state ideas
-  // nextButtonTrue/False, 
-  // incrementing integer to keep track of user score, 
+  // nextButtonTrue/False,
+  // incrementing integer to keep track of user score,
   // passing down a function to VideoAssessment to manipulate integer
   // videoAssessment needs to be able to turn the next button on after getting results back from DS API
   // Next button needs to be turned on after each letter
 
   let scoreHandler = (pass) => {
     if (pass) {
-      ++score;
-    };
-    enableButton = true;
-    console.log(score);
+      setScore(score + 1);
+    }
+    setEnableButton(true);
+    console.log("score", score);
   };
 
   let nextHandler = () => {
     if (enableButton) {
-      setCurrentIndex(currentIndex + 1)
-      enableButton = false;
+      setCurrentIndex(currentIndex + 1);
+      setEnableButton(false);
+      setResult(null);
+      setIsRecording(false);
     }
-    console.log(currentIndex)
-  }
+    console.log(currentIndex);
+  };
 
   const turnVideoOn = () => {
     setVideoOn(true);
   };
 
-  return (
-    <div className="quiz">
-      <img className="closing" src="./images/exitBlackX.png" alt="exit image" />
-      <div className="progressHolder">
-        <img
-          className="progressBar"
-          src="./images/progressBar.png"
-          alt="progress bar image"
-        />
-        <img className="heart" src="./images/heart.png" alt="heart image" />
-      </div>
-  <h1 className="signLabel">Sign {data[currentIndex]}</h1>
-      {videoOn ? (
-        <VideoAssessment testValue = {data[currentIndex]} scoreHandler = {scoreHandler} />
-      ) : (
-        <div className="cameraOverlay">
-          <img onClick={turnVideoOn} src="./images/openCamOverlay.png" alt="turns camera on"></img>
+  if (currentIndex !== data.length) {
+    return (
+      <>
+        {/* if we have NOT finished A - E display the following below */}
+        <div className="quiz">
+          <img
+            className="closing"
+            src="./images/exitBlackX.png"
+            alt="exit image"
+          />
+          <div className="progressHolder">
+            <img
+              className="progressBar"
+              src="./images/progressBar.png"
+              alt="progress bar image"
+            />
+            <img className="heart" src="./images/heart.png" alt="heart image" />
+          </div>
+          <h1 className="signLabel">Sign "{data[currentIndex]}"</h1>
+          {videoOn ? (
+            <VideoAssessment
+              testValue={data[currentIndex]}
+              scoreHandler={scoreHandler}
+              result={result}
+              setResult={setResult}
+              isRecording={isRecording}
+              setIsRecording={setIsRecording}
+            />
+          ) : (
+            <div className="cameraOverlay">
+              <img
+                onClick={turnVideoOn}
+                src="./images/openCamOverlay.png"
+                alt="turns camera on"
+              ></img>
+            </div>
+          )}
+          <button
+            onClick={nextHandler}
+            disabled={!enableButton}
+            className={enableButton ? "nextButton" : "disableNextButton"}
+          >
+            Next
+          </button>
         </div>
-      )}
-      <button onClick={nextHandler} disabled={!enableButton} className={enableButton ? "nextButton" : "disableNextButton"}>Next</button> 
-    </div>
-  );
+      </>
+    );
+  } else {
+    return (
+      <div>
+        <img
+          className="closing"
+          src="./images/exitBlackX.png"
+          alt="exit image"
+        />
+        <h1 className="signLabel">{`Your Score: ${score}/${data.length}`}</h1>
+        {score === data.length ? (
+          <>
+            <img
+              className="quizSuccess"
+              src="./images/success.png"
+              alt="successful quiz attempt"
+            />{" "}
+            <button>Finish</button>
+          </>
+        ) : (
+          <>
+            <img
+              className="quizFailure"
+              src="./images/failure.png"
+              alt="failed quiz attempt"
+            />
+            <button>Finish</button>
+            <button>Try Again?</button>
+          </>
+        )}
+      </div>
+    );
+  }
 };
 
 export default Quiz;
-

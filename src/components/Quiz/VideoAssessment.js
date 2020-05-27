@@ -3,10 +3,7 @@ import axios from "axios";
 import Overlay from "./Overlay.js";
 
 const VideoAssessment = (props) => {
-  const [isRecording, setIsRecording] = useState(false);
   let mediaRecorder;
-
-  const [result, setResult] = useState();
 
   let constraintObj = {
     audio: false,
@@ -77,15 +74,16 @@ const VideoAssessment = (props) => {
         // vidSave.src = videoURL;
         let formData = new FormData();
         formData.append("video", blob);
-        console.log("formdata type",typeof(formData))
         axios.post("https://cors-anywhere.herokuapp.com/http://signlingods.us-east-1.elasticbeanstalk.com/test_api", formData)
           .then(res => {
-            console.log("DS API response", res)
+            props.scoreHandler(res.data['Random Test Boolean']);
+            props.setResult(res.data['Random Test Boolean']);
+            console.log(res.data['Random Test Boolean']);
           })
           .catch(err => {
             console.log(err)
           })
-        props.scoreHandler(false);
+        
       };
     })
     .catch(function (err) {
@@ -93,12 +91,12 @@ const VideoAssessment = (props) => {
     });
 
   const start = (ev) => {
-    if (!isRecording) {
+    if (!props.isRecording) {
       mediaRecorder.start();
-      setIsRecording(true);
+      props.setIsRecording(true);
       setTimeout(function () {
         mediaRecorder.stop();
-        setIsRecording(false);
+        // props.setIsRecording(false);
         console.log("should have stopped recording");
       }, 100);
     } 
@@ -107,8 +105,9 @@ const VideoAssessment = (props) => {
 
   return (
     <>
-      {result ? <Overlay data-testid="resultOverlay" result={result} /> : null}
-      {isRecording ? "Recording Your Video" : <button onClick={start}>Start Recording</button>}
+      {console.log("result", props.result)}
+      {props.result === null ? null : <Overlay data-testid="resultOverlay" result={props.result} />}
+      {props.isRecording ? null : <button onClick={start}>Start Recording</button>}
       <video style={{ height: "50%", width: "100%" }}></video>
       {/* <video id="vid2" controls></video> */}
     </>
