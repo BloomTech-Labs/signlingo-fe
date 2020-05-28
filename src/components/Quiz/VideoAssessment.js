@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Overlay from "./Overlay.js";
-
 const VideoAssessment = (props) => {
   let mediaRecorder;
-
   let constraintObj = {
     audio: false,
     video: {
       facingMode: "user",
-      width: { min: 50, ideal: 50, max: 50 },
-      height: { min: 50, ideal: 50, max: 50 },
+      width: { min: 640, ideal: 1280, max: 1920 },
+      height: { min: 480, ideal: 720, max: 1080 } 
     },
   };
-
   //handle older browsers that might implement getUserMedia in some way
   if (navigator.mediaDevices === undefined) {
     navigator.mediaDevices = {};
@@ -42,31 +39,25 @@ const VideoAssessment = (props) => {
         console.log(err.name, err.message);
       });
   }
-
   // this is where we access the webcam
   navigator.mediaDevices
     .getUserMedia(constraintObj)
     .then(function (mediaStreamObj) {
       let video = document.querySelector("video");
-
       if ("srcObject" in video) {
         video.srcObject = mediaStreamObj;
       } else {
         //old version
         video.src = window.URL.createObjectURL(mediaStreamObj);
       }
-
       video.onloadedmetadata = function (ev) {
         video.play();
       };
-
       mediaRecorder = new MediaRecorder(mediaStreamObj);
       let chunks = [];
-
       mediaRecorder.ondataavailable = function (ev) {
         chunks.push(ev.data);
       };
-
       mediaRecorder.onstop = (ev) => {
         let blob = new Blob(chunks, { type: "video/mp4;" });
         chunks = [];
@@ -92,7 +83,6 @@ const VideoAssessment = (props) => {
     .catch(function (err) {
       console.log(err.name, err.message);
     });
-
   const start = (ev) => {
     if (!props.isRecording) {
       mediaRecorder.start();
@@ -105,15 +95,14 @@ const VideoAssessment = (props) => {
     }
     console.log(mediaRecorder.state);
   };
-
   return (
     <>
       {console.log("result", props.result)}
       <div className="overlayDiv">
+        <video className="video"></video>
         {props.result === null ? null : (
-            <Overlay className = 'overlay' data-testid="resultOverlay" result={props.result} />
+            <Overlay data-testid="resultOverlay" result={props.result} />
         )}
-        <video></video>
       </div>
       {/* {props.isRecording ? null : (
         <button onClick={start}>Start Recording</button>
@@ -140,5 +129,4 @@ const VideoAssessment = (props) => {
     </>
   );
 };
-
 export default VideoAssessment;

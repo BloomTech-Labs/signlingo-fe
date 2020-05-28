@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import VideoAssessment from "./VideoAssessment";
-
 const Quiz = (props) => {
   const data = ["A", "B", "C", "D", "E"];
   const [videoOn, setVideoOn] = useState(false);
@@ -9,7 +8,6 @@ const Quiz = (props) => {
   const [result, setResult] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [score, setScore] = useState(0);
-
   let scoreHandler = (pass) => {
     if (pass) {
       setScore(score + 1);
@@ -17,21 +15,20 @@ const Quiz = (props) => {
     setEnableButton(true);
     console.log("score", score);
   };
-
   let nextHandler = () => {
     if (enableButton) {
       setCurrentIndex(currentIndex + 1);
       setEnableButton(false);
       setResult(null);
       setIsRecording(false);
+      document.querySelector("video").classList.remove("videoSuccess")
+      document.querySelector("video").classList.remove("videoFail")
     }
     console.log(currentIndex);
   };
-
   const turnVideoOn = () => {
     setVideoOn(true);
   };
-
   if (currentIndex !== data.length) {
     return (
       <>
@@ -117,22 +114,21 @@ const Quiz = (props) => {
               src="./images/success.png"
               alt="successful quiz attempt"
             />{" "}
-            <button>Finish</button>
+            <button className="finishButton">Finish</button>
           </>
         ) : (
-          <>
+          <div className="quizFailPage">
             <img
               className="quizFailure"
               src="./images/failure.png"
               alt="failed quiz attempt"
             />
-            <button>Finish</button>
-            <button>Try Again?</button>
-          </>
+            <button className="finishButton">Finish</button>
+            <button className="tryAgainButton">Try Again?</button>
+          </div>
         )}
       </div>
     );
   }
 };
-
 export default Quiz;
