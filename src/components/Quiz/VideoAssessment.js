@@ -8,7 +8,7 @@ const VideoAssessment = (props) => {
     video: {
       facingMode: "user",
       width: { min: 640, ideal: 1280, max: 1920 },
-      height: { min: 480, ideal: 720, max: 1080 } 
+      height: { min: 480, ideal: 720, max: 1080 },
     },
   };
   //handle older browsers that might implement getUserMedia in some way
@@ -73,6 +73,7 @@ const VideoAssessment = (props) => {
           .then((res) => {
             props.scoreHandler(res.data["Random Test Boolean"]);
             props.setResult(res.data["Random Test Boolean"]);
+            props.setIsRecording(false);
             console.log(res.data["Random Test Boolean"]);
           })
           .catch((err) => {
@@ -89,7 +90,6 @@ const VideoAssessment = (props) => {
       props.setIsRecording(true);
       setTimeout(function () {
         mediaRecorder.stop();
-        // props.setIsRecording(false);
         console.log("should have stopped recording");
       }, 100);
     }
@@ -101,7 +101,7 @@ const VideoAssessment = (props) => {
       <div className="overlayDiv">
         <video className="video"></video>
         {props.result === null ? null : (
-            <Overlay data-testid="resultOverlay" result={props.result} />
+          <Overlay data-testid="resultOverlay" result={props.result} />
         )}
       </div>
       {/* {props.isRecording ? null : (
@@ -116,17 +116,24 @@ const VideoAssessment = (props) => {
         <div className="roundbtn roundbtnGrey" id="recBtn">
           <div className="roundbtnCircle">Record</div>
         </div>
-      ) : (
+      ) : props.isRecording ? (
+        <div className="spinner-box">
+          <span id="loading">Loading...</span>
+          <div className="circle-border">
+            <div className="circle-core"></div>
+          </div>  
+        </div>
+      ) : props.result === null ? (
         <div onClick={start} className="roundbtn" id="recBtn">
           <div className="roundbtnCircle">Record</div>
         </div>
-      )}
+      ) : null}
       {/* {
       pseudocode for chaining ternary ops
       if videoNotOn, display greyBtn
       else if 
       } */}
-    </>
+    </>                         
   );
 };
 export default VideoAssessment;
