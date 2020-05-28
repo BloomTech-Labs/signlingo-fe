@@ -3,15 +3,21 @@ import { useHistory } from "react-router-dom";
 
 const QuizLandingPage = (props) => {
   let history = useHistory();
+
   const handleQuizSubmit = () => {
     history.push(`/quiz`);
   };
+
+  const backToDash = () => {
+    return history.push("/dashboard");
+  }
 
   return (
     <>
       <div className="quizDemo">
         <div className="quizDemoHead">
           <img
+            onClick={backToDash}
             className="closing"
             src="./images/exitBlackX.png"
             alt="exit image"

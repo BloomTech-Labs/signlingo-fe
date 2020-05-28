@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import VideoAssessment from "./VideoAssessment";
+import { useHistory } from 'react-router-dom';
+
 const Quiz = (props) => {
   const data = ["A", "B", "C", "D", "E"];
   const [videoOn, setVideoOn] = useState(false);
@@ -8,6 +10,16 @@ const Quiz = (props) => {
   const [result, setResult] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [score, setScore] = useState(0);
+  let history = useHistory();
+
+  const backToDash= () => {
+    return history.push("/dashboard");
+  }
+
+  function backToLanding() {
+    return window.location.pathname = "/quiz";
+  }
+
   let scoreHandler = (pass) => {
     if (pass) {
       setScore(score + 1);
@@ -21,8 +33,8 @@ const Quiz = (props) => {
       setEnableButton(false);
       setResult(null);
       setIsRecording(false);
-      document.querySelector("video").classList.remove("videoSuccess")
-      document.querySelector("video").classList.remove("videoFail")
+      document.querySelector("video").classList.remove("videoSuccess");
+      document.querySelector("video").classList.remove("videoFail");
     }
     console.log(currentIndex);
   };
@@ -35,6 +47,7 @@ const Quiz = (props) => {
         {/* if we have NOT finished A - E, display the following below */}
         <div className="quiz">
           <img
+            onClick={backToDash}
             className="closing"
             src="./images/exitBlackX.png"
             alt="exit image"
@@ -100,31 +113,35 @@ const Quiz = (props) => {
   } else {
     // if we have finshed A-E, display the following
     return (
-      <div>
-        <img
-          className="closing"
-          src="./images/exitBlackX.png"
-          alt="exit image"
-        />
+      <div className="quizDemo">
+        <div className="quizDemoHead">
+          <img
+            onClick={backToDash}
+            className="closing"
+            src="./images/exitBlackX.png"
+            alt="exit image"
+          />
+          <p>Quiz</p>
+        </div>
         <h1 className="signLabel">{`Your Score: ${score}/${data.length}`}</h1>
         {score === data.length ? (
-          <>
+          <div className = "resultsPage">
             <img
               className="quizSuccess"
               src="./images/success.png"
               alt="successful quiz attempt"
             />{" "}
-            <button className="finishButton">Finish</button>
-          </>
+            <button onClick={backToDash} className="finishButton">Finish</button>
+          </div>
         ) : (
-          <div className="quizFailPage">
+          <div className="resultsPage">
             <img
               className="quizFailure"
               src="./images/failure.png"
-              alt="failed quiz attempt"
+              alt="failed quiz attempt"                          
             />
-            <button className="finishButton">Finish</button>
-            <button className="tryAgainButton">Try Again?</button>
+            <button onClick={backToDash} className="finishButton">Finish</button>
+            <button onClick={backToLanding} className="tryAgainButton">Try Again?</button>
           </div>
         )}
       </div>
