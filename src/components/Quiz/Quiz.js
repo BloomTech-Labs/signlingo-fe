@@ -52,14 +52,14 @@ const Quiz = (props) => {
             src="./images/exitBlackX.png"
             alt="exit image"
           />
-          <div className="progressHolder">
+          {/* <div className="progressHolder">
             <img
               className="progressBar"
               src="./images/progressBar.png"
               alt="progress bar image"
             />
             <img className="heart" src="./images/heart.png" alt="heart image" />
-          </div>
+          </div> */}
           <h1 className="signLabel">Sign "{data[currentIndex]}"</h1>
           {videoOn ? (
             <VideoAssessment
