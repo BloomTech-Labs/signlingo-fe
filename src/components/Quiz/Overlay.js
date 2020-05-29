@@ -1,14 +1,29 @@
-import React from 'react';
-
+import React from "react";
 const Overlay = (props) => {
-
-   return (
-      <>
-      <p>This is a placeholder for the overlay component</p>
-      {props.result ? <img src='./images/checkMarkOverlay.png' alt='green checkmark = correct answer'/> : <img src='./images/redXOverlay.png' alt='red x = wrong answer'/>}
-      </>
-   );
-
+  return (
+    <div className='overlay'>
+      {props.result ? (
+        <>
+        <img
+          className="resultImg"
+          src="./images/checkMarkOverlay.png"
+          alt="green checkmark = correct answer"
+          />
+          {document.querySelector("video").classList.add("videoSuccess")}
+          {/* {setTimeout(function() {userChoice_div.classList.remove("videoSuccess"); }, 300)} */}
+          </>
+      ) : (
+        <>
+        <img
+          className="resultImg"
+          src="./images/redXOverlay.png"
+          alt="red x wrong answer"
+        />
+        {document.querySelector("video").classList.add("videoFail")}
+        {/* {setTimeout(function() {userChoice_div.classList.remove("videoFail"); }, 300)}; */}
+        </>
+      )}
+    </div>
+  );
 };
-
-export default Overlay
+export default Overlay;

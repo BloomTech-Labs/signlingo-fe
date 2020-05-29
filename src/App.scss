@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-
 //universal reset
 * {
   padding: 0;
@@ -7,14 +6,12 @@
   box-sizing: border-box;
   max-width: 100%;
 }
-
 html {
   font-size: 62.5%;
 }
 h1 {
   font-size: 1.8rem;
 }
-
 .App {
   text-align: center;
   font-family: "Inter", sans-serif;
@@ -22,22 +19,18 @@ h1 {
   max-width: 1000px;
   margin: 0 auto;
 }
-
 //Landing Page component starts here ************************************************
 .heroDiv {
   position: relative;
   display: inline-block;
-
   img {
     width: 100%;
   }
-
   .heroText {
     position: absolute;
     width: 200px;
     top: 10px;
     left: 18px;
-
     #logo {
       font-size: 3.6rem;
       line-height: 44px;
@@ -45,7 +38,6 @@ h1 {
       color: #212121;
       display: flex;
     }
-
     #slogan {
       font-weight: 500;
       font-size: 1.8rem;
@@ -59,7 +51,6 @@ h1 {
     position: absolute;
     top: 10px;
     right: 10px;
-
     #login {
       font-weight: 500;
       font-size: 1.4rem;
@@ -68,10 +59,8 @@ h1 {
     }
   }
 }
-
 .landingContent {
   padding: 2%;
-
   #landingBtn {
     background-color: #f6bf00;
     border-radius: 4px;
@@ -84,13 +73,11 @@ h1 {
     color: #333333;
     cursor: pointer;
   }
-
   .landingBoxes {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-flow: row wrap;
-
     section {
       padding: 4% 1.5%;
       width: 43%;
@@ -101,7 +88,6 @@ h1 {
     }
   }
 }
-
 // LOGIN AND SIGN UP starts here ************************************************
 //Line that separates the signup/login forms and the social button component
 .separator {
@@ -129,7 +115,6 @@ h1 {
 .separator::after {
   margin-left: 0.25em;
 }
-
 //Text above social buttons
 .socialText {
   color: #4f4f4f;
@@ -137,14 +122,12 @@ h1 {
   line-height: 1.7rem;
   font-family: "Inter", sans-serif;
 }
-
 //SocialButton component starts here ************************************************
 .socialBtns {
   margin: 4% 0 0 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
-
   .facebookBtn {
     padding: 3% 0%;
     width: 47%;
@@ -158,12 +141,10 @@ h1 {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-
     #fImage {
       margin-right: 3%;
     }
   }
-
   .googleBtn {
     padding: 3% 0%;
     width: 47%;
@@ -177,23 +158,19 @@ h1 {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-
     #gImage {
       margin-right: 3%;
     }
   }
 }
-
 .accountBar {
   display: flex;
   max-width: 100%;
-
   h1 {
     //places the h1 in accountBar in the center
     flex: 1 0 auto;
   }
 }
-
 //Material Ui labels class
 .MuiButton-label {
   color: #333333;
@@ -202,9 +179,7 @@ h1 {
   text-transform: none;
   font-size: 1.2rem;
 }
-
 // dashboard component starts here ************************************************
-
 .logoutDiv {
   display: flex;
   justify-content: flex-end;
@@ -213,111 +188,90 @@ h1 {
     font-size: 1.4rem;
   }
 }
-
 //unlocked level on dashboard starts here
 .dashboard {
   padding: 5%;
-
   h1 {
     text-align: left;
   }
-
   .progressBar {
     display: flex;
     justify-content: space-between;
     margin-top: 3%;
   }
-
   .dashboardContent {
     display: flex;
     flex-direction: column;
     margin: 5% 0 10% 0;
-
     p {
       font-size: 1.2rem;
       font-weight: 600;
       margin-top: 2.5%;
       color: #4f4f4f;
     }
-
     .dashboardBttm {
       display: flex;
       justify-content: center;
-
       .locked {
         opacity: 0.3;
       }
-
       #practiceBox {
         margin-right: 6%;
       }
-
       #quizBox {
         margin-left: 6%;
       }
     }
   }
 }
-
 //Disabled lever on dashboard starts here
 .dashboardBw {
   padding: 5%;
   background: rgba(245, 245, 245, 0.68);
-
   h1 {
     text-align: left;
     color: #bdbdbd;
   }
-
   .progressBar {
     display: flex;
     justify-content: space-between;
     margin-top: 3%;
   }
-
   .dashboardContent {
     display: flex;
     flex-direction: column;
     margin: 5% 0 10% 0;
-
     p {
       font-size: 1.2rem;
       font-weight: 600;
       margin-top: 2.5%;
       color: #bdbdbd;
     }
-
     .dashboardBttm {
       display: flex;
       // justify-content: space-around;
       justify-content: center;
-
       #practiceBox {
         margin-right: 6%;
       }
-
       #quizBox {
         margin-left: 6%;
       }
     }
   }
 }
-
 //Lesson.js starts here ************************************************
 .lesson {
   padding: 5%;
-
   .lessonBar {
     // border: 1px solid blue;
     display: flex;
     max-width: 100%;
     margin-bottom: 15%;
-
     h3 {
       flex: 1 0 auto;
     }
   }
-
   .finishedBttn {
     box-shadow: none;
     margin: 10% 0 15% 0;
@@ -328,12 +282,10 @@ h1 {
     border-radius: 4px;
     background: #f2f2f2;
   }
-
   .finishedBttnActive {
     background: #f6bf00;
   }
 }
-
 // LessonCard.js starts here ************************************************
 .lessonCards {
   width: 332px;
@@ -348,33 +300,28 @@ h1 {
   justify-content: center;
   align-items: center;
   position: relative;
-
   .flipArrow {
     top: 10px;
     right: 10px;
     position: absolute;
   }
-
   b {
     font-size: 6.4rem;
   }
 }
-
 // Quiz Styling Here:
-
 div.quiz {
-  max-width: 800px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 0 3%;
   img.closing {
     align-self: flex-start;
     padding-top: 2rem;
     padding-bottom: 2rem;
   }
   h1 {
-    align-self: flex-start;
+    align-self: center;
     margin-bottom: 2rem;
   }
   .progressHolder {
@@ -402,9 +349,176 @@ div.quiz {
       margin-right: 1rem;
     }
   }
+  .roundbtn {
+    margin-top: 2rem;
+    background-color: #f6bf00;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .roundbtnGrey {
+    background-color: lightgrey;
+  }
+  .roundbtnCircle {
+    margin: 0;
+    border: solid white 2px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // for recording button loader state
+  /* KEYFRAMES */
+
+  @keyframes spin {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* GRID STYLING */
+
+  .spinner-box {
+    margin-top:2rem;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    background-color: transparent;
+    span {
+      padding-bottom: 1rem;
+    }
+  }
+
+  .circle-border {
+    //margin-top: 1rem;
+    width: 70px;
+    height: 70px;
+    // padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(246, 191, 0, 0.5) 33%,
+      rgba(246, 191, 0, 1) 100%
+    );
+    animation: spin 0.8s linear 0s infinite;
+  }
+
+  .circle-core {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  #loading {
+    position: absolute;
+    text-align: center;
+    z-index: 1;
+  }
+
   button {
     border: none;
-    background: #F2F2F2;
+    background: #f2f2f2;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  button.demoButton {
+    border: none;
+    background: #f6bf00;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .nextButton {
+    background-color: #f6bf00;
+  }
+}
+// quiz landing page styling here
+div.quizDemo {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  .quizDemoHead {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    img.closing {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      margin-right: 20%;
+    }
+    p {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      width: 50%;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  div {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    img.progressBar {
+      width: 90%;
+      height: 0.5rem;
+      height: 0.5rem;
+      height: 0.5rem;
+      margin-right: 1rem;
+    }
+  }
+  h1.demoLabel {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  img.quizDemoImage {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  p.demoMessage {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+  button {
+    border: none;
+    background: #f2f2f2;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  button.demoButton {
+    border: none;
+    background: #f6bf00;
     border-radius: 4px;
     height: 4rem;
     margin-top: 2rem;
@@ -412,9 +526,41 @@ div.quiz {
     font-weight: bold;
   }
 }
+//Video Assessment Styles
+.overlay {
+  position: absolute;
+}
+.videoSuccess {
+  border: 5px solid #a0d468;
+}
+.videoFail {
+  border: 5px solid #eb5757;
+}
 
-
-
-
-
-
+.resultsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 3%;
+  img {
+    max-width: 270px;
+    margin-top: 4rem;
+  }
+  button {
+    border: none;
+    background: #f6bf00;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  button.finishButton {
+    background: #f6bf00;
+    margin-top: 8rem;
+  }
+  button.tryAgainButton {
+    background: #f2f2f2;
+  }
+}

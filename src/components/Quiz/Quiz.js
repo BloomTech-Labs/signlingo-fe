@@ -1,67 +1,151 @@
 import React, { useState } from "react";
 import VideoAssessment from "./VideoAssessment";
+import { useHistory } from 'react-router-dom';
 
-//  TODO
-//  import ProgressBar and Lives component when its ready (RC 2 or 3) before that put a placeholder image
-//  Need to build up overlays
-//  Idea for currentTestValue: either passed down as props, or read from the URL params
 const Quiz = (props) => {
-
-  const data = ['a', 'b', 'c', 'd', 'e'];
+  const data = ["A", "B", "C", "D", "E"];
   const [videoOn, setVideoOn] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  let score = 0;
-  let enableButton = false;
-  // state ideas
-  // nextButtonTrue/False, 
-  // incrementing integer to keep track of user score, 
-  // passing down a function to VideoAssessment to manipulate integer
-  // videoAssessment needs to be able to turn the next button on after getting results back from DS API
-  // Next button needs to be turned on after each letter
+  const [enableButton, setEnableButton] = useState(false);
+  const [result, setResult] = useState(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const [score, setScore] = useState(0);
+  let history = useHistory();
+
+  const backToDash= () => {
+    return history.push("/dashboard");
+  }
+
+  function backToLanding() {
+    return window.location.pathname = "/quiz";
+  }
 
   let scoreHandler = (pass) => {
     if (pass) {
-      ++score;
-    };
-    enableButton = true;
+      setScore(score + 1);
+    }
+    setEnableButton(true);
     console.log("score", score);
   };
-
   let nextHandler = () => {
     if (enableButton) {
-      setCurrentIndex(currentIndex + 1)
-      enableButton = false;
+      setCurrentIndex(currentIndex + 1);
+      setEnableButton(false);
+      setResult(null);
+      setIsRecording(false);
+      document.querySelector("video").classList.remove("videoSuccess");
+      document.querySelector("video").classList.remove("videoFail");
     }
-    console.log("currentIndex", currentIndex)
-  }
-
+    console.log(currentIndex);
+  };
   const turnVideoOn = () => {
     setVideoOn(true);
   };
-
-  return (
-    <div className="quiz">
-      <img className="closing" src="./images/exitBlackX.png" alt="exit image" />
-      <div className="progressHolder">
-        <img
-          className="progressBar"
-          src="./images/progressBar.png"
-          alt="progress bar image"
-        />
-        <img className="heart" src="./images/heart.png" alt="heart image" />
-      </div>
-  <h1 className="signLabel">Sign {data[currentIndex]}</h1>
-      {videoOn ? (
-        <VideoAssessment testValue = {data[currentIndex]} scoreHandler = {scoreHandler} />
-      ) : (
-        <div className="cameraOverlay">
-          <img onClick={turnVideoOn} src="./images/openCamOverlay.png" alt="turns camera on"></img>
+  if (currentIndex !== data.length) {
+    return (
+      <>
+        {/* if we have NOT finished A - E, display the following below */}
+        <div className="quiz">
+          <img
+            onClick={backToDash}
+            className="closing"
+            src="./images/exitBlackX.png"
+            alt="exit image"
+          />
+          <div className="progressHolder">
+            <img
+              className="progressBar"
+              src="./images/progressBar.png"
+              alt="progress bar image"
+            />
+            <img className="heart" src="./images/heart.png" alt="heart image" />
+          </div>
+          <h1 className="signLabel">Sign "{data[currentIndex]}"</h1>
+          {videoOn ? (
+            <VideoAssessment
+              testValue={data[currentIndex]}
+              scoreHandler={scoreHandler}
+              result={result}
+              setResult={setResult}
+              isRecording={isRecording}
+              setIsRecording={setIsRecording}
+              videoOn={videoOn}
+              setVideoOn={setVideoOn}
+            />
+          ) : (
+            <>
+              <div className="cameraOverlay">
+                <img
+                  onClick={turnVideoOn}
+                  src="./images/openCamOverlay.png"
+                  alt="turns camera on"
+                ></img>
+              </div>
+            </>
+          )}
+          {/* {
+            !videoOn && !result ? 
+            <div className="roundbtn roundbtnGrey" id = 'recBtn'>
+                <div className="roundbtnCircle">Record</div>
+              </div> 
+              :
+              <div className="roundbtn" id = 'recBtn'>
+                <div className="roundbtnCircle">Record</div>
+              </div>
+          } */}
+          {/* {
+            pseudocode for chaining ternary ops
+            if videoNotOn, display greyBtn
+            else if 
+          } */}
+          {result === null ? null : (
+            <button
+              onClick={nextHandler}
+              disabled={!enableButton}
+              className={enableButton ? "nextButton" : "disableNextButton"}
+            >
+              Next
+            </button>
+          )}
         </div>
-      )}
-      <button onClick={nextHandler} disabled={!enableButton} className={enableButton ? "nextButton" : "disableNextButton"}>Next</button> 
-    </div>
-  );
+      </>
+    );
+  } else {
+    // if we have finshed A-E, display the following
+    return (
+      <div className="quizDemo">
+        <div className="quizDemoHead">
+          <img
+            onClick={backToDash}
+            className="closing"
+            src="./images/exitBlackX.png"
+            alt="exit image"
+          />
+          <p>Quiz</p>
+        </div>
+        <h1 className="signLabel">{`Your Score: ${score}/${data.length}`}</h1>
+        {score === data.length ? (
+          <div className = "resultsPage">
+            <img
+              className="quizSuccess"
+              src="./images/success.png"
+              alt="successful quiz attempt"
+            />{" "}
+            <button onClick={backToDash} className="finishButton">Finish</button>
+          </div>
+        ) : (
+          <div className="resultsPage">
+            <img
+              className="quizFailure"
+              src="./images/failure.png"
+              alt="failed quiz attempt"                          
+            />
+            <button onClick={backToDash} className="finishButton">Finish</button>
+            <button onClick={backToLanding} className="tryAgainButton">Try Again?</button>
+          </div>
+        )}
+      </div>
+    );
+  }
 };
-
 export default Quiz;
-
