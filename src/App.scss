@@ -499,9 +499,10 @@ div.quizDemo {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
-  img.quizDemoImage {
+  .quizDemoImage {
     margin-top: 2rem;
     margin-bottom: 3rem;
+    max-width: 336px;
   }
   p.demoMessage {
     margin-top: 1rem;
