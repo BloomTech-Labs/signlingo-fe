@@ -78,22 +78,28 @@ const VideoAssessment = (props) => {
       let chunks = [];
       let model;
       let tracking;
+      let hodor = 0;
 
       // start webcam video stream on given video element. Returns a promise
       // that can be used to validate if user provided video permission.
-      handTrack.startVideo(video).then((status) => {
-        console.log("handtrack status", status)
-        if (status) {
-          navigator.getUserMedia(
-            { video: {} },
-            (stream) => {
-              // video.srcObject = mediaStreamObj;
-              tracking = setInterval(runDetection, 500);
-            },
-            (err) => console.log(err)
-          );
-        }
-      });
+      if (hodor === 0) {
+        handTrack.startVideo(video).then((status) => {
+          console.log("handtrack status", status);
+          hodor++;
+          console.log("hodor changed to ", hodor);
+          if (status) {
+            navigator.getUserMedia(
+              { video: {} },
+              (stream) => {
+                video.srcObject = mediaStreamObj;
+                tracking = setInterval(runDetection, 500);
+              },
+              (err) => console.log(err)
+            );
+          }
+        });
+      }
+      
 
       // load the model with optional params (found in modelParams above)
       handTrack.load(modelParams).then((lmodel) => {
@@ -130,15 +136,15 @@ const VideoAssessment = (props) => {
       mediaRecorder.onstop = (ev) => {
         let blob = new Blob(chunks, { type: "video/mp4;" });
         chunks = [];
-        let videoURL = window.URL.createObjectURL(blob);
-        vidSave.src = videoURL;
-        let formData = new FormData();
-        formData.append("videoStuff", videoURL);
-        if (formData) {
-          console.log(formData)
-        } else {
-          console.log("its empty!")
-        }
+        // let videoURL = window.URL.createObjectURL(blob);
+        // vidSave.src = videoURL;
+        // let formData = new FormData();
+        // formData.append("videoStuff", videoURL);
+        // if (formData) {
+        //   console.log(formData)
+        // } else {
+        //   console.log("its empty!")
+        // }
         // axios.post("https://signlingoapi.eba-24kd3jtp.us-east-1.elasticbeanstalk.com/test_api", {"hello": blob})
         //   .then(res => {
         //     console.log("DS API response", res)
@@ -163,7 +169,7 @@ const VideoAssessment = (props) => {
       {result ? <Overlay data-testid="resultOverlay" result={result} /> : null}
       {!isRecording ? "Placeholder for recording icon" : null}
       <video style={{height: "50%", width: "100%"}}></video>
-      <video id="vid2" controls></video>
+      {/* <video id="vid2" controls></video> */}
     </>
   );
 };

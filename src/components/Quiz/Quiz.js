@@ -24,7 +24,7 @@ const Quiz = (props) => {
       ++score;
     };
     enableButton = true;
-    console.log(score);
+    console.log("score", score);
   };
 
   let nextHandler = () => {
@@ -32,7 +32,7 @@ const Quiz = (props) => {
       setCurrentIndex(currentIndex + 1)
       enableButton = false;
     }
-    console.log(currentIndex)
+    console.log("currentIndex", currentIndex)
   }
 
   const turnVideoOn = () => {
