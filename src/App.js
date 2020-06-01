@@ -7,28 +7,18 @@ import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
 import Lesson from "./components/Lesson";
 import DashboardCard from "./components/DashboardCard";
-import QuizLandingPage from './components/Quiz/QuizLandingPage.js';
-import Quiz from './components/Quiz/Quiz';
+import QuizLandingPage from "./components/Quiz/QuizLandingPage.js";
+import Quiz from "./components/Quiz/Quiz";
 
 function App() {
   return (
     <div className="App">
       <Router>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/quizLanding">
-            <QuizLandingPage />
-          </Route>
-          <Route path="/quiz">
-            <Quiz/>
-          </Route>
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/lesson">
-            <Lesson />
-          </Route>
-          <Route exact path="/account/signup">
-            {/* passing a value so the proper tab is displayed 
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route exact path="/account/signup">
+          {/* passing a value so the proper tab is displayed 
             without this it causes a memory leak */}
           <Account value={0} />
         </Route>
@@ -37,6 +27,20 @@ function App() {
             without this it causes a memory leak */}
           <Account value={1} />
         </Route>
+        <PrivateRoute>
+          <Route path="/dashboard">
+            <Dashboard />
+          </Route>
+          <Route exact path="/lesson">
+            <Lesson />
+          </Route>
+          <Route path="/quizLanding">
+            <QuizLandingPage />
+          </Route>
+          <Route path="/quiz">
+            <Quiz />
+          </Route>
+        </PrivateRoute>
       </Router>
     </div>
   );

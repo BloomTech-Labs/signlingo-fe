@@ -2,9 +2,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
-import { signup } from "../actions/Signup";
+import { register } from "../actions/SignUpActions";
 import * as yup from "yup";
-// import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -113,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = ({signup},props) => {
+const Signup = ({ register }, props) => {
   const classes = useStyles();
   const history = useHistory();
 
@@ -124,11 +123,8 @@ const Signup = ({signup},props) => {
       email: values.email,
       password: values.password,
     };
-    await signup(newValues);
-    
-    history.push("/dashboard");
-
-  }
+    await register(newValues, history);
+  };
 
   return (
     <div>
@@ -246,4 +242,4 @@ const Signup = ({signup},props) => {
   );
 };
 
-export default connect(null, { signup })(Signup);
+export default connect(null, { register })(Signup);
