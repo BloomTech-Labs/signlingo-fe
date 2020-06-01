@@ -18,7 +18,7 @@ import {
       case LEVELS_SUCCESS:
         return {
           ...state,
-            level: action.payload,
+            levels: action.payload,
         };
       case LEVELS_FAIL:
         return {

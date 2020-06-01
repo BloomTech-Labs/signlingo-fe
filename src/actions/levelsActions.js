@@ -18,7 +18,7 @@ export const getAllLevels = () => (dispatch) => {
     })
 }
 
-export const addLevels = () => (dispatch) => {
+export const addLevels = (levelBody) => (dispatch) => {
     dispatch({ type: ADD_LEVEL_START, payload: "adding level"})
     axiosWithAuth().post("http://localhost:5000/levels/", levelBody)
     .then(res => {
