@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
-import { login } from "../actions/Login";
+import { login } from "../actions/SignUpActions";
 import * as yup from "yup";
 // import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
