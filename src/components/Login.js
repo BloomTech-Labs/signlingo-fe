@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
-import { login } from "../actions/SignUpActions";
+import { login } from "../actions/signUpActions";
 import * as yup from "yup";
 // import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -115,10 +115,7 @@ const Login = ({login}, props) => {
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
   const submitHandler = async (values) => {
-    await login(values);
-    
-    history.push("/dashboard");
-
+    await login(values, history);
   }
 
   return (

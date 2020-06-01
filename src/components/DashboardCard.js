@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { grabLesson } from "../actions/GrabLesson";
+import { grabLesson } from "../actions/grabLesson";
 import crownSm from "../images/icons/progress crown icon.png";
 import practiceSm from "../images/icons/practiceSm.png";
 import lessonSm from "../images/icons/lessonSm.png";

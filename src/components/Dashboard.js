@@ -2,26 +2,24 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import cuid from "cuid";
-import { dashLevel } from "../actions/DashboardLevel";
-import { resetArray } from "../actions/ResetArray";
+import { dashLevel } from "../actions/dashboardLevel";
+import { resetArray } from "../actions/resetArray";
 import DashboardCard from "./DashboardCard";
 
-const Dashboard = (
-  { resetArray, dashLevel, userId, globalLevel },
-  props
-) => {
+const Dashboard = ({ resetArray, dashLevel, userId, globalLevel }, props) => {
   const history = useHistory();
-
+  
   function logout() {
-    // state was holding the information from previous logins for levels and selectedLessons so using resetArray to empty before logout
+    // state was holding the information from previous logins for levels and selectedLessons
+    // so using resetArray to empty before logout
     resetArray();
     window.localStorage.removeItem("token");
     return history.push("/");
   }
 
-  // These action calls call the back end level endpoints in the order we want them back. It is not DRY. 
-  // There is an async / await here and in the dashLevel action to ensure that stack waits for each 
-  // promise to return before moving on to next. The DRY option would be to create an 
+  // These action calls call the back end level endpoints in the order we want them back. It is not DRY.
+  // There is an async / await here and in the dashLevel action to ensure that stack waits for each
+  // promise to return before moving on to next. The DRY option would be to create an
   // ALL LEVELS ENDPOINT ON THE BACKEND.
 
   const fetchLevels = async () => {
@@ -38,6 +36,9 @@ const Dashboard = (
     // there is probably a better way to make this work.
     resetArray();
     fetchLevels();
+    // check to see if the user id exists in the database
+    // if they do, then do not post / create new levels,
+    // instead grab the levels already created, associated
   }, []);
 
   return (
@@ -47,7 +48,10 @@ const Dashboard = (
       </div>
 
       {globalLevel.map((each) => (
+        <>
         <DashboardCard key={cuid()} data={each} />
+        {console.log("each item in dashboard", each)}
+        </>
       ))}
     </div>
   );

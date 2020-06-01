@@ -2,7 +2,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-} from "../actions/SignUpActions";
+} from "../actions/signUpActions";
 
 export const initialState = {
   id: null,

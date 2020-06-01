@@ -1,5 +1,5 @@
-import { GRAB_LESSON_SUCCESS } from "../actions/GrabLesson";
-import { RESET_SUCCESS } from "../actions/ResetArray";
+import { GRAB_LESSON_SUCCESS } from "../actions/grabLesson";
+import { RESET_SUCCESS } from "../actions/resetArray";
 
 import {
   GET_PICS_START,

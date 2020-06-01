@@ -2,8 +2,8 @@ import {
   DASHLEVEL_START,
   DASHLEVEL_SUCCESS,
   DASHLEVEL_ERROR,
-} from "../actions/DashboardLevel";
-import { RESET_SUCCESS } from "../actions/ResetArray";
+} from "../actions/dashboardLevel";
+import { RESET_SUCCESS } from "../actions/resetArray";
 
 export const initialState = {
   levels: [],
