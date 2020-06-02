@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import x from "../images/icons/x.png";
 import LessonCard from "./LessonCard";
-import { lessonFinish } from "../actions/FinishLevelFeature";
+import { lessonFinish } from "../actions/finishLevelFeature";
 import { getPics } from "../actions/getPics";
 
 const Lesson = (

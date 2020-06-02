@@ -11,7 +11,7 @@ export const initialState = {
   error: null,
 };
 
-export const DashLevelReducer = (state = initialState, action) => {
+export const dashLevelReducer = (state = initialState, action) => {
   switch (action.type) {
     case DASHLEVEL_START:
       return {

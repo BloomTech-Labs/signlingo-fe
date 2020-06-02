@@ -4,17 +4,17 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
-import { SignUpReducer } from "./reducers/SignUpReducer";
-import { DashLevelReducer } from "./reducers/DashLevelReducer";
-import { LessonReducer } from "./reducers/LessonReducer";
+import { signUpReducer } from "./reducers/signUpReducer";
+import { dashLevelReducer } from "./reducers/dashLevelReducer";
+import { lessonReducer } from "./reducers/lessonReducer";
 
 import "./index.scss";
 import App from "./App";
 
 const rootReducer = combineReducers({
-  user: SignUpReducer,
-  dashLevel: DashLevelReducer,
-  lesson: LessonReducer,
+  user: signUpReducer,
+  dashLevel: dashLevelReducer,
+  lesson: lessonReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));

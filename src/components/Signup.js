@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
-import { register } from "../actions/SignUpActions";
+import { register } from "../actions/signUpActions";
 import * as yup from "yup";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";

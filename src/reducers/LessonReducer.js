@@ -14,7 +14,7 @@ export const initialState = {
   error: null,
 };
 
-export const LessonReducer = (state = initialState, action) => {
+export const lessonReducer = (state = initialState, action) => {
   switch (action.type) {
     case GRAB_LESSON_SUCCESS:
       return {
