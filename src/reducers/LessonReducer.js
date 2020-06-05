@@ -1,11 +1,11 @@
-import { GRAB_LESSON_SUCCESS } from "../actions/grabLesson";
+import { GRAB_LESSON_SUCCESS } from "../actions/lessonActions";
 import { RESET_SUCCESS } from "../actions/resetArray";
 
 import {
   GET_PICS_START,
   GET_PICS_SUCCESS,
   GET_PICS_ERROR,
-} from "../actions/getPics";
+} from "../actions/flashCardActions";
 
 export const initialState = {
   selectedLesson: {},

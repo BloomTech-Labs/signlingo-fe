@@ -65,20 +65,18 @@ const VideoAssessment = (props) => {
         // vidSave.src = videoURL;
         let formData = new FormData();
         formData.append("video", blob);
+        formData.append("expected", props.testValue)
         axios
           .post(
-            "https://cors-anywhere.herokuapp.com/http://signlingods.us-east-1.elasticbeanstalk.com/test_api",
+            "https://cors-anywhere.herokuapp.com/http://signlingodocker2.us-east-1.elasticbeanstalk.com/api",
             formData
           )
           .then((res) => {
-            props.scoreHandler(res.data["Random Test Boolean"]);
-            props.setResult(res.data["Random Test Boolean"]);
+            props.scoreHandler(res.data[0][1]);
+            props.setResult(res.data[0][1]);
             props.setIsRecording(false);
-            console.log(res.data["Random Test Boolean"]);
+            console.log(res.data);
           })
-          .catch((err) => {
-            console.log(err);
-          });
       };
     })
     .catch(function (err) {
@@ -97,21 +95,12 @@ const VideoAssessment = (props) => {
   };
   return (
     <>
-      {console.log("result", props.result)}
       <div className="overlayDiv">
         <video className="video"></video>
         {props.result === null ? null : (
           <Overlay data-testid="resultOverlay" result={props.result} />
         )}
       </div>
-      {/* {props.isRecording ? null : (
-        <button onClick={start}>Start Recording</button>
-      )}
-      {props.isRecording ? null : (
-        <div className="roundbtn roundbtnGrey" id="recBtn">
-          <div className="roundbtnCircle">Record</div>
-        </div>
-      )} */}
       {!props.videoOn && !props.result ? (
         <div className="roundbtn roundbtnGrey" id="recBtn">
           <div className="roundbtnCircle">Record</div>
@@ -128,11 +117,6 @@ const VideoAssessment = (props) => {
           <div className="roundbtnCircle">Record</div>
         </div>
       ) : null}
-      {/* {
-      pseudocode for chaining ternary ops
-      if videoNotOn, display greyBtn
-      else if 
-      } */}
     </>                         
   );
 };

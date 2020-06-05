@@ -2,7 +2,7 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-} from "../actions/signUpActions";
+} from "../actions/authActions";
 
 export const initialState = {
   id: null,
@@ -12,7 +12,7 @@ export const initialState = {
   error: null,
 };
 
-export const signUpReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
       return {

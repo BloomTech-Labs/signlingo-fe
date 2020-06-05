@@ -1,9 +1,8 @@
 import React from "react";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
-import { login } from "../actions/signUpActions";
+import { login } from "../actions/authActions";
 import * as yup from "yup";
-// import SocialButtons from "./SocialButtons";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -199,12 +198,11 @@ const Login = ({login}, props) => {
         )}
       </Formik>
 
-      {/* Below is where SocialButtons.js was before we decided to rescrope our release canvas to not include it.
+      {/* Below is where Okta.js was before we decided to rescrope our release canvas to not include it.
       it remains in the code base in case another team figures out the functionality and wants to add an additional
       means of signing up for the app */}
-      {/* <div className="separator">or</div>
-      <p className="socialText">Log in using social media</p>
-      <SocialButtons /> */}
+      <div className="separator">or</div>
+      <p className="socialText">Log in using Okta</p>
     </div>
   );
 };

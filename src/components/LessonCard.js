@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import flipArrow from "../images/icons/flipArrow.png";
+// import flipArrow from "/images/icons/flipArrow.png";
 
 const LessonCard = (props) => {
   const [imageOn, setImageOn] = useState(false);
@@ -24,14 +24,14 @@ const LessonCard = (props) => {
         {/* onClick uses function FlipCard which flips card and accepts the letter */}
         <div onClick={() => flipCard(props.data.letter)} className="frame">
           <div className="flipArrow">
-            <img src={flipArrow} alt="flip arrow" />
+            <img src={process.env.PUBLIC_URL + '/images/icons/flipArrow.png'} alt="flip arrow" />
           </div>
           <img src={props.data.image} alt="sign" />
         </div>
         {/* onClick uses function FlipCard which flips card */}
         <div onClick={() => flipCard()} className="frame">
           <div className="flipArrow">
-            <img src={flipArrow} alt="flip arrow" />
+            <img src={process.env.PUBLIC_URL + '/images/icons/flipArrow.png'} alt="flip arrow" />
           </div>
           <b>{props.data.letter}</b>
         </div>

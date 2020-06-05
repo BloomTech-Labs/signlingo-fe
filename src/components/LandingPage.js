@@ -1,10 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import heroLg from "../images/heroImg_lg.png";
-import examSm from "../images/icons/Exam Icon_sm.png";
-import medalSm from "../images/icons/Medal icon_sm.png";
-import personSm from "../images/icons/Person icon_sm.png";
-import recSm from "../images/icons/Rec icon_sm.png";
+
+// import heroLg from "/images/landing/hero1.png";
+// import examSm from "/images/icons/examIconSmall.png";
+// import medalSm from "/images/icons/medalIconSmall.png";
+// import personSm from "/images/icons/personIconSmall.png";
+// import recSm from "/images/icons/recIconSmall.png";
 
 const LandingPage = () => {
   const history = useHistory();
@@ -12,7 +13,7 @@ const LandingPage = () => {
   return (
     <>
       <div className="heroDiv">
-        <img src={heroLg} alt="hand" />
+        <img src={process.env.PUBLIC_URL + '/images/landing/hero1.png'} alt="hand" />
         <div className="heroText">
           <div id="logo">
             {" "}
@@ -52,7 +53,7 @@ const LandingPage = () => {
         <div className="landingBoxes">
           <section>
             <div>
-              <img src={medalSm} alt="medal icon" />
+              <img src={process.env.PUBLIC_URL + '/images/icons/medalIconSmall.png'} alt="medal icon" />
             </div>
             <b>Fun gamified lessons</b>
             <p>
@@ -63,7 +64,7 @@ const LandingPage = () => {
 
           <section>
             <div>
-              <img src={personSm} alt="person icon" />
+              <img src={process.env.PUBLIC_URL + '/images/icons/personIconSmall.png'} alt="person icon" />
             </div>
             <b>Easy online learning</b>
             <p>
@@ -73,7 +74,7 @@ const LandingPage = () => {
 
           <section>
             <div>
-              <img src={examSm} alt="exam icon" />
+              <img src={process.env.PUBLIC_URL + '/images/icons/examIconSmall.png'} alt="exam icon" />
             </div>
             <b>End of unit quizzes </b>
             <p>Quizzes at the end of each unit will help track your growth.</p>
@@ -81,7 +82,7 @@ const LandingPage = () => {
 
           <section>
             <div>
-              <img src={recSm} alt="rec icon" />
+              <img src={process.env.PUBLIC_URL + '/images/icons/recIconSmall.png'} alt="rec icon" />
             </div>
             <b>Video recognition</b>
             <p>

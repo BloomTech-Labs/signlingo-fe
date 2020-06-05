@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import x from "../images/icons/x.png";
+// import x from "/images/icons/x.png";
 import LessonCard from "./LessonCard";
-import { lessonFinish } from "../actions/finishLevelFeature";
-import { getPics } from "../actions/getPics";
+import { lessonFinish } from "../actions/lessonActions";
+import { getPics } from "../actions/flashCardActions";
 
 const Lesson = (
   { selectedLesson, signImages, getPics, lessonFinish },
@@ -30,7 +30,7 @@ const Lesson = (
   return (
     <div className="lesson">
       <div className="lessonBar">
-        <img src={x} alt="letter x" onClick={backToDash} />
+        <img src={process.env.PUBLIC_URL + '/images/icons/x.png'} alt="letter x" onClick={backToDash} />
         <h3>{`${selectedLesson.signs} flashcards`}</h3>
       </div>
 

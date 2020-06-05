@@ -1,0 +1,26 @@
+//Lesson.js starts here ************************************************
+.lesson {
+  padding: 5%;
+  .lessonBar {
+    // border: 1px solid blue;
+    display: flex;
+    max-width: 100%;
+    margin-bottom: 15%;
+    h3 {
+      flex: 1 0 auto;
+    }
+  }
+  .finishedBttn {
+    box-shadow: none;
+    margin: 10% 0 15% 0;
+    font-family: Inter, sans-serif;
+    font-size: 1.6rem;
+    padding: 2.5%;
+    line-height: 19px;
+    border-radius: 4px;
+    background: #f2f2f2;
+  }
+  .finishedBttnActive {
+    background: #f6bf00;
+  }
+}

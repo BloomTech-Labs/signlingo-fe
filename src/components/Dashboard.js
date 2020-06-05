@@ -2,74 +2,9 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import cuid from "cuid";
-import { dashLevel } from "../actions/dashboardLevel";
+import { dashLevel } from "../actions/levelActions";
 import { resetArray } from "../actions/resetArray";
 import DashboardCard from "./DashboardCard";
-// import { getAllLevels, addLevels } from "../actions/levelsActions";
-
-// const Dashboard = (props) => {
-
-//   const history = useHistory();
-//   const [levels, setLevels] = useState([
-//     {
-//       title: "Alphabet - Level 1",
-//       signs: "A - E",
-//     },
-//     {
-//       title: "Alphabet - Level 2",
-//       signs: "F - J",
-//     },
-//     {
-//       title: "Alphabet - Level 3",
-//       signs: "K - O",
-//     },
-//     {
-//       title: "Alphabet - Level 4",
-//       signs: "P - T",
-//     },
-//     {
-//       title: "Alphabet - Level 5",
-//       signs: "U - Z",
-//     },
-//   ]);
-
-//   function logout() {
-//     resetArray();
-//     window.localStorage.removeItem("token");
-//     return history.push("/");
-//   }
-
-//   useEffect(() => {
-//     // if logged in user already has levels associated 
-//     // with them, then display those. 
-//     // otherwise, run the following post request loop
-//     if ()
-//     levels.forEach(level => {
-//       addLevels(level);
-//     })
-//   }, []);
-
-//   return (
-//     <div>
-//       <div className="logoutDiv">
-//         <p onClick={logout}>Log out</p>
-//       </div>
-//       {levels.map((eachLevel) => (
-//         <>
-//           <DashboardCard key={cuid()} level={eachLevel} />
-//           {console.log("each item in dashboard", eachLevel)}
-//         </>
-//       ))}
-//     </div>
-//   );
-// };
-
-// function mapStateToProps(state) {
-//   return {
-//   };
-// }
-
-// export default connect(mapStateToProps, {getAllLevels, addLevels})(Dashboard);
 
 const Dashboard = ({ resetArray, dashLevel, userId, globalLevel }, props) => {
   const history = useHistory();
@@ -125,7 +60,7 @@ const Dashboard = ({ resetArray, dashLevel, userId, globalLevel }, props) => {
 function mapStateToProps(state) {
   return {
     userId: state.user.id,
-    globalLevel: state.dashLevel.levels,
+    globalLevel: state.level.levels,
   };
 }
 

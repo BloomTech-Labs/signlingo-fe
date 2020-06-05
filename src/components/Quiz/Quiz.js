@@ -49,7 +49,7 @@ const Quiz = (props) => {
           <img
             onClick={backToDash}
             className="closing"
-            src="./images/exitBlackX.png"
+            src="./images/quiz/exitBlackX.png"
             alt="exit image"
           />
           {/* <div className="progressHolder">
@@ -77,7 +77,7 @@ const Quiz = (props) => {
               <div className="cameraOverlay">
                 <img
                   onClick={turnVideoOn}
-                  src="./images/openCamOverlay.png"
+                  src="./images/quiz/openCamOverlay.png"
                   alt="turns camera on"
                 ></img>
               </div>
@@ -118,7 +118,7 @@ const Quiz = (props) => {
           <img
             onClick={backToDash}
             className="closing"
-            src="./images/exitBlackX.png"
+            src="./images/quiz/exitBlackX.png"
             alt="exit image"
           />
           <p>Quiz</p>
@@ -128,7 +128,7 @@ const Quiz = (props) => {
           <div className = "resultsPage">
             <img
               className="quizSuccess"
-              src="./images/success.png"
+              src="./images/quiz/success.png"
               alt="successful quiz attempt"
             />{" "}
             <button onClick={backToDash} className="finishButton">Finish</button>
@@ -137,7 +137,7 @@ const Quiz = (props) => {
           <div className="resultsPage">
             <img
               className="quizFailure"
-              src="./images/failure.png"
+              src="./images/quiz/failure.png"
               alt="failed quiz attempt"                          
             />
             <button onClick={backToDash} className="finishButton">Finish</button>

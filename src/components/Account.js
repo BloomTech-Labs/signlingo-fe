@@ -3,8 +3,9 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 
 import Signup from "./Signup";
 import Login from "./Login";
+import Okta from "./Okta"
 
-import BackArrow from "../images/icons/back_icon_sm.png";
+// import BackArrow from "./backIconSmall.png";
 
 import PropTypes from "prop-types";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -107,7 +108,7 @@ const Account = (props) => {
     } else {
       setValue(1);
     }
-  }, [location.pathname]);//dependency array makes useEffect run when pathname is changed
+  }, [location.pathname]); //dependency array makes useEffect run when pathname is changed
 
   return (
     <div className={classes.root}>
@@ -115,7 +116,7 @@ const Account = (props) => {
         <Link to="/">
           <img
             data-testid="backLandingPage"
-            src={BackArrow}
+            src={process.env.PUBLIC_URL + '/images/icons/backIconSmall.png'}
             alt="Arrow pointing left"
           />
         </Link>
@@ -150,6 +151,7 @@ const Account = (props) => {
       <TabPanel className={classes.tabPanel} value={value} index={1}>
         <Login />
       </TabPanel>
+      <Okta/>
     </div>
   );
 };

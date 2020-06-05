@@ -1,26 +1,27 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { grabLesson } from "../actions/grabLesson";
-import crownSm from "../images/icons/progress crown icon.png";
-import practiceSm from "../images/icons/practiceSm.png";
-import lessonSm from "../images/icons/lessonSm.png";
-import quizSm from "../images/icons/quizSm.png";
-import progressBarSm from "../images/icons/progress bar icon.png";
+import { grabLesson } from "../actions/lessonActions";
 
-import crownSmBw from "../images/icons/progress crown icon BW.png";
-import practiceSmBw from "../images/icons/practiceSm BW.png";
-import lessonSmBw from "../images/icons/lessonSm BW.png";
-import quizSmBw from "../images/icons/quizSm BW.png";
-import progressBarSmBw from "../images/icons/progress bar icon BW.png";
+// import crownSm from "/images/icons/progressCrownIcon.png";
+// import practiceSm from "/images/icons/practiceSm.png";
+// import lessonSm from "/images/icons/lessonSm.png";
+// import quizSm from "/images/icons/quizSm.png";
+// import progressBarSm from "/images/icons/progressBarIconBW.png";
 
-import practiceSmCh from "../images/icons/practiceSm CH.png";
-import lessonSmCh from "../images/icons/lessonSm CH.png";
-import quizSmCh from "../images/icons/quizSm CH.png";
+// import crownSmBw from "/images/icons/progressCrownIconBW.png";
+// import practiceSmBw from "/images/icons/practiceSmallBW.png";
+// import lessonSmBw from "/images/icons/lessonSmallBW.png";
+// import quizSmBw from "/images/icons/quizSmallBW.png";
+// import progressBarSmBw from "/images/icons/progressBarIconBW.png";
+
+// import practiceSmCh from "/images/icons/practiceSmallCH.png";
+// import lessonSmCh from "/images/icons/lessonSmallCH.png";
+// import quizSmCh from "/images/icons/quizSmallCH.png";
 
 const DashboardCard = (props) => {
   const history = useHistory();
-
+  const purl = process.env.PUBLIC_URL;
   // handlers check if user has access to that feature, then redirects to the relevant component
   function lessonHandler() {
     if (props.data.Active) {
@@ -50,15 +51,15 @@ const DashboardCard = (props) => {
         <div className="dashboard">
           <h1>Alphabet - Level {props.data.Level}</h1>
           <div className="progressBar">
-            <img src={progressBarSm} alt="A progress Bar" />
-            <img src={crownSm} alt="A completion crown" />
+            <img src={purl + '/images/icons/progressBarIconBW.png'} alt="A progress Bar" />
+            <img src={purl + '/images/icons/progressCrownIcon.png'} alt="A completion crown" />
           </div>
 
           <section className="dashboardContent">
             <div onClick={lessonHandler}>
               {/* ternary in src renders either icon with check or without*/}
               <img
-                src={props.data.Lesson ? lessonSmCh : lessonSm}
+                src={props.data.Lesson ? purl + '/images/icons/lessonSmallCH.png' : purl + '/images/icons/lessonSm.png'}
                 alt="A lessons icon"
               />
               <p>{props.data.signs}</p>
@@ -71,7 +72,7 @@ const DashboardCard = (props) => {
                 className={props.data.Lesson ? null : "locked"}
               >
                 <img
-                  src={props.data.Practice ? practiceSmCh : practiceSm}
+                  src={props.data.Practice ? purl + '/images/icons/practiceSmallCH.png' : purl + '/images/icons/practiceSm.png'}
                   alt="A practice icon"
                 />
                 <p>Practice</p>
@@ -83,7 +84,7 @@ const DashboardCard = (props) => {
                 className={props.data.Practice ? null : "locked"}
               >
                 <img
-                  src={props.data.Quiz ? quizSmCh : quizSm}
+                  src={props.data.Quiz ? purl + '/images/icons/quizSmallCH.png' : purl + '/images/icons/quizSm.png'}
                   alt="A quiz icon"
                 />
                 <p>Quiz</p>
@@ -95,23 +96,23 @@ const DashboardCard = (props) => {
         <div className="dashboardBw">
           <h1>Alphabet - Level {props.data.Level}</h1>
           <div className="progressBar">
-            <img src={progressBarSmBw} alt="progress bar black and white" />
-            <img src={crownSmBw} alt="A completion crown" />
+            <img src={purl + '/images/icons/progressBarIconBW.png'} alt="progress bar black and white" />
+            <img src={purl + '/images/icons/progressCrownIconBW.png'} alt="A completion crown" />
           </div>
 
           <section className="dashboardContent">
             <div onClick={lessonHandler}>
-              <img src={lessonSmBw} alt="A lessons icon" />
+              <img src={purl + '/images/icons/lessonSmallBW.png'} alt="A lessons icon" />
               <p>{props.data.signs}</p>
             </div>
 
             <div className="dashboardBttm">
               <div id="practiceBox" onClick={practiceHandler}>
-                <img src={practiceSmBw} alt="A practice icon" />
+                <img src={purl + '/images/icons/practiceSmallBW.png'} alt="A practice icon" />
                 <p>Practice</p>
               </div>
               <div id="quizBox" onClick={quizHandler}>
-                <img src={quizSmBw} alt="A quiz icon" />
+                <img src={purl + '/images/icons/quizSmallBW.png'} alt="A quiz icon" />
                 <p>Quiz</p>
               </div>
             </div>
