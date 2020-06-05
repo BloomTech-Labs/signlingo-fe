@@ -2,12 +2,9 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dd0d2897554fd6b2defa/test_coverage)](https://codeclimate.com/github/Lambda-School-Labs/signlingo-fe/test_coverage)
 
 
-🚫 The numbers 1️⃣ through 5️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
-
-
 # SignLingo
 
-You can find the deployed project at [AWS](https://master.d2965nx2i7rdu0.amplifyapp.com/).
+You can find the deployed project at [thesignlingo.com](https://master.d2965nx2i7rdu0.amplifyapp.com/).
 
 ## Contributors
 
@@ -59,9 +56,9 @@ You can find the deployed project at [AWS](https://master.d2965nx2i7rdu0.amplify
 
 ## Project Overview
 
-[Trello Board](https://trello.com/b/gvQfXfd4/labs23-signlingo)
+[Labs 24 Trello Board](https://trello.com/b/vjiVAk5c/labs24-signlingo)
 
-[Product Canvas](https://www.notion.so/SignLingo-402ff25b879c4edd98872826fb0af691)
+[Product Vision Doc](https://www.notion.so/SignLingo-402ff25b879c4edd98872826fb0af691)
 
 [UX Design files](https://www.figma.com/file/06Jiu1l0kkp1kYNeYiXZiM/Sign-Lingo%2C-Kendra?node-id=179%3A0)
 
@@ -70,10 +67,10 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 ### Key Features
 
-- Going through flashcards to learn alphabet signs
-- Taking multiple choice quizzes to practice alphabet signs
-- Uploading a picture of your alphabet signs to test your knowledge
-
+- Ever level includes:
+- Going through flash cards to memorize alphabet signs
+- Going through exercises to practice signs
+- Recording video in a quiz to assess understanding
 
 ## Tech Stack
 
@@ -97,19 +94,19 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 #### _react-redux | redux-logger | redux-thunk_
 
-- Global state-management
+- Global state-management 
 
 #### _axios_
 
 - Easier to read responses than fetch
 
-#### _sass_
+#### _styling_
 
-- Styling purposes
+- After creating a component, add a new style sheet in the src/scss folder. If you have installed all deps using yarn, use the script "scss" in the terminal to watch all scss files. Works like a charm. There are also other styling techniques used by previous teams (material ui, useStyles, etc.), but labs 24 onward we have been using scss, making new scss files if needed. 
 
 #### _Material UI_
 
-- Styling purposes
+- Labs 23 used this for a few components for various reasons.
 
 #### _CUID_
 
@@ -134,22 +131,13 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 #### Front end deployed to `Amazon Web Services`
 
+https://thesignlingo.com
+
 # 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
 
-🚫These are just examples, replace them with the specifics for your app
-
-    *  REACT_APP_apiKey - this is your Google API key, which can be generated in the Google Cloud Console
-    *  REACT_APP_authDomain - when you set up your Firebase project, this information will be in the dashboard
-    *  REACT_APP_databaseURL - in the Firebase dashboard
-    *  REACT_APP_projectID - in the Firebase dashboard
-    *  REACT_APP_storageBucket - in the Firebase dashboard
-    *  REACT_APP_messagingSenderId - in the Firebase dashboard
-    *  REACT_APP_stripe_API - this is your public Stripe API key, generated in the Stripe dashboard
-    *  REACT_APP_backendURL - optional for your local development server
-    *  REACT_APP_clientid - this is the Stripe_connect clientID, generated in Stripe_connect settings
-    *  REACT_APP_stripe_plan - this is the ID for a second Stripe subscription plan, generated under Stripe products
+add env vars here....
 
 # 5️⃣ Content Licenses
 
@@ -164,7 +152,7 @@ Jest was used to test the app because of its simplicity and its integration capa
 
 # Installation Instructions
 
-Clone this repo to your local machine. Run npm i.
+Clone this repo to your local machine. Run yarn install.
 
 ## Other Scripts
 
@@ -173,6 +161,7 @@ Clone this repo to your local machine. Run npm i.
     * test - runs tests in **__tests__** directory 
     * eject - copies the configuration files and dependencies into the project so you have full control over them
     * coverage - creates a coverage report of test
+    * scss - continous sass compiler to watch scss code to turn into css code
 
 # Contributing
 
