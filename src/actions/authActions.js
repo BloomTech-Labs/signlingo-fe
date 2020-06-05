@@ -4,9 +4,9 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
-// I'm currently loggin in via local host because I haven't pushed changes to 
+// I'm currently logging in via local host because I haven't pushed changes to 
 // production on the back end repo... Once that happens I can change the url
-// to the thesignlingo.com/register or login...
+// to the thesignlingo.com/register or login... OpenID Connect needs to be set up as well
 
 export const register = (credentials, history) => (dispatch) => {
   dispatch({
