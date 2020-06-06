@@ -12,7 +12,9 @@ export const getAllLevels = () => (dispatch) => {
   axiosWithAuth()
     .get("http://localhost:5000/levels/")
     .then((res) => {
-      // res.data === [{id:1, name: "ABCDE"}, {...},] with name being level alphabet contents
+      // res.data === [{...}, {...},] with each object holding an id and a name.
+      // the name is a string of letters representing each letter inside a level.
+      // eventually the same for numbers, words, phrases so on...
       dispatch({ type: GET_ALL_LEVELS_SUCCESS, payload: res.data });
     })
     .catch((error) => {
@@ -32,13 +34,15 @@ export const CHECK_USER_LEVELS_FAILURE = "CHECK_USER_LEVELS_FAILURE";
 export const checkLevels = () => (dispatch) => {
   dispatch({
     type: CHECK_USER_LEVELS_START,
-    payload: "Retrieving Your Dashboard Info...",
+    payload: "Checking If User Has Levels In Database Linked To Their Account Already...",
   });
   axiosWithAuth()
-    .get("http://localhost:5000/levels/check")
+    .get(`http://localhost:5000/levels/check/${localStorage.getItem("userID")}`)
     .then((res) => {
-    //   dispatch({ type: CHECK_USER_LEVELS_SUCCESS, payload: res.data });
-    console.log("check levels res.data", res.data)
+      // res.data = [{}, {}...] with each object holding completed_excercises, 
+      // completed_flashcards, completed_quiz all defaulted to null with possible timestamp value,
+      // an id, level_id, and user_id. 
+      dispatch({ type: CHECK_USER_LEVELS_SUCCESS, payload: res.data });
     })
     .catch((error) => {
       dispatch({
@@ -47,3 +51,30 @@ export const checkLevels = () => (dispatch) => {
       });
     });
 };
+
+// this action creator runs because a user didn't have all the levels that they need to
+// linked up to their account. This action creator takes care of that case. Could have happened
+// because they are a brand new user, or new levels were added since last login
+export const ADD_LEVELS_START = "ADD_LEVELS_START";
+export const ADD_LEVELS_SUCCESS = "ADD_LEVELS_SUCCESS";
+export const ADD_LEVELS_FAILURE = "ADD_LEVELS_FAILURE";
+
+export const addLevelsToUserAccount = () => (dispatch) => {
+    dispatch({
+      type: ADD_LEVELS_START,
+      payload: "Adding Levels to User Account...",
+    });
+    axiosWithAuth()
+      .get(`http://localhost:5000/levels/${localStorage.getItem("userID")}`)
+      .then((res) => {
+        // dispatch({ type: ADD_LEVELS_SUCCESS, payload: res.data });
+        console.log("ADDED USER LEVELS response", res.data)
+      })
+      .catch((error) => {
+        dispatch({
+          type: ADD_LEVELS_FAILURE,
+          payload: "Failed to add levels to user account",
+        });
+      });
+  };
+

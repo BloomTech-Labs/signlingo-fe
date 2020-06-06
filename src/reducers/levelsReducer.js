@@ -5,10 +5,14 @@ import {
   CHECK_USER_LEVELS_START,
   CHECK_USER_LEVELS_SUCCESS,
   CHECK_USER_LEVELS_FAILURE,
+  ADD_LEVELS_START,
+  ADD_LEVELS_SUCCESS,
+  ADD_LEVELS_FAILURE,
 } from "../actions/levelsActions";
 
 const initialState = {
   levels: [],
+  userLevels: [],
   isLoading: false,
   error: null,
 };
@@ -43,10 +47,30 @@ export const levelsReducer = (state = initialState, action) => {
     case CHECK_USER_LEVELS_SUCCESS:
       return {
         ...state,
+        userLevels: action.payload,
         isLoading: false,
         error: null,
       };
     case CHECK_USER_LEVELS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case ADD_LEVELS_START:
+      return {
+        ...state,
+        isLoading: true,
+        error: null,
+      };
+    case ADD_LEVELS_SUCCESS:
+      return {
+        ...state,
+        // userLevels: action.payload,
+        isLoading: false,
+        error: null,
+      };
+    case ADD_LEVELS_FAILURE:
       return {
         ...state,
         isLoading: false,
