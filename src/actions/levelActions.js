@@ -4,7 +4,7 @@ export const DASHLEVEL_START = "DASHLEVEL_START";
 export const DASHLEVEL_SUCCESS = "DASHLEVEL_SUCCESS";
 export const DASHLEVEL_ERROR = "DASHLEVEL_ERROR";
 
-export const dashLevel = (id, level) => async (dispatch) => {
+export const level = (id, level) => async (dispatch) => {
   dispatch({ type: DASHLEVEL_START });
   if (id) {
     await axiosWithAuth()

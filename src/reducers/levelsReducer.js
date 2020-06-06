@@ -5,7 +5,7 @@ import {
 } from "../actions/levelActions";
 import { RESET_SUCCESS } from "../actions/resetArray";
 
-export const initialState = {
+const initialState = {
   levels: [],
   isLoading: false,
   error: null,

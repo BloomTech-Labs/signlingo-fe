@@ -7,7 +7,7 @@ import {
   GET_PICS_ERROR,
 } from "../actions/flashCardActions";
 
-export const initialState = {
+const initialState = {
   selectedLesson: {},
   signImages: [],
   isLoading: false,

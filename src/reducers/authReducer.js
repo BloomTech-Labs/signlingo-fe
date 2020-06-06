@@ -4,8 +4,9 @@ import {
   LOGIN_FAIL,
 } from "../actions/authActions";
 
-export const initialState = {
+const initialState = {
   id: null,
+  email: "",
   token: "",
   isLoading: false,
   error: null,
@@ -23,6 +24,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         id: action.payload.id,
+        email: action.payload.email,
         token: action.payload.token,
         isLoading: false,
       };

@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import cuid from "cuid";
-import { dashLevel } from "../actions/levelActions";
+import { level } from "../actions/levelActions";
 import { resetArray } from "../actions/resetArray";
 import DashboardCard from "./DashboardCard";
 
-const Dashboard = ({ resetArray, dashLevel, userId, globalLevel }, props) => {
+const Dashboard = ({ resetArray, level, userId, globalLevel }, props) => {
   const history = useHistory();
 
   function logout() {
@@ -18,16 +18,16 @@ const Dashboard = ({ resetArray, dashLevel, userId, globalLevel }, props) => {
   }
 
   // These action calls call the back end level endpoints in the order we want them back. It is not DRY.
-  // There is an async / await here and in the dashLevel action to ensure that stack waits for each
+  // There is an async / await here and in the level action to ensure that stack waits for each
   // promise to return before moving on to next. The DRY option would be to create an
   // ALL LEVELS ENDPOINT ON THE BACKEND.
 
   const fetchLevels = async () => {
-    await dashLevel(userId, 1);
-    await dashLevel(userId, 2);
-    await dashLevel(userId, 3);
-    await dashLevel(userId, 4);
-    dashLevel(userId, 5);
+    await level(userId, 1);
+    await level(userId, 2);
+    await level(userId, 3);
+    await level(userId, 4);
+    level(userId, 5);
   };
 
   useEffect(() => {
@@ -65,6 +65,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  dashLevel,
+  level,
   resetArray,
 })(Dashboard);
