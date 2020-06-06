@@ -4,7 +4,7 @@
 
 # SignLingo
 
-You can find the deployed project at [thesignlingo.com](https://master.d2965nx2i7rdu0.amplifyapp.com/).
+You can find the deployed project at [thesignlingo.com](https://master.d2965nx2i7rdu0.amplifyapp.com/). Also... we use YARN instead of NPM for this projects package manager. Remember to use Yarn.
 
 ## Contributors
 
