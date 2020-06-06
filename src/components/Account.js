@@ -5,8 +5,6 @@ import Signup from "./Signup";
 import Login from "./Login";
 import Okta from "./Okta"
 
-// import BackArrow from "./backIconSmall.png";
-
 import PropTypes from "prop-types";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -63,6 +61,7 @@ const StyledTabs = withStyles((theme) => ({
     background: "#F6BF00",
   },
 }))(Tabs);
+
 //styling for tab panel link tab and app bar
 const useStyles = makeStyles((theme) => ({
   root: {
