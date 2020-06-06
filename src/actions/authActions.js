@@ -4,9 +4,10 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
-// I'm currently logging in via local host because I haven't pushed changes to 
-// production on the back end repo... Once that happens I can change the url
-// to the thesignlingo.com/register or login... OpenID Connect needs to be set up as well
+// Auth 2.0 combined with OpenID Connect still need to be implemented in this component
+// and in the Okta component (okta authentication process starts after user click)
+// this component is currenlty registering and logging in to a temporary server
+// on port 5000 based on back end repo branch <feature/okta>
 
 export const register = (credentials, history) => (dispatch) => {
   dispatch({

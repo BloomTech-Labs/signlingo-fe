@@ -6,7 +6,6 @@ import {
 
 export const initialState = {
   id: null,
-  email: "",
   token: "",
   isLoading: false,
   error: null,
@@ -23,7 +22,6 @@ export const authReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        email: action.payload.email,
         id: action.payload.id,
         token: action.payload.token,
         isLoading: false,
