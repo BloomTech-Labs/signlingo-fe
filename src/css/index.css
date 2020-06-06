@@ -14,9 +14,7 @@ h1 {
 .App {
   text-align: center;
   font-family: "Inter", sans-serif;
-  font-style: normal;
-  max-width: 1000px;
-  margin: 0 auto; }
+  font-style: normal; }
 
 body {
   margin: 0;
@@ -58,14 +56,20 @@ code {
       font-weight: 500;
       font-size: 1.4rem;
       line-height: 17px;
-      color: #000000; }
+      color: #000000;
+      padding: 1rem; }
+      .heroDiv .heroLogin #login:hover {
+        background: rgba(0, 204, 255, 0.767);
+        border-radius: 5px;
+        padding: 1rem;
+        cursor: pointer; }
 
 .landingContent {
   padding: 2%; }
   .landingContent #landingBtn {
     background-color: #f6bf00;
     border-radius: 4px;
-    width: 95%;
+    width: 50%;
     padding: 10px 0px;
     margin: 3% auto;
     font-weight: 600;
@@ -73,6 +77,8 @@ code {
     line-height: 19px;
     color: #333333;
     cursor: pointer; }
+    .landingContent #landingBtn:hover {
+      background-color: rgba(255, 208, 0, 0.74); }
   .landingContent .landingBoxes {
     display: flex;
     justify-content: space-evenly;
@@ -84,7 +90,8 @@ code {
       margin: 1.5%;
       font-size: 12px;
       display: flex;
-      flex-direction: column; }
+      flex-direction: column;
+      justify-content: center; }
 
 .separator {
   display: flex;
@@ -224,7 +231,7 @@ code {
   align-items: center; }
   .socialBtns .facebookBtn {
     padding: 3% 0%;
-    width: 47%;
+    width: 40%;
     font-weight: 600;
     font-size: 1.6rem;
     line-height: 19px;
@@ -237,6 +244,8 @@ code {
     text-decoration: none; }
     .socialBtns .facebookBtn #fImage {
       margin-right: 3%; }
+    .socialBtns .facebookBtn #oktaImage {
+      width: 8rem; }
   .socialBtns .googleBtn {
     padding: 3% 0%;
     width: 47%;

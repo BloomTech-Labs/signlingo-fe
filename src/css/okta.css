@@ -1,10 +1,9 @@
-//SocialButton component starts here ************************************************
 .socialBtns {
   margin: 4% 0 0 0;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  .facebookBtn {
+  align-items: center; }
+  .socialBtns .facebookBtn {
     padding: 3% 0%;
     width: 40%;
     font-weight: 600;
@@ -16,15 +15,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    #fImage {
-      margin-right: 3%;
-    }
-    #oktaImage {
-      width: 8rem;
-    }
-  }
-  .googleBtn {
+    text-decoration: none; }
+    .socialBtns .facebookBtn #fImage {
+      margin-right: 3%; }
+    .socialBtns .facebookBtn #oktaImage {
+      width: 8rem; }
+  .socialBtns .googleBtn {
     padding: 3% 0%;
     width: 47%;
     font-weight: 600;
@@ -36,25 +32,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
-    #gImage {
-      margin-right: 3%;
-    }
-  }
-}
+    text-decoration: none; }
+    .socialBtns .googleBtn #gImage {
+      margin-right: 3%; }
+
 .accountBar {
   display: flex;
-  max-width: 100%;
-  h1 {
-    //places the h1 in accountBar in the center
-    flex: 1 0 auto;
-  }
-}
-//Material Ui labels class
+  max-width: 100%; }
+  .accountBar h1 {
+    flex: 1 0 auto; }
+
 .MuiButton-label {
   color: #333333;
   font-weight: 900;
   box-shadow: none;
   text-transform: none;
-  font-size: 1.2rem;
-}
+  font-size: 1.2rem; }
