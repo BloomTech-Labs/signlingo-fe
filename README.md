@@ -67,7 +67,7 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 ### Key Features
 
-- Ever level includes:
+- Each level includes:
 - Going through flash cards to memorize alphabet signs
 - Going through exercises to practice signs
 - Recording video in a quiz to assess understanding
