@@ -4,19 +4,23 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  .facebookBtn {
+  .oktaBtn {
     padding: 3% 0%;
     width: 40%;
     font-weight: 600;
     font-size: 1.6rem;
     line-height: 19px;
-    background: #3b5998;
+    background: #f6bf00;
     color: #ffffff;
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    &:hover {
+      background: rgba(255, 208, 0, 0.74);
+      cursor: pointer;
+    }
     #fImage {
       margin-right: 3%;
     }
