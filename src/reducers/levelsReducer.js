@@ -66,7 +66,7 @@ export const levelsReducer = (state = initialState, action) => {
     case ADD_LEVELS_SUCCESS:
       return {
         ...state,
-        // userLevels: action.payload,
+        // not sure what goes here yet
         isLoading: false,
         error: null,
       };

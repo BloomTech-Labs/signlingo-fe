@@ -34,14 +34,15 @@ export const CHECK_USER_LEVELS_FAILURE = "CHECK_USER_LEVELS_FAILURE";
 export const checkLevels = () => (dispatch) => {
   dispatch({
     type: CHECK_USER_LEVELS_START,
-    payload: "Checking If User Has Levels In Database Linked To Their Account Already...",
+    payload:
+      "Checking If User Has Levels In Database Linked To Their Account Already...",
   });
   axiosWithAuth()
     .get(`http://localhost:5000/levels/check/${localStorage.getItem("userID")}`)
     .then((res) => {
-      // res.data = [{}, {}...] with each object holding completed_excercises, 
+      // res.data = [{}, {}...] with each object holding completed_excercises,
       // completed_flashcards, completed_quiz all defaulted to null with possible timestamp value,
-      // an id, level_id, and user_id. 
+      // an id, level_id, and user_id.
       dispatch({ type: CHECK_USER_LEVELS_SUCCESS, payload: res.data });
     })
     .catch((error) => {
@@ -59,16 +60,25 @@ export const ADD_LEVELS_START = "ADD_LEVELS_START";
 export const ADD_LEVELS_SUCCESS = "ADD_LEVELS_SUCCESS";
 export const ADD_LEVELS_FAILURE = "ADD_LEVELS_FAILURE";
 
-export const addLevelsToUserAccount = () => (dispatch) => {
-    dispatch({
-      type: ADD_LEVELS_START,
-      payload: "Adding Levels to User Account...",
-    });
+export const addLevelsToUserAccount = (levelsLength, numLevelsToAdd) => (
+  dispatch
+) => {
+    console.log("HELLOO IM IN THE ADD USERLEVELS AC")
+  dispatch({
+    type: ADD_LEVELS_START,
+    payload: "Adding Levels to User Account...",
+  });
+  let addLevelList = [];
+  for (let i = 0; i < numLevelsToAdd; i++) {
+    addLevelList.push(levelsLength - (numLevelsToAdd - i));
+  }
+  for (let i = 0; i < numLevelsToAdd; i++) {
     axiosWithAuth()
-      .get(`http://localhost:5000/levels/${localStorage.getItem("userID")}`)
+      .post(
+        `http://localhost:5000/${localStorage.getItem("userID")}`, addLevelList[i])
       .then((res) => {
         // dispatch({ type: ADD_LEVELS_SUCCESS, payload: res.data });
-        console.log("ADDED USER LEVELS response", res.data)
+        console.log("TESTING add userlevels", res.data)
       })
       .catch((error) => {
         dispatch({
@@ -76,5 +86,6 @@ export const addLevelsToUserAccount = () => (dispatch) => {
           payload: "Failed to add levels to user account",
         });
       });
-  };
+  }
 
+};
