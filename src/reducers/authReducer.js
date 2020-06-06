@@ -27,6 +27,7 @@ export const authReducer = (state = initialState, action) => {
         email: action.payload.email,
         token: action.payload.token,
         isLoading: false,
+        error: null,
       };
     case LOGIN_FAIL:
       return {

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllLevels } from "../../actions/levelsActions";
+import { getAllLevels, checkLevels } from "../../actions/levelsActions";
 import cuid from "cuid";
 import DashboardCard from "./DashboardCard";
 
@@ -18,19 +18,24 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     props.getAllLevels();
-  }, [])
+    props.checkLevels();
+  }, []);
 
   return (
     <div>
-      dashboard
+      {props.levels.map((level) => (
+        <DashboardCard levelName={level.name} />
+      ))}
     </div>
   );
 };
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    levels: state.levelsReducer.levels,
+  };
 }
 
-const mapDispatchToProps = { getAllLevels };
+const mapDispatchToProps = { getAllLevels, checkLevels };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
