@@ -18,6 +18,7 @@ export const register = (credentials, history) => (dispatch) => {
     .post("http://localhost:5000/user/register", credentials)
     .then((res) => {
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userID", res.data.id)
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       history.push("/dashboard");
     })
@@ -35,6 +36,7 @@ export const login = (credentials, history) => (dispatch) => {
     .post("http://localhost:5000/user/login", credentials)
     .then((res) => {
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("userID", res.data.id)
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       history.push("/dashboard");
     })
