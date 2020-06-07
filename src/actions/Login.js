@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
+import axios from "axios"
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_ERROR = "LOGIN_ERROR";
@@ -7,7 +7,7 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 export const login = (obj) => async (dispatch) => {
   dispatch({ type: LOGIN_START });
 
-  await axiosWithAuth()
+  axios
     .post("/api/auth/login", obj)
     .then((res) => {
       window.localStorage.setItem("token", res.data.token);
