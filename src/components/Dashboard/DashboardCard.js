@@ -9,7 +9,7 @@ const DashboardCard = (props) => {
   return (
     <>
       <p>dashboard card</p>
-      <p>{props.levelName}</p>
+      <p>{props.level.name}</p>
     </>
   );
 };
