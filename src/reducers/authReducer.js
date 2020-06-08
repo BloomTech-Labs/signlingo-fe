@@ -9,6 +9,7 @@ const initialState = {
   email: "",
   token: "",
   isLoading: false,
+  loadingMessage: "",
   error: null,
 };
 
@@ -18,6 +19,7 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
+        loadingMessage: action.payload,
         error: null,
       };
     case LOGIN_SUCCESS:
@@ -27,12 +29,14 @@ export const authReducer = (state = initialState, action) => {
         email: action.payload.email,
         token: action.payload.token,
         isLoading: false,
+        loadingMessage: "",
         error: null,
       };
     case LOGIN_FAIL:
       return {
         ...state,
         isLoading: false,
+        loadingMessage: "",
         error: action.payload,
       };
     default:

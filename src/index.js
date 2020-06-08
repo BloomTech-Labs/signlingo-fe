@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
+import { composeWithDevTools } from "redux-devtools-extension";
 import { authReducer } from "./reducers/authReducer";
 import { levelsReducer } from "./reducers/levelsReducer";
 import "./css/index.css"
@@ -14,11 +14,9 @@ const rootReducer = combineReducers({
   levelsReducer,
 });
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger));
-
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))}>
       <App />
     </Provider>
   </React.StrictMode>,
