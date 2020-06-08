@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   getAllLevels,
   getAllUserLevelsByID,
@@ -8,37 +9,37 @@ import {
 import DashboardCard from "./DashboardCard";
 
 const Dashboard = (props) => {
-
-  console.log("RENDERED DASHBOARD");
-  console.log("outside useEffect level:", props.levels.length);
-  console.log("outside useEffect userlevel:", props.userLevels.length);
-
+  const history = useHistory();
+  console.log("outside", props.levels.length, props.userLevels.length)
+  function logout() {
+    localStorage.removeItem("userID", "token");
+    history.push("/");
+  }
   useEffect(() => {
-    props.getAllLevels()
     props.getAllUserLevelsByID();
-    console.log("inside useEffect level:", props.levels.length);
-    console.log("inside useEffect userlevel:", props.userLevels.length);
+    props.getAllLevels();
+    console.log("inside", props.levels.length, props.userLevels.length)
     if (props.levels.length > props.userLevels.length) {
-      console.log("inside useEffect Conditional where addLevelsToUserAccount Should run")
+      console.log("conditional", props.levels.length, props.userLevels.length)
       props.addLevelsToUserAccount(props.levels, props.userLevels);
     } else if (props.levels.length < props.userLevels.length) {
       throw new Error("This should be unreachable");
     }
   
-  }, []);
+  }, [props.levels.length]);
 
   return (
     <div>
-      hello
-      {/* {props.isLoading ? (
+      <span onClick={logout}>Log Out</span>
+      {props.isLoading ? (
         <>
           <p>{props.loadingMessage}</p>
         </>
       ) : (
-        props.levels.map((level) => (
-          <DashboardCard key={level.id} level={level} />
+        props.userLevels.map((levelData) => (
+          <DashboardCard key={levelData.id} levelData={levelData} title={levelData.level_id}/>
         ))
-      )} */}
+      )}
     </div>
   );
 };

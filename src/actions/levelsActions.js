@@ -7,11 +7,11 @@ export const GET_ALL_USER_LEVELS_FAILURE = "GET_ALL_USER_LEVELS_FAILURE";
 export const ADD_LEVELS_SUCCESS = "ADD_LEVELS_SUCCESS";
 export const ADD_LEVELS_FAILURE = "ADD_LEVELS_FAILURE";
 
-export const getAllLevels = () => (dispatch) => {
+export const getAllLevels = () => async (dispatch) => {
   // res.data contains [{id: 1, name: "ABCDE"}, {...},] from levels table on back end
   // res.data will contain something like this in the future:
   // [{id: 6, name: "123456789"}, {...},] the same for words, phrases so on...
-   axiosWithAuth()
+  await axiosWithAuth()
     .get("http://localhost:5000/levels/")
     .then((res) => {
       dispatch({ type: GET_ALL_LEVELS_SUCCESS, payload: res.data });
@@ -24,7 +24,7 @@ export const getAllLevels = () => (dispatch) => {
     });
 };
 
-export const getAllUserLevelsByID = () => (dispatch) => {
+export const getAllUserLevelsByID = () => async (dispatch) => {
   // res.data = contains
   // [{id: 1,
   //   user_level:1,
@@ -32,7 +32,7 @@ export const getAllUserLevelsByID = () => (dispatch) => {
   //   completed_flashcards: nullORtimestamp,
   //   completed_exercise: nullORtimestamp,
   //   completed_quiz: nullORtimestamp}, {...}]
-  axiosWithAuth()
+  await axiosWithAuth()
     .get(`http://localhost:5000/levels/check/${localStorage.getItem("userID")}`)
     .then((res) => {
       dispatch({ type: GET_ALL_USER_LEVELS_SUCCESS, payload: res.data });
@@ -45,7 +45,7 @@ export const getAllUserLevelsByID = () => (dispatch) => {
     });
 };
 
-export const addLevelsToUserAccount = (levels, userLevels) => (dispatch) => {
+export const addLevelsToUserAccount = (levels, userLevels) => async (dispatch) => {
   let levelsToAdd = []; // ends up containing all level_ids to add to user account
   if (userLevels.length === 0) {
     levels.forEach((level) => {
@@ -64,13 +64,15 @@ export const addLevelsToUserAccount = (levels, userLevels) => (dispatch) => {
       levelsToAdd.push(level.id);
     });
   }
-  axiosWithAuth()
-    .post(`http://localhost:5000/levels/${localStorage.getItem("userID")}`, {
-      levels: levelsToAdd,
-    })
+  console.log("levels array", levelsToAdd);
+  await axiosWithAuth()
+    .post(
+      `http://localhost:5000/levels/${localStorage.getItem("userID")}`,
+      {levels: levelsToAdd}
+    )
     .then((res) => {
       dispatch({ type: ADD_LEVELS_SUCCESS, payload: res.data });
-      // console.log("PROMISE ALL ATTEMPT", res.data)
+      console.log("ADD USERS", res.data);
     })
     .catch((error) => {
       dispatch({
