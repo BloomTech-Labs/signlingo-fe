@@ -52,6 +52,7 @@ const DashboardCard = (props) => {
     d.level_id - 1
   );
 
+  // LOGIC FOR FLASHCARD BUBBLES
   if (d.level_id === 1) {
     if (d.completed_flashcards === null) {
       flashcard = (
@@ -108,8 +109,8 @@ const DashboardCard = (props) => {
       );
     }
   }
-
-  if (d.completed_flashcards !== null && d.completed_exercises === null) {
+  // LOGIC FOR EXERCISE BUBBLES
+  if (d.completed_flashcards && d.completed_exercises === null) {
     exercise = (
       <>
         <img
@@ -129,16 +130,23 @@ const DashboardCard = (props) => {
         <p>Exercises</p>
       </>
     );
-  } else {
+  } else if (d.level_id === 1) {
     exercise = (
       <>
         <img src={purl + "/images/icons/exerciseFaded.png"}></img>
         <p>Exercises</p>
       </>
     );
+  } else {
+    exercise = (
+      <>
+        <img src={purl + "/images/icons/exerciseBW.png"}></img>
+        <p>Exercises</p>
+      </>
+    );
   }
-
-  if (d.completed_quiz === null && d.completed_exercises) {
+  // LOGIC FOR QUIZ BUBBLES
+  if (d.completed_exercises && d.completed_quiz === null) {
     quiz = (
       <>
         <img onClick={onQuiz} src={purl + "/images/icons/quizColor.png"}></img>
@@ -155,40 +163,56 @@ const DashboardCard = (props) => {
         <p>Video Quiz</p>
       </>
     );
-  } else {
+  } else if (d.level_id === 1) {
     quiz = (
       <>
         <img src={purl + "/images/icons/quizFaded.png"}></img>
-        <p>Video Quiz</p>
+        <p>Exercises</p>
+      </>
+    );
+  } else {
+    quiz = (
+      <>
+        <img src={purl + "/images/icons/quizBW.png"}></img>
+        <p>Exercises</p>
       </>
     );
   }
-  // working on greyout levels 
-  // if (
-  //   d.completed_exercises === null &&
-  //   d.completed_flashcards === null &&
-  //   d.completed_quiz === null &&
-  //   level &&
-  //   d.level_id !== 1
-  // ) {
-  //   level.classList.add("dashboard-greyout")
-  // }
 
   return (
     <div id="dash" className="dashboard">
       {props.title <= alphabet ? <h1>Alphabet - Level {props.title}</h1> : null}
-      <div className="progress-bar">
-        <img
-          className="progress-bar-img"
-          src={purl + "/images/icons/progressBarColor.png"}
-          alt="A progress Bar"
-        />
-        <img
-          className="crown-img"
-          src={purl + "/images/icons/crownColor.png"}
-          alt="A completion crown"
-        />
-      </div>
+      {d.level_id === 1 ||
+      (props.userLevels[levelMinusOne].completed_exercises &&
+        props.userLevels[levelMinusOne].completed_flashcards &&
+        props.userLevels[levelMinusOne].completed_quiz) ? (
+        <div className="progress-bar">
+          <img
+            className="progress-bar-img"
+            src={purl + "/images/icons/progressBarColor.png"}
+            alt="A progress Bar"
+          />
+          <img
+            className="crown-img"
+            src={purl + "/images/icons/crownColor.png"}
+            alt="A completion crown"
+          />
+        </div>
+      ) : (
+        <div className="progress-bar">
+          <img
+            className="progress-bar-img"
+            src={purl + "/images/icons/progressBarBW.png"}
+            alt="A progress Bar"
+          />
+          <img
+            className="crown-img"
+            src={purl + "/images/icons/crownBW.png"}
+            alt="A completion crown"
+          />
+        </div>
+      )}
+
       <section className="dashboard-content">
         <div id="flashcard-box">{flashcard}</div>
         <div className="exercise-quiz-wrapper">
