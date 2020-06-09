@@ -5,7 +5,6 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
 // Auth 2.0 combined with OpenID Connect still need to be implemented in this component
-// and in the Okta component (okta authentication process starts after user click)
 // this component is currenlty registering and logging in to a temporary server
 // on port 5000 based on back end repo branch <feature/okta>
 
