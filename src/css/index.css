@@ -123,106 +123,53 @@ code {
   line-height: 1.7rem;
   font-family: "Inter", sans-serif; }
 
-.logoutDiv {
+.dashboard-wrapper {
   display: flex;
-  justify-content: flex-end;
-  margin: 5%; }
-  .logoutDiv p {
-    font-size: 1.4rem; }
-
-.dashboard {
-  padding: 5%; }
-  .dashboard h1 {
-    text-align: left; }
-  .dashboard .progressBar {
+  flex-direction: column;
+  justify-content: flex-end; }
+  .dashboard-wrapper .logout-span {
     display: flex;
-    justify-content: space-between;
-    margin-top: 3%; }
-  .dashboard .dashboardContent {
+    flex-direction: row;
+    width: 100%; }
+    .dashboard-wrapper .logout-span .logout-filler {
+      width: 100%; }
+    .dashboard-wrapper .logout-span .logout {
+      padding: 2rem;
+      border-radius: 5px;
+      text-align: center;
+      white-space: nowrap;
+      font-size: 1.3rem; }
+      .dashboard-wrapper .logout-span .logout:hover {
+        cursor: pointer;
+        background: rgba(255, 208, 0, 0.74); }
+  .dashboard-wrapper .dashboard {
+    display: flex;
+    flex-direction: column; }
+    .dashboard-wrapper .dashboard h1 {
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 10%; }
+    .dashboard-wrapper .dashboard .progress-bar {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly; }
+    .dashboard-wrapper .dashboard .progress-bar-img {
+      width: 80%; }
+  .dashboard-wrapper .dashboard-content {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    margin: 5% 0 10% 0; }
-    .dashboard .dashboardContent p {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 2.5%;
-      color: #4f4f4f; }
-    .dashboard .dashboardContent .dashboardBttm {
+    align-content: center; }
+    .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
       display: flex;
       justify-content: center; }
-      .dashboard .dashboardContent .dashboardBttm .locked {
-        opacity: 0.3; }
-      .dashboard .dashboardContent .dashboardBttm #practiceBox {
-        margin-right: 6%; }
-      .dashboard .dashboardContent .dashboardBttm #quizBox {
-        margin-left: 6%; }
-
-.dashboardBw {
-  padding: 5%;
-  background: rgba(245, 245, 245, 0.68); }
-  .dashboardBw h1 {
-    text-align: left;
-    color: #bdbdbd; }
-  .dashboardBw .progressBar {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3%; }
-  .dashboardBw .dashboardContent {
-    display: flex;
-    flex-direction: column;
-    margin: 5% 0 10% 0; }
-    .dashboardBw .dashboardContent p {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-top: 2.5%;
-      color: #bdbdbd; }
-    .dashboardBw .dashboardContent .dashboardBttm {
-      display: flex;
-      justify-content: center; }
-      .dashboardBw .dashboardContent .dashboardBttm #practiceBox {
-        margin-right: 6%; }
-      .dashboardBw .dashboardContent .dashboardBttm #quizBox {
-        margin-left: 6%; }
-
-.lesson {
-  padding: 5%; }
-  .lesson .lessonBar {
-    display: flex;
-    max-width: 100%;
-    margin-bottom: 15%; }
-    .lesson .lessonBar h3 {
-      flex: 1 0 auto; }
-  .lesson .finishedBttn {
-    box-shadow: none;
-    margin: 10% 0 15% 0;
-    font-family: Inter, sans-serif;
-    font-size: 1.6rem;
-    padding: 2.5%;
-    line-height: 19px;
-    border-radius: 4px;
-    background: #f2f2f2; }
-  .lesson .finishedBttnActive {
-    background: #f6bf00; }
-
-.lessonCards {
-  width: 332px;
-  margin: 3% auto; }
-
-.frame {
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  height: 224px;
-  width: 332px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative; }
-  .frame .flipArrow {
-    top: 10px;
-    right: 10px;
-    position: absolute; }
-  .frame b {
-    font-size: 6.4rem; }
+      .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #exercise-box {
+        margin-right: 3rem; }
+      .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #quiz-box {
+        margin-left: 3rem; }
 
 .socialBtns {
   margin: 4% 0 0 0;
