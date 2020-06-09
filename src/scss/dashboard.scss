@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  //   margin: 2rem;
   .logout-span {
     display: flex;
     flex-direction: row;
@@ -24,6 +25,7 @@
   .dashboard {
     display: flex;
     flex-direction: column;
+  
     h1 {
       display: flex;
       justify-content: flex-start;
@@ -42,25 +44,60 @@
       // crown image styling if needed
     }
   }
+  // .dashboard-greyout {
+  //   -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  //   filter: grayscale(100%);
+  // }
   .dashboard-content {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-content: center;
     #flashcard-box {
-
+      &:hover {
+        cursor: pointer;
+      }
+      img {
+        width: 10rem;
+      }
+      p {
+        margin-top: 0.7rem;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
     }
     .exercise-quiz-wrapper {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        display: flex;
-        justify-content: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
       #exercise-box {
-          margin-right: 3rem;
-
+        margin-right: 3rem;
+        &:hover {
+          cursor: pointer;
+        }
+        img {
+          width: 10rem;
+        }
+        p {
+          margin-top: 0.7rem;
+          font-weight: bold;
+          font-size: 1.3rem;
+        }
       }
       #quiz-box {
-            margin-left: 3rem;
+        margin-left: 3rem;
+        &:hover {
+          cursor: pointer;
+        }
+        img {
+          width: 10rem;
+        }
+        p {
+          margin-top: 0.7rem;
+          font-weight: bold;
+          font-size: 1.3rem;
+        }
       }
     }
   }

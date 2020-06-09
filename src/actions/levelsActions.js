@@ -6,6 +6,10 @@ export const GET_ALL_USER_LEVELS_SUCCESS = "GET_ALL_USER_LEVELS_SUCCESS";
 export const GET_ALL_USER_LEVELS_FAILURE = "GET_ALL_USER_LEVELS_FAILURE";
 export const ADD_LEVELS_SUCCESS = "ADD_LEVELS_SUCCESS";
 export const ADD_LEVELS_FAILURE = "ADD_LEVELS_FAILURE";
+export const GET_FLASHCARDS_SUCCESS = "GET_FLASHCARDS_SUCCESS";
+export const GET_FLASHCARDS_FAILURE = "GET_FLASHCARDS_FAILURE";
+export const GET_EXERCISES_SUCCESS = "GET_EXERCISES_SUCCESS";
+export const GET_EXERCISES_FAILURE = "GET_EXERCISES_FAILURE";
 
 export const getAllLevels = () => async (dispatch) => {
   // res.data contains [{id: 1, name: "ABCDE"}, {...},] from levels table on back end
@@ -81,3 +85,25 @@ export const addLevelsToUserAccount = (levels, userLevels) => async (dispatch) =
       });
     });
 };
+
+// export const getFlashcards = (level_id) => async(dispatch) => {
+//   await axiosWithAuth()
+//     .then(res => {
+//       console.log("%%%%%%%%%", res.data)
+//     })
+//     .catch(error => {
+//       dispatch({ type: GET_FLASHCARDS_FAILURE, payload: "Failed to retrieve flashcards for level" });
+//     })
+// }
+
+// export const getExercises = (level_id) => async(dispatch) => {
+//   await axiosWithAuth()
+//     .then(res => {
+//       console.log("%%%%%%%%%", res.data)
+//     })
+//     .catch(error => {
+//       dispatch({ type: GET_FLASHCARDS_FAILURE, payload: "Failed to retrieve flashcards for level" });
+//     })
+// }
+
+

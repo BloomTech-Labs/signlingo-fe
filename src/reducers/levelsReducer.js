@@ -10,6 +10,8 @@ import {
 const initialState = {
   levels: [],
   userLevels: [],
+  flashcards: [],
+  exercises: [],
   error: "",
 };
 

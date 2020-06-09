@@ -24,7 +24,7 @@ function App() {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/quizLanding">
+          <Route path="/quizlanding">
             <QuizLandingPage />
           </Route>
           <Route path="/quiz">

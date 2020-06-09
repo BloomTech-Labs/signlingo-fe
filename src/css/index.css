@@ -161,6 +161,14 @@ code {
     display: flex;
     flex-direction: column;
     align-content: center; }
+    .dashboard-wrapper .dashboard-content #flashcard-box:hover {
+      cursor: pointer; }
+    .dashboard-wrapper .dashboard-content #flashcard-box img {
+      width: 10rem; }
+    .dashboard-wrapper .dashboard-content #flashcard-box p {
+      margin-top: 0.7rem;
+      font-weight: bold;
+      font-size: 1.3rem; }
     .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper {
       margin-top: 2rem;
       margin-bottom: 2rem;
@@ -168,8 +176,24 @@ code {
       justify-content: center; }
       .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #exercise-box {
         margin-right: 3rem; }
+        .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #exercise-box:hover {
+          cursor: pointer; }
+        .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #exercise-box img {
+          width: 10rem; }
+        .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #exercise-box p {
+          margin-top: 0.7rem;
+          font-weight: bold;
+          font-size: 1.3rem; }
       .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #quiz-box {
         margin-left: 3rem; }
+        .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #quiz-box:hover {
+          cursor: pointer; }
+        .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #quiz-box img {
+          width: 10rem; }
+        .dashboard-wrapper .dashboard-content .exercise-quiz-wrapper #quiz-box p {
+          margin-top: 0.7rem;
+          font-weight: bold;
+          font-size: 1.3rem; }
 
 .socialBtns {
   margin: 4% 0 0 0;

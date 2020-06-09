@@ -10,6 +10,32 @@ const DashboardCard = (props) => {
   let flashcard;
   let exercise;
   let quiz;
+  let level = document.getElementById("dash");
+
+  let alphabetFlashTitle =
+    props.levelData.level_id === 2 ? (
+      <p>F - J</p>
+    ) : props.levelData.level_id === 3 ? (
+      <p>K - O</p>
+    ) : props.levelData.level_id === 4 ? (
+      <p>P - T</p>
+    ) : props.levelData.level_id === 5 ? (
+      <p>U - Z</p>
+    ) : (
+      "Add Future Level Name Here"
+    ); // add more levels here if necessary
+
+  const onFlashCard = () => {
+    history.push("/flashcard");
+  };
+
+  const onExercise = () => {
+    history.push("/exercise");
+  };
+
+  const onQuiz = () => {
+    history.push("/quizlanding");
+  };
 
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
@@ -30,15 +56,21 @@ const DashboardCard = (props) => {
     if (d.completed_flashcards === null) {
       flashcard = (
         <>
-          <img src={purl + "/images/icons/flashCardColor.png"}></img>
-          <p>Flashcards</p>
+          <img
+            onClick={onFlashCard}
+            src={purl + "/images/icons/flashCardColor.png"}
+          ></img>
+          <p>A - E</p>
         </>
       );
     } else if (d.completed_flashcards) {
       flashcard = (
         <>
-          <img src={purl + "/images/icons/flashCardChecked.png"}></img>
-          <p>Flashcards</p>
+          <img
+            onClick={onFlashCard}
+            src={purl + "/images/icons/flashCardChecked.png"}
+          ></img>
+          <p>A - E</p>
         </>
       );
     }
@@ -50,22 +82,28 @@ const DashboardCard = (props) => {
     ) {
       flashcard = (
         <>
-          <img src={purl + "/images/icons/flashCardColor.png"}></img>
-          <p>Flashcard</p>
+          <img
+            onClick={onFlashCard}
+            src={purl + "/images/icons/flashCardColor.png"}
+          ></img>
+          {alphabetFlashTitle}
         </>
       );
     } else if (d.completed_flashcards) {
       flashcard = (
         <>
-          <img src={purl + "/images/icons/flashCardChecked.png"}></img>
-          <p>Flashcard</p>
+          <img
+            onClick={onFlashCard}
+            src={purl + "/images/icons/flashCardChecked.png"}
+          ></img>
+          {alphabetFlashTitle}
         </>
       );
     } else {
       flashcard = (
         <>
-          <img src={purl + "/images/icons/flashCardFaded.png"}></img>
-          <p>Flashcard</p>
+          <img src={purl + "/images/icons/flashCardBW.png"}></img>
+          {alphabetFlashTitle}
         </>
       );
     }
@@ -74,14 +112,20 @@ const DashboardCard = (props) => {
   if (d.completed_flashcards !== null && d.completed_exercises === null) {
     exercise = (
       <>
-        <img src={purl + "/images/icons/exerciseColor.png"}></img>
+        <img
+          onClick={onExercise}
+          src={purl + "/images/icons/exerciseColor.png"}
+        ></img>
         <p>Exercises</p>
       </>
     );
   } else if (d.completed_flashcards && d.completed_exercises) {
     exercise = (
       <>
-        <img src={purl + "/images/icons/exerciseChecked.png"}></img>
+        <img
+          onClick={onExercise}
+          src={purl + "/images/icons/exerciseChecked.png"}
+        ></img>
         <p>Exercises</p>
       </>
     );
@@ -97,14 +141,17 @@ const DashboardCard = (props) => {
   if (d.completed_quiz === null && d.completed_exercises) {
     quiz = (
       <>
-        <img src={purl + "/images/icons/quizColor.png"}></img>
+        <img onClick={onQuiz} src={purl + "/images/icons/quizColor.png"}></img>
         <p>Video Quiz</p>
       </>
     );
   } else if (d.completed_quiz && d.completed_exercises) {
     quiz = (
       <>
-        <img src={purl + "/images/icons/quizChecked.png"}></img>
+        <img
+          onClick={onQuiz}
+          src={purl + "/images/icons/quizChecked.png"}
+        ></img>
         <p>Video Quiz</p>
       </>
     );
@@ -116,9 +163,19 @@ const DashboardCard = (props) => {
       </>
     );
   }
+  // working on greyout levels 
+  // if (
+  //   d.completed_exercises === null &&
+  //   d.completed_flashcards === null &&
+  //   d.completed_quiz === null &&
+  //   level &&
+  //   d.level_id !== 1
+  // ) {
+  //   level.classList.add("dashboard-greyout")
+  // }
 
   return (
-    <div className="dashboard">
+    <div id="dash" className="dashboard">
       {props.title <= alphabet ? <h1>Alphabet - Level {props.title}</h1> : null}
       <div className="progress-bar">
         <img
