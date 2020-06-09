@@ -3,9 +3,6 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 
 import Signup from "./Signup";
 import Login from "./Login";
-import LoginPage from "./LoginPage";
-import SignUpPage from "./SignUpPage";
-import Okta from "./Okta";
 
 import PropTypes from "prop-types";
 import { withStyles, makeStyles } from "@material-ui/core/styles";

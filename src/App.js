@@ -6,19 +6,18 @@ import LandingPage from "./components/LandingPage";
 import Account from "./components/Account";
 import QuizLandingPage from "./components/Quiz/QuizLandingPage.js";
 import Quiz from "./components/Quiz/Quiz";
+import Okta from "./components/OktaSignInWidget.js";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Route exact path="/">
-          <LandingPage />
+          <Home />
         </Route>
-        <Route exact path="/account/signup">
-          <Account value={0} /> {/*value displays correct tab preventing memory leak*/}
-        </Route>
-        <Route exact path="/account/login">
-          <Account value={1} /> {/*value displays correct tab preventing memory leak*/}
+        <Route exact path="/auth">
+          <Okta/>
         </Route>
         <PrivateRoute>
           <Route path="/dashboard">

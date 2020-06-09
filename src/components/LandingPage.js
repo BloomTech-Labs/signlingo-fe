@@ -1,12 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-// import heroLg from "/images/landing/hero1.png";
-// import examSm from "/images/icons/examIconSmall.png";
-// import medalSm from "/images/icons/medalIconSmall.png";
-// import personSm from "/images/icons/personIconSmall.png";
-// import recSm from "/images/icons/recIconSmall.png";
-
 const LandingPage = () => {
   const history = useHistory();
 
@@ -32,7 +26,7 @@ const LandingPage = () => {
             data-testid="loginLP"
             id="login"
             onClick={() =>
-              history.push("/account/login")
+              history.push("/auth")
             }
           >
             Log in
@@ -44,7 +38,7 @@ const LandingPage = () => {
           data-testid="signupLP"
           id="landingBtn"
           onClick={() =>
-            history.push("/account/signup")
+            history.push("/auth")
           }
         >
           Sign up

@@ -28,14 +28,14 @@ ReactDOM.render(
         composeWithDevTools(applyMiddleware(thunk))
       )}
     >
-      <Security
+      {/* <Security
         issuer={config.issuer}
         client_id={config.client_id}
         redirect_uri={config.redirect_uri}
         onAuthRequired={onAuthRequired}
-      >
+      > */}
         <App />
-      </Security>
+      {/* </Security> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
