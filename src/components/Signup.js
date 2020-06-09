@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
@@ -8,6 +8,9 @@ import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
+import config from "../app.config";
+import OktaAuth from "@okta/okta-auth-js";
+import { withAuth } from "@okta/okta-react";
 
 // validation scheme
 let SignupSchema = yup.object().shape({
@@ -115,15 +118,41 @@ const useStyles = makeStyles((theme) => ({
 const Signup = ({ register }, props) => {
   const classes = useStyles();
   const history = useHistory();
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+    sessionToken: null,
+  });
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
   const submitHandler = async (values) => {
     // sanitizing the data so backend doesn't receive confirmation field
-    const newValues = {
-      email: values.email,
-      password: values.password,
-    };
-    await register(newValues, history);
+    // const newValues = {
+    //   email: values.email,
+    //   password: values.password,
+    // };
+    // await register(newValues, history);
+    fetch("/api/users", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state),
+    })
+      .then((user) => {
+        this.oktaAuth
+          .signIn({
+            email: values.email,
+            password: values.password,
+          })
+          .then((res) =>
+            setState({
+              sessionToken: res.sessionToken,
+            })
+          );
+      })
+      .catch((err) => console.log);
   };
 
   return (

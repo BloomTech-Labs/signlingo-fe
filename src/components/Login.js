@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions/authActions";
@@ -8,6 +8,10 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
+import config from "../app.config";
+
+import OktaAuth from "@okta/okta-auth-js";
+import { withAuth } from "@okta/okta-react";
 
 // validation scheme
 let SignupSchema = yup.object().shape({
@@ -108,14 +112,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = ({login}, props) => {
+const Login = ({ login }, props) => {
+
+  const [state, setState] = useState({
+    sessionToken: null,
+    error: null,
+    email: "",
+    password: "",
+  });
+
+  const oktaAuth = new OktaAuth({ url: config.issuer });
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    oktaAuth
+      .signIn({
+        email: state.email,
+        password: state.password,
+      })
+      .then((res) =>
+        setState({
+          sessionToken: res.sessionToken,
+        })
+      )
+      .catch((err) => {
+        setState({ error: err.message });
+        console.log(err.statusCode + " error", err);
+      });
+  };
+
   const classes = useStyles();
   const history = useHistory();
 
   //the submit handler in formik, takes two parameters: the values (banana term), and formik bag
-  const submitHandler = async (values) => {
-    await login(values, history);
-  }
+  // const submitHandler = async (values) => {
+  //   await login(values, history);
+  // };
+  //deprecated due to okta implementation
 
   return (
     <div>

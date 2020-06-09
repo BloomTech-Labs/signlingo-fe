@@ -3,7 +3,9 @@ import { Link, useLocation, useHistory } from "react-router-dom";
 
 import Signup from "./Signup";
 import Login from "./Login";
-import Okta from "./Okta"
+import LoginPage from "./LoginPage";
+import SignUpPage from "./SignUpPage";
+import Okta from "./Okta";
 
 import PropTypes from "prop-types";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
@@ -115,7 +117,7 @@ const Account = (props) => {
         <Link to="/">
           <img
             data-testid="backLandingPage"
-            src={process.env.PUBLIC_URL + '/images/icons/backIconSmall.png'}
+            src={process.env.PUBLIC_URL + "/images/icons/backIconSmall.png"}
             alt="Arrow pointing left"
           />
         </Link>
@@ -148,7 +150,7 @@ const Account = (props) => {
         <Signup />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={1}>
-        <Login />
+        <Login/>
       </TabPanel>
       {/* <Okta/> */}
     </div>
