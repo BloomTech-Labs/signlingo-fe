@@ -235,8 +235,8 @@ const Signup = ({ register }, props) => {
       {/* Below is where Okta.js was before we decided to rescrope our release canvas to not include it.
       it remains in the code base in case another team figures out the functionality and wants to add an additional
       means of signing up for the app */}
-      <div className="separator">or</div>
-      <p className="socialText">Log in more securely using Okta</p>
+      {/* <div className="separator">or</div>
+      <p className="socialText">Log in more securely using Okta</p> */}
     </div>
   );
 };

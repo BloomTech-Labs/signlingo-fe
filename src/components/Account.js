@@ -150,7 +150,7 @@ const Account = (props) => {
       <TabPanel className={classes.tabPanel} value={value} index={1}>
         <Login />
       </TabPanel>
-      <Okta/>
+      {/* <Okta/> */}
     </div>
   );
 };
