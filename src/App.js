@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   useHistory,
-  Switch,
+  Switch, // this is different
 } from "react-router-dom";
 import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
 import config from "./components/Home/oktaConfig";
@@ -18,20 +18,18 @@ const HasAccessToRouter = () => {
 
   const customAuthHandler = () => {
     // Redirect to the /login page that has a CustomLoginComponent
-    history.push("/auth");
+    history.push("/login");
   };
 
   return (
     <div className="App">
       <Security {...config.oidc} onAuthRequired={customAuthHandler}>
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/implicit/callback" component={LoginCallback} />
-          <Route exact path="/auth" component={LoginAndRegister} />
-          <SecureRoute exact path="/dashboard" component={Dashboard} />
-          <SecureRoute exact path="/quizLanding" component={QuizLandingPage} />
+          <Route path="/" exact component={LandingPage} />
+          <Route path="/implicit/callback" component={LoginCallback} />
+          <Route path="/login" component={LoginAndRegister} />
+          <SecureRoute path="/dashboard" component={Dashboard} />
+          <SecureRoute path="/quizLanding" component={QuizLandingPage} />
           <SecureRoute exact path="/quiz" component={Quiz} />
-        </Switch>
       </Security>
     </div>
   );

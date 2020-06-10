@@ -10,10 +10,11 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import React, { useEffect } from "react";
-import * as OktaSignIn from "@okta/okta-signin-widget";
-import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
-import config from "./oktaConfig";
+import React, { useEffect } from 'react';
+import * as OktaSignIn from '@okta/okta-signin-widget';
+import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+
+import config from './oktaConfig';
 
 const LoginAndRegister = () => {
   useEffect(() => {
@@ -24,20 +25,20 @@ const LoginAndRegister = () => {
        * needs to be configured with the base URL for your Okta Org. Here
        * we derive it from the given issuer for convenience.
        */
-      baseUrl: issuer.split("/oauth2")[0],
+      baseUrl: issuer.split('/oauth2')[0],
       clientId,
       redirectUri,
-      logo: process.env.PUBLIC_URL + "/favicon.ico",
+      logo: '/react.svg',
       i18n: {
         en: {
-          "primaryauth.title": "Log Into Sign Lingo",
+          'primaryauth.title': 'Sign in to React & Company',
         },
       },
       authParams: {
         pkce,
         issuer,
-        display: "page",
-        responseMode: pkce ? "query" : "fragment",
+        display: 'page',
+        responseMode: pkce ? 'query' : 'fragment',
         scopes,
       },
       registration: {
@@ -60,7 +61,7 @@ const LoginAndRegister = () => {
     });
 
     widget.renderEl(
-      { el: "#sign-in-widget" },
+      { el: '#sign-in-widget' },
       () => {
         /**
          * In this flow, the success handler will not be called beacuse we redirect
@@ -69,7 +70,7 @@ const LoginAndRegister = () => {
       },
       (err) => {
         throw err;
-      }
+      },
     );
   }, []);
 
