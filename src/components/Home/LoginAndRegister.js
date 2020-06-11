@@ -14,7 +14,7 @@ import React, { useEffect } from 'react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
-import config from './oktaConfig';
+import config from './00_oktaConfig';
 
 const LoginAndRegister = () => {
   useEffect(() => {
@@ -28,14 +28,15 @@ const LoginAndRegister = () => {
       baseUrl: issuer.split('/oauth2')[0],
       clientId,
       redirectUri,
-      logo: '/react.svg',
+      logo: process.env.PUBLIC_URL + '/favicon.ico',
       i18n: {
         en: {
-          'primaryauth.title': 'Sign in to React & Company',
+          'primaryauth.title': 'Log into Sign Lingo',
         },
       },
       authParams: {
-        pkce,
+        pkce: false,
+        responseType: "token",
         issuer,
         display: 'page',
         responseMode: pkce ? 'query' : 'fragment',

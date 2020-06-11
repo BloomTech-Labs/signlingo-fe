@@ -12,7 +12,7 @@ const Dashboard = (props) => {
   const history = useHistory();
   console.log("outside", props.levels.length, props.userLevels.length);
   function logout() {
-    localStorage.removeItem("userID", "token");
+    localStorage.removeItem("userID", "token", "okta-token-storage");
     history.push("/");
   }
   useEffect(() => {

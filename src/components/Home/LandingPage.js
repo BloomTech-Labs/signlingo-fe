@@ -1,7 +1,9 @@
 import { useOktaAuth } from "@okta/okta-react";
 import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
 
 const LandingPage = () => {
+  let history = useHistory();
   const { authState, authService } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
@@ -26,11 +28,11 @@ const LandingPage = () => {
 
   return (
     <>
-      {/* {authState.isAuthenticated && !userInfo && (
+      {authState.isAuthenticated && !userInfo && (
         <div>Loading user information...</div>
       )}
 
-      {!authState.isAuthenticated && ( */}
+      {!authState.isAuthenticated ? (
         <>
           <div className="heroDiv">
             <img
@@ -128,7 +130,9 @@ const LandingPage = () => {
             </div>
           </div>
         </>
-      {/* )} */}
+      ) : (
+        history.push("/dashboard")
+      )}
     </>
   );
 };
