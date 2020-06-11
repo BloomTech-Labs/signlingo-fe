@@ -29,7 +29,7 @@ export const getAllLevels = () => async (dispatch) => {
     return result;
 };
 
-export const getAllUserLevelsByID = () => async (dispatch) => {
+export const getAllUserLevelsByOktaUID = (oktaUID) => async (dispatch) => {
   // res.data = contains
   // [{id: 1,
   //   user_level:1,
@@ -38,7 +38,7 @@ export const getAllUserLevelsByID = () => async (dispatch) => {
   //   completed_exercise: nullORtimestamp,
   //   completed_quiz: nullORtimestamp}, {...}]
   const result = await axiosWithAuth()
-    .get(`http://localhost:5000/levels/check/${localStorage.getItem("userID")}`)
+    .get(`http://localhost:5000/levels/check/${oktaUID}`)
     .then((res) => {
       dispatch({ type: GET_ALL_USER_LEVELS_SUCCESS, payload: res.data });
     })

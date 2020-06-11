@@ -3,35 +3,53 @@ import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   getAllLevels,
-  getAllUserLevelsByID,
+  getAllUserLevelsByOktaUID,
   addLevelsToUserAccount,
 } from "../../actions/levelsActions";
 import DashboardCard from "./DashboardCard";
+import axios from "axios";
+import { useOktaAuth } from "@okta/okta-react";
 
 const Dashboard = (props) => {
+  const { authState, authService } = useOktaAuth();
   const history = useHistory();
-  console.log("outside", props.levels.length, props.userLevels.length);
+
   function logout() {
-    localStorage.removeItem("userID", "token", "okta-token-storage");
+    localStorage.removeItem("okta-token-storage");
     history.push("/");
+    window.location.pathname = '/';
   }
+
   useEffect(() => {
-    props.getAllUserLevelsByID();
-    props.getAllLevels();
-    console.log("inside", props.levels.length, props.userLevels.length);
+    // authService.getUser().then(info => {
+    //   console.log(info)
+    // });
+    console.log(JSON.parse(localStorage.getItem("okta-token-storage")))
+    axios
+      .post("http://localhost:5000/user/signup", JSON.parse(localStorage.getItem("okta-token-storage")))
+      .then((res) => {
+        console.log(res);
+        props.getAllUserLevelsByOktaUID(res.data.okta_uid);
+        props.getAllLevels();
+      })
+      .catch((err) => {
+        console.log("error loggin in and or registering", err);
+      });
+
     if (props.levels.length > props.userLevels.length) {
-      console.log("conditional", props.levels.length, props.userLevels.length);
-      props.addLevelsToUserAccount(props.levels, props.userLevels);
+      // props.addLevelsToUserAccount(props.levels, props.userLevels);
     } else if (props.levels.length < props.userLevels.length) {
       throw new Error("This should be unreachable");
     }
-  }, [props.levels.length]);
+  }, []); //props.levels.length
 
   return (
     <div className="dashboard-wrapper">
       <span className="logout-span">
         <p className="logout-filler"></p>
-        <p className="logout"onClick={logout}>Log Out</p>
+        <p className="logout" onClick={logout}>
+          Log Out
+        </p>
       </span>
       {props.isLoading ? (
         <>
@@ -61,7 +79,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   getAllLevels,
-  getAllUserLevelsByID,
+  getAllUserLevelsByOktaUID,
   addLevelsToUserAccount,
 };
 
