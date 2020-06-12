@@ -60,6 +60,7 @@ const DashboardCard = (props) => {
           <img
             onClick={onFlashCard}
             src={purl + "/images/icons/flashCardColor.png"}
+            alt={`flashcards for level ${d.level_id}`}
           ></img>
           <p>A - E</p>
         </>
@@ -70,6 +71,7 @@ const DashboardCard = (props) => {
           <img
             onClick={onFlashCard}
             src={purl + "/images/icons/flashCardChecked.png"}
+            alt={`flashcards for level ${d.level_id}`}
           ></img>
           <p>A - E</p>
         </>
@@ -86,6 +88,7 @@ const DashboardCard = (props) => {
           <img
             onClick={onFlashCard}
             src={purl + "/images/icons/flashCardColor.png"}
+            alt={`flashcards for level ${d.level_id}`}
           ></img>
           {alphabetFlashTitle}
         </>
@@ -96,6 +99,7 @@ const DashboardCard = (props) => {
           <img
             onClick={onFlashCard}
             src={purl + "/images/icons/flashCardChecked.png"}
+            alt={`flashcards for level ${d.level_id}`}
           ></img>
           {alphabetFlashTitle}
         </>
@@ -104,6 +108,7 @@ const DashboardCard = (props) => {
       flashcard = (
         <>
           <img src={purl + "/images/icons/flashCardBW.png"}></img>
+          alt={`flashcards for level ${d.level_id}`}
           {alphabetFlashTitle}
         </>
       );
@@ -116,6 +121,7 @@ const DashboardCard = (props) => {
         <img
           onClick={onExercise}
           src={purl + "/images/icons/exerciseColor.png"}
+          alt={`exercises for level ${d.level_id}`}
         ></img>
         <p>Exercises</p>
       </>
@@ -126,6 +132,7 @@ const DashboardCard = (props) => {
         <img
           onClick={onExercise}
           src={purl + "/images/icons/exerciseChecked.png"}
+          alt={`exercises for level ${d.level_id}`}
         ></img>
         <p>Exercises</p>
       </>
@@ -133,14 +140,20 @@ const DashboardCard = (props) => {
   } else if (d.level_id === 1) {
     exercise = (
       <>
-        <img src={purl + "/images/icons/exerciseFaded.png"}></img>
+        <img
+          src={purl + "/images/icons/exerciseFaded.png"}
+          alt={`exercises for level ${d.level_id}`}
+        ></img>
         <p>Exercises</p>
       </>
     );
   } else {
     exercise = (
       <>
-        <img src={purl + "/images/icons/exerciseBW.png"}></img>
+        <img
+          src={purl + "/images/icons/exerciseBW.png"}
+          alt={`exercises for level ${d.level_id}`}
+        ></img>
         <p>Exercises</p>
       </>
     );
@@ -149,7 +162,11 @@ const DashboardCard = (props) => {
   if (d.completed_exercises && d.completed_quiz === null) {
     quiz = (
       <>
-        <img onClick={onQuiz} src={purl + "/images/icons/quizColor.png"}></img>
+        <img
+          onClick={onQuiz}
+          src={purl + "/images/icons/quizColor.png"}
+          alt={`quiz for level ${d.level_id}`}
+        ></img>
         <p>Video Quiz</p>
       </>
     );
@@ -159,6 +176,7 @@ const DashboardCard = (props) => {
         <img
           onClick={onQuiz}
           src={purl + "/images/icons/quizChecked.png"}
+          alt={`quiz for level ${d.level_id}`}
         ></img>
         <p>Video Quiz</p>
       </>
@@ -166,14 +184,20 @@ const DashboardCard = (props) => {
   } else if (d.level_id === 1) {
     quiz = (
       <>
-        <img src={purl + "/images/icons/quizFaded.png"}></img>
+        <img
+          src={purl + "/images/icons/quizFaded.png"}
+          alt={`quiz for level ${d.level_id}`}
+        ></img>
         <p>Exercises</p>
       </>
     );
   } else {
     quiz = (
       <>
-        <img src={purl + "/images/icons/quizBW.png"}></img>
+        <img
+          src={purl + "/images/icons/quizBW.png"}
+          alt={`quiz for level ${d.level_id}`}
+        ></img>
         <p>Exercises</p>
       </>
     );
