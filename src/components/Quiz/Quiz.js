@@ -17,7 +17,7 @@ const Quiz = (props) => {
   }
 
   function backToLanding() {
-    return window.location.pathname = "/quiz";
+    return window.location.pathname = "/quizwrapper";
   }
 
   let scoreHandler = (pass) => {
@@ -36,7 +36,6 @@ const Quiz = (props) => {
       document.querySelector("video").classList.remove("videoSuccess");
       document.querySelector("video").classList.remove("videoFail");
     }
-    console.log(currentIndex);
   };
   const turnVideoOn = () => {
     setVideoOn(true);
@@ -52,14 +51,6 @@ const Quiz = (props) => {
             src="./images/quiz/exitBlackX.png"
             alt="exit image"
           />
-          {/* <div className="progressHolder">
-            <img
-              className="progressBar"
-              src="./images/progressBar.png"
-              alt="progress bar image"
-            />
-            <img className="heart" src="./images/heart.png" alt="heart image" />
-          </div> */}
           <h1 className="signLabel">Sign "{data[currentIndex]}"</h1>
           {videoOn ? (
             <VideoAssessment
@@ -83,21 +74,6 @@ const Quiz = (props) => {
               </div>
             </>
           )}
-          {/* {
-            !videoOn && !result ? 
-            <div className="roundbtn roundbtnGrey" id = 'recBtn'>
-                <div className="roundbtnCircle">Record</div>
-              </div> 
-              :
-              <div className="roundbtn" id = 'recBtn'>
-                <div className="roundbtnCircle">Record</div>
-              </div>
-          } */}
-          {/* {
-            pseudocode for chaining ternary ops
-            if videoNotOn, display greyBtn
-            else if 
-          } */}
           {result === null ? null : (
             <button
               onClick={nextHandler}

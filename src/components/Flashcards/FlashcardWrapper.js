@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 const FlashcardWrapper = (props) => {
     return (
         <>
+            <p>FLashcard page wrapper!</p>
+            {console.log(props)}
         </>
     );
 };
