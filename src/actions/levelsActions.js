@@ -13,7 +13,7 @@ export const GET_EXERCISES_FAILURE = "GET_EXERCISES_FAILURE";
 
 export const getAllLevels = () => async (dispatch) => {
   // res.data contains [{id: 1, name: "ABCDE"}, {...},] from levels table on back end
-  // res.data will contain something like this in the future:
+  // res.data will also contain something like this in the future:
   // [{id: 6, name: "123456789"}, {...},] the same for words, phrases so on...
   const result = await axiosWithAuth()
     .get("http://localhost:5000/levels/")
@@ -30,7 +30,7 @@ export const getAllLevels = () => async (dispatch) => {
 };
 
 export const getAllUserLevelsByOktaUID = (oktaUID) => async (dispatch) => {
-  // res.data = contains
+  // res.data contains the following in each entry:
   // [{id: 1,
   //   user_level:1,
   //   level_id: 1,
@@ -38,7 +38,7 @@ export const getAllUserLevelsByOktaUID = (oktaUID) => async (dispatch) => {
   //   completed_exercise: nullORtimestamp,
   //   completed_quiz: nullORtimestamp}, {...}]
   const result = await axiosWithAuth()
-    .get(`http://localhost:5000/levels/check/${oktaUID}`)
+    .get(`http://localhost:5000/levels/${oktaUID}`)
     .then((res) => {
       dispatch({ type: GET_ALL_USER_LEVELS_SUCCESS, payload: res.data });
     })
@@ -51,7 +51,7 @@ export const getAllUserLevelsByOktaUID = (oktaUID) => async (dispatch) => {
     return result;
 };
 
-export const addLevelsToUserAccount = (levels, userLevels) => async (dispatch) => {
+export const addLevelsToUserAccount = (levels, userLevels, oktaUID) => async (dispatch) => {
   let levelsToAdd = []; // ends up containing all level_ids to add to user account
   if (userLevels.length === 0) {
     levels.forEach((level) => {
@@ -70,15 +70,13 @@ export const addLevelsToUserAccount = (levels, userLevels) => async (dispatch) =
       levelsToAdd.push(level.id);
     });
   }
-  console.log("levels array", levelsToAdd);
   await axiosWithAuth()
     .post(
-      `http://localhost:5000/levels/${localStorage.getItem("userID")}`,
+      `http://localhost:5000/levels/${oktaUID}`,
       {levels: levelsToAdd}
     )
     .then((res) => {
       dispatch({ type: ADD_LEVELS_SUCCESS, payload: res.data });
-      console.log("ADD USERS", res.data);
     })
     .catch((error) => {
       dispatch({
@@ -87,25 +85,5 @@ export const addLevelsToUserAccount = (levels, userLevels) => async (dispatch) =
       });
     });
 };
-
-// export const getFlashcards = (level_id) => async(dispatch) => {
-//   await axiosWithAuth()
-//     .then(res => {
-//       console.log("%%%%%%%%%", res.data)
-//     })
-//     .catch(error => {
-//       dispatch({ type: GET_FLASHCARDS_FAILURE, payload: "Failed to retrieve flashcards for level" });
-//     })
-// }
-
-// export const getExercises = (level_id) => async(dispatch) => {
-//   await axiosWithAuth()
-//     .then(res => {
-//       console.log("%%%%%%%%%", res.data)
-//     })
-//     .catch(error => {
-//       dispatch({ type: GET_FLASHCARDS_FAILURE, payload: "Failed to retrieve flashcards for level" });
-//     })
-// }
 
 

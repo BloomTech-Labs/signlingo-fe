@@ -10,9 +10,10 @@ import config from "./components/Home/00_oktaConfig";
 import LandingPage from "./components/Home/LandingPage";
 import LoginAndRegister from "./components/Home/LoginAndRegister";
 import Dashboard from "./components/Dashboard/Dashboard";
-import QuizLandingPage from "./components/Quiz/QuizLandingPage";
+import QuizWrapper from "./components/Quiz/QuizWrapper";
 import Quiz from "./components/Quiz/Quiz";
-import CustomLoginCallback from './utils/CustomLoginCallback';
+import FlashCardWrapper from "./components/Flashcards/FlashcardWrapper";
+import ExerciseWrapper from "./components/Exercises/ExerciseWrapper";
 
 const HasAccessToRouter = () => {
   const history = useHistory(); // example from react-router
@@ -26,13 +27,14 @@ const HasAccessToRouter = () => {
     <div className="App">
       <Security {...config.oidc} onAuthRequired={customAuthHandler}>
         <Switch>
-
           <Route exact path="/" component={LandingPage} />
           <Route path="/implicit/callback" component={LoginCallback} />
           <Route path="/login" component={LoginAndRegister} />
           <SecureRoute path="/dashboard" component={Dashboard} />
-          <SecureRoute path="/quizLanding" component={QuizLandingPage} />
-          <SecureRoute exact path="/quiz" component={Quiz} />
+          <SecureRoute path="/flashcard" component={FlashCardWrapper} />
+          <SecureRoute path="/exercise" component={ExerciseWrapper} />
+          <SecureRoute path="/quizwrapper" component={QuizWrapper} />
+          <SecureRoute path="/quiz" component={Quiz} />
         </Switch>
       </Security>
     </div>

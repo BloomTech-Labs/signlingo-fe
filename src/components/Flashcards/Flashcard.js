@@ -4,13 +4,14 @@ import { connect } from "react-redux";
 const Flashcard = (props) => {
     return (
         <>
+            <p>Your at the flashcard card!</p>
+            {console.log(props.levelData)}
         </>
     );
 };
 
 const mapStateToProps = (state) => {
     return {
-        
     };
   };
   

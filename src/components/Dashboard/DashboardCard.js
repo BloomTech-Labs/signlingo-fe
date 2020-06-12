@@ -26,7 +26,10 @@ const DashboardCard = (props) => {
     ); // add more levels here if necessary
 
   const onFlashCard = () => {
-    history.push("/flashcard");
+    history.push({
+      pathname: '/flashcard',
+      state: {levelData: props.levelData},
+    })
   };
 
   const onExercise = () => {

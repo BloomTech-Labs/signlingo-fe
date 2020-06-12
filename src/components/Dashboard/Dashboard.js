@@ -17,18 +17,21 @@ const Dashboard = (props) => {
   function logout() {
     localStorage.removeItem("okta-token-storage");
     history.push("/");
-    window.location.pathname = '/';
+    window.location.pathname = "/";
   }
 
   useEffect(() => {
     // authService.getUser().then(info => {
     //   console.log(info)
     // });
-    console.log(JSON.parse(localStorage.getItem("okta-token-storage")))
+    // console.log(JSON.parse(localStorage.getItem("okta-token-storage")))
     axios
-      .post("http://localhost:5000/user/signup", JSON.parse(localStorage.getItem("okta-token-storage")))
+      .post(
+        "http://localhost:5000/user/signup",
+        JSON.parse(localStorage.getItem("okta-token-storage"))
+      )
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("oktaUID", res.data.okta_uid);
         props.getAllUserLevelsByOktaUID(res.data.okta_uid);
         props.getAllLevels();
       })
@@ -37,11 +40,15 @@ const Dashboard = (props) => {
       });
 
     if (props.levels.length > props.userLevels.length) {
-      // props.addLevelsToUserAccount(props.levels, props.userLevels);
+      props.addLevelsToUserAccount(
+        props.levels,
+        props.userLevels,
+        localStorage.getItem("oktaUID")
+      );
     } else if (props.levels.length < props.userLevels.length) {
       throw new Error("This should be unreachable");
     }
-  }, []); //props.levels.length
+  }, []); // consider how adding a prop to dep array so condition can be reached if needed...
 
   return (
     <div className="dashboard-wrapper">
@@ -51,27 +58,19 @@ const Dashboard = (props) => {
           Log Out
         </p>
       </span>
-      {props.isLoading ? (
-        <>
-          <p>{props.loadingMessage}</p>
-        </>
-      ) : (
-        props.userLevels.map((levelData) => (
-          <DashboardCard
-            key={levelData.id}
-            levelData={levelData}
-            title={levelData.level_id}
-          />
-        ))
-      )}
+      {props.userLevels.map((levelData) => (
+        <DashboardCard
+          key={levelData.id}
+          levelData={levelData}
+          title={levelData.level_id}
+        />
+      ))}
     </div>
   );
 };
 
 function mapStateToProps(state) {
   return {
-    isLoading: state.authReducer.isLoading,
-    loadingMessage: state.authReducer.loadingMessage,
     levels: state.levelsReducer.levels, // array of all levels in database
     userLevels: state.levelsReducer.userLevels, // array of userLevels by userID in database
   };

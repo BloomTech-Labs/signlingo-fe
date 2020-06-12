@@ -5,14 +5,12 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { authReducer } from "./reducers/authReducer";
 import { levelsReducer } from "./reducers/levelsReducer";
 import "./css/index.css";
 import App from "./App";
 require("dotenv").config()
 
 const rootReducer = combineReducers({
-  authReducer,
   levelsReducer,
 });
 

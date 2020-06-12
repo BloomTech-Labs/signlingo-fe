@@ -16,7 +16,6 @@ const LandingPage = () => {
         setUserInfo(info);
       });
     }
-    
   }, [authState, authService]); // Update if authState changes
 
   const login = async () => {
