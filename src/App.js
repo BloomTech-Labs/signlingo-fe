@@ -31,7 +31,7 @@ const HasAccessToRouter = () => {
           <Route path="/implicit/callback" component={LoginCallback} />
           <Route path="/login" component={LoginAndRegister} />
           <SecureRoute path="/dashboard" component={Dashboard} />
-          <SecureRoute path="/flashcard" component={FlashCardWrapper} />
+          <SecureRoute path="/flashcard/:id" component={FlashCardWrapper} />
           <SecureRoute path="/exercise" component={ExerciseWrapper} />
           <SecureRoute path="/quizwrapper" component={QuizWrapper} />
           <SecureRoute path="/quiz" component={Quiz} />

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link, useLocation, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
 const DashboardCard = (props) => {
+  let location = useLocation();
   const history = useHistory();
   const purl = process.env.PUBLIC_URL;
   const alphabet = 5;
@@ -10,7 +11,6 @@ const DashboardCard = (props) => {
   let flashcard;
   let exercise;
   let quiz;
-  let level = document.getElementById("dash");
 
   let alphabetFlashTitle =
     props.levelData.level_id === 2 ? (
@@ -27,9 +27,9 @@ const DashboardCard = (props) => {
 
   const onFlashCard = () => {
     history.push({
-      pathname: '/flashcard',
-      state: {levelData: props.levelData},
-    })
+      pathname: "/flashcard",
+      level_id: d.level_id,
+    });
   };
 
   const onExercise = () => {
@@ -60,22 +60,26 @@ const DashboardCard = (props) => {
     if (d.completed_flashcards === null) {
       flashcard = (
         <>
-          <img
-            onClick={onFlashCard}
-            src={purl + "/images/icons/flashCardColor.png"}
-            alt={`flashcards for level ${d.level_id}`}
-          />
+          <Link to={`/flashcard/${d.level_id}`}>
+            <img
+              // onClick={onFlashCard}
+              src={purl + "/images/icons/flashCardColor.png"}
+              alt={`flashcards for level ${d.level_id}`}
+            />
+          </Link>
           <p>A - E</p>
         </>
       );
     } else if (d.completed_flashcards) {
       flashcard = (
         <>
-          <img
-            onClick={onFlashCard}
-            src={purl + "/images/icons/flashCardChecked.png"}
-            alt={`flashcards for level ${d.level_id}`}
-          />
+          <Link to={`/flashcard/${d.level_id}`}>
+            <img
+              // onClick={onFlashCard}
+              src={purl + "/images/icons/flashcardChecked.png"}
+              alt={`flashcards for level ${d.level_id}`}
+            />
+          </Link>
           <p>A - E</p>
         </>
       );
@@ -88,30 +92,33 @@ const DashboardCard = (props) => {
     ) {
       flashcard = (
         <>
-          <img
-            onClick={onFlashCard}
-            src={purl + "/images/icons/flashCardColor.png"}
-            alt={`flashcards for level ${d.level_id}`}
-          />
+          <Link to={`/flashcard/${d.level_id}`}>
+            <img
+              src={purl + "/images/icons/flashCardColor.png"}
+              alt={`flashcards for level ${d.level_id}`}
+            />
+          </Link>
           {alphabetFlashTitle}
         </>
       );
     } else if (d.completed_flashcards) {
       flashcard = (
         <>
-          <img
-            onClick={onFlashCard}
-            src={purl + "/images/icons/flashCardChecked.png"}
-            alt={`flashcards for level ${d.level_id}`}
-          />
+          <Link to={`/flashcard/${d.level_id}`}>
+            <img
+              src={purl + "/images/icons/flashCardChecked.png"}
+              alt={`flashcards for level ${d.level_id}`}
+            />
+          </Link>
           {alphabetFlashTitle}
         </>
       );
     } else {
       flashcard = (
         <>
-          <img src={purl + "/images/icons/flashCardBW.png"}
-          alt={`flashcards for level ${d.level_id}`}
+          <img
+            src={purl + "/images/icons/flashCardBW.png"}
+            alt={`flashcards for level ${d.level_id}`}
           />
           {alphabetFlashTitle}
         </>

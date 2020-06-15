@@ -452,3 +452,48 @@ div.quizDemo {
     margin-top: 8rem; }
   .resultsPage button.tryAgainButton {
     background: #f2f2f2; }
+
+.lesson {
+  padding: 5%; }
+  .lesson .lessonBar {
+    display: flex;
+    max-width: 100%;
+    margin-bottom: 15%; }
+    .lesson .lessonBar img {
+      width: 15px;
+      height: 15px; }
+    .lesson .lessonBar h3 {
+      flex: 1 0 auto;
+      font-size: 2rem; }
+  .lesson .finishedBttn {
+    box-shadow: none;
+    margin: 10% 0 15% 0;
+    font-family: Inter, sans-serif;
+    font-size: 1.6rem;
+    padding: 2.5%;
+    line-height: 19px;
+    border-radius: 4px;
+    background: #f2f2f2; }
+  .lesson .finishedBttnActive {
+    background: #f6bf00;
+    cursor: pointer; }
+
+.lessonCards {
+  width: 332px;
+  margin: 3% auto; }
+
+.frame {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  height: 224px;
+  width: 332px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; }
+  .frame .flipArrow {
+    top: 10px;
+    right: 10px;
+    position: absolute; }
+  .frame b {
+    font-size: 6.4rem; }
