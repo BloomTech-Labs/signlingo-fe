@@ -15,9 +15,7 @@ const Dashboard = (props) => {
   const history = useHistory();
 
   function logout() {
-    localStorage.removeItem("okta-token-storage");
-    history.push("/");
-    window.location.pathname = "/";
+    authService.logout("/");
   }
 
   useEffect(() => {

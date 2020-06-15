@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as OktaSignIn from "@okta/okta-signin-widget";
 import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
-
 import config from "./00_oktaConfig";
 
 export default class LoginAndRegister extends Component {
@@ -44,6 +43,8 @@ export default class LoginAndRegister extends Component {
         postSubmit: function (response, onSuccess, onFailure) {
           // handle postsubmit callback
           onSuccess(response);
+          // localStorage.clear();
+          // window.location.pathname = "/login";
         },
       },
       features: {
