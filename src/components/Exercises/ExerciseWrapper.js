@@ -2,13 +2,34 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
-import Exercise from "./ExerciseCard";
+import ExerciseCard from "./ExerciseCard";
 const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
 const ExerciseWrapper = (props) => {
   const { id } = useParams();
   let history = useHistory();
   const [flashcardData, setFlashcardData] = useState([]);
+  let exerciseData = [];
+
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+
+  function createExerciseData(flashcardData) {
+    for (let i = 0; i < flashcardData.length; i++) {
+      exerciseData.push({
+        sign: flashcardData[i].sign,
+        visual: flashcardData[i].visual,
+        showImage: false,
+      });
+      exerciseData.push({
+        sign: flashcardData[i].sign,
+        visual: flashcardData[i].visual,
+        showImage: true,
+      });
+    }
+    shuffle(exerciseData);
+  }
 
   function backToDash() {
     return history.push("/dashboard");
@@ -33,20 +54,18 @@ const ExerciseWrapper = (props) => {
             onClick={backToDash}
           />
         </div>
-        <div className="livesBar">
-          <img
-            className="progressBarExercise"
-            src={process.env.PUBLIC_URL + "/images/icons/progressBarColor.png"}
-            alt="A progress Bar"
+
+        {flashcardData.length !== 0 && console.log(flashcardData)}
+        {flashcardData.length !== 0 && createExerciseData(flashcardData)}
+        {flashcardData.length !== 0 && console.log("&&&&&", exerciseData)}
+
+        {flashcardData.length !== 0 && (
+          <ExerciseCard
+            key={flashcardData[0].id}
+            flashcards={flashcardData}
+            exerciseData={exerciseData}
           />
-          <img
-            className="heartExercise"
-            src={process.env.PUBLIC_URL + "/images/exercises/heart.png"}
-            alt="A heart and lives count"
-          />
-        </div>
-        {flashcardData &&
-          flashcardData.map((each) => <Exercise key={each.id} data={each} />)}
+        )}
       </div>
     </>
   );

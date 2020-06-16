@@ -14,9 +14,16 @@
     .progressBarExercise {
       // border: solid blue;
       width: 100%;
+      @media (max-width: 400px) {
+        width: 80%;
+      }
     }
     .heartExercise {
       margin-left: 3rem;
     }
   }
+}
+
+.exerciseCards {
+    border: solid black;
 }

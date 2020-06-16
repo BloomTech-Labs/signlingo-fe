@@ -510,5 +510,11 @@ div.quizDemo {
     align-items: center; }
     .exercise .livesBar .progressBarExercise {
       width: 100%; }
+      @media (max-width: 400px) {
+        .exercise .livesBar .progressBarExercise {
+          width: 80%; } }
     .exercise .livesBar .heartExercise {
       margin-left: 3rem; }
+
+.exerciseCards {
+  border: solid black; }
