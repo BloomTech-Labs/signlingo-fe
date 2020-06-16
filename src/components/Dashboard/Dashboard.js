@@ -53,7 +53,7 @@ const Dashboard = (props) => {
           Log Out
         </p>
       </span>
-      {props.userLevels.map((levelData) => (
+      {props.userLevels.sort((a,b) => a.level_id - b.level_id).map((levelData) => (
         <DashboardCard
           key={levelData.id}
           levelData={levelData}
