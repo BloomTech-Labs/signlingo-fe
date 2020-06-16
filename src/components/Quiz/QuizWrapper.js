@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const QuizLandingPage = (props) => {
   let history = useHistory();
+  const { id } = useParams();
 
   const handleQuizSubmit = () => {
-    history.push(`/quiz`);
+    history.push(`/quizcard/${id}`);
   };
 
   const backToDash = () => {

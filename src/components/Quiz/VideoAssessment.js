@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Overlay from "./Overlay.js";
+
 const VideoAssessment = (props) => {
   let mediaRecorder;
   let constraintObj = {
@@ -65,7 +66,7 @@ const VideoAssessment = (props) => {
         // vidSave.src = videoURL;
         let formData = new FormData();
         formData.append("video", blob);
-        formData.append("expected", props.testValue)
+        formData.append("expected", props.testValue);
         axios
           .post(
             "https://cors-anywhere.herokuapp.com/https://ds.thesignlingo.com/api",
@@ -76,7 +77,7 @@ const VideoAssessment = (props) => {
             props.setResult(res.data[0][1]);
             props.setIsRecording(false);
             console.log(res.data);
-          })
+          });
       };
     })
     .catch(function (err) {
@@ -110,14 +111,14 @@ const VideoAssessment = (props) => {
           <span id="loading">Loading...</span>
           <div className="circle-border">
             <div className="circle-core"></div>
-          </div>  
+          </div>
         </div>
       ) : props.result === null ? (
         <div onClick={start} className="roundbtn" id="recBtn">
           <div className="roundbtnCircle">Record</div>
         </div>
       ) : null}
-    </>                         
+    </>
   );
 };
 export default VideoAssessment;

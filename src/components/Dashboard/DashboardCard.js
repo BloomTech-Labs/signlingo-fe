@@ -1,9 +1,8 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const DashboardCard = (props) => {
-  const history = useHistory();
   const purl = process.env.PUBLIC_URL;
   const alphabet = 5; // num levels pertaining to alphabet
   const d = props.levelData;
@@ -23,21 +22,6 @@ const DashboardCard = (props) => {
     ) : (
       "Add Future Level Name Here"
     ); // add more levels here if necessary
-
-  const onFlashCard = () => {
-    history.push({
-      pathname: "/flashcard",
-      level_id: d.level_id,
-    });
-  };
-
-  const onExercise = () => {
-    history.push("/exercise");
-  };
-
-  const onQuiz = () => {
-    history.push("/quizlanding");
-  };
 
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
@@ -128,7 +112,6 @@ const DashboardCard = (props) => {
       <>
         <Link to={`/exercise/${d.level_id}`}>
           <img
-            onClick={onExercise}
             src={purl + "/images/icons/exerciseColor.png"}
             alt={`exercises for level ${d.level_id}`}
           />
@@ -141,7 +124,6 @@ const DashboardCard = (props) => {
       <>
         <Link to={`/exercise/${d.level_id}`}>
           <img
-            onClick={onExercise}
             src={purl + "/images/icons/exerciseChecked.png"}
             alt={`exercises for level ${d.level_id}`}
           />
@@ -176,7 +158,6 @@ const DashboardCard = (props) => {
       <>
         <Link to={`/quiz/${d.level_id}`}>
           <img
-            onClick={onQuiz}
             src={purl + "/images/icons/quizColor.png"}
             alt={`quiz for level ${d.level_id}`}
           />
@@ -189,7 +170,6 @@ const DashboardCard = (props) => {
       <>
         <Link to={`/quiz/${d.level_id}`}>
           <img
-            onClick={onQuiz}
             src={purl + "/images/icons/quizChecked.png"}
             alt={`quiz for level ${d.level_id}`}
           />

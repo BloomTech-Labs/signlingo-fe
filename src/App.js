@@ -34,7 +34,7 @@ const HasAccessToRouter = () => {
           <SecureRoute path="/flashcard/:id" component={FlashCardWrapper} />
           <SecureRoute path="/exercise/:id" component={ExerciseWrapper} />
           <SecureRoute path="/quiz/:id" component={QuizWrapper} />
-          <SecureRoute path="/quiz" component={Quiz} />
+          <SecureRoute path="/quizcard/:id" component={Quiz} />
         </Switch>
       </Security>
     </div>

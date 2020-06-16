@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import VideoAssessment from "./VideoAssessment";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from "react-router-dom";
 
 const Quiz = (props) => {
   const data = ["A", "B", "C", "D", "E"];
@@ -11,13 +11,14 @@ const Quiz = (props) => {
   const [isRecording, setIsRecording] = useState(false);
   const [score, setScore] = useState(0);
   let history = useHistory();
+  const { id } = useParams();
 
-  const backToDash= () => {
+  const backToDash = () => {
     return history.push("/dashboard");
-  }
+  };
 
   function backToLanding() {
-    return window.location.pathname = "/quizwrapper";
+    return (window.location.pathname = `/quiz/${id}`);
   }
 
   let scoreHandler = (pass) => {
@@ -48,7 +49,7 @@ const Quiz = (props) => {
           <img
             onClick={backToDash}
             className="closing"
-            src="./images/quiz/exitBlackX.png"
+            src={process.env.PUBLIC_URL + "./images/quiz/exitBlackX.png"}
             alt="exit image"
           />
           <h1 className="signLabel">Sign "{data[currentIndex]}"</h1>
@@ -68,7 +69,9 @@ const Quiz = (props) => {
               <div className="cameraOverlay">
                 <img
                   onClick={turnVideoOn}
-                  src="./images/quiz/openCamOverlay.png"
+                  src={
+                    process.env.PUBLIC_URL + "./images/quiz/openCamOverlay.png"
+                  }
                   alt="turns camera on"
                 ></img>
               </div>
@@ -94,30 +97,36 @@ const Quiz = (props) => {
           <img
             onClick={backToDash}
             className="closing"
-            src="./images/quiz/exitBlackX.png"
+            src={process.env.PUBLIC_URL + "./images/quiz/exitBlackX.png"}
             alt="exit image"
           />
           <p>Quiz</p>
         </div>
         <h1 className="signLabel">{`Your Score: ${score}/${data.length}`}</h1>
         {score === data.length ? (
-          <div className = "resultsPage">
+          <div className="resultsPage">
             <img
               className="quizSuccess"
-              src="./images/quiz/success.png"
+              src={process.env.PUBLIC_URL + "./images/quiz/success.png"}
               alt="successful quiz attempt"
             />{" "}
-            <button onClick={backToDash} className="finishButton">Finish</button>
+            <button onClick={backToDash} className="finishButton">
+              Finish
+            </button>
           </div>
         ) : (
           <div className="resultsPage">
             <img
               className="quizFailure"
-              src="./images/quiz/failure.png"
-              alt="failed quiz attempt"                          
+              src={process.env.PUBLIC_URL + "./images/quiz/failure.png"}
+              alt="failed quiz attempt"
             />
-            <button onClick={backToDash} className="finishButton">Finish</button>
-            <button onClick={backToLanding} className="tryAgainButton">Try Again?</button>
+            <button onClick={backToDash} className="finishButton">
+              Finish
+            </button>
+            <button onClick={backToLanding} className="tryAgainButton">
+              Try Again?
+            </button>
           </div>
         )}
       </div>

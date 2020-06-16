@@ -121,11 +121,11 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 #### _Formik_
 
-- Form management 
+- Form management from before, now using okta authentication
 
 #### _Yup_
 
-- Form validation
+- Form validation from before, now using okta validation
 
 #### _Inter UI_
 
