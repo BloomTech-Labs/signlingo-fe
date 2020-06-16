@@ -1,0 +1,22 @@
+.exercise {
+  // border: solid red;
+  margin: 2rem;
+  padding: 0rem;
+  .exerciseBar {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: flex-start;
+  }
+  .livesBar {
+    // border: solid pink;
+    display: flex;
+    align-items: center;
+    .progressBarExercise {
+      // border: solid blue;
+      width: 100%;
+    }
+    .heartExercise {
+      margin-left: 3rem;
+    }
+  }
+}

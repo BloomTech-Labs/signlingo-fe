@@ -497,3 +497,18 @@ div.quizDemo {
     position: absolute; }
   .frame b {
     font-size: 6.4rem; }
+
+.exercise {
+  margin: 2rem;
+  padding: 0rem; }
+  .exercise .exerciseBar {
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: flex-start; }
+  .exercise .livesBar {
+    display: flex;
+    align-items: center; }
+    .exercise .livesBar .progressBarExercise {
+      width: 100%; }
+    .exercise .livesBar .heartExercise {
+      margin-left: 3rem; }
