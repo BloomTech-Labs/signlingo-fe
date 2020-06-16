@@ -36,14 +36,20 @@
 .exerciseCards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   .questionImagePhrase {
+    align-content: flex-start;
     font-size: 1.5rem;
   }
   .questionImage {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    width: 100%;
     border-radius: 5px;
     border: solid rgb(240, 239, 239);
+    align-items: center;
   }
   .letterOptionsContainer {
     display: flex;
@@ -70,8 +76,13 @@
   .imageOption {
   }
   #checkExerciseBtn {
+      margin-top: 2rem;
+      background: rgb(241, 241, 241);
+      border: none;
+      padding: 1rem 15rem;
+      font-weight: bold;
   }
   #nextExerciseBtn {
-    display: none;
+    margin-top: 2rem;
   }
 }

@@ -25,14 +25,20 @@
 
 .exerciseCards {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; }
   .exerciseCards .questionImagePhrase {
+    align-content: flex-start;
     font-size: 1.5rem; }
   .exerciseCards .questionImage {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+    width: 100%;
     border-radius: 5px;
-    border: solid #f0efef; }
+    border: solid #f0efef;
+    align-items: center; }
   .exerciseCards .letterOptionsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -50,5 +56,11 @@
       margin: 1rem;
       padding-top: .3rem;
       padding-bottom: .3rem; }
+  .exerciseCards #checkExerciseBtn {
+    margin-top: 2rem;
+    background: #f1f1f1;
+    border: none;
+    padding: 1rem 15rem;
+    font-weight: bold; }
   .exerciseCards #nextExerciseBtn {
-    display: none; }
+    margin-top: 2rem; }

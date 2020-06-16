@@ -124,12 +124,12 @@ const ExerciseCard = (props) => {
           onClick={() => {
             document.getElementById("checkExerciseBtn").style.display === "none"
               ? (document.getElementById("checkExerciseBtn").style.display =
-                  "block")
+                  "flex")
               : (document.getElementById("checkExerciseBtn").style.display =
                   "none");
             document.getElementById("nextExerciseBtn").style.display === "none"
               ? (document.getElementById("nextExerciseBtn").style.display =
-                  "block")
+                  "flex")
               : (document.getElementById("nextExerciseBtn").style.display =
                   "none");
           }}
@@ -139,15 +139,16 @@ const ExerciseCard = (props) => {
 
         <button
           id="nextExerciseBtn"
+          style={{display: "none"}}
           onClick={() => {
             document.getElementById("checkExerciseBtn").style.display === "none"
               ? (document.getElementById("checkExerciseBtn").style.display =
-                  "block")
+                  "flex")
               : (document.getElementById("checkExerciseBtn").style.display =
                   "none");
             document.getElementById("nextExerciseBtn").style.display === "none"
               ? (document.getElementById("nextExerciseBtn").style.display =
-                  "block")
+                  "flex")
               : (document.getElementById("nextExerciseBtn").style.display =
                   "none");
             nextHandler(activeChoice, props.exerciseData[currentIndex].sign);
