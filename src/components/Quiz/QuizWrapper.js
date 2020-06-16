@@ -19,7 +19,7 @@ const QuizLandingPage = (props) => {
           <img
             onClick={backToDash}
             className="closing"
-            src="./images/quiz/exitBlackX.png"
+            src= {process.env.PUBLIC_URL + "/images/quiz/exitBlackX.png"}
             alt="exit image"
           />
           <p>Quiz</p>
@@ -29,7 +29,7 @@ const QuizLandingPage = (props) => {
         </h1>
         <img
           className="quizDemoImage"
-          src="./images/quiz/quizModel.png"
+          src= {process.env.PUBLIC_URL + "/images/quiz/quizModel.png"}
           alt="how to take quiz example"
         />
         <p className="demoMessage">Sign for the camera, get results!</p>

@@ -68,7 +68,7 @@ const VideoAssessment = (props) => {
         formData.append("expected", props.testValue)
         axios
           .post(
-            "https://cors-anywhere.herokuapp.com/http://signlingodocker2.us-east-1.elasticbeanstalk.com/api",
+            "https://cors-anywhere.herokuapp.com/https://ds.thesignlingo.com/api",
             formData
           )
           .then((res) => {

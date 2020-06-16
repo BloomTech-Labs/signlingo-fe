@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 import Flashcard from "./Flashcard";
+const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
 const FlashcardWrapper = (props) => {
   let history = useHistory();
@@ -16,7 +17,7 @@ const FlashcardWrapper = (props) => {
 
   const finishedHandler = async () => {
     axios
-      .put(`http://localhost:5000/levels/flashcard/${id}`, {
+      .put(`${URL}levels/flashcard/${id}`, {
         oktaUID: localStorage.getItem("oktaUID"),
       })
       .then((completed) => {
@@ -43,7 +44,7 @@ const FlashcardWrapper = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/flashcards/${id}`)
+      .get(`${URL}flashcards/${id}`)
       .then((res) => {
         setFlashcardData(res.data);
       })

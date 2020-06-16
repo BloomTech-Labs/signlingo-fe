@@ -1,5 +1,4 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-
 export const GET_ALL_LEVELS_SUCCESS = "GET_ALL_LEVELS_SUCCESS";
 export const GET_ALL_LEVELS_FAIL = "GET_ALL_LEVELS_FAIL";
 export const GET_ALL_USER_LEVELS_SUCCESS = "GET_ALL_USER_LEVELS_SUCCESS";
@@ -10,13 +9,15 @@ export const GET_FLASHCARDS_SUCCESS = "GET_FLASHCARDS_SUCCESS";
 export const GET_FLASHCARDS_FAILURE = "GET_FLASHCARDS_FAILURE";
 export const GET_EXERCISES_SUCCESS = "GET_EXERCISES_SUCCESS";
 export const GET_EXERCISES_FAILURE = "GET_EXERCISES_FAILURE";
+const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
 export const getAllLevels = () => async (dispatch) => {
   // res.data contains [{id: 1, name: "ABCDE"}, {...},] from levels table on back end
   // res.data will also contain something like this in the future:
-  // [{id: 6, name: "123456789"}, {...},] the same for words, phrases so on...
+  // [{id: 6, name: "123456789"}, {...},] for number levels,
+  //  the same for words, phrases so on...
   const result = await axiosWithAuth()
-    .get("http://localhost:5000/levels/")
+    .get(URL + "levels/")
     .then((res) => {
       dispatch({ type: GET_ALL_LEVELS_SUCCESS, payload: res.data });
     })
@@ -36,9 +37,10 @@ export const getAllUserLevelsByOktaUID = (oktaUID) => async (dispatch) => {
   //   level_id: 1,
   //   completed_flashcards: nullORtimestamp,
   //   completed_exercise: nullORtimestamp,
-  //   completed_quiz: nullORtimestamp}, {...}]
+  //   completed_quiz: nullORtimestamp}, {...}] will be updated with 
+  // completed_numbers: nullORtimestamp, and for phrases, words, etc later
   const result = await axiosWithAuth()
-    .get(`http://localhost:5000/levels/${oktaUID}`)
+    .get(`${URL}levels/${oktaUID}`)
     .then((res) => {
       dispatch({ type: GET_ALL_USER_LEVELS_SUCCESS, payload: res.data });
     })
@@ -72,7 +74,7 @@ export const addLevelsToUserAccount = (levels, userLevels, oktaUID) => async (di
   }
   await axiosWithAuth()
     .post(
-      `http://localhost:5000/levels/${oktaUID}`,
+      `${URL}levels/${oktaUID}`,
       {levels: levelsToAdd}
     )
     .then((res) => {

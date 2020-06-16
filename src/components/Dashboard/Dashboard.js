@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import {
   getAllLevels,
   getAllUserLevelsByOktaUID,
@@ -9,26 +8,23 @@ import {
 import DashboardCard from "./DashboardCard";
 import axios from "axios";
 import { useOktaAuth } from "@okta/okta-react";
+const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
 const Dashboard = (props) => {
   const { authState, authService } = useOktaAuth();
-  const history = useHistory();
 
   function logout() {
     authService.logout("/");
   }
 
   useEffect(() => {
-    // authService.getUser().then(info => {
-    //   console.log(info)
-    // });
-    // console.log(JSON.parse(localStorage.getItem("okta-token-storage")))
     axios
       .post(
-        "http://localhost:5000/user/signup",
+        URL + "user/signup",
         JSON.parse(localStorage.getItem("okta-token-storage"))
       )
       .then((res) => {
+        // after initial login/register, retrieve all levels and user_level data
         localStorage.setItem("oktaUID", res.data.okta_uid);
         props.getAllUserLevelsByOktaUID(res.data.okta_uid);
         props.getAllLevels();
@@ -36,7 +32,8 @@ const Dashboard = (props) => {
       .catch((err) => {
         console.log("error loggin in and or registering", err);
       });
-
+    // if level.length is greater then user_level length, this means
+    // user is missing levels so add them.
     if (props.levels.length > props.userLevels.length) {
       props.addLevelsToUserAccount(
         props.levels,
@@ -46,7 +43,7 @@ const Dashboard = (props) => {
     } else if (props.levels.length < props.userLevels.length) {
       throw new Error("This should be unreachable");
     }
-  }, []); // consider how adding a prop to dep array so condition can be reached if needed...
+  }, []);
 
   return (
     <div className="dashboard-wrapper">

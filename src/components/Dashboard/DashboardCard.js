@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
-import { useHistory, Link, useLocation, useParams } from "react-router-dom";
+import React from "react";
+import { useHistory, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const DashboardCard = (props) => {
-  let location = useLocation();
   const history = useHistory();
   const purl = process.env.PUBLIC_URL;
-  const alphabet = 5;
+  const alphabet = 5; // num levels pertaining to alphabet
   const d = props.levelData;
   let flashcard;
   let exercise;
@@ -62,7 +61,6 @@ const DashboardCard = (props) => {
         <>
           <Link to={`/flashcard/${d.level_id}`}>
             <img
-              // onClick={onFlashCard}
               src={purl + "/images/icons/flashCardColor.png"}
               alt={`flashcards for level ${d.level_id}`}
             />
@@ -75,7 +73,6 @@ const DashboardCard = (props) => {
         <>
           <Link to={`/flashcard/${d.level_id}`}>
             <img
-              // onClick={onFlashCard}
               src={purl + "/images/icons/flashcardChecked.png"}
               alt={`flashcards for level ${d.level_id}`}
             />
@@ -129,22 +126,26 @@ const DashboardCard = (props) => {
   if (d.completed_flashcards && d.completed_exercises === null) {
     exercise = (
       <>
-        <img
-          onClick={onExercise}
-          src={purl + "/images/icons/exerciseColor.png"}
-          alt={`exercises for level ${d.level_id}`}
-        />
+        <Link to={`/exercise/${d.level_id}`}>
+          <img
+            onClick={onExercise}
+            src={purl + "/images/icons/exerciseColor.png"}
+            alt={`exercises for level ${d.level_id}`}
+          />
+        </Link>
         <p>Exercises</p>
       </>
     );
   } else if (d.completed_flashcards && d.completed_exercises) {
     exercise = (
       <>
-        <img
-          onClick={onExercise}
-          src={purl + "/images/icons/exerciseChecked.png"}
-          alt={`exercises for level ${d.level_id}`}
-        />
+        <Link to={`/exercise/${d.level_id}`}>
+          <img
+            onClick={onExercise}
+            src={purl + "/images/icons/exerciseChecked.png"}
+            alt={`exercises for level ${d.level_id}`}
+          />
+        </Link>
         <p>Exercises</p>
       </>
     );
@@ -173,22 +174,26 @@ const DashboardCard = (props) => {
   if (d.completed_exercises && d.completed_quiz === null) {
     quiz = (
       <>
-        <img
-          onClick={onQuiz}
-          src={purl + "/images/icons/quizColor.png"}
-          alt={`quiz for level ${d.level_id}`}
-        />
+        <Link to={`/quiz/${d.level_id}`}>
+          <img
+            onClick={onQuiz}
+            src={purl + "/images/icons/quizColor.png"}
+            alt={`quiz for level ${d.level_id}`}
+          />
+        </Link>
         <p>Video Quiz</p>
       </>
     );
   } else if (d.completed_quiz && d.completed_exercises) {
     quiz = (
       <>
-        <img
-          onClick={onQuiz}
-          src={purl + "/images/icons/quizChecked.png"}
-          alt={`quiz for level ${d.level_id}`}
-        />
+        <Link to={`/quiz/${d.level_id}`}>
+          <img
+            onClick={onQuiz}
+            src={purl + "/images/icons/quizChecked.png"}
+            alt={`quiz for level ${d.level_id}`}
+          />
+        </Link>
         <p>Video Quiz</p>
       </>
     );
