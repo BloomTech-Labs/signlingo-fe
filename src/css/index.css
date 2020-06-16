@@ -460,8 +460,11 @@ div.quizDemo {
     max-width: 100%;
     margin-bottom: 15%; }
     .lesson .lessonBar img {
-      width: 15px;
-      height: 15px; }
+      padding: 1rem; }
+      .lesson .lessonBar img:hover {
+        border-radius: 5px;
+        cursor: pointer;
+        background: rgba(255, 208, 0, 0.74); }
     .lesson .lessonBar h3 {
       flex: 1 0 auto;
       font-size: 2rem; }
@@ -505,9 +508,16 @@ div.quizDemo {
     display: flex;
     margin-bottom: 2rem;
     justify-content: flex-start; }
+    .exercise .exerciseBar img {
+      padding: 1rem; }
+      .exercise .exerciseBar img:hover {
+        border-radius: 5px;
+        cursor: pointer;
+        background: rgba(255, 208, 0, 0.74); }
   .exercise .livesBar {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    margin-bottom: 2rem; }
     .exercise .livesBar .progressBarExercise {
       width: 100%; }
       @media (max-width: 400px) {
@@ -517,4 +527,31 @@ div.quizDemo {
       margin-left: 3rem; }
 
 .exerciseCards {
-  border: solid black; }
+  display: flex;
+  flex-wrap: wrap; }
+  .exerciseCards .questionImagePhrase {
+    font-size: 1.5rem; }
+  .exerciseCards .questionImage {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: solid #f0efef; }
+  .exerciseCards .letterOptionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%; }
+    .exerciseCards .letterOptionsContainer .letterOption {
+      width: 40%;
+      font-size: 100%;
+      font-family: inherit;
+      border: 0;
+      padding: 0;
+      background: white;
+      border: solid grey;
+      border-radius: 5px;
+      margin: 1rem;
+      padding-top: .3rem;
+      padding-bottom: .3rem; }
+  .exerciseCards #nextExerciseBtn {
+    display: none; }

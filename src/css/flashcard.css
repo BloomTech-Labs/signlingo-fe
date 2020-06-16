@@ -5,8 +5,11 @@
     max-width: 100%;
     margin-bottom: 15%; }
     .lesson .lessonBar img {
-      width: 15px;
-      height: 15px; }
+      padding: 1rem; }
+      .lesson .lessonBar img:hover {
+        border-radius: 5px;
+        cursor: pointer;
+        background: rgba(255, 208, 0, 0.74); }
     .lesson .lessonBar h3 {
       flex: 1 0 auto;
       font-size: 2rem; }

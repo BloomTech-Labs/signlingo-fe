@@ -6,7 +6,6 @@ const ExerciseCard = (props) => {
   let history = useHistory();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lives, setLives] = useState(3);
-
   let activeChoice = "";
 
   //===========creating options============//
@@ -58,7 +57,6 @@ const ExerciseCard = (props) => {
   }
   return (
     <>
-      {console.log("CURRENT INDEX", currentIndex)}
       <div className="livesBar">
         <img
           className="progressBarExercise"
@@ -72,30 +70,37 @@ const ExerciseCard = (props) => {
         />
         <h2>{lives}</h2>
       </div>
+
       <div className="exerciseCards">
         {props.exerciseData[currentIndex].showImage ? (
           <>
-            <h2>Which letter is this?</h2>
+            <h2 className="questionImagePhrase">Which letter is this?</h2>
             <img
+              className="questionImage"
               src={props.exerciseData[currentIndex].visual}
               alt="picture of sign"
             ></img>
-            {options.map((character) => {
-              return (
-                <button
-                  onClick={() => {
-                    activeChoice = character;
-                    console.log("activeChoice: ", activeChoice);
-                  }}
-                >
-                  {character}
-                </button>
-              );
-            })}
+            <div className="letterOptionsContainer">
+              {options.map((character) => {
+                return (
+                  <button
+                    className="letterOption"
+                    onClick={() => {
+                      activeChoice = character;
+                      console.log("activeChoice: ", activeChoice);
+                    }}
+                  >
+                    {character}
+                  </button>
+                );
+              })}
+            </div>
           </>
         ) : (
           <>
-            <p>Which of these is "{props.exerciseData[currentIndex].sign}"</p>
+            <h2 className="questionLetter">
+              Which of these is "{props.exerciseData[currentIndex].sign}"
+            </h2>
             {options.map((character) => {
               let localVar = props.flashcards.filter((each) => {
                 return each.sign === character;
@@ -103,6 +108,7 @@ const ExerciseCard = (props) => {
               console.log("localVar", localVar);
               return (
                 <img
+                  className="imageOption"
                   src={localVar}
                   onClick={() => {
                     activeChoice = character;
@@ -113,13 +119,41 @@ const ExerciseCard = (props) => {
             })}
           </>
         )}
+        <button
+          id="checkExerciseBtn"
+          onClick={() => {
+            document.getElementById("checkExerciseBtn").style.display === "none"
+              ? (document.getElementById("checkExerciseBtn").style.display =
+                  "block")
+              : (document.getElementById("checkExerciseBtn").style.display =
+                  "none");
+            document.getElementById("nextExerciseBtn").style.display === "none"
+              ? (document.getElementById("nextExerciseBtn").style.display =
+                  "block")
+              : (document.getElementById("nextExerciseBtn").style.display =
+                  "none");
+          }}
+        >
+          Check
+        </button>
 
         <button
-          onClick={() =>
-            nextHandler(activeChoice, props.exerciseData[currentIndex].sign)
-          }
+          id="nextExerciseBtn"
+          onClick={() => {
+            document.getElementById("checkExerciseBtn").style.display === "none"
+              ? (document.getElementById("checkExerciseBtn").style.display =
+                  "block")
+              : (document.getElementById("checkExerciseBtn").style.display =
+                  "none");
+            document.getElementById("nextExerciseBtn").style.display === "none"
+              ? (document.getElementById("nextExerciseBtn").style.display =
+                  "block")
+              : (document.getElementById("nextExerciseBtn").style.display =
+                  "none");
+            nextHandler(activeChoice, props.exerciseData[currentIndex].sign);
+          }}
         >
-          SUBMIT
+          Next
         </button>
       </div>
     </>

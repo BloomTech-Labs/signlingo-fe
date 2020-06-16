@@ -6,11 +6,20 @@
     display: flex;
     margin-bottom: 2rem;
     justify-content: flex-start;
+    img {
+      padding: 1rem;
+      &:hover {
+        border-radius: 5px;
+        cursor: pointer;
+        background: rgba(255, 208, 0, 0.74);
+      }
+    }
   }
   .livesBar {
     // border: solid pink;
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
     .progressBarExercise {
       // border: solid blue;
       width: 100%;
@@ -25,5 +34,44 @@
 }
 
 .exerciseCards {
-    border: solid black;
+  display: flex;
+  flex-wrap: wrap;
+  .questionImagePhrase {
+    font-size: 1.5rem;
+  }
+  .questionImage {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: solid rgb(240, 239, 239);
+  }
+  .letterOptionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    .letterOption {
+      width: 40%;
+      font-size: 100%;
+      font-family: inherit;
+      border: 0;
+      padding: 0;
+      background: white;
+      border: solid grey;
+      border-radius: 5px;
+      margin: 1rem;
+      padding-top: .3rem;
+      padding-bottom: .3rem;
+    }
+  }
+
+  .questionLetter {
+  }
+  .imageOption {
+  }
+  #checkExerciseBtn {
+  }
+  #nextExerciseBtn {
+    display: none;
+  }
 }
