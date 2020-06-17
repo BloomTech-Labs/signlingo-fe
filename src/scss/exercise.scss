@@ -1,8 +1,9 @@
 .exercise {
   // border: solid red;
-  margin: 2rem;
-  padding: 0rem;
+  //   margin: 1rem;
+  //   padding: 0rem;
   .exerciseBar {
+    margin: 1rem;
     display: flex;
     margin-bottom: 2rem;
     justify-content: flex-start;
@@ -17,6 +18,7 @@
   }
   .livesBar {
     // border: solid pink;
+    margin-left: 1rem;
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
@@ -28,28 +30,32 @@
       }
     }
     .heartExercise {
-      margin-left: 3rem;
+      margin-left: 1rem;
+      margin-right: 0.5rem;
     }
   }
 }
 
 .exerciseCards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   flex-direction: column;
+  margin: 2rem;
   align-items: center;
-  .questionImagePhrase {
-    align-content: flex-start;
-    font-size: 1.5rem;
+  // EXERCISES WHERE LETTERS ARE THE OPTIONS
+  .questionImagePhraseContainer {
+    display: flex;
+    .questionImagePhrase {
+      align-content: flex-start;
+      font-size: 2rem;
+      margin-right: 9.3rem;
+    }
   }
   .questionImage {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    width: 100%;
+
     border-radius: 5px;
     border: solid rgb(240, 239, 239);
-    align-items: center;
   }
   .letterOptionsContainer {
     display: flex;
@@ -57,32 +63,76 @@
     justify-content: space-between;
     width: 100%;
     .letterOption {
-      width: 40%;
-      font-size: 100%;
+      width: 48%;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: grey;
       font-family: inherit;
       border: 0;
       padding: 0;
       background: white;
       border: solid grey;
       border-radius: 5px;
-      margin: 1rem;
-      padding-top: .3rem;
-      padding-bottom: .3rem;
+      margin-bottom: 1rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      &:hover {
+        cursor: pointer;
+        background: rgba(255, 227, 101, 0.74);
+      }
+    }
+  }
+  // EXERCISES WHERE IMAGES ARE THE OPTIONS
+  .questionLetterContainer {
+    display: flex;
+    .questionLetter {
+      font-size: 2rem;
+      margin-right: 7rem;
+    }
+  }
+  .imageOptionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    .imageOption {
+      border: solid rgb(241, 241, 241);
+      width: 45%;
+      margin: 2%;
+      &:hover {
+        cursor: pointer;
+        background: rgba(255, 227, 101, 0.74);
+      }
     }
   }
 
-  .questionLetter {
-  }
-  .imageOption {
-  }
   #checkExerciseBtn {
-      margin-top: 2rem;
-      background: rgb(241, 241, 241);
-      border: none;
-      padding: 1rem 15rem;
-      font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    background: rgb(241, 241, 241);
+    border: none;
+    width: 100%;
+    padding: 5% 0;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  #checkExerciseBtn.toggleClickable {
+    pointer-events: none;
   }
   #nextExerciseBtn {
+    display: flex;
+    justify-content: center;
     margin-top: 2rem;
+    background: #F6BF00;
+    border: none;
+    width: 100%;
+    padding: 5% 0;
+    font-weight: bold;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

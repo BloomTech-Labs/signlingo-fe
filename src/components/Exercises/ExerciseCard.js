@@ -54,6 +54,7 @@ const ExerciseCard = (props) => {
         setCurrentIndex(currentIndex + 1);
       }
     }
+    activeChoice = "";
   }
   return (
     <>
@@ -74,7 +75,9 @@ const ExerciseCard = (props) => {
       <div className="exerciseCards">
         {props.exerciseData[currentIndex].showImage ? (
           <>
-            <h2 className="questionImagePhrase">Which letter is this?</h2>
+            <div className="questionImagePhraseContainer">
+              <h2 className="questionImagePhrase">Which letter is this?</h2>
+            </div>
             <img
               className="questionImage"
               src={props.exerciseData[currentIndex].visual}
@@ -84,10 +87,21 @@ const ExerciseCard = (props) => {
               {options.map((character) => {
                 return (
                   <button
+                    id={`letterOptionSelected${character}`}
                     className="letterOption"
                     onClick={() => {
+                      console.log("clicked letter option");
                       activeChoice = character;
-                      console.log("activeChoice: ", activeChoice);
+                      document
+                        .getElementById("checkExerciseBtn")
+                        .classList.remove("toggleClickable");
+                      document.getElementById(
+                        "checkExerciseBtn"
+                      ).style.background = "rgba(255, 227, 101, 0.74)";
+                      document.getElementById(
+                        `letterOptionSelected${character}`
+                      ).style.border = "solid grey";
+                      console.log("clicked letter option the end");
                     }}
                   >
                     {character}
@@ -98,30 +112,46 @@ const ExerciseCard = (props) => {
           </>
         ) : (
           <>
-            <h2 className="questionLetter">
-              Which of these is "{props.exerciseData[currentIndex].sign}"
-            </h2>
-            {options.map((character) => {
-              let localVar = props.flashcards.filter((each) => {
-                return each.sign === character;
-              })[0].visual;
-              console.log("localVar", localVar);
-              return (
-                <img
-                  className="imageOption"
-                  src={localVar}
-                  onClick={() => {
-                    activeChoice = character;
-                    console.log("activeChoice: ", activeChoice);
-                  }}
-                />
-              );
-            })}
+            <div className="questionLetterContainer">
+              <h2 className="questionLetter">
+                Which of these is "{props.exerciseData[currentIndex].sign}"
+              </h2>
+            </div>
+            <div className="imageOptionContainer">
+              {options.map((character) => {
+                let localVar = props.flashcards.filter((each) => {
+                  return each.sign === character;
+                })[0].visual;
+                return (
+                  <img
+                    id={`imageOptionSelected${character}`}
+                    className="imageOption"
+                    src={localVar}
+                    onClick={() => {
+                      console.log("clicked image option");
+                      activeChoice = character;
+                      document
+                        .getElementById("checkExerciseBtn")
+                        .classList.remove("toggleClickable");
+                      document.getElementById(
+                        "checkExerciseBtn"
+                      ).style.background = "rgba(255, 227, 101, 0.74)";
+                      document.getElementById(
+                        `imageOptionSelected${character}`
+                      ).style.border = "solid grey";
+                      console.log("clicked image option the end");
+                    }}
+                  />
+                );
+              })}
+            </div>
           </>
         )}
         <button
           id="checkExerciseBtn"
+          className="toggleClickable"
           onClick={() => {
+            console.log("clicked check");
             document.getElementById("checkExerciseBtn").style.display === "none"
               ? (document.getElementById("checkExerciseBtn").style.display =
                   "flex")
@@ -132,14 +162,18 @@ const ExerciseCard = (props) => {
                   "flex")
               : (document.getElementById("nextExerciseBtn").style.display =
                   "none");
+            activeChoice === props.exerciseData[currentIndex].sign
+              ? console.log("you did it!")
+              : console.log("you failed...");
+            // document.getElementsByClassName("imageOption").style.border =
+            //   "solid rgb(241, 241, 241);";
           }}
         >
           Check
         </button>
-
         <button
           id="nextExerciseBtn"
-          style={{display: "none"}}
+          style={{ display: "none" }}
           onClick={() => {
             document.getElementById("checkExerciseBtn").style.display === "none"
               ? (document.getElementById("checkExerciseBtn").style.display =

@@ -1,66 +1,105 @@
-.exercise {
-  margin: 2rem;
-  padding: 0rem; }
-  .exercise .exerciseBar {
-    display: flex;
-    margin-bottom: 2rem;
-    justify-content: flex-start; }
-    .exercise .exerciseBar img {
-      padding: 1rem; }
-      .exercise .exerciseBar img:hover {
-        border-radius: 5px;
-        cursor: pointer;
-        background: rgba(255, 208, 0, 0.74); }
-  .exercise .livesBar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem; }
-    .exercise .livesBar .progressBarExercise {
-      width: 100%; }
-      @media (max-width: 400px) {
-        .exercise .livesBar .progressBarExercise {
-          width: 80%; } }
-    .exercise .livesBar .heartExercise {
-      margin-left: 3rem; }
+.exercise .exerciseBar {
+  margin: 1rem;
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: flex-start; }
+  .exercise .exerciseBar img {
+    padding: 1rem; }
+    .exercise .exerciseBar img:hover {
+      border-radius: 5px;
+      cursor: pointer;
+      background: rgba(255, 208, 0, 0.74); }
+
+.exercise .livesBar {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem; }
+  .exercise .livesBar .progressBarExercise {
+    width: 100%; }
+    @media (max-width: 400px) {
+      .exercise .livesBar .progressBarExercise {
+        width: 80%; } }
+  .exercise .livesBar .heartExercise {
+    margin-left: 1rem;
+    margin-right: 0.5rem; }
 
 .exerciseCards {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   flex-direction: column;
+  margin: 2rem;
   align-items: center; }
-  .exerciseCards .questionImagePhrase {
-    align-content: flex-start;
-    font-size: 1.5rem; }
+  .exerciseCards .questionImagePhraseContainer {
+    display: flex; }
+    .exerciseCards .questionImagePhraseContainer .questionImagePhrase {
+      align-content: flex-start;
+      font-size: 2rem;
+      margin-right: 9.3rem; }
   .exerciseCards .questionImage {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    width: 100%;
     border-radius: 5px;
-    border: solid #f0efef;
-    align-items: center; }
+    border: solid #f0efef; }
   .exerciseCards .letterOptionsContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%; }
     .exerciseCards .letterOptionsContainer .letterOption {
-      width: 40%;
-      font-size: 100%;
+      width: 48%;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: grey;
       font-family: inherit;
       border: 0;
       padding: 0;
       background: white;
       border: solid grey;
       border-radius: 5px;
-      margin: 1rem;
-      padding-top: .3rem;
-      padding-bottom: .3rem; }
+      margin-bottom: 1rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem; }
+      .exerciseCards .letterOptionsContainer .letterOption:hover {
+        cursor: pointer;
+        background: rgba(255, 227, 101, 0.74); }
+  .exerciseCards .questionLetterContainer {
+    display: flex; }
+    .exerciseCards .questionLetterContainer .questionLetter {
+      font-size: 2rem;
+      margin-right: 7rem; }
+  .exerciseCards .imageOptionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem; }
+    .exerciseCards .imageOptionContainer .imageOption {
+      border: solid #f1f1f1;
+      width: 45%;
+      margin: 2%; }
+      .exerciseCards .imageOptionContainer .imageOption:hover {
+        cursor: pointer;
+        background: rgba(255, 227, 101, 0.74); }
   .exerciseCards #checkExerciseBtn {
+    display: flex;
+    justify-content: center;
     margin-top: 2rem;
     background: #f1f1f1;
     border: none;
-    padding: 1rem 15rem;
+    width: 100%;
+    padding: 5% 0;
     font-weight: bold; }
+    .exerciseCards #checkExerciseBtn:hover {
+      cursor: pointer; }
+  .exerciseCards #checkExerciseBtn.toggleClickable {
+    pointer-events: none; }
   .exerciseCards #nextExerciseBtn {
-    margin-top: 2rem; }
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    background: #F6BF00;
+    border: none;
+    width: 100%;
+    padding: 5% 0;
+    font-weight: bold; }
+    .exerciseCards #nextExerciseBtn:hover {
+      cursor: pointer; }
