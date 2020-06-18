@@ -1,7 +1,4 @@
-.exercise {
-  // border: solid red;
-  //   margin: 1rem;
-  //   padding: 0rem;
+
   .exerciseBar {
     margin: 1rem;
     display: flex;
@@ -12,35 +9,48 @@
       &:hover {
         border-radius: 5px;
         cursor: pointer;
-        background: rgba(255, 208, 0, 0.74);
       }
     }
   }
-  .livesBar {
-    // border: solid pink;
-    margin-left: 1rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 2rem;
-    .progressBarExercise {
-      // border: solid blue;
-      width: 100%;
-      @media (max-width: 400px) {
-        width: 80%;
-      }
-    }
-    .heartExercise {
-      margin-left: 1rem;
-      margin-right: 0.5rem;
-    }
-  }
-}
 
 .exerciseCards {
   display: flex;
   flex-direction: column;
   margin: 2rem;
   align-items: center;
+  .livesBar {
+    width: 100%;
+    margin: 0 2rem 0 2rem;
+    .progressContainer {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      .livesHolder{
+        display: flex;
+        flex-direction: row;
+        width: 3.5rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .progress, #progress-bar {
+        max-width: 85%;
+        height: 5px;
+      }
+      .progress {
+        background: #fff3cb;
+        width: 85%;
+        display: inline-block;
+        #progress-bar {
+          overflow: hidden;
+          position: relative;
+          width: 0;
+          background-color: rgba(255, 208, 0, 0.74);
+        }
+      }
+      }
+    }
   // EXERCISES WHERE LETTERS ARE THE OPTIONS
   .questionImagePhraseContainer {
     display: flex;
@@ -50,12 +60,20 @@
       margin-right: 9.3rem;
     }
   }
-  .questionImage {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+  .questionImageContainer {
+    .whiteResult {
+      display: none;
+      align-self: center;
+      width: 30%;
+      height: auto;
+    }
+    .questionImage {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
 
-    border-radius: 5px;
-    border: solid rgb(240, 239, 239);
+      border-radius: 5px;
+      border: solid rgb(240, 239, 239);
+    }
   }
   .letterOptionsContainer {
     display: flex;
@@ -78,7 +96,7 @@
       padding-bottom: 0.7rem;
       &:hover {
         cursor: pointer;
-        background: rgba(255, 227, 101, 0.74);
+        border: solid black;
       }
     }
   }
@@ -95,13 +113,29 @@
     flex-wrap: wrap;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    width: 100%;
+    .whiteResult {
+      display: none;
+      align-self: center;
+      width: 30%;
+      height: auto;
+    }
+    .overlay {
+      position: absolute;
+    }
+    .videoSuccess {
+      border: 5px solid #a0d468;
+    }
+    .videoFail {
+      border: 5px solid #eb5757;
+    }
     .imageOption {
       border: solid rgb(241, 241, 241);
       width: 45%;
       margin: 2%;
       &:hover {
         cursor: pointer;
-        background: rgba(255, 227, 101, 0.74);
+        border: solid black;
       }
     }
   }
@@ -126,7 +160,7 @@
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    background: #F6BF00;
+    background: #f6bf00;
     border: none;
     width: 100%;
     padding: 5% 0;
@@ -136,3 +170,85 @@
     }
   }
 }
+
+//heart animation
+#heart{
+  width:15px;
+  height:15px;
+  //margin:200px auto;
+  transform:translateZ(0);
+  color: red;
+  font-size:2em;
+  position:relative;
+  transition: all .3s ease;
+  align-self: center;
+  margin-bottom: 1rem;
+    
+    &.broken{
+      color: red;
+      position:relative;
+      transition: all .3s ease;
+      margin-bottom: 1rem;
+      align-self: center;
+      &:before, &:after{
+         content: "❤";
+         opacity:1; 
+         color: red;
+         position:absolute;
+         top:-0px;
+         transform:  scale(3) rotateZ(0);
+      }
+        
+        &:before{
+          clip: rect(0, 20px, 200px, 0);
+          animation: break-left 1s ease forwards;
+        }
+        &:after{
+          clip: rect(0, 50px, 200px, 25px);
+          animation: break-right 1s ease forwards;
+        }
+    }
+}
+
+
+@keyframes break-left{
+  0%{
+    opacity:1;
+    transform: scale(1) rotateZ(0);
+  }
+  20%{
+    opacity:.5;
+    transform: scale(1) translateX(-10px) rotateZ(-20deg) translateY(0) ;
+  }
+  50%{
+   opacity:.5;
+    transform: scale(1) translateX(-10px) rotateZ(-20deg) translateY(0) ;
+  }
+  100%{
+    opacity:0;
+    transform: scale(1) translateX(-30px) rotateZ(-25deg) translateY(50px);
+
+  }
+  
+}
+@keyframes break-right{
+  0%{
+    opacity:1;
+    transform: scale(1) rotateZ(0);
+  }
+  20%{
+    opacity:.5;
+    transform: scale(1) translateX(10px) rotateZ(20deg) translateY(0) ;
+  }
+  50%{
+   opacity:.5;
+    transform: scale(1) translateX(10px) rotateZ(20deg) translateY(0) ;
+  }
+  100%{
+    opacity:0;
+    transform: scale(1) translateX(30px) rotateZ(25deg) translateY(50px);
+
+  }
+  
+}
+

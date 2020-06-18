@@ -6,7 +6,7 @@ const Overlay = (props) => {
         <>
           <img
             className="resultImg"
-            src={process.env.PUBLIC_URL + "./images/quiz/checkMarkOverlay.png"}
+            src={process.env.PUBLIC_URL + "/images/quiz/checkMarkOverlay.png"}
             alt="green checkmark = correct answer"
           />
           {document.querySelector("video").classList.add("videoSuccess")}
@@ -15,7 +15,7 @@ const Overlay = (props) => {
         <>
           <img
             className="resultImg"
-            src={process.env.PUBLIC_URL + "./images/quiz/redXOverlay.png"}
+            src={process.env.PUBLIC_URL + "/images/quiz/redXOverlay.png"}
             alt="red x wrong answer"
           />
           {document.querySelector("video").classList.add("videoFail")}

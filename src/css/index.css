@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 * {
   padding: 0;
@@ -501,44 +502,61 @@ div.quizDemo {
   .frame b {
     font-size: 6.4rem; }
 
-.exercise .exerciseBar {
+.exerciseBar {
   margin: 1rem;
   display: flex;
   margin-bottom: 2rem;
   justify-content: flex-start; }
-  .exercise .exerciseBar img {
+  .exerciseBar img {
     padding: 1rem; }
-    .exercise .exerciseBar img:hover {
+    .exerciseBar img:hover {
       border-radius: 5px;
-      cursor: pointer;
-      background: rgba(255, 208, 0, 0.74); }
-
-.exercise .livesBar {
-  margin-left: 1rem;
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem; }
-  .exercise .livesBar .progressBarExercise {
-    width: 100%; }
-    @media (max-width: 400px) {
-      .exercise .livesBar .progressBarExercise {
-        width: 80%; } }
-  .exercise .livesBar .heartExercise {
-    margin-left: 1rem;
-    margin-right: 0.5rem; }
+      cursor: pointer; }
 
 .exerciseCards {
   display: flex;
   flex-direction: column;
   margin: 2rem;
   align-items: center; }
+  .exerciseCards .livesBar {
+    width: 100%;
+    margin: 0 2rem 0 2rem; }
+    .exerciseCards .livesBar .progressContainer {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center; }
+      .exerciseCards .livesBar .progressContainer .livesHolder {
+        display: flex;
+        flex-direction: row;
+        width: 3.5rem;
+        justify-content: space-between;
+        align-items: center; }
+      .exerciseCards .livesBar .progressContainer .progress, .exerciseCards .livesBar .progressContainer #progress-bar {
+        max-width: 85%;
+        height: 5px; }
+      .exerciseCards .livesBar .progressContainer .progress {
+        background: #fff3cb;
+        width: 85%;
+        display: inline-block; }
+        .exerciseCards .livesBar .progressContainer .progress #progress-bar {
+          overflow: hidden;
+          position: relative;
+          width: 0;
+          background-color: rgba(255, 208, 0, 0.74); }
   .exerciseCards .questionImagePhraseContainer {
     display: flex; }
     .exerciseCards .questionImagePhraseContainer .questionImagePhrase {
       align-content: flex-start;
       font-size: 2rem;
       margin-right: 9.3rem; }
-  .exerciseCards .questionImage {
+  .exerciseCards .questionImageContainer .whiteResult {
+    display: none;
+    align-self: center;
+    width: 30%;
+    height: auto; }
+  .exerciseCards .questionImageContainer .questionImage {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 5px;
@@ -564,7 +582,7 @@ div.quizDemo {
       padding-bottom: 0.7rem; }
       .exerciseCards .letterOptionsContainer .letterOption:hover {
         cursor: pointer;
-        background: rgba(255, 227, 101, 0.74); }
+        border: solid black; }
   .exerciseCards .questionLetterContainer {
     display: flex; }
     .exerciseCards .questionLetterContainer .questionLetter {
@@ -574,14 +592,26 @@ div.quizDemo {
     display: flex;
     flex-wrap: wrap;
     margin-top: 2rem;
-    margin-bottom: 2rem; }
+    margin-bottom: 2rem;
+    width: 100%; }
+    .exerciseCards .imageOptionContainer .whiteResult {
+      display: none;
+      align-self: center;
+      width: 30%;
+      height: auto; }
+    .exerciseCards .imageOptionContainer .overlay {
+      position: absolute; }
+    .exerciseCards .imageOptionContainer .videoSuccess {
+      border: 5px solid #a0d468; }
+    .exerciseCards .imageOptionContainer .videoFail {
+      border: 5px solid #eb5757; }
     .exerciseCards .imageOptionContainer .imageOption {
       border: solid #f1f1f1;
       width: 45%;
       margin: 2%; }
       .exerciseCards .imageOptionContainer .imageOption:hover {
         cursor: pointer;
-        background: rgba(255, 227, 101, 0.74); }
+        border: solid black; }
   .exerciseCards #checkExerciseBtn {
     display: flex;
     justify-content: center;
@@ -599,10 +629,68 @@ div.quizDemo {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    background: #F6BF00;
+    background: #f6bf00;
     border: none;
     width: 100%;
     padding: 5% 0;
     font-weight: bold; }
     .exerciseCards #nextExerciseBtn:hover {
       cursor: pointer; }
+
+#heart {
+  width: 15px;
+  height: 15px;
+  transform: translateZ(0);
+  color: red;
+  font-size: 2em;
+  position: relative;
+  transition: all .3s ease;
+  align-self: center;
+  margin-bottom: 1rem; }
+  #heart.broken {
+    color: red;
+    position: relative;
+    transition: all .3s ease;
+    margin-bottom: 1rem;
+    align-self: center; }
+    #heart.broken:before, #heart.broken:after {
+      content: "❤";
+      opacity: 1;
+      color: red;
+      position: absolute;
+      top: -0px;
+      transform: scale(3) rotateZ(0); }
+    #heart.broken:before {
+      clip: rect(0, 20px, 200px, 0);
+      animation: break-left 1s ease forwards; }
+    #heart.broken:after {
+      clip: rect(0, 50px, 200px, 25px);
+      animation: break-right 1s ease forwards; }
+
+@keyframes break-left {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0); }
+  20% {
+    opacity: .5;
+    transform: scale(1) translateX(-10px) rotateZ(-20deg) translateY(0); }
+  50% {
+    opacity: .5;
+    transform: scale(1) translateX(-10px) rotateZ(-20deg) translateY(0); }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateX(-30px) rotateZ(-25deg) translateY(50px); } }
+
+@keyframes break-right {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0); }
+  20% {
+    opacity: .5;
+    transform: scale(1) translateX(10px) rotateZ(20deg) translateY(0); }
+  50% {
+    opacity: .5;
+    transform: scale(1) translateX(10px) rotateZ(20deg) translateY(0); }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateX(30px) rotateZ(25deg) translateY(50px); } }

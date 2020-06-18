@@ -162,7 +162,7 @@ const DashboardCard = (props) => {
             alt={`quiz for level ${d.level_id}`}
           />
         </Link>
-        <p>Video Quiz</p>
+        <p>Quiz</p>
       </>
     );
   } else if (d.completed_quiz && d.completed_exercises) {
@@ -174,7 +174,7 @@ const DashboardCard = (props) => {
             alt={`quiz for level ${d.level_id}`}
           />
         </Link>
-        <p>Video Quiz</p>
+        <p>Quiz</p>
       </>
     );
   } else if (d.level_id === 1) {
@@ -184,7 +184,7 @@ const DashboardCard = (props) => {
           src={purl + "/images/icons/quizFaded.png"}
           alt={`quiz for level ${d.level_id}`}
         />
-        <p>Exercises</p>
+        <p>Quiz</p>
       </>
     );
   } else {
@@ -194,7 +194,7 @@ const DashboardCard = (props) => {
           src={purl + "/images/icons/quizBW.png"}
           alt={`quiz for level ${d.level_id}`}
         />
-        <p>Exercises</p>
+        <p>Quiz</p>
       </>
     );
   }

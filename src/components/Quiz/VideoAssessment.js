@@ -73,10 +73,10 @@ const VideoAssessment = (props) => {
             formData
           )
           .then((res) => {
-            props.scoreHandler(res.data[0][1]);
-            props.setResult(res.data[0][1]);
-            props.setIsRecording(false);
             console.log(res.data);
+            props.scoreHandler(res.data.is_match);
+            props.setResult(res.data.is_match);
+            props.setIsRecording(false);
           });
       };
     })

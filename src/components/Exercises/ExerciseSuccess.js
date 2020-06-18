@@ -1,11 +1,27 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import axios from 'axios'
+const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
 export default function ExerciseSuccess() {
   let history = useHistory();
+  let { id } = useParams();
+
   function backToDash() {
+    axios
+      .put(`${URL}levels/exercise/${id}`, {
+        oktaUID: localStorage.getItem("oktaUID"),
+      })
+      .then((res) => {
+        console.log("successfully updated exercise bubble");
+        return history.push("/dashboard");
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
     return history.push("/dashboard");
   }
+
   return (
     <div className="quizDemo">
       <div className="quizDemoHead">

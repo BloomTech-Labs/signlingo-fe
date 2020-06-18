@@ -52,14 +52,14 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="heroLogin">
-              <p data-testid="loginLP" id="login" onClick={login}>
+              {/* <p data-testid="loginLP" id="login" onClick={login}>
                 Log in
-              </p>
+              </p> */}
             </div>
           </div>
           <div className="landingContent">
             <div data-testid="signupLP" id="landingBtn" onClick={login}>
-              Sign up
+              Get Started
             </div>
 
             <div className="landingBoxes">
