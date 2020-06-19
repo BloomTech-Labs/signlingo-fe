@@ -2,36 +2,48 @@ import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Overlay from "./ExerciseOverlay";
+const purl = process.env.PUBLIC_URL;
 
 const ExerciseCard = (props) => {
   let history = useHistory();
-  let { id } = useParams();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [lives, setLives] = useState(3);
-  let activeChoice = "";
+  let { id } = useParams(); //id of the level
+  const [currentIndex, setCurrentIndex] = useState(0); //index of the question we're showing to the user at the moment
+  const [lives, setLives] = useState(3); //amount of lives user have
+  let activeChoice = ""; // user's answer
+  let whiteCheck = document.createElement("img");
+  let whiteX = document.createElement("img");
+  whiteCheck.src = purl + "/images/exercises/whiteCheck.png";
+  whiteX.src = purl + "/images/exercises/whiteX.png";
+  whiteCheck.alt = "white checkmark";
+  whiteX.alt = "white X";
+  whiteCheck.classList.add("whiteResult");
+  whiteX.classList.add("whiteResult");
 
   //===========creating options============//
-
   let items = [];
   let options = [];
-
+  // creating an array with all letters in the level
   for (let i = 0; i < props.flashcards.length; i++) {
     items.push(props.flashcards[i].sign);
   }
-
   const createOptions = (choices, answer) => {
     let options = [];
     let uniqueOptions = [];
+    // creating an array with 4 random options to choose from
     for (let i = 0; i < 4; i++) {
       let index = Math.floor(Math.random() * choices.length);
       options.push(choices[index]);
     }
+    // making sure this options including correct answer
     if (!options.includes(answer)) {
       options[1] = answer;
     }
+    // if options array with correct answer have 5 elements, delete one
     if (options.length > 4) {
       options.pop();
     }
+    // if options repeating inside the array (we got 2 "A", or 3 "B"), delete duplicates and replace with another letter.
+    // Do so until we get array of 4 letters, including correct answer, no duplicates.
     do {
       uniqueOptions = [...new Set(options)];
       if (uniqueOptions.length < 4) {
@@ -40,19 +52,22 @@ const ExerciseCard = (props) => {
     } while (uniqueOptions.length < 4);
     return uniqueOptions;
   };
-
+  // call function above to create options for current question
   options = createOptions(items, props.exerciseData[currentIndex].sign);
-  console.log("options", options, props.exerciseData[currentIndex].sign);
-
   //============end of creating options============//
-
+  // function to change progress bar appearance based on current index of the question
   function progressBarIncrement(index) {
     let progress =
-      (((index + 1) / props.exerciseData.length) * 100).toString() + "%";
-    document.getElementById("progress-bar").style.width = progress;
+      (((index + 1) / props.exerciseData.length) * 100).toString() + "%"; //getting a string showing our progress in %
+    document.getElementById("progress-bar").style.width = progress; // giving width of our progress to the progress bar
   }
 
   function nextHandler(choice, correctAnswer) {
+    document
+      .getElementById("checkExerciseBtn")
+      .classList.add("toggleClickable");
+    document.getElementById("checkExerciseBtn").style.background =
+      "rgb(241, 241, 241)";
     if (choice === correctAnswer) {
       setCurrentIndex(currentIndex + 1);
       progressBarIncrement(currentIndex);
@@ -91,25 +106,13 @@ const ExerciseCard = (props) => {
             <div className="questionImagePhraseContainer">
               <h2 className="questionImagePhrase">Which letter is this?</h2>
             </div>
-            <div className="questionImageContainer">
+            <div id="questionImageContainer" className="questionImageContainer">
               <img
                 id="questionImage"
                 className="questionImage"
                 src={props.exerciseData[currentIndex].visual}
                 alt="picture of sign"
               ></img>
-              <img
-                className="whiteResult"
-                src={
-                  process.env.PUBLIC_URL + "/images/exercises/whiteCheck.png"
-                }
-                alt="white check"
-              />
-              <img
-                className="whiteResult"
-                src={process.env.PUBLIC_URL + "/images/exercises/whiteX.png"}
-                alt="white X"
-              />
             </div>
             <div className="letterOptionsContainer">
               {options.map((character) => {
@@ -118,8 +121,10 @@ const ExerciseCard = (props) => {
                     id={`letterOptionSelected${character}`}
                     className="letterOption"
                     onClick={() => {
-                      console.log("clicked letter option");
                       activeChoice = character;
+                      // LETTER OPTIONS A, B, C, D
+                      // check exercise button set CLICKABLE, TURNED YELLOW
+                      // letter option BORDER GREY
                       document
                         .getElementById("checkExerciseBtn")
                         .classList.remove("toggleClickable");
@@ -129,7 +134,6 @@ const ExerciseCard = (props) => {
                       document.getElementById(
                         `letterOptionSelected${character}`
                       ).style.border = "solid grey";
-                      console.log("clicked letter option the end");
                     }}
                   >
                     {character}
@@ -151,13 +155,16 @@ const ExerciseCard = (props) => {
                   return each.sign === character;
                 })[0].visual;
                 return (
-                  <>
+                  <div id={`overlayImage${character}`} className="overlayImages">
                     <img
                       id={`imageOptionSelected${character}`}
                       className="imageOption"
                       src={localVar}
                       onClick={() => {
-                        console.log("clicked image option");
+                        // IMAGE OPTIONS
+                        // all image options set BORDER LIGHT GREY
+                        // specific image option clicked set BORDER GREY
+                        // check button set CLICKABLE
                         for (let i = 0; i < options.length; i++) {
                           document.getElementsByClassName("imageOption")[
                             i
@@ -170,25 +177,12 @@ const ExerciseCard = (props) => {
                         document.getElementById(
                           `imageOptionSelected${character}`
                         ).style.border = "solid grey";
-                        console.log("clicked image option the end");
+                        document.getElementById(
+                          "checkExerciseBtn"
+                        ).style.background = "rgba(255, 227, 101, 0.74)";
                       }}
                     />
-                    <img
-                      className="whiteResult"
-                      src={
-                        process.env.PUBLIC_URL +
-                        "/images/exercises/whiteCheck.png"
-                      }
-                      alt="white check"
-                    />
-                    <img
-                      className="whiteResult"
-                      src={
-                        process.env.PUBLIC_URL + "/images/exercises/whiteX.png"
-                      }
-                      alt="white X"
-                    />
-                  </>
+                  </div>
                 );
               })}
             </div>
@@ -198,6 +192,10 @@ const ExerciseCard = (props) => {
           id="checkExerciseBtn"
           className="toggleClickable"
           onClick={() => {
+            // CHECK BUTTON
+            // toggle display on or off
+            // set background red or green based on answer
+            // remove life and start heart animation if wrong answer
             document.getElementById("checkExerciseBtn").style.display === "none"
               ? (document.getElementById("checkExerciseBtn").style.display =
                   "flex")
@@ -216,6 +214,12 @@ const ExerciseCard = (props) => {
                 document.getElementById(
                   `imageOptionSelected${activeChoice}`
                 ).style.background = "#a0d468";
+                document
+                  .getElementById(`overlayImage${activeChoice}`)
+                  .prepend(whiteCheck);
+                // document
+                //   .getElementById(`imageOptionSelected${activeChoice}`)
+                //   .prepend(whiteCheck);
               } else {
                 document.getElementById(
                   `imageOptionSelected${activeChoice}`
@@ -252,6 +256,10 @@ const ExerciseCard = (props) => {
           id="nextExerciseBtn"
           style={{ display: "none" }}
           onClick={() => {
+            // NEXT BUTTON
+            // toggle display on or off
+            // set all image options to have light grey border
+            // invoke next handler
             document.getElementById("checkExerciseBtn").style.display === "none"
               ? (document.getElementById("checkExerciseBtn").style.display =
                   "flex")
