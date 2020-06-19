@@ -70,7 +70,7 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 - Each level includes:
 - Going through flash cards to memorize alphabet signs
 - Going through exercises to practice signs
-- Recording video in a quiz to assess understanding
+- Going through quiz with Hand Recognition Technology to assess understanding
 
 ## Tech Stack
 
@@ -92,7 +92,7 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 ### Libraries and Packages
 
-#### _react-redux | redux-logger | redux-thunk_
+#### _react-redux | redux-logger | redux-thunk_ | redux-devtools-extension
 
 - Global state-management 
 
@@ -131,6 +131,10 @@ SignLingo is a sign language learning app/website for beginners. Current ASL dig
 
 - For fonts
 
+#### _Okta Widget_
+
+- Okta Login and Register Form for Authentication
+
 
 #### Front end deployed to `Amazon Web Services`
 
@@ -138,9 +142,15 @@ https://thesignlingo.com
 
 # Environment Variables Here
 
-In order for the app to function correctly, the user must set up their own environment variables. There should be a .env file containing the following:
+In order for the app to function correctly, the user must set up their own environment variables. The values of these .env vars can be found in the Product Vision Document in Notion. There should be a .env file containing the following:
 
-add needed env vars here....
+REACT_APP_OKTA_DOMAIN
+REACT_APP_ISSUER
+REACT_APP_CLIENT_ID
+REACT_APP_REDIRECT_URI
+REACT_APP_MESSAGES_URL
+REACT_APP_BASE_URL
+REACT_APP_BACK_END_BASE_URL
 
 # Content Licenses Here
 
