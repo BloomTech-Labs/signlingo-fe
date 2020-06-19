@@ -18,6 +18,8 @@ const ExerciseCard = (props) => {
   whiteX.alt = "white X";
   whiteCheck.classList.add("whiteResult");
   whiteX.classList.add("whiteResult");
+  whiteCheck.id = ("resultImage");
+  whiteX.id = ("resultImage");
 
   //===========creating options============//
   let items = [];
@@ -63,6 +65,7 @@ const ExerciseCard = (props) => {
   }
 
   function nextHandler(choice, correctAnswer) {
+    document.getElementById("resultImage").remove();
     document
       .getElementById("checkExerciseBtn")
       .classList.add("toggleClickable");
@@ -155,7 +158,10 @@ const ExerciseCard = (props) => {
                   return each.sign === character;
                 })[0].visual;
                 return (
-                  <div id={`overlayImage${character}`} className="overlayImages">
+                  <div
+                    id={`overlayImage${character}`}
+                    className="overlayImages"
+                  >
                     <img
                       id={`imageOptionSelected${character}`}
                       className="imageOption"
@@ -217,22 +223,28 @@ const ExerciseCard = (props) => {
                 document
                   .getElementById(`overlayImage${activeChoice}`)
                   .prepend(whiteCheck);
-                // document
-                //   .getElementById(`imageOptionSelected${activeChoice}`)
-                //   .prepend(whiteCheck);
               } else {
                 document.getElementById(
                   `imageOptionSelected${activeChoice}`
                 ).style.background = "#eb5757";
+                document
+                  .getElementById(`overlayImage${activeChoice}`)
+                  .prepend(whiteX);
               }
             }
             if (document.getElementById("questionImage") !== null) {
               if (activeChoice === props.exerciseData[currentIndex].sign) {
                 document.getElementById(`questionImage`).style.background =
                   "#a0d468";
+                document
+                  .getElementById(`questionImageContainer`)
+                  .prepend(whiteCheck);
               } else {
                 document.getElementById(`questionImage`).style.background =
                   "#eb5757";
+                document
+                  .getElementById(`questionImageContainer`)
+                  .prepend(whiteX);
               }
             }
             if (activeChoice === props.exerciseData[currentIndex].sign) {

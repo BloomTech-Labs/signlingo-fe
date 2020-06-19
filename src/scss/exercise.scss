@@ -12,16 +12,20 @@
   }
 }
 .whiteResult {
-  position: relative;
+  position: absolute;
   align-self: center;
   width: 30%;
-  height: 22%;
+  height: auto;
   z-index: 5;
-  bottom: 50%;
+  //bottom: 50%;
+  margin: auto;
 }
 .overlayImages {
   width: 48%;
   height: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 .exerciseCards {
   display: flex;
@@ -72,14 +76,16 @@
     }
   }
   .questionImageContainer {
-    .questionImage {
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
-
-      border-radius: 5px;
-      border: solid rgb(240, 239, 239);
-    }
+    display: flex;
+    justify-content: center;
   }
+  .questionImage {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: solid rgb(240, 239, 239);
+  }
+
   .letterOptionsContainer {
     display: flex;
     flex-wrap: wrap;

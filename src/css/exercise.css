@@ -11,16 +11,19 @@
       cursor: pointer; }
 
 .whiteResult {
-  position: relative;
+  position: absolute;
   align-self: center;
   width: 30%;
-  height: 22%;
+  height: auto;
   z-index: 5;
-  bottom: 50%; }
+  margin: auto; }
 
 .overlayImages {
   width: 48%;
-  height: auto; }
+  height: auto;
+  position: relative;
+  display: flex;
+  justify-content: center; }
 
 .exerciseCards {
   display: flex;
@@ -61,7 +64,10 @@
       align-content: flex-start;
       font-size: 2rem;
       margin-right: 9.3rem; }
-  .exerciseCards .questionImageContainer .questionImage {
+  .exerciseCards .questionImageContainer {
+    display: flex;
+    justify-content: center; }
+  .exerciseCards .questionImage {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     border-radius: 5px;
