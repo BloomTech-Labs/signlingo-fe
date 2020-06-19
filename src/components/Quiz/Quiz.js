@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import VideoAssessment from "./VideoAssessment";
 import { useHistory, useParams } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
+const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
 const Quiz = (props) => {
-  const data = ["A", "B", "C", "D", "E"];
+  const [data, setData] = useState(["dummy", "data"]);
   const [videoOn, setVideoOn] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [enableButton, setEnableButton] = useState(false);
@@ -15,17 +16,37 @@ const Quiz = (props) => {
   const { id } = useParams();
   const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
-  const backToDash = (arg) => {
-    if (arg === 'pass') {
-      axios
-      .put(`${URL}levels/quiz/${id}`, {oktaUID: localStorage.getItem("oktaUID")})
+
+  useEffect(() => {
+    axios
+      .get(`${URL}flashcards/${id}`)
       .then((res) => {
-        console.log("successfully updated quiz bubble")
-        return history.push("/dashboard");
+        console.log(res);
+        let data1 = [];
+        setData([]);
+        res.data.forEach(item => {
+          data1.push(item.sign);
+          data1.sort(() => Math.random() - 0.5);
+          setData(data1);
+        });
+        console.log(data1);
       })
-      .catch((err) => {
-        console.log("error", err)
-      });
+      .catch((err) => {});
+  }, []);
+
+  const backToDash = (arg) => {
+    if (arg === "pass") {
+      axios
+        .put(`${URL}levels/quiz/${id}`, {
+          oktaUID: localStorage.getItem("oktaUID"),
+        })
+        .then((res) => {
+          console.log("successfully updated quiz bubble");
+          return history.push("/dashboard");
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
     } else {
       return history.push("/dashboard");
     }
@@ -66,7 +87,8 @@ const Quiz = (props) => {
             src={process.env.PUBLIC_URL + "/images/quiz/exitBlackX.png"}
             alt="exit image"
           />
-          <h1 className="signLabel">Sign "{data[currentIndex]}"</h1>
+          {/* <h1 className="signLabel">Sign "{data[currentIndex]}"</h1> */}
+          <h1 className="signLabel">{data.length > 2 ? `Sign "${data[currentIndex]}"` : null }</h1>
           {videoOn ? (
             <VideoAssessment
               testValue={data[currentIndex]}
@@ -124,7 +146,7 @@ const Quiz = (props) => {
               src={process.env.PUBLIC_URL + "/images/quiz/success.png"}
               alt="successful quiz attempt"
             />{" "}
-            <button onClick={() => backToDash('pass')} className="finishButton">
+            <button onClick={() => backToDash("pass")} className="finishButton">
               Finish
             </button>
           </div>
