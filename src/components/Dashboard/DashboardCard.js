@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+// Conditionally render different images based on whether or not the particular user
+// has completed flashcards, exercises, or quiz. JSX is prepared BEFORE the return/render
+
 const DashboardCard = (props) => {
   const purl = process.env.PUBLIC_URL;
   const alphabet = 5; // num levels pertaining to alphabet
@@ -23,6 +26,10 @@ const DashboardCard = (props) => {
       "Add Future Level Name Here"
     ); // add more levels here if necessary
 
+  // we use this function to check if all tasks on the previous level
+  // are completed. That's how we know when to make the next level accessible.
+  // we created the "levelMinusOne" variable to reference the previous level
+  // so we don't have to repeatedly call findWithAttr over and over.
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
       if (array[i][attr] === value) {

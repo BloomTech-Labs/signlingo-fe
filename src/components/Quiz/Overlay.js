@@ -1,3 +1,5 @@
+//adding check marks on top of video component when we're getting results from DS API
+
 import React from "react";
 const Overlay = (props) => {
   return (

@@ -21,7 +21,6 @@ const Quiz = (props) => {
     axios
       .get(`${URL}flashcards/${id}`)
       .then((res) => {
-        console.log(res);
         let data1 = [];
         setData([]);
         res.data.forEach(item => {
@@ -29,7 +28,6 @@ const Quiz = (props) => {
           data1.sort(() => Math.random() - 0.5);
           setData(data1);
         });
-        console.log(data1);
       })
       .catch((err) => {});
   }, []);
@@ -41,7 +39,6 @@ const Quiz = (props) => {
           oktaUID: localStorage.getItem("oktaUID"),
         })
         .then((res) => {
-          console.log("successfully updated quiz bubble");
           return history.push("/dashboard");
         })
         .catch((err) => {
@@ -63,6 +60,7 @@ const Quiz = (props) => {
     setEnableButton(true);
     console.log("score", score);
   };
+
   let nextHandler = () => {
     if (enableButton) {
       setCurrentIndex(currentIndex + 1);
@@ -73,9 +71,11 @@ const Quiz = (props) => {
       document.querySelector("video").classList.remove("videoFail");
     }
   };
+
   const turnVideoOn = () => {
     setVideoOn(true);
   };
+  
   if (currentIndex !== data.length) {
     return (
       <>

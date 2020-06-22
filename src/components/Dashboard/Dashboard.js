@@ -18,6 +18,7 @@ const Dashboard = (props) => {
   }
 
   useEffect(() => {
+    // initialize dashboard with user data via the signup endpoint
     axios
       .post(
         URL + "user/signup",

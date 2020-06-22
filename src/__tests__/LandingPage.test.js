@@ -1,3 +1,5 @@
+// back end and front end have been refactored, and tests have yet to be refactored
+
 import React from "react";
 import { createStore } from "redux";
 // We're using our own custom render function and not RTL's render
