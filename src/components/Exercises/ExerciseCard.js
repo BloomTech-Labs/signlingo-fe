@@ -18,8 +18,8 @@ const ExerciseCard = (props) => {
   whiteX.alt = "white X";
   whiteCheck.classList.add("whiteResult");
   whiteX.classList.add("whiteResult");
-  whiteCheck.id = ("resultImage");
-  whiteX.id = ("resultImage");
+  whiteCheck.id = "resultImage";
+  whiteX.id = "resultImage";
 
   //===========creating options============//
   let items = [];
@@ -65,6 +65,12 @@ const ExerciseCard = (props) => {
   }
 
   function nextHandler(choice, correctAnswer) {
+    for (let i = 0; i < options.length; i++) {
+      if (document.getElementsByClassName("imageOption")[i]) {
+        document.getElementsByClassName("imageOption")[i].style.background =
+          "white";
+      }
+    }
     document.getElementById("resultImage").remove();
     document
       .getElementById("checkExerciseBtn")
