@@ -69,7 +69,8 @@ const DashboardCard = (props) => {
     if (
       props.userLevels[levelMinusOne].completed_exercises &&
       props.userLevels[levelMinusOne].completed_flashcards &&
-      props.userLevels[levelMinusOne].completed_quiz
+      props.userLevels[levelMinusOne].completed_quiz &&
+      d.completed_flashcards === null
     ) {
       flashcard = (
         <>

@@ -29,7 +29,7 @@ export default function ExerciseSuccess() {
           onClick={backToDash}
           className="closing"
           src={process.env.PUBLIC_URL + "/images/quiz/exitBlackX.png"}
-          alt="exit image"
+          alt="exit"
         />
       </div>
       <h1 className="signLabel">{`Success! Good Job!`}</h1>
