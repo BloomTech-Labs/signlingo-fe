@@ -67,6 +67,7 @@ const VideoAssessment = (props) => {
         let formData = new FormData();
         formData.append("video", blob);
         formData.append("expected", props.testValue);
+        formData.append("right-handed", 1) // 0 for left handed, 1 for right handed DEFAULT right hand
         axios
           .post(
             "https://cors-anywhere.herokuapp.com/https://ds.thesignlingo.com/api",
