@@ -57,7 +57,7 @@ const DashboardCard = (props) => {
         <>
           <Link to={`/flashcard/${d.level_id}`}>
             <img
-              src={purl + "/images/icons/flashcardChecked.png"}
+              src={purl + "/images/icons/flashCardChecked.png"}
               alt={`flashcards for level ${d.level_id}`}
             />
           </Link>
