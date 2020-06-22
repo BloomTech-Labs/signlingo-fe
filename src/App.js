@@ -1,42 +1,54 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute";
-import "./App.scss";
-import Dashboard from "./components/Dashboard";
-import LandingPage from "./components/LandingPage";
-import Account from "./components/Account";
-import Lesson from "./components/Lesson";
-import DashboardCard from "./components/DashboardCard";
-import QuizLandingPage from './components/Quiz/QuizLandingPage.js';
-import Quiz from './components/Quiz/Quiz';
+import {
+  BrowserRouter as Router,
+  Route,
+  useHistory,
+  Switch
+} from "react-router-dom";
+import { Security, SecureRoute, LoginCallback } from "@okta/okta-react";
+import config from "./components/Home/00_oktaConfig";
+import LandingPage from "./components/Home/LandingPage";
+import LoginAndRegister from "./components/Home/LoginAndRegister";
+import Dashboard from "./components/Dashboard/Dashboard";
+import QuizWrapper from "./components/Quiz/QuizWrapper";
+import Quiz from "./components/Quiz/Quiz";
+import FlashCardWrapper from "./components/Flashcards/FlashcardWrapper";
+import ExerciseWrapper from "./components/Exercises/ExerciseWrapper";
+import ExerciseFail from "./components/Exercises/ExerciseFail"
+import ExerciseSuccess from "./components/Exercises/ExerciseSuccess"
+const HasAccessToRouter = () => {
+  const history = useHistory(); // example from react-router
+
+  const customAuthHandler = () => {
+    // Redirect to the /login page that has a CustomLoginComponent
+    history.push("/login");
+  };
+
+  return (
+    <div className="App">
+      <Security {...config.oidc} onAuthRequired={customAuthHandler}>
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/implicit/callback" component={LoginCallback} />
+          <Route path="/login" component={LoginAndRegister} />
+          <SecureRoute path="/dashboard" component={Dashboard} />
+          <SecureRoute path="/flashcard/:id" component={FlashCardWrapper} />
+          <SecureRoute path="/exercise/:id" component={ExerciseWrapper} />
+          <SecureRoute path="/quiz/:id" component={QuizWrapper} />
+          <SecureRoute path="/quizcard/:id" component={Quiz} />
+          <SecureRoute path="/ExerciseSuccess/:id" component={ExerciseSuccess} />
+          <SecureRoute path="/ExerciseFail" component={ExerciseFail} />
+        </Switch>
+      </Security>
+    </div>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <Router>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/quizLanding">
-            <QuizLandingPage />
-          </Route>
-          <Route path="/quiz">
-            <Quiz/>
-          </Route>
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/lesson">
-            <Lesson />
-          </Route>
-          <Route exact path="/account/signup">
-            {/* passing a value so the proper tab is displayed 
-            without this it causes a memory leak */}
-          <Account value={0} />
-        </Route>
-        <Route exact path="/account/login">
-          {/* passing a value so the proper tab is displayed 
-            without this it causes a memory leak */}
-          <Account value={1} />
-        </Route>
+        <HasAccessToRouter />
       </Router>
     </div>
   );

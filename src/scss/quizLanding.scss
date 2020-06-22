@@ -1,0 +1,112 @@
+// quiz landing page styling here
+div.quizDemo {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  .quizDemoHead {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    img.closing {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      margin-right: 20%;
+    }
+    p {
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+      width: 50%;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+  div {
+    display: flex;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    img.progressBar {
+      width: 90%;
+      height: 0.5rem;
+      height: 0.5rem;
+      height: 0.5rem;
+      margin-right: 1rem;
+    }
+  }
+  h1.demoLabel {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .quizDemoImage {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    max-width: 336px;
+    align-self: center;
+  }
+  p.demoMessage {
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+  button {
+    border: none;
+    background: #f2f2f2;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  button.demoButton {
+    border: none;
+    background: #f6bf00;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+}
+//Video Assessment Styles
+.overlay {
+  position: absolute;
+}
+.videoSuccess {
+  border: 5px solid #a0d468;
+}
+.videoFail {
+  border: 5px solid #eb5757;
+}
+
+.resultsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 3%;
+  img {
+    max-width: 270px;
+    margin-top: 4rem;
+  }
+  button {
+    border: none;
+    background: #f6bf00;
+    border-radius: 4px;
+    height: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 100%;
+  }
+  button.finishButton {
+    background: #f6bf00;
+    margin-top: 8rem;
+  }
+  button.tryAgainButton {
+    background: #f2f2f2;
+  }
+}

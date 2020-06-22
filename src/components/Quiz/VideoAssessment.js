@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Overlay from "./Overlay.js";
+
 const VideoAssessment = (props) => {
   let mediaRecorder;
   let constraintObj = {
@@ -65,19 +66,17 @@ const VideoAssessment = (props) => {
         // vidSave.src = videoURL;
         let formData = new FormData();
         formData.append("video", blob);
+        formData.append("expected", props.testValue);
         axios
           .post(
-            "https://cors-anywhere.herokuapp.com/http://signlingods.us-east-1.elasticbeanstalk.com/test_api",
+            "https://cors-anywhere.herokuapp.com/https://ds.thesignlingo.com/api",
             formData
           )
           .then((res) => {
-            props.scoreHandler(res.data["Random Test Boolean"]);
-            props.setResult(res.data["Random Test Boolean"]);
+            console.log(res.data);
+            props.scoreHandler(res.data.is_match);
+            props.setResult(res.data.is_match);
             props.setIsRecording(false);
-            console.log(res.data["Random Test Boolean"]);
-          })
-          .catch((err) => {
-            console.log(err);
           });
       };
     })
@@ -97,21 +96,12 @@ const VideoAssessment = (props) => {
   };
   return (
     <>
-      {console.log("result", props.result)}
       <div className="overlayDiv">
         <video className="video"></video>
         {props.result === null ? null : (
           <Overlay data-testid="resultOverlay" result={props.result} />
         )}
       </div>
-      {/* {props.isRecording ? null : (
-        <button onClick={start}>Start Recording</button>
-      )}
-      {props.isRecording ? null : (
-        <div className="roundbtn roundbtnGrey" id="recBtn">
-          <div className="roundbtnCircle">Record</div>
-        </div>
-      )} */}
       {!props.videoOn && !props.result ? (
         <div className="roundbtn roundbtnGrey" id="recBtn">
           <div className="roundbtnCircle">Record</div>
@@ -121,19 +111,14 @@ const VideoAssessment = (props) => {
           <span id="loading">Loading...</span>
           <div className="circle-border">
             <div className="circle-core"></div>
-          </div>  
+          </div>
         </div>
       ) : props.result === null ? (
         <div onClick={start} className="roundbtn" id="recBtn">
           <div className="roundbtnCircle">Record</div>
         </div>
       ) : null}
-      {/* {
-      pseudocode for chaining ternary ops
-      if videoNotOn, display greyBtn
-      else if 
-      } */}
-    </>                         
+    </>
   );
 };
 export default VideoAssessment;

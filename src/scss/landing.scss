@@ -1,0 +1,80 @@
+//Landing Page component starts here ************************************************
+.heroDiv {
+  position: relative;
+  display: inline-block;
+  img {
+    width: 100%;
+  }
+  .heroText {
+    position: absolute;
+    width: 200px;
+    top: 10px;
+    left: 18px;
+    #logo {
+      font-size: 3.6rem;
+      line-height: 44px;
+      font-weight: 400;
+      color: #212121;
+      display: flex;
+    }
+    #slogan {
+      font-weight: 500;
+      font-size: 1.8rem;
+      line-height: 22px;
+      color: #212121;
+      text-align: left;
+      margin-top: 5%;
+    }
+  }
+  .heroLogin {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    #login {
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 17px;
+      color: #000000;
+      padding: 1rem;
+      &:hover {
+        background: rgba(0, 204, 255, 0.767);
+        border-radius: 5px;
+        padding: 1rem;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.landingContent {
+  padding: 2%;
+  #landingBtn {
+    background-color: #f6bf00;
+    border-radius: 4px;
+    width: 50%;
+    padding: 10px 0px;
+    margin: 3% auto;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 19px;
+    color: #333333;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(255, 208, 0, 0.74);
+    }
+  }
+  .landingBoxes {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+    section {
+      padding: 4% 1.5%;
+      width: 43%;
+      margin: 1.5%;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
