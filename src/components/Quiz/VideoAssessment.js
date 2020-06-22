@@ -70,7 +70,7 @@ const VideoAssessment = (props) => {
         formData.append("right-handed", 1); // 0 for left handed, 1 for right handed DEFAULT right hand
         axios
           .post(
-            "https://cors-anywhere.herokuapp.com/https://ds.thesignlingo.com/api",
+            "https://cors-anywhere.herokuapp.com/http://ds.thesignlingo.com/api",
             formData
           )
           .then((res) => {
