@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import Overlay from "./Overlay.js";
 
@@ -62,7 +62,7 @@ const VideoAssessment = (props) => {
       mediaRecorder.onstop = (ev) => {
         let blob = new Blob(chunks, { type: "video/mp4;" });
         chunks = [];
-        let videoURL = window.URL.createObjectURL(blob);
+        // let videoURL = window.URL.createObjectURL(blob);
         // vidSave.src = videoURL;
         let formData = new FormData();
         formData.append("video", blob);

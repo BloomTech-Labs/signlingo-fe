@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import Overlay from "./ExerciseOverlay";
 const purl = process.env.PUBLIC_URL;
 
 const ExerciseCard = (props) => {
@@ -65,6 +64,10 @@ const ExerciseCard = (props) => {
   }
 
   function nextHandler(choice, correctAnswer) {
+    // NEXT HANDLER
+    // change option background to white
+    // remove white checkmarks and white x's
+    // make check button unclickable and change background to light grey
     for (let i = 0; i < options.length; i++) {
       if (document.getElementsByClassName("imageOption")[i]) {
         document.getElementsByClassName("imageOption")[i].style.background =
@@ -254,14 +257,8 @@ const ExerciseCard = (props) => {
               }
             }
             if (activeChoice === props.exerciseData[currentIndex].sign) {
-              // toggle display:none and display flex on the x or check image
-              // return (
-              //   <Overlay
-              //     result={
-              //       activeChoice === props.exerciseData[currentIndex].sign
-              //     }
-              //   />
-              // );
+              // this logic is working, using other kinds of logic if seems to throw
+              // an error! Feel free to refactor later if desired.
             } else {
               setLives(lives - 1);
               document.getElementById("heart").classList.add("broken");

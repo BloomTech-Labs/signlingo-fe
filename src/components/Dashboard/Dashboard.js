@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   getAllLevels,
@@ -11,7 +11,7 @@ import { useOktaAuth } from "@okta/okta-react";
 const URL = process.env.REACT_APP_BACK_END_BASE_URL;
 
 const Dashboard = (props) => {
-  const { authState, authService } = useOktaAuth();
+  const { authService } = useOktaAuth();
 
   function logout() {
     authService.logout("/");

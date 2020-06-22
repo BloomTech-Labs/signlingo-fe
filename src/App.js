@@ -14,8 +14,7 @@ import QuizWrapper from "./components/Quiz/QuizWrapper";
 import Quiz from "./components/Quiz/Quiz";
 import FlashCardWrapper from "./components/Flashcards/FlashcardWrapper";
 import ExerciseWrapper from "./components/Exercises/ExerciseWrapper";
-import ExerciseFail from "./components/Exercises/ExerciseFail"
-import ExerciseSuccess from "./components/Exercises/ExerciseSuccess"
+
 const HasAccessToRouter = () => {
   const history = useHistory(); // example from react-router
 
@@ -36,8 +35,6 @@ const HasAccessToRouter = () => {
           <SecureRoute path="/exercise/:id" component={ExerciseWrapper} />
           <SecureRoute path="/quiz/:id" component={QuizWrapper} />
           <SecureRoute path="/quizcard/:id" component={Quiz} />
-          <SecureRoute path="/ExerciseSuccess/:id" component={ExerciseSuccess} />
-          <SecureRoute path="/ExerciseFail" component={ExerciseFail} />
         </Switch>
       </Security>
     </div>
