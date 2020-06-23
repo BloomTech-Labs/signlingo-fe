@@ -64,25 +64,45 @@ const VideoAssessment = (props) => {
         chunks = [];
         // let videoURL = window.URL.createObjectURL(blob);
         // vidSave.src = videoURL;
+        
+        console.log("BLOB", blob)
+        if (blob.size === 0) {
+          // re record and create blob again
+          start();      
+        }
         let formData = new FormData();
         formData.append("video", blob);
         formData.append("expected", props.testValue);
         formData.append("right-handed", 1); // 0 for left handed, 1 for right handed DEFAULT right hand
+        // const headers = {
+        //   'Content-Type': 'application/json',
+        //   'Access-Control-Allow-Origin': 'http://signlingo-ds-test.eba-neytpugq.us-east-1.elasticbeanstalk.com/api'
+        // }
         axios
           .post(
-            "https://cors-anywhere.herokuapp.com/http://ds.thesignlingo.com/api",
-            formData
-          )
+            "https://8d27793e9943.ngrok.io/api",
+            formData, 
+            // {
+            //   headers: {
+            //     'Content-Type': 'application/json',
+            //     'Acces-Control-Allow-Origin': '*',
+            //     'Access-Control-Allow-Origin': '*',
+            //     'Access-Control-Allow-Origin': 'http://signlingo-ds-test.eba-neytpugq.us-east-1.elasticbeanstalk.com',
+            //     'Access-Control-Expose-Headers': 'acces-control-allow-origin,content-type,date,server,content-length,connection,x-final-url,access-control-allow-origin',
+            //   }
+            // }
+            )
+            //https://cors-anywhere.herokuapp.com/
           .then((res) => {
             console.log(res.data);
-            props.scoreHandler(res.data.is_match);
-            props.setResult(res.data.is_match);
+            props.scoreHandler(res.data.is_match); //res.data.is_match
+            props.setResult(res.data.is_match); //res.data.is_match
             props.setIsRecording(false);
           });
       };
     })
     .catch(function (err) {
-      console.log(err.name, err.message);
+      console.log(err.name, err.message, err);
     });
   const start = (ev) => {
     if (!props.isRecording) {
@@ -91,9 +111,9 @@ const VideoAssessment = (props) => {
       setTimeout(function () {
         mediaRecorder.stop();
         console.log("should have stopped recording");
-      }, 100);
+      }, 300);
     }
-    console.log(mediaRecorder.state);
+      console.log(mediaRecorder.state);
   };
   return (
     <>

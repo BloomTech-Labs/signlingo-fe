@@ -14,6 +14,7 @@ const Dashboard = (props) => {
   const { authService } = useOktaAuth();
 
   function logout() {
+    localStorage.removeItem("oktaUID");
     authService.logout("/");
   }
 
