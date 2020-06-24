@@ -80,7 +80,7 @@ const VideoAssessment = (props) => {
         // }
         axios
           .post(
-            "https://8d27793e9943.ngrok.io/api",
+            "http://signlingo-ds-test2.eba-neytpugq.us-east-1.elasticbeanstalk.com/api",
             formData, 
             // {
             //   headers: {
