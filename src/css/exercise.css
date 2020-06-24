@@ -1,0 +1,204 @@
+@charset "UTF-8";
+.exerciseBar {
+  margin: 1rem;
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: flex-start; }
+  .exerciseBar img {
+    padding: 1rem; }
+    .exerciseBar img:hover {
+      border-radius: 5px;
+      cursor: pointer; }
+
+.whiteResult {
+  position: absolute;
+  align-self: center;
+  width: 30%;
+  height: auto;
+  z-index: 5;
+  margin: auto; }
+
+.overlayImages {
+  width: 48%;
+  height: auto;
+  position: relative;
+  display: flex;
+  justify-content: center; }
+
+.exerciseCards {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  align-items: center; }
+  .exerciseCards .livesBar {
+    width: 100%;
+    margin: 0 2rem 0 2rem; }
+    .exerciseCards .livesBar .progressContainer {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center; }
+      .exerciseCards .livesBar .progressContainer .livesHolder {
+        display: flex;
+        flex-direction: row;
+        width: 3.5rem;
+        justify-content: space-between;
+        align-items: center; }
+      .exerciseCards .livesBar .progressContainer .progress,
+      .exerciseCards .livesBar .progressContainer #progress-bar {
+        max-width: 85%;
+        height: 5px; }
+      .exerciseCards .livesBar .progressContainer .progress {
+        background: #fff3cb;
+        width: 85%;
+        display: inline-block; }
+        .exerciseCards .livesBar .progressContainer .progress #progress-bar {
+          overflow: hidden;
+          position: relative;
+          width: 0;
+          background-color: rgba(255, 208, 0, 0.74); }
+  .exerciseCards .questionImagePhraseContainer {
+    display: flex; }
+    .exerciseCards .questionImagePhraseContainer .questionImagePhrase {
+      align-content: flex-start;
+      font-size: 2rem;
+      margin-right: 9.3rem; }
+  .exerciseCards .questionImageContainer {
+    display: flex;
+    justify-content: center; }
+  .exerciseCards .questionImage {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 5px;
+    border: solid #f0efef; }
+  .exerciseCards .letterOptionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%; }
+    .exerciseCards .letterOptionsContainer .letterOption {
+      width: 48%;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: grey;
+      font-family: inherit;
+      border: 0;
+      padding: 0;
+      background: white;
+      border: solid grey;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem; }
+      .exerciseCards .letterOptionsContainer .letterOption:hover {
+        cursor: pointer;
+        border: solid black; }
+  .exerciseCards .questionLetterContainer {
+    display: flex;
+    margin-top: 1.5rem; }
+    .exerciseCards .questionLetterContainer .questionLetter {
+      font-size: 2rem;
+      margin-right: 7rem; }
+  .exerciseCards .imageOptionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    justify-content: space-between; }
+    .exerciseCards .imageOptionContainer .overlay {
+      position: absolute; }
+    .exerciseCards .imageOptionContainer .videoSuccess {
+      border: 5px solid #a0d468; }
+    .exerciseCards .imageOptionContainer .videoFail {
+      border: 5px solid #eb5757; }
+    .exerciseCards .imageOptionContainer .imageOption {
+      border: solid #f1f1f1;
+      width: 100%;
+      margin-bottom: 1rem; }
+      .exerciseCards .imageOptionContainer .imageOption:hover {
+        cursor: pointer;
+        border: solid black; }
+  .exerciseCards #checkExerciseBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    background: #f1f1f1;
+    border: none;
+    width: 100%;
+    padding: 5% 0;
+    font-weight: bold; }
+    .exerciseCards #checkExerciseBtn:hover {
+      cursor: pointer; }
+  .exerciseCards #checkExerciseBtn.toggleClickable {
+    pointer-events: none; }
+  .exerciseCards #nextExerciseBtn {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    background: #f6bf00;
+    border: none;
+    width: 100%;
+    padding: 5% 0;
+    font-weight: bold; }
+    .exerciseCards #nextExerciseBtn:hover {
+      cursor: pointer; }
+
+#heart {
+  width: 15px;
+  height: 15px;
+  transform: translateZ(0);
+  color: red;
+  font-size: 2em;
+  position: relative;
+  transition: all 0.3s ease;
+  align-self: center;
+  margin-bottom: 1rem; }
+  #heart.broken {
+    color: red;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    align-self: center; }
+    #heart.broken:before, #heart.broken:after {
+      content: "❤";
+      opacity: 1;
+      color: red;
+      position: absolute;
+      top: -0px;
+      transform: scale(3) rotateZ(0); }
+    #heart.broken:before {
+      clip: rect(0, 20px, 200px, 0);
+      animation: break-left 1s ease forwards; }
+    #heart.broken:after {
+      clip: rect(0, 50px, 200px, 25px);
+      animation: break-right 1s ease forwards; }
+
+@keyframes break-left {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0); }
+  20% {
+    opacity: 0.5;
+    transform: scale(1) translateX(-10px) rotateZ(-20deg) translateY(0); }
+  50% {
+    opacity: 0.5;
+    transform: scale(1) translateX(-10px) rotateZ(-20deg) translateY(0); }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateX(-30px) rotateZ(-25deg) translateY(50px); } }
+
+@keyframes break-right {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateZ(0); }
+  20% {
+    opacity: 0.5;
+    transform: scale(1) translateX(10px) rotateZ(20deg) translateY(0); }
+  50% {
+    opacity: 0.5;
+    transform: scale(1) translateX(10px) rotateZ(20deg) translateY(0); }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateX(30px) rotateZ(25deg) translateY(50px); } }

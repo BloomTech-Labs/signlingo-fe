@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import Overlay from "./Overlay.js";
+
 const VideoAssessment = (props) => {
   let mediaRecorder;
   let constraintObj = {
@@ -61,28 +62,47 @@ const VideoAssessment = (props) => {
       mediaRecorder.onstop = (ev) => {
         let blob = new Blob(chunks, { type: "video/mp4;" });
         chunks = [];
-        let videoURL = window.URL.createObjectURL(blob);
+        // let videoURL = window.URL.createObjectURL(blob);
         // vidSave.src = videoURL;
+        
+        console.log("BLOB", blob)
+        if (blob.size === 0) {
+          // re record and create blob again
+          start();      
+        }
         let formData = new FormData();
         formData.append("video", blob);
+        formData.append("expected", props.testValue);
+        formData.append("right-handed", 1); // 0 for left handed, 1 for right handed DEFAULT right hand
+        // const headers = {
+        //   'Content-Type': 'application/json',
+        //   'Access-Control-Allow-Origin': 'http://signlingo-ds-test.eba-neytpugq.us-east-1.elasticbeanstalk.com/api'
+        // }
         axios
           .post(
-            "https://cors-anywhere.herokuapp.com/http://signlingods.us-east-1.elasticbeanstalk.com/test_api",
-            formData
-          )
+            "https://8d27793e9943.ngrok.io/api",
+            formData, 
+            // {
+            //   headers: {
+            //     'Content-Type': 'application/json',
+            //     'Acces-Control-Allow-Origin': '*',
+            //     'Access-Control-Allow-Origin': '*',
+            //     'Access-Control-Allow-Origin': 'http://signlingo-ds-test.eba-neytpugq.us-east-1.elasticbeanstalk.com',
+            //     'Access-Control-Expose-Headers': 'acces-control-allow-origin,content-type,date,server,content-length,connection,x-final-url,access-control-allow-origin',
+            //   }
+            // }
+            )
+            //https://cors-anywhere.herokuapp.com/
           .then((res) => {
-            props.scoreHandler(res.data["Random Test Boolean"]);
-            props.setResult(res.data["Random Test Boolean"]);
+            console.log(res.data);
+            props.scoreHandler(res.data.is_match); //res.data.is_match
+            props.setResult(res.data.is_match); //res.data.is_match
             props.setIsRecording(false);
-            console.log(res.data["Random Test Boolean"]);
-          })
-          .catch((err) => {
-            console.log(err);
           });
       };
     })
     .catch(function (err) {
-      console.log(err.name, err.message);
+      console.log(err.name, err.message, err);
     });
   const start = (ev) => {
     if (!props.isRecording) {
@@ -91,27 +111,18 @@ const VideoAssessment = (props) => {
       setTimeout(function () {
         mediaRecorder.stop();
         console.log("should have stopped recording");
-      }, 100);
+      }, 300);
     }
-    console.log(mediaRecorder.state);
+      console.log(mediaRecorder.state);
   };
   return (
     <>
-      {console.log("result", props.result)}
       <div className="overlayDiv">
         <video className="video"></video>
         {props.result === null ? null : (
           <Overlay data-testid="resultOverlay" result={props.result} />
         )}
       </div>
-      {/* {props.isRecording ? null : (
-        <button onClick={start}>Start Recording</button>
-      )}
-      {props.isRecording ? null : (
-        <div className="roundbtn roundbtnGrey" id="recBtn">
-          <div className="roundbtnCircle">Record</div>
-        </div>
-      )} */}
       {!props.videoOn && !props.result ? (
         <div className="roundbtn roundbtnGrey" id="recBtn">
           <div className="roundbtnCircle">Record</div>
@@ -121,19 +132,14 @@ const VideoAssessment = (props) => {
           <span id="loading">Loading...</span>
           <div className="circle-border">
             <div className="circle-core"></div>
-          </div>  
+          </div>
         </div>
       ) : props.result === null ? (
         <div onClick={start} className="roundbtn" id="recBtn">
           <div className="roundbtnCircle">Record</div>
         </div>
       ) : null}
-      {/* {
-      pseudocode for chaining ternary ops
-      if videoNotOn, display greyBtn
-      else if 
-      } */}
-    </>                         
+    </>
   );
 };
 export default VideoAssessment;

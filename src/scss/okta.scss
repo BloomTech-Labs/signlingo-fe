@@ -1,0 +1,64 @@
+//SocialButton component starts here ************************************************
+.socialBtns {
+  margin: 4% 0 0 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .oktaBtn {
+    padding: 3% 0%;
+    width: 40%;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 19px;
+    background: #f6bf00;
+    color: #ffffff;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    &:hover {
+      background: rgba(255, 208, 0, 0.74);
+      cursor: pointer;
+    }
+    #fImage {
+      margin-right: 3%;
+    }
+    #oktaImage {
+      width: 8rem;
+    }
+  }
+  .googleBtn {
+    padding: 3% 0%;
+    width: 47%;
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 19px;
+    border-radius: 4px;
+    background: #de5246;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    #gImage {
+      margin-right: 3%;
+    }
+  }
+}
+.accountBar {
+  display: flex;
+  max-width: 100%;
+  h1 {
+    //places the h1 in accountBar in the center
+    flex: 1 0 auto;
+  }
+}
+//Material Ui labels class
+.MuiButton-label {
+  color: #333333;
+  font-weight: 900;
+  box-shadow: none;
+  text-transform: none;
+  font-size: 1.2rem;
+}

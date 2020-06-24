@@ -1,0 +1,34 @@
+// LOGIN AND SIGN UP starts here ************************************************
+//Line that separates the signup/login forms and the social button component
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #4F4F4F;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 17px;
+  font-family: "Inter", sans-serif;
+}
+.separator::before,
+.separator::after {
+  //DO NOT delete content: ''; it is crucial for line to work
+  content: "";
+  flex: 1;
+  border-bottom: 0.5px solid #e0e0e0;
+  margin: 5% 0;
+}
+.separator::before {
+  margin-right: 0.25em;
+}
+.separator::after {
+  margin-left: 0.25em;
+}
+//Text above social buttons
+.socialText {
+  color: #4f4f4f;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  font-family: "Inter", sans-serif;
+}

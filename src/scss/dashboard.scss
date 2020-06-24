@@ -1,0 +1,100 @@
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  //   margin: 2rem;
+  .logout-span {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .logout-filler {
+      width: 100%;
+    }
+    .logout {
+      padding: 2rem;
+      border-radius: 5px;
+      text-align: center;
+      white-space: nowrap;
+      font-size: 1.3rem;
+      &:hover {
+        cursor: pointer;
+        background: rgba(255, 208, 0, 0.74);
+      }
+    }
+  }
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  
+    h1 {
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 10%;
+    }
+    .progress-bar {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+    }
+    .progress-bar-img {
+      width: 80%;
+    }
+    .crown-img {
+      // crown image styling if needed
+    }
+  }
+  .dashboard-content {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    #flashcard-box {
+      &:hover {
+        cursor: pointer;
+      }
+      img {
+        width: 10rem;
+      }
+      p {
+        margin-top: 0.7rem;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+    }
+    .exercise-quiz-wrapper {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center;
+      #exercise-box {
+        margin-right: 3rem;
+        &:hover {
+          cursor: pointer;
+        }
+        img {
+          width: 10rem;
+        }
+        p {
+          margin-top: 0.7rem;
+          font-weight: bold;
+          font-size: 1.3rem;
+        }
+      }
+      #quiz-box {
+        margin-left: 3rem;
+        &:hover {
+          cursor: pointer;
+        }
+        img {
+          width: 10rem;
+        }
+        p {
+          margin-top: 0.7rem;
+          font-weight: bold;
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+}

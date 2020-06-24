@@ -1,29 +1,30 @@
+
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
-import { loginReducer } from "./reducers/LoginReducer";
-import { DashLevelReducer } from "./reducers/DashLevelReducer";
-import { LessonReducer } from "./reducers/LessonReducer";
-
-import "./index.scss";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { levelsReducer } from "./reducers/levelsReducer";
+import "./css/index.css";
 import App from "./App";
+require("dotenv").config()
 
 const rootReducer = combineReducers({
-  user: loginReducer,
-  dashLevel: DashLevelReducer,
-  lesson: LessonReducer,
+  levelsReducer,
 });
-
-const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider
+      store={createStore(
+        rootReducer,
+        composeWithDevTools(applyMiddleware(thunk))
+      )}
+    >
       <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
+
