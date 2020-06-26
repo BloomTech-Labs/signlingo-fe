@@ -21,7 +21,7 @@ const Dashboard = (props) => {
   useEffect(() => {
     // initialize dashboard with user data via the signup endpoint
     axios
-      .post(
+      .post( 
         URL + "user/signup",
         JSON.parse(localStorage.getItem("okta-token-storage"))
       )
@@ -32,7 +32,7 @@ const Dashboard = (props) => {
         props.getAllLevels();
       })
       .catch((err) => {
-        console.log("error loggin in and or registering", err);
+        console.log("error login in and or registering", err);
       });
     // if level.length is greater then user_level length, this means
     // user is missing levels so add them.

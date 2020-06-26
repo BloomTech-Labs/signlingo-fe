@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
+import ReactGA from 'react-ga'
 import {
   BrowserRouter as Router,
   Route,
@@ -16,6 +17,8 @@ import FlashCardWrapper from "./components/Flashcards/FlashcardWrapper";
 import ExerciseWrapper from "./components/Exercises/ExerciseWrapper";
 import ExerciseFail from "./components/Exercises/ExerciseFail"
 import ExerciseSuccess from "./components/Exercises/ExerciseSuccess"
+
+
 const HasAccessToRouter = () => {
   const history = useHistory(); // example from react-router
 
@@ -45,6 +48,15 @@ const HasAccessToRouter = () => {
 };
 
 function App() {
+  useEffect(() => {
+    ReactGA.initialize('UA-170845451-1', {
+      siteSpeedSampleRate: 100
+    });
+    ReactGA.pageview(window.location.pathname)
+  }, [])
+  ReactGA.set({
+    userId: 'something'
+    })
   return (
     <div>
       <Router>

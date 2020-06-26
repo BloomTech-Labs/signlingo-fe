@@ -1,14 +1,40 @@
 import { useOktaAuth } from "@okta/okta-react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import OktaJwtVerifier from "@okta/jwt-verifier";
 
 const LandingPage = () => {
   let history = useHistory();
   const { authService } = useOktaAuth();
-
+  const issuer = process.env.REACT_APP_ISSUER;
+  let token = localStorage.getItem("okta-token-storage");
+  // console.log(token.accessToken.expiresAt);
   const login = async () => {
     authService.login("/dashboard"); // this is where okta redirects after logging in
   };
+  const tokenVerifier = new OktaJwtVerifier({
+    issuer: issuer,
+  });
+
+  useEffect(() => {
+    // TODO: add this verifier to other components (?) so that the access token is always checked on every page to make sure that it's still valid, otherwise route the user back to the login page.
+    if (token) {
+      console.log(token);
+      tokenVerifier
+      .verifyAccessToken(token.accessToken, "api://default")
+      .then((jwt) => {
+        // we don't need to do anything
+        console.log(jwt)
+      })
+      .catch((err) => {
+        //if there is an error, that means the token we tried to verify is no longer valid
+        localStorage.removeItem("oktaUID");
+        localStorage.removeItem("okta-token-storage");
+        console.log(err)
+      });
+    }
+
+  }, []);
 
   return (
     <>
@@ -36,9 +62,9 @@ const LandingPage = () => {
           <div
             data-testid="signupLP"
             id="landingBtn"
-            onClick={() => history.push("/dashboard")}
+            onClick={login}
           >
-            Go To Your Dashboard
+            Get started
           </div>
         ) : (
           <div data-testid="signupLP" id="landingBtn" onClick={login}>
