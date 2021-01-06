@@ -10,7 +10,7 @@
     "@okta/okta-signin-widget": "^4.1.2",
     "@testing-library/react": "^10.0.3",
     "@testing-library/user-event": "^10.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cuid": "^2.1.8",
     "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
